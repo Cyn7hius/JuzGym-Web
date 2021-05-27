@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FirebaseAuthConsumer,
   IfFirebaseAuthed,
@@ -14,6 +14,8 @@ import {
   Button,
   Box,
 } from "@material-ui/core";
+import CenteredTabs from "./toolbars.js";
+import SimpleTabs from "./toolbarstest.js";
 
 import "./styles.css";
 
@@ -22,6 +24,8 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
+      <CenteredTabs title="NavBar"/>
+      <SimpleTabs title="Testbar"/>
     </div>
   );
 }
@@ -51,7 +55,6 @@ function AppShell() {
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h2" style={{fontFamily: "Odibee Sans", flexGrow: 1, textAlign: "Center" }}>
-
           <Box fontWeight="fontWeightBold" m={1}>
             JuzGym
           </Box>
