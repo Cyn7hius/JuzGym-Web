@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   FirebaseAuthConsumer,
   IfFirebaseAuthed,
-  IfFirebaseUnAuthed
+  IfFirebaseUnAuthed,
 } from "@react-firebase/auth";
 import {
   AppBar,
@@ -11,11 +11,9 @@ import {
   MenuItem,
   Toolbar,
   Typography,
-  Button
+  Button,
+  Box,
 } from "@material-ui/core";
-
-
-
 
 import "./styles.css";
 
@@ -23,13 +21,10 @@ export default function App() {
   return (
     <div className="App">
       <AppShell />
-      <div style={{ maxWidth: "64rem", margin: "0 auto" }}>
-
-      </div>
+      <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
     </div>
   );
 }
-
 
 function AppShell() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -47,7 +42,7 @@ function AppShell() {
     firebase.auth().signOut();
   };
 
-  const handleGoogleSignIn = (firebase) => { 
+  const handleGoogleSignIn = (firebase) => {
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(googleAuthProvider);
   };
@@ -55,8 +50,11 @@ function AppShell() {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1, textAlign: "Center" }}>
-          JuzGym
+        <Typography variant="h2" style={{fontFamily: "Odibee Sans", flexGrow: 1, textAlign: "Center" }}>
+
+          <Box fontWeight="fontWeightBold" m={1}>
+            JuzGym
+          </Box>
         </Typography>
         <IfFirebaseAuthed>
           {({ user, firebase }) => (
@@ -93,8 +91,7 @@ function AppShell() {
                 Sign in with Google
               </Button>
             )}
-        </FirebaseAuthConsumer>
-          
+          </FirebaseAuthConsumer>
         </IfFirebaseUnAuthed>
       </Toolbar>
     </AppBar>
