@@ -10,11 +10,12 @@ import {
   Menu,
   MenuItem,
   Toolbar,
-  Typography
+  Typography,
+  Button
 } from "@material-ui/core";
 
-import PageTodolist from "./pages/PageTodolist";
-import PageLogin from "./pages/PageLogin";
+
+
 
 import "./styles.css";
 
@@ -23,18 +24,12 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}>
-        <FirebaseAuthConsumer>
-          <IfFirebaseAuthed>
-            <PageTodolist />
-          </IfFirebaseAuthed>
-          <IfFirebaseUnAuthed>
-            <PageLogin />
-          </IfFirebaseUnAuthed>
-        </FirebaseAuthConsumer>
+
       </div>
     </div>
   );
 }
+
 
 function AppShell() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -52,11 +47,16 @@ function AppShell() {
     firebase.auth().signOut();
   };
 
+  const handleGoogleSignIn = (firebase) => { 
+    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(googleAuthProvider);
+  };
+
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1, textAlign: "left" }}>
-          Todo List
+        <Typography variant="h6" style={{ flexGrow: 1, textAlign: "Center" }}>
+          JuzGym
         </Typography>
         <IfFirebaseAuthed>
           {({ user, firebase }) => (
@@ -82,6 +82,22 @@ function AppShell() {
             </div>
           )}
         </IfFirebaseAuthed>
+        <IfFirebaseUnAuthed>
+
+          
+          <FirebaseAuthConsumer>
+            {({ firebase }) => (
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleGoogleSignIn(firebase)}
+              >
+                Sign in with Google
+              </Button>
+            )}
+        </FirebaseAuthConsumer>
+          
+        </IfFirebaseUnAuthed>
       </Toolbar>
     </AppBar>
   );
