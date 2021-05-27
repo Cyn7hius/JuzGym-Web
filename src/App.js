@@ -83,8 +83,6 @@ function AppShell() {
           )}
         </IfFirebaseAuthed>
         <IfFirebaseUnAuthed>
-
-          
           <FirebaseAuthConsumer>
             {({ firebase }) => (
               <Button
