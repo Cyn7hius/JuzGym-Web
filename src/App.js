@@ -6,16 +6,19 @@ import {
 } from "@react-firebase/auth";
 import {
   AppBar,
-  Avatar,
+  makeStyles,
   Menu,
   MenuItem,
   Toolbar,
   Typography,
   Button,
   Box,
+  IconButton,
 } from "@material-ui/core";
 import CenteredTabs from "./toolbars.js";
 import SimpleTabs from "./toolbarstest.js";
+
+import MenuIcon from "@material-ui/icons/Menu";
 
 import "./styles.css";
 
@@ -31,6 +34,18 @@ export default function App() {
 }
 
 function AppShell() {
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+  }));
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -51,24 +66,52 @@ function AppShell() {
     firebase.auth().signInWithPopup(googleAuthProvider);
   };
 
+  const classes = useStyles();
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{ background: "#04ae96" }}>
       <Toolbar>
-        <Typography variant="h2" style={{fontFamily: "Odibee Sans", flexGrow: 1, textAlign: "Center" }}>
-          <Box fontWeight="fontWeightBold" m={1}>
-            JuzGym
-          </Box>
+
+        <IconButton
+          edge="start"
+          className={classes.menuButton}
+          color="inherit"
+          aria-label="menu"
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography
+          variant="h2"
+          style={{
+            fontFamily: "Odibee Sans",
+            flexGrow: 1,
+            textAlign: "Fixed",
+            color: "black",
+          }}
+        >
+          <div class="container">
+            <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
+              {"JuzGym                                                                                                                        "}
+            </Box>
+            <Box justifyContent="flex-start"  m={1}>
+              Your home gym companion
+            </Box>
+          </div>
         </Typography>
         <IfFirebaseAuthed>
           {({ user, firebase }) => (
             <div>
-              <Avatar
-                alt={user.displayName}
-                src={user.photoURL}
+              <Button
+                variant="contained"
+                backgroundColor="inherit"
+                color="black"
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
-              />
+              >
+                {user.displayName + "'s Workout plans"}
+              </Button>
+
               <Menu
                 id="simple-menu"
                 anchorEl={anchorEl}
@@ -88,10 +131,10 @@ function AppShell() {
             {({ firebase }) => (
               <Button
                 variant="contained"
-                color="primary"
+                color="default"
                 onClick={() => handleGoogleSignIn(firebase)}
               >
-                Sign in with Google
+                Login
               </Button>
             )}
           </FirebaseAuthConsumer>
