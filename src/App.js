@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   FirebaseAuthConsumer,
   IfFirebaseAuthed,
@@ -15,6 +15,8 @@ import {
   Box,
   IconButton,
 } from "@material-ui/core";
+import CenteredTabs from "./toolbars.js";
+import SimpleTabs from "./toolbarstest.js";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -25,6 +27,8 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
+      <CenteredTabs title="NavBar"/>
+      <SimpleTabs title="Testbar"/>
     </div>
   );
 }
@@ -67,6 +71,7 @@ function AppShell() {
   return (
     <AppBar position="static" style={{ background: "#04ae96" }}>
       <Toolbar>
+
         <IconButton
           edge="start"
           className={classes.menuButton}
