@@ -26,7 +26,7 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
-      
+
       <CenteredTabs title="NavBar" />
     </div>
   );
@@ -66,6 +66,10 @@ function AppShell() {
   };
 
   const classes = useStyles();
+
+  const Profile = () => <div>You're on the Profile Tab</div>;
+  const Comments = () => <div>You're on the Comments Tab</div>;
+  const Contact = () => <div>You're on the Contact Tab</div>;
 
   return (
     <AppBar position="static" style={{ background: "#04ae96" }}>
