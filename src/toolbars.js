@@ -5,6 +5,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { Switch, Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import Fitness from "./components/Fitness";
+import Nutrition from "./components/Nutrition";
 
 const useStyles = makeStyles({
   root: {
@@ -39,7 +40,7 @@ export default function CenteredTabs() {
               </Tabs>
               <Switch>
                 <Route path={allTabs[1]} render={() => <Fitness />} />
-                <Route path={allTabs[2]} render={() => <div>Tab 3</div>} />
+                <Route path={allTabs[2]} render={() => <Nutrition />} />
                 <Route path={allTabs[0]} render={() => <div>Tab 1</div>} />
               </Switch>
             </Fragment>
