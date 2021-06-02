@@ -15,8 +15,7 @@ import {
   Box,
   IconButton,
 } from "@material-ui/core";
-import CenteredTabs from "./toolbars.js";
-import SimpleTabs from "./toolbarstest.js";
+import SimpleTabs from "./navbar.js";
 
 import MenuIcon from "@material-ui/icons/Menu";
 
@@ -27,8 +26,7 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
-      <CenteredTabs title="NavBar"/>
-      <SimpleTabs title="Testbar"/>
+      <SimpleTabs title="NavBar"/>
     </div>
   );
 }
@@ -89,7 +87,7 @@ function AppShell() {
             color: "black",
           }}
         >
-          <div class="container">
+          <div className="container">
             <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
               {"JuzGym                                                                                                                        "}
             </Box>
