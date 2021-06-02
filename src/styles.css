@@ -1,0 +1,10 @@
+.App {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container{
+  display:flex;
+}
