@@ -38,9 +38,13 @@ export default function CenteredTabs() {
                 />
               </Tabs>
               <Switch>
-                <Route path={allTabs[1]} render={() => <Fitness />} />
-                <Route path={allTabs[2]} render={() => <Nutrition />} />
-                <Route path={allTabs[0]} render={() => <div>Tab 1</div>} />
+                <Route
+                  exact
+                  path={allTabs[0]}
+                  render={() => <div>Home Page!</div>}
+                />
+                <Route exact path={allTabs[1]} render={() => <Fitness />} />
+                <Route exact path={allTabs[2]} render={() => <Nutrition />} />
               </Switch>
             </Fragment>
           )}
