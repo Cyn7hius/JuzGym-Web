@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter, Redirect } from "react-router-dom";
 import { images } from "../data/equipmentNames.js";
 import Dumbbell from "./Dumbbell.js";
+import ResBands from "./ResBands";
+import BodyWeight from "./BodyWeight";
+import AllEquipment from "./AllEquipment";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Fitness() {
   const allRoutes = [
     "../fitness/dumbbell",
-    "../fitness/resistancebands",
+    "../fitness/resbands",
     "../fitness/bodyweight",
     "../fitness/all",
   ];
@@ -96,7 +99,7 @@ export default function Fitness() {
       <div style={{ margin: "5%", paddingLeft: "10%" }}>
         <Switch>
           <Route
-            path="/fitness"
+            exact path="/fitness"
             render={({ location }) => (
               <div>
                 <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
@@ -140,6 +143,15 @@ export default function Fitness() {
 
           <Route path="/fitness/dumbbell">
             <Dumbbell />
+          </Route>
+          <Route path="/fitness/resbands">
+            <ResBands />
+          </Route>
+          <Route path="/fitness/bodyweight">
+            <BodyWeight />
+          </Route>
+          <Route path="/fitness/all">
+            <AllEquipment />
           </Route>
         </Switch>
       </div>
