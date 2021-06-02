@@ -67,10 +67,6 @@ function AppShell() {
 
   const classes = useStyles();
 
-  const Profile = () => <div>You're on the Profile Tab</div>;
-  const Comments = () => <div>You're on the Comments Tab</div>;
-  const Contact = () => <div>You're on the Contact Tab</div>;
-
   return (
     <AppBar position="static" style={{ background: "#04ae96" }}>
       <Toolbar>
@@ -91,7 +87,7 @@ function AppShell() {
             color: "black",
           }}
         >
-          <div class="container">
+          <div className="container">
             <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
               {
                 "JuzGym                                                                                                                        "
@@ -107,8 +103,6 @@ function AppShell() {
             <div>
               <Button
                 variant="contained"
-                backgroundColor="inherit"
-                color="black"
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
