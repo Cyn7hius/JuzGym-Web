@@ -6,7 +6,7 @@ import "./styles.css";
 import routes from "./router";
 // import NoPageFound from "./components/NoPageFound";
 // import { makeStyles } from "@material-ui/core/styles";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 
 // const useStyles = makeStyles((theme) => ({
 //   root: {
@@ -21,11 +21,15 @@ export default function SimpleTabs() {
 
   return (
     // <div className={classes.root}>
-    <div >
+    <div>
       <AppBar position="static" color="white">
         <p>
-        <Button color="primary" href="/equipment">Fitness</Button>
-        <Button color="primary" href="/about">Nutrition</Button>
+          <Button color="primary" href="/equipment">
+            Fitness
+          </Button>
+          <Button color="primary" href="/about">
+            Nutrition
+          </Button>
         </p>
       </AppBar>
       <br />

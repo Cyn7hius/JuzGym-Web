@@ -26,7 +26,7 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
-      <SimpleTabs title="NavBar"/>
+      <SimpleTabs title="NavBar" />
     </div>
   );
 }
@@ -69,7 +69,6 @@ function AppShell() {
   return (
     <AppBar position="static" style={{ background: "#04ae96" }}>
       <Toolbar>
-
         <IconButton
           edge="start"
           className={classes.menuButton}
@@ -89,9 +88,11 @@ function AppShell() {
         >
           <div className="container">
             <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
-              {"JuzGym                                                                                                                        "}
+              {
+                "JuzGym                                                                                                                        "
+              }
             </Box>
-            <Box justifyContent="flex-start"  m={1}>
+            <Box justifyContent="flex-start" m={1}>
               Your home gym companion
             </Box>
           </div>
