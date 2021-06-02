@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter, Redirect } from "react-router-dom";
@@ -92,43 +92,57 @@ export default function Fitness() {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "5%", paddingLeft: "10%" }}>
-      <div>
-        <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
-        <br />
-        <div className={classes.root}>
-          {images.map((image) => (
-            <ButtonBase
-              component={Link}
-              to={allRoutes[image.id]}
-              key={images.title}
-              className={classes.image}
-              style={{
-                width: "30%",
-              }}
-            >
-              <span
-                className={classes.imageSrc}
-                style={{
-                  backgroundImage: `url(${image.url})`,
-                }}
-              />
-              <span className={classes.imageBackdrop} />
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-            </ButtonBase>
-          ))}
-        </div>
+    <BrowserRouter>
+      <div style={{ margin: "5%", paddingLeft: "10%" }}>
+        <Switch>
+          <Route
+            path="/fitness"
+            render={({ location }) => (
+              <div>
+                <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
+                <br />
+
+                <div className={classes.root}>
+                  {images.map((image) => (
+                    <ButtonBase
+                      component={Link}
+                      to={allRoutes[image.id]}
+                      key={images.title}
+                      className={classes.image}
+                      style={{
+                        width: "30%",
+                      }}
+                    >
+                      <span
+                        className={classes.imageSrc}
+                        style={{
+                          backgroundImage: `url(${image.url})`,
+                        }}
+                      />
+                      <span className={classes.imageBackdrop} />
+                      <span className={classes.imageButton}>
+                        <Typography
+                          component="span"
+                          variant="subtitle1"
+                          color="inherit"
+                          className={classes.imageTitle}
+                        >
+                          {image.title}
+                          <span className={classes.imageMarked} />
+                        </Typography>
+                      </span>
+                    </ButtonBase>
+                  ))}
+                </div>
+              </div>
+            )}
+          />
+
+          <Route path="./fitness/dumbbell">
+            <Dumbbell />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
