@@ -1,4 +1,4 @@
-import React from "react";
+import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { FirebaseAuthProvider } from "@react-firebase/auth";
@@ -13,11 +13,11 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
-  <React.Fragment>
+  <StrictMode>
     <CssBaseline />
     <FirebaseAuthProvider {...config} firebase={firebase}>
       <App />
     </FirebaseAuthProvider>
-  </React.Fragment>,
+  </StrictMode>,
   rootElement
 );
