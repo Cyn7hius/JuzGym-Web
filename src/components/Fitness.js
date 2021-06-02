@@ -138,7 +138,7 @@ export default function Fitness() {
             )}
           />
 
-          <Route path="./fitness/dumbbell">
+          <Route path="/fitness/dumbbell">
             <Dumbbell />
           </Route>
         </Switch>
