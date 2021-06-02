@@ -1,8 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
-import { Switch, Route, Link, BrowserRouter, Redirect } from "react-router-dom";
+import { useRoutes } from "hookrouter";
 import { images } from "../data/equipmentNames.js";
 import Dumbbell from "./Dumbbell.js";
 import ResBands from "./ResBands";
@@ -84,77 +84,61 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Fitness() {
-  const allRoutes = [
-    "../fitness/dumbbell",
-    "../fitness/resbands",
-    "../fitness/bodyweight",
-    "../fitness/all",
-  ];
-
+function Home() {
   const classes = useStyles();
 
   return (
-    <BrowserRouter>
-      <div style={{ margin: "5%", paddingLeft: "10%" }}>
-        <Switch>
-          <Route
-            exact path="/fitness"
-            render={({ location }) => (
-              <div>
-                <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
-                <br />
-
-                <div className={classes.root}>
-                  {images.map((image) => (
-                    <ButtonBase
-                      component={Link}
-                      to={allRoutes[image.id]}
-                      key={images.title}
-                      className={classes.image}
-                      style={{
-                        width: "30%",
-                      }}
-                    >
-                      <span
-                        className={classes.imageSrc}
-                        style={{
-                          backgroundImage: `url(${image.url})`,
-                        }}
-                      />
-                      <span className={classes.imageBackdrop} />
-                      <span className={classes.imageButton}>
-                        <Typography
-                          component="span"
-                          variant="subtitle1"
-                          color="inherit"
-                          className={classes.imageTitle}
-                        >
-                          {image.title}
-                          <span className={classes.imageMarked} />
-                        </Typography>
-                      </span>
-                    </ButtonBase>
-                  ))}
-                </div>
-              </div>
-            )}
-          />
-
-          <Route path="/fitness/dumbbell">
-            <Dumbbell />
-          </Route>
-          <Route path="/fitness/resbands">
-            <ResBands />
-          </Route>
-          <Route path="/fitness/bodyweight">
-            <BodyWeight />
-          </Route>
-          <Route path="/fitness/all">
-            <AllEquipment />
-          </Route>
-        </Switch>
+    <div style={{ margin: "5%", paddingLeft: "10%" }}>
+      <div>
+        <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
+        <br />
+        <div className={classes.root}>
+          {images.map((image) => (
+            <ButtonBase
+            //to be updated with individual links
+              href="/equipment/dumbbell"
+              // to={routes[image.id]}
+              key={images.title}
+              className={classes.image}
+              style={{
+                width: "30%",
+              }}
+            >
+              <span
+                className={classes.imageSrc}
+                style={{
+                  backgroundImage: `url(${image.url})`,
+                }}
+              />
+              <span className={classes.imageBackdrop} />
+              <span className={classes.imageButton}>
+                <Typography
+                  component="span"
+                  variant="subtitle1"
+                  color="inherit"
+                  className={classes.imageTitle}
+                >
+                  {image.title}
+                  <span className={classes.imageMarked} />
+                </Typography>
+              </span>
+            </ButtonBase>
+          ))}
+        </div>
       </div>
-    </BrowserRouter>
+    </div>
   );
+}
+
+export default function Fitness() {
+  const routes = {
+    "/": () => <Home />,
+    "/dumbbell": () => <Dumbbell />,
+    "/resbands": () => <ResBands />,
+    "/bodyweight": () => <BodyWeight />,
+    "/all": () => <AllEquipment />,
+  };
+
+  const routeResult = useRoutes(routes);
+  return routeResult;
 }
