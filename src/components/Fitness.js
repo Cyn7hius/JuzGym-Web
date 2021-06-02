@@ -82,11 +82,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Fitness() {
-  const routes = [
-    "/fitness/dumbbell1",
-    "/fitness/dumbbell2",
-    "/fitness/dumbbell3",
-    "/fitness/dumbbell4",
+  const allRoutes = [
+    "../fitness/dumbbell",
+    "../fitness/resistancebands",
+    "../fitness/bodyweight",
+    "../fitness/all",
   ];
 
   const classes = useStyles();
@@ -99,6 +99,8 @@ export default function Fitness() {
         <div className={classes.root}>
           {images.map((image) => (
             <ButtonBase
+              component={Link}
+              to={allRoutes[image.id]}
               key={images.title}
               className={classes.image}
               style={{
