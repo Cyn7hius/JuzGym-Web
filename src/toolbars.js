@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import { useRoutes} from "hookrouter";
+import { useRoutes, A} from "hookrouter";
 import "./styles.css";
 import NoPageFound from "./components/NoPageFound";
 import Button from '@material-ui/core/Button';
@@ -21,8 +21,8 @@ export default function SimpleTabs() {
     <div >
       <AppBar position="static" color="white">
         <p>
-        <Button color="primary" href="/equipment">Fitness</Button>
-        <Button color="primary" href="/about">Nutrition</Button>
+        <Button color="primary" ><A href="/equipment">Fitness</A></Button>
+        <Button color="primary" ><A href="/about">Nutrition</A></Button>
         </p>
       </AppBar>
       <br />

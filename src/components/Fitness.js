@@ -2,7 +2,7 @@ import React from "react";
 import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
-import { useRoutes } from "hookrouter";
+import { useRoutes, A } from "hookrouter";
 import { images } from "../data/equipmentNames.js";
 import Dumbbell from "./Dumbbell.js";
 import ResBands from "./ResBands";
@@ -95,15 +95,14 @@ function Home() {
         <div className={classes.root}>
           {images.map((image) => (
             <ButtonBase
-            //to be updated with individual links
-              href="/equipment/dumbbell"
-              // to={routes[image.id]}
+              href ={'/equipment/' + image.handle}
               key={images.title}
               className={classes.image}
               style={{
                 width: "30%",
               }}
-            >
+            > 
+
               <span
                 className={classes.imageSrc}
                 style={{
@@ -118,7 +117,8 @@ function Home() {
                   color="inherit"
                   className={classes.imageTitle}
                 >
-                  {image.title}
+                  <A href={'/equipment/' + image.handle}>{image.title}</A>
+                  {/* {image.title} */}
                   <span className={classes.imageMarked} />
                 </Typography>
               </span>
