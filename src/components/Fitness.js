@@ -95,14 +95,12 @@ function Home() {
         <div className={classes.root}>
           {images.map((image) => (
             <ButtonBase
-              href ={'/equipment/' + image.handle}
               key={images.title}
               className={classes.image}
               style={{
                 width: "30%",
               }}
             > 
-
               <span
                 className={classes.imageSrc}
                 style={{
@@ -110,6 +108,7 @@ function Home() {
                 }}
               />
               <span className={classes.imageBackdrop} />
+              <A href={'/equipment/' + image.handle}>
               <span className={classes.imageButton}>
                 <Typography
                   component="span"
@@ -117,11 +116,11 @@ function Home() {
                   color="inherit"
                   className={classes.imageTitle}
                 >
-                  <A href={'/equipment/' + image.handle}>{image.title}</A>
-                  {/* {image.title} */}
+                  {image.title}
                   <span className={classes.imageMarked} />
                 </Typography>
               </span>
+              </A>
             </ButtonBase>
           ))}
         </div>
