@@ -3,12 +3,8 @@ import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRoutes, A } from "hookrouter";
-import { images } from "../data/equipmentNames.js";
-// import Dumbbell from "./Dumbbell.js";
-// import ResBands from "./ResBands";
-// import BodyWeight from "./BodyWeight";
-// import AllEquipment from "./AllEquipment";
-import Dummy from "./Dummy";
+import { images } from "../data/muscleNames";
+import ExerciseList from "./ExerciseList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -85,12 +81,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function Home({ id}) {
   const classes = useStyles();
 
   return (
     <div style={{ margin: "5%", paddingLeft: "10%" }}>
       <div>
+        <h1>{id}</h1>
         <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
         <br />
         <div className={classes.root}>
@@ -101,7 +98,7 @@ function Home() {
               style={{
                 width: "30%",
               }}
-            > 
+            >
               <span
                 className={classes.imageSrc}
                 style={{
@@ -109,18 +106,18 @@ function Home() {
                 }}
               />
               <span className={classes.imageBackdrop} />
-              <A href={'/equipment/' + image.handle}>
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
-                >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
+              <A href={id + image.handle}>
+                <span className={classes.imageButton}>
+                  <Typography
+                    component="span"
+                    variant="subtitle1"
+                    color="inherit"
+                    className={classes.imageTitle}
+                  >
+                    {image.title}
+                    <span className={classes.imageMarked} />
+                  </Typography>
+                </span>
               </A>
             </ButtonBase>
           ))}
@@ -130,14 +127,13 @@ function Home() {
   );
 }
 
-export default function Fitness() {
+export default function Fitness({ id }) {
   const routes = {
-    "/": () => <Home />,
-    "/dumbbell*": () => <Dummy id="dumbbell/"/>,
-    "/resbands*": () => <Dummy id="resbands/"/>,
-    "/bodyweight*": () => <Dummy id="bodyweight/"/>,
-    "/all*": () => <Dummy id="all/"/>,
-    
+    "/": () => <Home id={id} />,
+    "/core*": () => <ExerciseList id={id} id2="/core" />,
+    "/upper*": () => <ExerciseList id={id} id2="/upper" />,
+    "/lower*": () => <ExerciseList id={id} id2="/lower" />,
+    "/all*": () => <ExerciseList id={id} id2="/all" />,
   };
 
   const routeResult = useRoutes(routes);
