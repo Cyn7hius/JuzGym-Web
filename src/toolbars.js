@@ -17,12 +17,13 @@ const routes = {
 
 export default function SimpleTabs() {
   const routeResult = useRoutes(routes);
-  const pathname = usePath();
+  const pathname = usePath().slice(0,10);
+  console.log(usePath().slice(0,10));
 
   return (
     <div>
       <Fragment>
-        <Tabs value={pathname} centered={true} textColor="black">
+        <Tabs value={pathname} centered={true}>
           <Tab
             label="Fitness"
             value="/equipment"
