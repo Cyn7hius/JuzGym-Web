@@ -91,12 +91,13 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "3%" }}>
+    <div style={{ margin: "3%" }}> 
       <div>
         <h1> CATEGORY</h1>
         <br />
-
-        <Container className={classes.root}>
+        
+        <Container className={classes.root}>  {/*Container is used to keep horizontal spacing */}
+        
           <Grid container spacing={1} justify="center">
             {images.map((image) => (
               <Grid item key={image.title} md={6}>
@@ -105,7 +106,7 @@ function Home() {
                   className={classes.image}
                   style={{
                     width: "100%",
-                    height: "250px",
+                    height: "250px", //hardcoded
                   }}
                 >
                   <span

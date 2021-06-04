@@ -11,14 +11,14 @@ import { Fragment } from "react";
 
 const routes = {
   "/": () => <Home />,
+  //wildcard routes
   "/equipment*": () => <Fitness />,
   "/nutrition*": () => <Nutrition />,
 };
 
 export default function SimpleTabs() {
   const routeResult = useRoutes(routes);
-  const pathname = usePath().slice(0,10);
-  console.log(usePath().slice(0,10));
+  const pathname = usePath().slice(0, 10); //hacky way to have a persistent indicator, basically ignores the URL after /equipment or /nutrition
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function SimpleTabs() {
           <Tab
             label="Fitness"
             value="/equipment"
-            component={A}
+            component={A} //A is from hookrouter, uses the tabs as an anchor
             href="/equipment"
           />
 
