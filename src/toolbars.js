@@ -27,7 +27,7 @@ export default function SimpleTabs() {
           <Tab
             label="Fitness"
             value="/equipment"
-            component={A} //A is from hookrouter, uses the tabs as an anchor
+            component={A} //A is from hookrouter, uses the tabs as an anchor, doing this CAUSES an ERROR in the console log due to Tab being a ButtonBase
             href="/equipment"
           />
 
