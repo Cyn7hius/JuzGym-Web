@@ -1,9 +1,10 @@
 import React from "react";
-import AppBar from "@material-ui/core/AppBar";
-import { useRoutes, A} from "hookrouter";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import { useRoutes, A } from "hookrouter";
 import "./styles.css";
 import NoPageFound from "./components/NoPageFound";
-import Button from '@material-ui/core/Button';
+import Button from "@material-ui/core/Button";
 import Fitness from "./components/Fitness";
 import Home from "./components/Home";
 import Nutrition from "./components/Nutrition";
@@ -18,13 +19,24 @@ export default function SimpleTabs() {
   const routeResult = useRoutes(routes);
 
   return (
-    <div >
-      <AppBar position="static" color="white">
+    <div>
+      <Tabs centered={true}>
         <p>
-        <Button color="primary" ><A href="/equipment">Fitness</A></Button>
-        <Button color="primary" ><A href="/about">Nutrition</A></Button>
+            <Tab
+              label="Fitness"
+              value="/fitness"
+              component={A}
+              href="/equipment"
+            />
+          
+          <Tab
+              label="Fitness"
+              value="/fitness"
+              component={A}
+              href="/about"
+            />
         </p>
-      </AppBar>
+      </Tabs>
       <br />
       {routeResult || <NoPageFound />}
     </div>

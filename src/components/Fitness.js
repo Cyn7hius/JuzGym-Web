@@ -1,9 +1,11 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
+import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRoutes, A } from "hookrouter";
 import { images } from "../data/equipmentNames.js";
+import Container from "@material-ui/core/Container"
 // import Dumbbell from "./Dumbbell.js";
 // import ResBands from "./ResBands";
 // import BodyWeight from "./BodyWeight";
@@ -89,42 +91,48 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <div style={{ margin: "5%", paddingLeft: "10%" }}>
+    <div style={{ margin: "3%" }}>
       <div>
-        <h1 style={{ paddingRight: "15%" }}> CATEGORY</h1>
+        <h1> CATEGORY</h1>
         <br />
-        <div className={classes.root}>
-          {images.map((image) => (
-            <ButtonBase
-              key={images.title}
-              className={classes.image}
-              style={{
-                width: "30%",
-              }}
-            > 
-              <span
-                className={classes.imageSrc}
-                style={{
-                  backgroundImage: `url(${image.url})`,
-                }}
-              />
-              <span className={classes.imageBackdrop} />
-              <A href={'/equipment/' + image.handle}>
-              <span className={classes.imageButton}>
-                <Typography
-                  component="span"
-                  variant="subtitle1"
-                  color="inherit"
-                  className={classes.imageTitle}
+
+        <Container className={classes.root}>
+          <Grid container spacing={1} justify="center" >
+            {images.map((image) => (
+              <Grid item key={image.title} md={6}>
+                <ButtonBase
+                  key={images.title}
+                  className={classes.image}
+                  style={{
+                    width: "100%",
+                    height: "250px"
+                  }}
                 >
-                  {image.title}
-                  <span className={classes.imageMarked} />
-                </Typography>
-              </span>
-              </A>
-            </ButtonBase>
-          ))}
-        </div>
+                  <span
+                    className={classes.imageSrc}
+                    style={{
+                      backgroundImage: `url(${image.url})`,
+                    }}
+                  />
+                  <span className={classes.imageBackdrop} />
+                  <A href={"/equipment/" + image.handle}>
+                    <span className={classes.imageButton}>
+                      <Typography
+                        component="span"
+                        variant="subtitle1"
+                        color="inherit"
+                        className={classes.imageTitle}
+                      >
+                        {image.title}
+                        <span className={classes.imageMarked} />
+                      </Typography>
+                    </span>
+                  </A>
+                </ButtonBase>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </div>
     </div>
   );
@@ -133,11 +141,10 @@ function Home() {
 export default function Fitness() {
   const routes = {
     "/": () => <Home />,
-    "/dumbbell*": () => <Dummy id="dumbbell/"/>,
-    "/resbands*": () => <Dummy id="resbands/"/>,
-    "/bodyweight*": () => <Dummy id="bodyweight/"/>,
-    "/all*": () => <Dummy id="all/"/>,
-    
+    "/dumbbell*": () => <Dummy id="dumbbell/" />,
+    "/resbands*": () => <Dummy id="resbands/" />,
+    "/bodyweight*": () => <Dummy id="bodyweight/" />,
+    "/all*": () => <Dummy id="all/" />,
   };
 
   const routeResult = useRoutes(routes);

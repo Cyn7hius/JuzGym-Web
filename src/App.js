@@ -14,6 +14,7 @@ import {
   Button,
   Box,
   IconButton,
+  Grid,
 } from "@material-ui/core";
 import SimpleTabs from "./toolbars";
 
@@ -90,7 +91,7 @@ function AppShell() {
         >
           <div className="container">
             <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
-              {"JuzGym                                                                                                                        "}
+              {"JuzGym"}
             </Box>
             <Box justifyContent="flex-start"  m={1}>
               Your home gym companion
