@@ -1,42 +1,43 @@
 import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import { useRoutes, A } from "hookrouter";
+import { useRoutes, A, usePath } from "hookrouter";
 import "./styles.css";
 import NoPageFound from "./components/NoPageFound";
-import Button from "@material-ui/core/Button";
 import Fitness from "./components/Fitness";
 import Home from "./components/Home";
 import Nutrition from "./components/Nutrition";
+import { Fragment } from "react";
 
 const routes = {
   "/": () => <Home />,
   "/equipment*": () => <Fitness />,
-  "/about": () => <Nutrition />,
+  "/nutrition*": () => <Nutrition />,
 };
 
 export default function SimpleTabs() {
   const routeResult = useRoutes(routes);
+  const pathname = usePath();
 
   return (
     <div>
-      <Tabs centered={true}>
-        <p>
-            <Tab
-              label="Fitness"
-              value="/fitness"
-              component={A}
-              href="/equipment"
-            />
-          
+      <Fragment>
+        <Tabs value={pathname} centered={true} textColor="black">
           <Tab
-              label="Fitness"
-              value="/fitness"
-              component={A}
-              href="/about"
-            />
-        </p>
-      </Tabs>
+            label="Fitness"
+            value="/equipment"
+            component={A}
+            href="/equipment"
+          />
+
+          <Tab
+            label="Nutrition"
+            value="/nutrition"
+            component={A}
+            href="/nutrition"
+          />
+        </Tabs>
+      </Fragment>
       <br />
       {routeResult || <NoPageFound />}
     </div>

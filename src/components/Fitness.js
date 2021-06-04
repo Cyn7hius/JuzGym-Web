@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRoutes, A } from "hookrouter";
 import { images } from "../data/equipmentNames.js";
-import Container from "@material-ui/core/Container"
+import Container from "@material-ui/core/Container";
 // import Dumbbell from "./Dumbbell.js";
 // import ResBands from "./ResBands";
 // import BodyWeight from "./BodyWeight";
@@ -97,7 +97,7 @@ function Home() {
         <br />
 
         <Container className={classes.root}>
-          <Grid container spacing={1} justify="center" >
+          <Grid container spacing={1} justify="center">
             {images.map((image) => (
               <Grid item key={image.title} md={6}>
                 <ButtonBase
@@ -105,7 +105,7 @@ function Home() {
                   className={classes.image}
                   style={{
                     width: "100%",
-                    height: "250px"
+                    height: "250px",
                   }}
                 >
                   <span

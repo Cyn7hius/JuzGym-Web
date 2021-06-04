@@ -104,7 +104,6 @@ function AppShell() {
               <Button
                 variant="contained"
                 backgroundColor="inherit"
-                color="black"
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleClick}
