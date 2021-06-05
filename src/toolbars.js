@@ -4,16 +4,16 @@ import Tab from "@material-ui/core/Tab";
 import { useRoutes, A, usePath } from "hookrouter";
 import "./styles.css";
 import NoPageFound from "./components/NoPageFound";
-import Fitness from "./components/Fitness";
+import Fitness from "./components/Fitness/EquipmentFilter";
 import Home from "./components/Home";
-import Nutrition from "./components/Nutrition";
+import FitnessGoals from "./components/Nutrition/FitnessGoals";
 import { Fragment } from "react";
 
 const routes = {
   "/": () => <Home />,
   //wildcard routes
   "/equipment*": () => <Fitness />,
-  "/nutrition*": () => <Nutrition />,
+  "/nutrition*": () => <FitnessGoals />,
 };
 
 export default function SimpleTabs() {

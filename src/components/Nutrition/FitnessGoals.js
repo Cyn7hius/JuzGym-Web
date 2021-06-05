@@ -3,14 +3,10 @@ import { Typography } from "@material-ui/core";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import { useRoutes, A } from "hookrouter";
-import { images } from "../data/equipmentNames.js";
+import { useRoutes, A, usePath } from "hookrouter";
+import { images } from "../../data/goalNames";
 import Container from "@material-ui/core/Container";
-// import Dumbbell from "./Dumbbell.js";
-// import ResBands from "./ResBands";
-// import BodyWeight from "./BodyWeight";
-// import AllEquipment from "./AllEquipment";
-import Dummy from "./Dummy";
+import NutritionTips from "./NutritionTips";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,11 +85,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
   const classes = useStyles();
+  const path = usePath();
 
   return (
     <div style={{ margin: "3%" }}> 
       <div>
-        <h1> CATEGORY</h1>
+        <h1> FITNESS GOALS</h1>
         <br />
         
         <Container className={classes.root}>  {/*Container is used to keep horizontal spacing */}
@@ -116,7 +113,7 @@ function Home() {
                     }}
                   />
                   <span className={classes.imageBackdrop} />
-                  <A href={"/equipment/" + image.handle}>
+                  <A href={path + image.handle}>
                     <span className={classes.imageButton}>
                       <Typography
                         component="span"
@@ -139,13 +136,13 @@ function Home() {
   );
 }
 
-export default function Fitness() {
+export default function FitnessGoals() {
   const routes = {
     "/": () => <Home />,
-    "/dumbbell*": () => <Dummy id="dumbbell/" />,
-    "/resbands*": () => <Dummy id="resbands/" />,
-    "/bodyweight*": () => <Dummy id="bodyweight/" />,
-    "/all*": () => <Dummy id="all/" />,
+    "/getstrong": () => <NutritionTips id="GET STRONG" />,
+    "/getlean": () => <NutritionTips id="GET LEAN" />,
+    "/loseweight": () => <NutritionTips id="LOSE WEIGHT" />,
+    "/all": () => <NutritionTips id="GENERAL NUTRITION" />,
   };
 
   const routeResult = useRoutes(routes);
