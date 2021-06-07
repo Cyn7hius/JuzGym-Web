@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from '@material-ui/core/styles';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
 
 function App({ database }) {
-  const [isScrolling, setIsScrolling] = useState(false);
+  //const [isScrolling, setIsScrolling] = useState(false);
   return (
     <Virtuoso
       style={{ height: "400px" }}
       //Uses the data from json file
       data={database}
-      isScrolling={setIsScrolling}
+      //isScrolling={setIsScrolling}
       //Total number of exercises to render
       totalCount={200}
       itemContent={(index, user) => (
@@ -22,7 +28,8 @@ function App({ database }) {
           {/* This div is for the image */}
           <div style={{ float: "left", margin: "1rem" }}>
             {/* {isScrolling ? avatarPlaceholder() : avatar() } */}
-            {isScrolling ? <h4>scrolling</h4> : <h4>Picture of exercise</h4>}
+            {/*isScrolling ? <h4>scrolling</h4> : <h4>Picture of exercise</h4> */}
+            {<h4>Picture of exercise</h4>}
           </div>
 
           {/* This div is the title + instructions */}
@@ -64,9 +71,11 @@ function FilterExercises({ equipmentFilter, muscleFilter }) {
 
 export default function ExerciseList({ equipmentFilter, muscleFilter }) {
   return (
-    <FilterExercises
-      equipmentFilter={equipmentFilter}
-      muscleFilter={muscleFilter}
-    />
+    <Container>
+      <FilterExercises
+        equipmentFilter={equipmentFilter}
+        muscleFilter={muscleFilter}
+      />
+    </Container>
   );
 }
