@@ -34,31 +34,39 @@ function App({ database }) {
   );
 }
 
-function FilterExercises({ id, id2 }) {
+function FilterExercises({ equipmentFilter, muscleFilter }) {
   //converts the URL clicks into filters
   const filterOne =
-    id == "DUMBBELL"
+    equipmentFilter == "DUMBBELL"
       ? 1
-      : id == "RESISTANCE BANDS"
+      : equipmentFilter == "RESISTANCE BANDS"
       ? 2
-      : id == "BODYWEIGHT"
+      : equipmentFilter == "BODYWEIGHT"
       ? 3
       : 4;
   const filterTwo =
-    id2 == "CORE AND BACK"
+    muscleFilter == "CORE AND BACK"
       ? 5
-      : id == "LOWER BODY"
+      : muscleFilter == "LOWER BODY"
       ? 6
-      : id == "UPPER BODY"
+      : muscleFilter == "UPPER BODY"
       ? 7
       : 8;
-  function checkExercise(element) {
-    return (filterOne == 4 || element.id1 == filterOne) && (filterTwo == 8 || element.id2 == filterTwo)
+  function checkExercise(exercise) {
+    return (
+      (filterOne == 4 || exercise.equipmentType == filterOne) &&
+      (filterTwo == 8 || exercise.muscleType == filterTwo)
+    );
   }
   const filteredData = data.filter(checkExercise);
-  return <App database={filteredData}/>
+  return <App database={filteredData} />;
 }
 
-export default function ExerciseList({ id, id2 }) {
-  return <FilterExercises id={id} id2={id2} />;
+export default function ExerciseList({ equipmentFilter, muscleFilter }) {
+  return (
+    <FilterExercises
+      equipmentFilter={equipmentFilter}
+      muscleFilter={muscleFilter}
+    />
+  );
 }

@@ -84,14 +84,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home({ id }) {
+function Home({ equipmentFilter }) {
   const classes = useStyles();
   const path = usePath();
 
   return (
     <div style={{ margin: "3%" }}>
       <div>
-        <h1> {id} EXERCISES</h1>
+        <h1> {equipmentFilter} EXERCISES</h1>
         <br />
 
         <Container className={classes.root}>
@@ -138,13 +138,13 @@ function Home({ id }) {
   );
 }
 
-export default function MuscleFilter({ id }) {
+export default function MuscleFilter({ equipmentFilter }) {
   const routes = {
-    "/": () => <Home id={id} />,
-    "/core*": () => <ExerciseList id={id} id2="CORE AND BACK" />,
-    "/upper*": () => <ExerciseList id={id} id2="UPPER BODY" />,
-    "/lower*": () => <ExerciseList id={id} id2="LOWER BODY" />,
-    "/all*": () => <ExerciseList id={id} id2="ALL BODY PARTS" />,
+    "/": () => <Home equipmentFilter={equipmentFilter} />,
+    "/core*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="CORE AND BACK" />,
+    "/upper*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="UPPER BODY" />,
+    "/lower*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="LOWER BODY" />,
+    "/all*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="ALL BODY PARTS" />,
   };
 
   const routeResult = useRoutes(routes);

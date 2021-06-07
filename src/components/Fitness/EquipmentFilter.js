@@ -139,10 +139,10 @@ function Home() {
 export default function Fitness() {
   const routes = {
     "/": () => <Home />,
-    "/dumbbell*": () => <MuscleFilter id="DUMBBELL" />,
-    "/resbands*": () => <MuscleFilter id="RESISTANCE BANDS" />,
-    "/bodyweight*": () => <MuscleFilter id="BODYWEIGHT" />,
-    "/all*": () => <MuscleFilter id="ALL EQUIPMENT" />,
+    "/dumbbell*": () => <MuscleFilter equipmentFilter="DUMBBELL" />,
+    "/resbands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
+    "/bodyweight*": () => <MuscleFilter equipmentFilter="BODYWEIGHT" />,
+    "/all*": () => <MuscleFilter equipmentFilter="ALL EQUIPMENT" />,
   };
 
   const routeResult = useRoutes(routes);
