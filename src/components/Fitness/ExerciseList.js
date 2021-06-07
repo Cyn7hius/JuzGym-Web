@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 
-function App() {
+function App({ database }) {
   const [isScrolling, setIsScrolling] = useState(false);
   return (
     <Virtuoso
       style={{ height: "400px" }}
       //Uses the data from json file
-      data={data}
+      data={database}
       isScrolling={setIsScrolling}
       //Total number of exercises to render
       totalCount={200}
@@ -34,7 +34,31 @@ function App() {
   );
 }
 
+function FilterExercises({ id, id2 }) {
+  //converts the URL clicks into filters
+  const filterOne =
+    id == "DUMBBELL"
+      ? 1
+      : id == "RESISTANCE BANDS"
+      ? 2
+      : id == "BODYWEIGHT"
+      ? 3
+      : 4;
+  const filterTwo =
+    id2 == "CORE AND BACK"
+      ? 5
+      : id == "LOWER BODY"
+      ? 6
+      : id == "UPPER BODY"
+      ? 7
+      : 8;
+  function checkExercise(element) {
+    return (filterOne == 4 || element.id1 == filterOne) && (filterTwo == 8 || element.id2 == filterTwo)
+  }
+  const filteredData = data.filter(checkExercise);
+  return <App database={filteredData}/>
+}
+
 export default function ExerciseList({ id, id2 }) {
-  // return <h1> {id} EXERCISES: {id2} </h1>;
-  return <App />;
+  return <FilterExercises id={id} id2={id2} />;
 }
