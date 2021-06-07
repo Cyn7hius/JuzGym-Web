@@ -6,7 +6,7 @@ export const data = [
     instructions: "None",
     safety: "None",
     variations: "1) Variation 1\n2) Variation 2\n3) Variation 3",
-    image: "none",
+    image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
   },
   {
     equipmentType: 3,
@@ -15,7 +15,7 @@ export const data = [
     instructions: "None",
     safety: "None",
     variations: "1) Variation 1\n2) Variation 2\n3) Variation 3",
-    image: "none",
+    image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
   },
   {
     equipmentType: 1,
@@ -27,7 +27,7 @@ export const data = [
       '1. The tension should be on the biceps at all times. Do not let them "hang" at the bottom of the exercise.\n2. Keep the rep timing slow and control the weight throughout the set.\n3. Do not let the dumbbells touch your body.\n4. And finally, do not swing the body back as you curl up the weight. The body should stay fixed throughout the movement. Focus on only moving your forearms.',
     variations:
       "1. Hammer Curl\n2. Concentration Curl\n3. Incline Dumbbell Curl",
-    image: "none",
+    image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
   },
   {
     equipmentType: 2,

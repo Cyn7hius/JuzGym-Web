@@ -9,38 +9,42 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
-function App({ database }) {
+function ExerciseList({ database }) {
   //const [isScrolling, setIsScrolling] = useState(false);
   return (
-    <Virtuoso
-      style={{ height: "400px" }}
-      //Uses the data from json file
-      data={database}
-      //isScrolling={setIsScrolling}
-      //Total number of exercises to render
-      totalCount={200}
-      itemContent={(index, exercise) => (
-        <Accordion>
-          {/* This div is for the image */}
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>{exercise.name}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            {/* This div is the title + instructions */}
-            <h4>Insert pic here</h4>
-            <div style={{ marginTop: "1rem", whiteSpace: 'pre-line'}}>{exercise.instructions}</div>
-          </AccordionDetails>
-        </Accordion>
-      )}
-    />
+    <Container>
+      <Virtuoso
+        style={{ height: "700px" }}
+        //Uses the data from json file
+        data={database}
+        //isScrolling={setIsScrolling}
+        //Total number of exercises to render
+        itemContent={(index, exercise) => (
+          <Accordion>
+            {/* This div is for the image */}
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="panel1a-content"
+              id="panel1a-header"
+            >
+              <Typography>{exercise.name}</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {/* This div is the title + instructions */}
+              <img src={exercise.image} />
+              {/* <h4>{Insert pic here}</h4> */}
+              <div style={{ marginTop: "1rem", whiteSpace: "pre-line" }}>
+                {exercise.instructions}
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        )}
+      />
+    </Container>
   );
 }
 
-function FilterExercises({ equipmentFilter, muscleFilter }) {
+export default function FilterExercises({ equipmentFilter, muscleFilter }) {
   //converts the URL clicks into filters
   const filterOne =
     equipmentFilter == "DUMBBELL"
@@ -58,23 +62,12 @@ function FilterExercises({ equipmentFilter, muscleFilter }) {
       : muscleFilter == "UPPER BODY"
       ? 7
       : 8;
-  function checkExercise(exercise) {
+  function CheckExercise(exercise) {
     return (
       (filterOne == 4 || exercise.equipmentType == filterOne) &&
       (filterTwo == 8 || exercise.muscleType == filterTwo)
     );
   }
-  const filteredData = data.filter(checkExercise);
-  return <App database={filteredData} />;
-}
-
-export default function ExerciseList({ equipmentFilter, muscleFilter }) {
-  return (
-    <Container>
-      <FilterExercises
-        equipmentFilter={equipmentFilter}
-        muscleFilter={muscleFilter}
-      />
-    </Container>
-  );
+  const filteredData = data.filter(CheckExercise);
+  return <ExerciseList database={filteredData} />;
 }

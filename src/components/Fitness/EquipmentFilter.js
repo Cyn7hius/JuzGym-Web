@@ -88,13 +88,14 @@ function Home() {
   const path = usePath();
 
   return (
-    <div style={{ margin: "3%" }}> 
+    <div style={{ margin: "3%" }}>
       <div>
         <h1> CATEGORY</h1>
         <br />
-        
-        <Container className={classes.root}>  {/*Container is used to keep horizontal spacing */}
-        
+
+        <Container className={classes.root}>
+          {" "}
+          {/*Container is used to keep horizontal spacing */}
           <Grid container spacing={1} justify="center">
             {images.map((image) => (
               <Grid item key={image.title} md={6}>

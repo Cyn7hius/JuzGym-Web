@@ -141,10 +141,30 @@ function Home({ equipmentFilter }) {
 export default function MuscleFilter({ equipmentFilter }) {
   const routes = {
     "/": () => <Home equipmentFilter={equipmentFilter} />,
-    "/core*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="CORE AND BACK" />,
-    "/upper*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="UPPER BODY" />,
-    "/lower*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="LOWER BODY" />,
-    "/all*": () => <ExerciseList equipmentFilter={equipmentFilter} muscleFilter="ALL BODY PARTS" />,
+    "/core*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="CORE AND BACK"
+      />
+    ),
+    "/upper*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="UPPER BODY"
+      />
+    ),
+    "/lower*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="LOWER BODY"
+      />
+    ),
+    "/all*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="ALL BODY PARTS"
+      />
+    ),
   };
 
   const routeResult = useRoutes(routes);
