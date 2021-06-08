@@ -15,7 +15,7 @@ export const data = [
     instructions: "None",
     safety: "None",
     variations: "1) Variation 1\n2) Variation 2\n3) Variation 3",
-    image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
+    image: "https://i.imgur.com/sCDv3zt.jpg",
   },
   {
     equipmentType: 1,
@@ -39,6 +39,6 @@ export const data = [
       "1. Ensure that the lower back doesn’t arch as you extend the hip, you should focus on squeezing the glutes and slightly posteriorly tilting the pelvis.\n2. Ideally you should prioritize a straight line from your knees through your shoulders at the peak of contraction.\n3. Focus on exhaling as you bridge the hips up. You shouldn’t feel the movement through your lower back at all.\n4. As you push out on the band, don’t allow the knees to track out past the outside of your feet.\n5. If you can’t seem to feel your glutes activating, palpate the musculature with your hands and focus on pausing the movement at the peak of contraction.\n\n",
     variations:
       "1. Standing External Rotation \n2. Lateral Band Walk \n3. Banded Multi Directional Toe Touch ",
-    image: "none",
+    image: "https://19k333mc2iabzcjy3kgy3qae-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/Core-Strengthening.jpg",
   },
 ];

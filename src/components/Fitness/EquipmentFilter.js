@@ -1,11 +1,13 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  ButtonBase,
+  Typography,
+  makeStyles,
+  Grid,
+  Container,
+} from "@material-ui/core";
 import { useRoutes, A, usePath } from "hookrouter";
 import { images } from "../../data/equipmentNames";
-import Container from "@material-ui/core/Container";
 import MuscleFilter from "./MuscleFilter";
 
 const useStyles = makeStyles((theme) => ({

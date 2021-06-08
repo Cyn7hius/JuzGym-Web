@@ -1,13 +1,14 @@
 import React from "react";
-// import { View, Text } from 'react-native';
-import { Typography } from "@material-ui/core";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import { useRoutes, A, usePath } from "hookrouter";
 import { images } from "../../data/muscleNames";
-import Container from "@material-ui/core/Container";
 import ExerciseList from "./ExerciseList";
+import {
+  ButtonBase,
+  Typography,
+  makeStyles,
+  Grid,
+  Container,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {

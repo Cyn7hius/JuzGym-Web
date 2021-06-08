@@ -1,12 +1,14 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
 import { useRoutes, A, usePath } from "hookrouter";
 import { images } from "../../data/goalNames";
-import Container from "@material-ui/core/Container";
 import NutritionTips from "./NutritionTips";
+import {
+  ButtonBase,
+  Typography,
+  makeStyles,
+  Grid,
+  Container,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {

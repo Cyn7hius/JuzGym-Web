@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
-import Container from "@material-ui/core/Container";
-import { makeStyles } from "@material-ui/core/styles";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  Typography,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Container,
+  Divider,
+  Grid,
+  makeStyles,
+} from "@material-ui/core/";
 
 function ExerciseList({ database }) {
   //const [isScrolling, setIsScrolling] = useState(false);
@@ -30,12 +34,14 @@ function ExerciseList({ database }) {
               <Typography>{exercise.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              {/* This div is the title + instructions */}
-              <img src={exercise.image} />
-              {/* <h4>{Insert pic here}</h4> */}
-              <div style={{ marginTop: "1rem", whiteSpace: "pre-line" }}>
-                {exercise.instructions}
-              </div>
+              <Grid>
+                <div style={{ marginTop: "1rem", whiteSpace: "pre-line" }}>
+                  {exercise.instructions}
+                </div>
+                {/* This div is the title + instructions */}
+                <img src={exercise.image} />
+                {/* <h4>{Insert pic here}</h4> */}
+              </Grid>
             </AccordionDetails>
           </Accordion>
         )}
