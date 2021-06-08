@@ -10,6 +10,7 @@ import {
   Container,
   Divider,
   Grid,
+  Box,
   makeStyles,
 } from "@material-ui/core/";
 
@@ -24,89 +25,95 @@ function ExerciseList({ database }) {
 
   return (
     <Container>
-      <Virtuoso
-        style={{ height: "700px" }}
-        //Uses the data from json file
-        data={database}
-        //isScrolling={setIsScrolling}
-        //Total number of exercises to render
-        itemContent={(index, exercise) => (
-          <Accordion>
-            {/* This div is for the image */}
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1a-content"
-              id="panel1a-header"
-            >
-              <Typography variant="h5" style={{ fontWeight: 500 }}>
-                {exercise.name}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Grid container spacing={4}>
-                <Grid item xs>
-                  <Typography variant="h6" style={{ fontWeight: 500 }}>
-                    Instructions:
-                  </Typography>
-                  <br />
-                  <Typography
-                    component={"span"}
-                    style={{ whiteSpace: "pre-line" }}
-                    align="left"
-                  >
-                    {/* console.log(JSONNumberParser(exercise.instructions)) */}
-                    <ol>
-                      {NewLineParser(exercise.instructions).map(
-                        (instruction) => {
+      <Box>
+        <Virtuoso
+          style={{ width: "auto", height: "80vh" }}
+          //Uses the data from json file
+          data={database}
+          overscan={200}
+          //Total number of exercises to render
+          itemContent={(index, exercise) => (
+            <Accordion>
+              {/* This div is for the image */}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography variant="h5" style={{ fontWeight: 500 }}>
+                  {exercise.name}
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Grid container spacing={2}>
+                  <Grid item xs>
+                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                      Instructions:
+                    </Typography>
+                    <br />
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      {/* console.log(JSONNumberParser(exercise.instructions)) */}
+                      <ol>
+                        {NewLineParser(exercise.instructions).map(
+                          (instruction) => {
+                            return (
+                              <li key={instruction.toString()}>
+                                {instruction}
+                              </li>
+                            );
+                          }
+                        )}
+                      </ol>
+                    </Typography>
+                    <br />
+                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                      Safety:
+                    </Typography>
+                    <br />
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      <ul>
+                        {NewLineParser(exercise.safety).map((safety) => {
+                          return <li key={safety.toString()}>{safety}</li>;
+                        })}
+                      </ul>
+                    </Typography>
+                    <br />
+                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                      Variations:
+                    </Typography>
+                    <br />
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      <ul>
+                        {NewLineParser(exercise.variations).map((variation) => {
                           return (
-                            <li key={instruction.toString()}>{instruction}</li>
+                            <li key={variation.toString()}>{variation}</li>
                           );
-                        }
-                      )}
-                    </ol>
-                  </Typography>
-                  <br />
-                  <Typography variant="h6" style={{ fontWeight: 500 }}>
-                    Safety:
-                  </Typography>
-                  <br />
-                  <Typography
-                    component={"span"}
-                    style={{ whiteSpace: "pre-line" }}
-                    align="left"
-                  >
-                    <ul>
-                      {NewLineParser(exercise.safety).map((safety) => {
-                        return <li key={safety.toString()}>{safety}</li>;
-                      })}
-                    </ul>
-                  </Typography>
-                  <br />
-                  <Typography variant="h6" style={{ fontWeight: 500 }}>
-                    Variations:
-                  </Typography>
-                  <br />
-                  <Typography
-                    component={"span"}
-                    style={{ whiteSpace: "pre-line" }}
-                    align="left"
-                  >
-                    <ul>
-                      {NewLineParser(exercise.variations).map((variation) => {
-                        return <li key={variation.toString()}>{variation}</li>;
-                      })}
-                    </ul>
-                  </Typography>
+                        })}
+                      </ul>
+                    </Typography>
+                  </Grid>
+                  <Divider orientation="vertical" flexItem />
+                  <Grid item xs="auto" style={{ width: "45%" }}>
+                    <img height="auto" width="85%" src={exercise.image} />
+                  </Grid>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
-                <Grid item xs="auto" style={{ width: 500 }}>
-                  <img height="auto" width="90%" src={exercise.image} />
-                </Grid>
-              </Grid>
-            </AccordionDetails>
-          </Accordion>
-        )}
-      />
+              </AccordionDetails>
+            </Accordion>
+          )}
+        />
+      </Box>
     </Container>
   );
 }
