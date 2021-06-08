@@ -43,6 +43,7 @@ function ExerciseList({ database }) {
                   </Typography>
                   <br />
                   <Typography style={{ whiteSpace: "pre-line" }} align="left">
+                    {console.log(JSONNumberParser(exercise.instructions))}
                     {exercise.instructions}
                   </Typography>
                   <br />
@@ -73,6 +74,12 @@ function ExerciseList({ database }) {
       />
     </Container>
   );
+}
+
+
+function JSONNumberParser(str) {
+  var array = str.split(/\r?\n/);
+  return str;
 }
 
 export default function FilterExercises({ equipmentFilter, muscleFilter }) {
