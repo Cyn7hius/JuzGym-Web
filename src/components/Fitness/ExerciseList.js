@@ -34,13 +34,19 @@ function ExerciseList({ database }) {
               <Typography>{exercise.name}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid>
-                <div style={{ marginTop: "1rem", whiteSpace: "pre-line" }}>
-                  {exercise.instructions}
-                </div>
-                {/* This div is the title + instructions */}
-                <img src={exercise.image} />
-                {/* <h4>{Insert pic here}</h4> */}
+              <Grid container spacing={4}>
+                <Grid item xs>
+                  <Typography
+                    style={{ whiteSpace: "pre-line" }}
+                    align="left"
+                  >
+                    {exercise.instructions}
+                  </Typography>
+                </Grid>
+                <Divider orientation="vertical" flexItem />
+                <Grid item xs="auto" style={{ width: 500 }}>
+                  <img height="auto" width="90%" src={exercise.image} />
+                </Grid>
               </Grid>
             </AccordionDetails>
           </Accordion>
