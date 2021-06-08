@@ -31,16 +31,35 @@ function ExerciseList({ database }) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>{exercise.name}</Typography>
+              <Typography variant="h5" style={{ fontWeight: 500 }}>
+                {exercise.name}
+              </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Grid container spacing={4}>
                 <Grid item xs>
-                  <Typography
-                    style={{ whiteSpace: "pre-line" }}
-                    align="left"
-                  >
+                  <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    Instructions:
+                  </Typography>
+                  <br />
+                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
                     {exercise.instructions}
+                  </Typography>
+                  <br />
+                  <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    Safety:
+                  </Typography>
+                  <br />
+                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
+                    {exercise.safety}
+                  </Typography>
+                  <br />
+                  <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    Variations:
+                  </Typography>
+                  <br />
+                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
+                    {exercise.variation}
                   </Typography>
                 </Grid>
                 <Divider orientation="vertical" flexItem />

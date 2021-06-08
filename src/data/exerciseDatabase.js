@@ -5,7 +5,7 @@ export const data = [
     name: "Test id1",
     instructions: "None",
     safety: "None",
-    variations: "1) Variation 1\n2) Variation 2\n3) Variation 3",
+    variations: "1) Variation 1\n2) Variation 2\n3) Variation 3\n",
     image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
   },
   {
@@ -14,7 +14,7 @@ export const data = [
     name: "Test id2",
     instructions: "None",
     safety: "None",
-    variations: "1) Variation 1\n2) Variation 2\n3) Variation 3",
+    variations: "1) Variation 1\n2) Variation 2\n3) Variation 3\n",
     image: "https://i.imgur.com/sCDv3zt.jpg",
   },
   {
@@ -22,11 +22,11 @@ export const data = [
     muscleType: 7,
     name: "Dumbbell Curl",
     instructions:
-      "1. Assume the starting position for the standing dumbbell curl by grasping a pair of dumbbells and standing straight up, feet together and dumbbells by your side. The dumbbells should not be touching your body.\n2. Your palms should facing upwards.\n3. Take up the slack by bending the elbows slightly. Tension should be on the biceps.\n4. Slowly curl the dumbbells up as far as possible.\n5. Squeeze the biceps hard, and then slowly lower the dumbbells back down to the starting position.\n6. Repeat for desired reps.\n\n",
+      "1. Assume the starting position for the standing dumbbell curl by grasping a pair of dumbbells and standing straight up, feet together and dumbbells by your side. The dumbbells should not be touching your body.\n2. Your palms should facing upwards.\n3. Take up the slack by bending the elbows slightly. Tension should be on the biceps.\n4. Slowly curl the dumbbells up as far as possible.\n5. Squeeze the biceps hard, and then slowly lower the dumbbells back down to the starting position.\n6. Repeat for desired reps.\n",
     safety:
-      '1. The tension should be on the biceps at all times. Do not let them "hang" at the bottom of the exercise.\n2. Keep the rep timing slow and control the weight throughout the set.\n3. Do not let the dumbbells touch your body.\n4. And finally, do not swing the body back as you curl up the weight. The body should stay fixed throughout the movement. Focus on only moving your forearms.',
+      '1. The tension should be on the biceps at all times. Do not let them "hang" at the bottom of the exercise.\n2. Keep the rep timing slow and control the weight throughout the set.\n3. Do not let the dumbbells touch your body.\n4. And finally, do not swing the body back as you curl up the weight. The body should stay fixed throughout the movement. Focus on only moving your forearms.\n',
     variations:
-      "1. Hammer Curl\n2. Concentration Curl\n3. Incline Dumbbell Curl",
+      "1. Hammer Curl\n2. Concentration Curl\n3. Incline Dumbbell Curl\n",
     image: "https://i.ndtvimg.com/i/2018-04/weight-loss_620x330_41522669872.jpg",
   },
   {
