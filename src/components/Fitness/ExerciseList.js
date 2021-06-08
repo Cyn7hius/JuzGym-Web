@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
   Typography,
@@ -120,7 +121,7 @@ function ExerciseList({ database }) {
                     <Typography>
                       Placeholder link for video if we need
                     </Typography>
-                    <YoutubeEmbed embedId={exercise.video} />
+                    <YoutubeEmbed embedId="dQw4w9WgXcQ" />
                   </Grid>
                 </Grid>
               </AccordionDetails>
