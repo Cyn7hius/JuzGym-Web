@@ -18,7 +18,7 @@ import {
 } from "@material-ui/core";
 import SimpleTabs from "./toolbars";
 
-import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from "@material-ui/icons/Home";
 
 import "./styles.css";
 
@@ -72,11 +72,11 @@ function AppShell() {
       <Toolbar>
         <IconButton
           edge="start"
-          className={classes.menuButton}
+          className={classes.homeButton}
           color="inherit"
-          aria-label="menu"
+          aria-label="home"
         >
-          <MenuIcon />
+          <HomeIcon fontSize="large"/>
         </IconButton>
         <Typography
           variant="h2"

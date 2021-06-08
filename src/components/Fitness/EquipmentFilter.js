@@ -1,4 +1,7 @@
 import React from "react";
+import { useRoutes, A, usePath } from "hookrouter";
+import { images } from "../../data/equipmentNames";
+import MuscleFilter from "./MuscleFilter";
 import {
   ButtonBase,
   Typography,
@@ -6,9 +9,6 @@ import {
   Grid,
   Container,
 } from "@material-ui/core";
-import { useRoutes, A, usePath } from "hookrouter";
-import { images } from "../../data/equipmentNames";
-import MuscleFilter from "./MuscleFilter";
 
 const useStyles = makeStyles((theme) => ({
   root: {

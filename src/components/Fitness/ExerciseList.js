@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
   Typography,
   Accordion,
@@ -47,10 +49,13 @@ function ExerciseList({ database }) {
               <AccordionDetails>
                 <Grid container spacing={2}>
                   <Grid item xs>
-                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
                       Instructions:
                     </Typography>
-                    <br />
+
                     <Typography
                       component={"span"}
                       style={{ whiteSpace: "pre-line" }}
@@ -70,10 +75,12 @@ function ExerciseList({ database }) {
                       </ol>
                     </Typography>
                     <br />
-                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
                       Safety:
                     </Typography>
-                    <br />
                     <Typography
                       component={"span"}
                       style={{ whiteSpace: "pre-line" }}
@@ -86,10 +93,13 @@ function ExerciseList({ database }) {
                       </ul>
                     </Typography>
                     <br />
-                    <Typography variant="h6" style={{ fontWeight: 500 }}>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
                       Variations:
                     </Typography>
-                    <br />
+
                     <Typography
                       component={"span"}
                       style={{ whiteSpace: "pre-line" }}
@@ -105,8 +115,13 @@ function ExerciseList({ database }) {
                     </Typography>
                   </Grid>
                   <Divider orientation="vertical" flexItem />
+
                   <Grid item xs="auto" style={{ width: "45%" }}>
-                    <img height="auto" width="85%" src={exercise.image} />
+                    <img height="auto" width="90%" src={exercise.image} />
+                    <Typography>
+                      Placeholder link for video if we need
+                    </Typography>
+                    <YoutubeEmbed embedId="dQw4w9WgXcQ" />
                   </Grid>
                 </Grid>
               </AccordionDetails>
