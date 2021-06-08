@@ -48,6 +48,8 @@ function ExerciseList({ database }) {
               </AccordionSummary>
               <AccordionDetails>
                 <Grid container spacing={2}>
+
+                  {/* Instructions portion */}
                   <Grid item xs>
                     <Typography
                       variant="h6"
@@ -55,13 +57,11 @@ function ExerciseList({ database }) {
                     >
                       Instructions:
                     </Typography>
-
                     <Typography
                       component={"span"}
                       style={{ whiteSpace: "pre-line" }}
                       align="left"
                     >
-                      {/* console.log(JSONNumberParser(exercise.instructions)) */}
                       <ol>
                         {NewLineParser(exercise.instructions).map(
                           (instruction) => {
@@ -75,6 +75,8 @@ function ExerciseList({ database }) {
                       </ol>
                     </Typography>
                     <br />
+
+                    {/* Safety portion */}
                     <Typography
                       variant="h6"
                       style={{ fontWeight: 500, textDecoration: "underline" }}
@@ -93,6 +95,8 @@ function ExerciseList({ database }) {
                       </ul>
                     </Typography>
                     <br />
+
+                    {/* Variations portion */}
                     <Typography
                       variant="h6"
                       style={{ fontWeight: 500, textDecoration: "underline" }}
@@ -134,6 +138,7 @@ function ExerciseList({ database }) {
 }
 
 export default function FilterExercises({ equipmentFilter, muscleFilter }) {
+
   //converts the URL clicks into filters
   const filterOne =
     equipmentFilter == "DUMBBELL"

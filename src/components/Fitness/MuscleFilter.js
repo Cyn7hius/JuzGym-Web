@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home({ equipmentFilter }) {
+function MuscleSelector({ equipmentFilter }) {
   const classes = useStyles();
   const path = usePath();
 
@@ -141,7 +141,7 @@ function Home({ equipmentFilter }) {
 
 export default function MuscleFilter({ equipmentFilter }) {
   const routes = {
-    "/": () => <Home equipmentFilter={equipmentFilter} />,
+    "/": () => <MuscleSelector equipmentFilter={equipmentFilter} />,
     "/core*": () => (
       <ExerciseList
         equipmentFilter={equipmentFilter}

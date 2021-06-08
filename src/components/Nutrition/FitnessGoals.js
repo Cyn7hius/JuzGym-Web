@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function GoalsSelector() {
   const classes = useStyles();
   const path = usePath();
 
@@ -140,7 +140,7 @@ function Home() {
 
 export default function FitnessGoals() {
   const routes = {
-    "/": () => <Home />,
+    "/": () => <GoalsSelector />,
     "/getstrong": () => <NutritionTips id="GET STRONG" />,
     "/getlean": () => <NutritionTips id="GET LEAN" />,
     "/loseweight": () => <NutritionTips id="LOSE WEIGHT" />,
