@@ -15,6 +15,13 @@ import {
 
 function ExerciseList({ database }) {
   //const [isScrolling, setIsScrolling] = useState(false);
+
+  //Simple function to split the JSON string by \n and returns it as an array
+  function NewLineParser(str) {
+    var outputArray = str.split(/\r?\n/);
+    return outputArray;
+  }
+
   return (
     <Container>
       <Virtuoso
@@ -42,25 +49,53 @@ function ExerciseList({ database }) {
                     Instructions:
                   </Typography>
                   <br />
-                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
-                    {console.log(JSONNumberParser(exercise.instructions))}
-                    {exercise.instructions}
+                  <Typography
+                    component={"span"}
+                    style={{ whiteSpace: "pre-line" }}
+                    align="left"
+                  >
+                    {/* console.log(JSONNumberParser(exercise.instructions)) */}
+                    <ol>
+                      {NewLineParser(exercise.instructions).map(
+                        (instruction) => {
+                          return (
+                            <li key={instruction.toString()}>{instruction}</li>
+                          );
+                        }
+                      )}
+                    </ol>
                   </Typography>
                   <br />
                   <Typography variant="h6" style={{ fontWeight: 500 }}>
                     Safety:
                   </Typography>
                   <br />
-                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
-                    {exercise.safety}
+                  <Typography
+                    component={"span"}
+                    style={{ whiteSpace: "pre-line" }}
+                    align="left"
+                  >
+                    <ul>
+                      {NewLineParser(exercise.safety).map((safety) => {
+                        return <li key={safety.toString()}>{safety}</li>;
+                      })}
+                    </ul>
                   </Typography>
                   <br />
                   <Typography variant="h6" style={{ fontWeight: 500 }}>
                     Variations:
                   </Typography>
                   <br />
-                  <Typography style={{ whiteSpace: "pre-line" }} align="left">
-                    {exercise.variation}
+                  <Typography
+                    component={"span"}
+                    style={{ whiteSpace: "pre-line" }}
+                    align="left"
+                  >
+                    <ul>
+                      {NewLineParser(exercise.variations).map((variation) => {
+                        return <li key={variation.toString()}>{variation}</li>;
+                      })}
+                    </ul>
                   </Typography>
                 </Grid>
                 <Divider orientation="vertical" flexItem />
@@ -74,12 +109,6 @@ function ExerciseList({ database }) {
       />
     </Container>
   );
-}
-
-
-function JSONNumberParser(str) {
-  var array = str.split(/\r?\n/);
-  return str;
 }
 
 export default function FilterExercises({ equipmentFilter, muscleFilter }) {
