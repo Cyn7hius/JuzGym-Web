@@ -14,19 +14,11 @@ import {
   Button,
   Box,
   IconButton,
-  Grid,
 } from "@material-ui/core";
 import SimpleTabs from "./toolbars";
 import HomeIcon from "@material-ui/icons/Home";
-import { useRoutes, A, usePath } from "hookrouter";
+import { A } from "hookrouter";
 import "./styles.css";
-import NoPageFound from "./components/NoPageFound";
-import Fitness from "./components/Fitness/EquipmentFilter";
-import Home from "./components/Home";
-
-const routes = {
-  "/": () => <Home />,
-};
 
 export default function App() {
   return (
