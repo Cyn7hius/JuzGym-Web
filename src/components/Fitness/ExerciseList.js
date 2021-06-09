@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { FixedSizeList as List } from "react-window";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -13,7 +14,6 @@ import {
   Divider,
   Grid,
   Box,
-  makeStyles,
 } from "@material-ui/core/";
 
 function ExerciseList({ database }) {
@@ -46,7 +46,8 @@ function ExerciseList({ database }) {
                   {exercise.name}
                 </Typography>
               </AccordionSummary>
-              <AccordionDetails>
+
+              <AccordionDetails style={{ background: "#f2f2f2" }}>
                 <Grid container spacing={2}>
                   {/* Instructions portion */}
                   <Grid item xs>
@@ -73,6 +74,7 @@ function ExerciseList({ database }) {
                         )}
                       </ol>
                     </Typography>
+                    <Divider />
                     <br />
 
                     {/* Safety portion */}
@@ -93,6 +95,7 @@ function ExerciseList({ database }) {
                         })}
                       </ul>
                     </Typography>
+                    <Divider />
                     <br />
 
                     {/* Variations portion */}
@@ -126,7 +129,7 @@ function ExerciseList({ database }) {
                       Placeholder link for video if we need
                     </Typography>
                     {/* Embeded YouTube video */}
-                    <YoutubeEmbed embedId="dQw4w9WgXcQ" />
+                    <YoutubeEmbed embedId={exercise.video} />
                   </Grid>
                 </Grid>
               </AccordionDetails>

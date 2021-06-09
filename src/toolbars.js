@@ -1,13 +1,11 @@
-import React from "react";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { React, Fragment } from "react";
+import { Tabs, Tab, Divider } from "@material-ui/core/";
 import { useRoutes, A, usePath } from "hookrouter";
 import "./styles.css";
 import NoPageFound from "./components/NoPageFound";
 import Fitness from "./components/Fitness/EquipmentFilter";
 import Home from "./components/Home";
 import FitnessGoals from "./components/Nutrition/FitnessGoals";
-import { Fragment } from "react";
 
 const routes = {
   "/": () => <Home />,
@@ -30,7 +28,7 @@ export default function SimpleTabs() {
             component={A} //A is from hookrouter, uses the tabs as an anchor, doing this CAUSES an ERROR in the console log due to Tab being a ButtonBase
             href="/equipment"
           />
-
+          <Divider orientation="vertical" flexItem />
           <Tab
             label="Nutrition"
             value="/nutrition"
