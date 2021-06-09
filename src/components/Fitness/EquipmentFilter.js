@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function EquipmentSelector() {
   const classes = useStyles();
   const path = usePath();
 
@@ -141,7 +141,7 @@ function Home() {
 
 export default function Fitness() {
   const routes = {
-    "/": () => <Home />,
+    "/": () => <EquipmentSelector />,
     "/dumbbell*": () => <MuscleFilter equipmentFilter="DUMBBELL" />,
     "/resbands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
     "/bodyweight*": () => <MuscleFilter equipmentFilter="BODYWEIGHT" />,

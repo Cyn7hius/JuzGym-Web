@@ -48,7 +48,6 @@ function ExerciseList({ database }) {
               </AccordionSummary>
               <AccordionDetails>
                 <Grid container spacing={2}>
-
                   {/* Instructions portion */}
                   <Grid item xs>
                     <Typography
@@ -103,7 +102,6 @@ function ExerciseList({ database }) {
                     >
                       Variations:
                     </Typography>
-
                     <Typography
                       component={"span"}
                       style={{ whiteSpace: "pre-line" }}
@@ -120,11 +118,14 @@ function ExerciseList({ database }) {
                   </Grid>
                   <Divider orientation="vertical" flexItem />
 
+                  {/* Right Side of the Exercise info */}
                   <Grid item xs="auto" style={{ width: "45%" }}>
+                    {/* Image for each exercise */}
                     <img height="auto" width="90%" src={exercise.image} />
                     <Typography>
                       Placeholder link for video if we need
                     </Typography>
+                    {/* Embeded YouTube video */}
                     <YoutubeEmbed embedId="dQw4w9WgXcQ" />
                   </Grid>
                 </Grid>
@@ -138,7 +139,6 @@ function ExerciseList({ database }) {
 }
 
 export default function FilterExercises({ equipmentFilter, muscleFilter }) {
-
   //converts the URL clicks into filters
   const filterOne =
     equipmentFilter == "DUMBBELL"
