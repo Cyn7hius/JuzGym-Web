@@ -123,11 +123,24 @@ function ExerciseList({ database }) {
 
                   {/* Right Side of the Exercise info */}
                   <Grid item xs="auto" style={{ width: "45%" }}>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      {"Main muscles worked: " + exercise.targetGroup}
+                    </Typography>
+
+                    <br />
+
                     {/* Image for each exercise */}
                     <img height="auto" width="90%" src={exercise.image} />
-                    <Typography>
-                      Placeholder link for video if we need
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      {"Video guide: "}
                     </Typography>
+
                     {/* Embeded YouTube video */}
                     <YoutubeEmbed embedId={exercise.video} />
                   </Grid>
