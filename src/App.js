@@ -14,13 +14,10 @@ import {
   Button,
   Box,
   IconButton,
-  Grid,
 } from "@material-ui/core";
 import SimpleTabs from "./toolbars";
-
-
-import MenuIcon from "@material-ui/icons/Menu";
-
+import HomeIcon from "@material-ui/icons/Home";
+import { A } from "hookrouter";
 import "./styles.css";
 
 export default function App() {
@@ -28,7 +25,7 @@ export default function App() {
     <div className="App">
       <AppShell />
       <div style={{ maxWidth: "64rem", margin: "0 auto" }}></div>
-      <SimpleTabs title="NavBar"/>
+      <SimpleTabs title="NavBar" />
     </div>
   );
 }
@@ -71,14 +68,17 @@ function AppShell() {
   return (
     <AppBar position="static" style={{ background: "#04ae96" }}>
       <Toolbar>
-
         <IconButton
           edge="start"
-          className={classes.menuButton}
+          className={classes.homeButton}
           color="inherit"
-          aria-label="menu"
+          aria-label="home"
+          label="Home"
+          value="/"
+          component={A}
+          href="/"
         >
-          <MenuIcon />
+          <HomeIcon fontSize="large" />
         </IconButton>
         <Typography
           variant="h2"
@@ -93,7 +93,7 @@ function AppShell() {
             <Box justifyContent="flex-start" fontWeight="fontWeightBold" m={1}>
               {"JuzGym"}
             </Box>
-            <Box justifyContent="flex-start"  m={1}>
+            <Box justifyContent="flex-start" m={1}>
               Your home gym companion
             </Box>
           </div>

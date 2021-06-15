@@ -1,16 +1,14 @@
 import React from "react";
-import { Typography } from "@material-ui/core";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import { useRoutes, A } from "hookrouter";
-import { images } from "../data/equipmentNames.js";
-import Container from "@material-ui/core/Container";
-// import Dumbbell from "./Dumbbell.js";
-// import ResBands from "./ResBands";
-// import BodyWeight from "./BodyWeight";
-// import AllEquipment from "./AllEquipment";
-import Dummy from "./Dummy";
+import { useRoutes, A, usePath } from "hookrouter";
+import { images } from "../../data/muscleNames";
+import ExerciseList from "./ExerciseList";
+import {
+  ButtonBase,
+  Typography,
+  makeStyles,
+  Grid,
+  Container,
+} from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,17 +85,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Home() {
+function MuscleSelector({ equipmentFilter }) {
   const classes = useStyles();
+  const path = usePath();
 
   return (
-    <div style={{ margin: "3%" }}> 
+    <div style={{ margin: "3%" }}>
       <div>
-        <h1> CATEGORY</h1>
+        <h1> {equipmentFilter} EXERCISES</h1>
         <br />
-        
-        <Container className={classes.root}>  {/*Container is used to keep horizontal spacing */}
-        
+
+        <Container className={classes.root}>
+          {" "}
+          {/*Container is used to keep horizontal spacing */}
           <Grid container spacing={1} justify="center">
             {images.map((image) => (
               <Grid item key={image.title} md={6}>
@@ -116,7 +116,7 @@ function Home() {
                     }}
                   />
                   <span className={classes.imageBackdrop} />
-                  <A href={"/equipment/" + image.handle}>
+                  <A href={path + image.handle}>
                     <span className={classes.imageButton}>
                       <Typography
                         component="span"
@@ -139,13 +139,33 @@ function Home() {
   );
 }
 
-export default function Fitness() {
+export default function MuscleFilter({ equipmentFilter }) {
   const routes = {
-    "/": () => <Home />,
-    "/dumbbell*": () => <Dummy id="dumbbell/" />,
-    "/resbands*": () => <Dummy id="resbands/" />,
-    "/bodyweight*": () => <Dummy id="bodyweight/" />,
-    "/all*": () => <Dummy id="all/" />,
+    "/": () => <MuscleSelector equipmentFilter={equipmentFilter} />,
+    "/core*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="CORE AND BACK"
+      />
+    ),
+    "/upper*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="UPPER BODY"
+      />
+    ),
+    "/lower*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="LOWER BODY"
+      />
+    ),
+    "/all*": () => (
+      <ExerciseList
+        equipmentFilter={equipmentFilter}
+        muscleFilter="ALL BODY PARTS"
+      />
+    ),
   };
 
   const routeResult = useRoutes(routes);
