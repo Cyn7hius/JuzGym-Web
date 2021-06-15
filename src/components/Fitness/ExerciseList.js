@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { FixedSizeList as List } from "react-window";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
