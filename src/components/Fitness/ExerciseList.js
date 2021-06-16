@@ -30,8 +30,9 @@ function ExerciseList({ database }) {
           style={{ width: "auto", height: "80vh" }}
           //Uses the data from json file
           data={database}
-          overscan={200}
           //Total number of exercises to render
+          overscan={70}
+          totalCount={70}
           itemContent={(index, exercise) => (
             <Accordion>
               {/* This div is for the image */}
@@ -88,8 +89,8 @@ function ExerciseList({ database }) {
                       align="left"
                     >
                       <ul>
-                        {NewLineParser(exercise.safety).map((safety) => {
-                          return <li key={safety.toString()}>{safety}</li>;
+                        {NewLineParser(exercise.tips).map((tip) => {
+                          return <li key={tip.toString()}>{tip}</li>;
                         })}
                       </ul>
                     </Typography>
