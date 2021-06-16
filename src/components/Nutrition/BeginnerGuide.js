@@ -204,13 +204,13 @@ https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-dep
   const titleRef = useRef();
   const test = useRef();
 
-  useEffect(() => {
-    console.log(titleRef.current);
-  }, []);
+  // useEffect(() => {
+  //   console.log(titleRef.current);
+  // }, []);
 
-  useEffect(() => {
-    console.log(test.current);
-  }, []);
+  // useEffect(() => {
+  //   console.log(test.current);
+  // }, []);
 
   function handleBackClick() {
     titleRef.current.scrollIntoView({ behavior: "smooth" });
