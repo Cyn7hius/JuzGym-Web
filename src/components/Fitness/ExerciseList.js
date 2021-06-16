@@ -34,7 +34,7 @@ function ExerciseList({ database }) {
           overscan={70}
           totalCount={70}
           itemContent={(index, exercise) => (
-            <Accordion>
+            <Accordion key={exercise.toString()}>
               {/* This div is for the image */}
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -81,7 +81,7 @@ function ExerciseList({ database }) {
                       variant="h6"
                       style={{ fontWeight: 500, textDecoration: "underline" }}
                     >
-                      Safety:
+                      Tips:
                     </Typography>
                     <Typography
                       component={"span"}
