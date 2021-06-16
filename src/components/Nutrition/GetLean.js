@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function NutritionTips({id}) {
+export default function GetLean({ id }) {
   return <h1> {id}</h1>;
 }
