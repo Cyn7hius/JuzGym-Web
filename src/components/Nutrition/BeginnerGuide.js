@@ -20,34 +20,43 @@ export default function BeginnerTips() {
   //   console.log(titleRef.current);
   // }, []);
 
-  // useEffect(() => {
-  //   console.log(test.current);
-  // }, []);
+  // function goToSectionOne() {
+  //   sectionsRef[0].current.scrollIntoView({ behavior: "smooth" });
+  // }
 
-  function goToSectionOne() {
-    sectionsRef[0].current.scrollIntoView({ behavior: "smooth" });
+  function goToSection(section) {
+    sectionsRef[section].current.scrollIntoView({ behavior: "smooth" });
   }
 
-  function goToSectionTwo() {
-    sectionsRef[1].current.scrollIntoView({ behavior: "smooth" });
-  }
+  const sectionHeadings = [
+    "Introduction",
+    "What is exercise",
+    "FAQ",
+    "Reference",
+    "Introduction",
+    "What is exercise",
+    "FAQ",
+    "Reference",
+    "Introduction",
+    "What is exercise",
+    "FAQ",
+  ];
+
+  const tableOfContents = (
+    <div style={{ float: "left" }}>
+      {sectionHeadings.map((placeholder, index) => (
+        <div>
+          <Button onClick={() => goToSection(index)}>
+            {sectionHeadings[index]}
+          </Button>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <Container>
-      <div style={{ float: "left" }}>
-        <div>
-          <Button onClick={goToSectionOne}>Introduction</Button>
-        </div>
-        <div>
-          <Button onClick={goToSectionTwo}>What is exercise?</Button>
-        </div>
-        <div>
-          <Button>FAQs</Button>
-        </div>
-        <div>
-          <Button>Reference</Button>
-        </div>
-      </div>
+      {tableOfContents}
       <Paper style={{ maxHeight: "80vh", overflow: "auto" }}>
         <Box m={2}>
           <Typography align="left">
