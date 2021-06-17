@@ -1,13 +1,14 @@
-export const sectionOne = `
+export const article = [
+  `
 ## Introduction
 
 If you’re considering starting to exercise but don’t know where to begin, this article is for you. Here’s all you need to know about starting a routine and sticking to it.
 
 Exercise and a healthy diet go hand in hand when it comes to attaining your fitness goals.
 
-`;
+`,
 
-export const sectionTwo = `
+  `
 
 ## Why exercise?
 
@@ -20,11 +21,9 @@ Regular exercise has been shown to improve your health significantly. Singapore�
 4. reduce stress and anxiety for overall mental well-being
 5. maintain a healthy weight to help you look and feel good  
 
-&nbsp;
+&nbsp;  `,
 
-`;
-
-export const sectionThree = `
+  `
 
 ## Types of exercises
 
@@ -37,9 +36,9 @@ There are many different types of exercises that you can do. Listed below are so
 *   High-intensity interval training (HIIT): This type of exercise includes repetitions of short bursts of high-intensity exercise followed by low-intensity exercises or rest periods.
 *   Flexibility: These types of exercises help muscle recovery, maintain range of motion, and prevent injuries. Examples include yoga or individual muscle-stretch movements.
 
-`;
+`,
 
-export const sectionFour = `
+  `
 
 ## Starting a workout plan
 
@@ -54,9 +53,9 @@ export const sectionFour = `
 8. Keep track of your progress. Lastly, keeping a journal or using apps like MyFitnessPal to keep track of the weight and reps that you do for each session allows you to record your own progress and makes it easier to modify your workout plan at any time.
 9. Following up. After each workout session, you can choose to increase the weight or the rep counts for each subsequent session. On the other hand, if you feel an unusual ache or strain after a particular exercise, you might consider lowering the weight or rep count or switching out that exercise.
 
-`;
+`,
 
-export const sectionFive = `
+  `
 
 ## Common terminology
 
@@ -75,9 +74,9 @@ export const sectionFive = `
 *   Working weight: the weight you use throughout all of your sets and reps.
 *   Metabolism: the process by which your body converts what you eat and drink into energy.
 
-`;
+`,
 
-export const sectionSix = `
+  `
 
 ## Tips and tricks for exercising
 
@@ -91,9 +90,9 @@ export const sectionSix = `
 *   Have meals 2 to 3 hours before exercise to ensure that you have time to digest your food. Alternatively you can opt for a light snack before exercising to fuel your workouts.
 *   Ensure that you have sufficient rest between each workout day. This allows your muscles to fully recover and allows you to achieve optimal performance during the workout.
 
-`;
+`,
 
-export const sectionSeven = `
+  `
 ## FAQ
 
 **Q: What’s the best time of day to work out?**
@@ -128,9 +127,9 @@ export const sectionSeven = `
 
 
 
-`;
+`,
 
-export const sectionEight = `
+  `
 
 ## Importance of a healthy diet
 
@@ -139,9 +138,9 @@ Before starting any nutrition plan, you first have to learn what calories are an
 Everyone has a different basal metabolic rate, which is the estimation of how many calories your body will burn at rest. Eating food will increase your caloric intake, whereas exercising burns calories. To attain your fitness goals, a simple method is to consume more calories if your goal is to gain muscle, and to lower your caloric intake if you plan to lose weight
 
 
-`;
+`,
 
-export const sectionNine = `
+  `
 ## The Three Macronutrients
 
 However, not all calories are equal, it can come in the form of 3 macronutrients - carbohydrates, fats or proteins. In general, most of the food you consume has a combination of the 3 macronutrients. Ideally you should break down your caloric intake according to the following guidelines:
@@ -156,9 +155,9 @@ However, not all calories are equal, it can come in the form of 3 macronutrients
 
 **Fat:** People tend to see fat as a bad thing. But there are good fats and bad fats. Good fats include unsaturated fats found in vegetable oils (such as olive, canola, sunflower, soy, and corn), nuts, seeds, and fish. Such good fats help the body absorb vitamin A, vitamin D and vitamin E. Bad fats include trans and saturated fats. Foods containing large amounts of saturated fat include red meat, butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm oil are also rich in saturated fat.
 
-`;
+`,
 
-export const sectionTen = `
+  `
 
 ##Tips for better nutrition**
 
@@ -172,9 +171,9 @@ export const sectionTen = `
 7. If you're starving, eat a healthy snack such as fruits, nuts and yoghurt. When you wait too long, you may end up overeating during meal times to satisfy that gnawing hunger.
 8. Prep for the week. One of the easiest ways to avoid the fast food trap is having healthy meals available.
 
-`;
+`,
 
-export const sectionEleven = `
+  `
 
 ##FAQ:
 
@@ -212,4 +211,5 @@ export const sectionEleven = `
 
 https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936
 
-`;
+`,
+];
