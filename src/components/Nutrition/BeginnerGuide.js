@@ -1,15 +1,6 @@
-import React, { Component, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import Markdown from "react-markdown";
-import {
-  Button,
-  ButtonBase,
-  Typography,
-  makeStyles,
-  Grid,
-  Container,
-  Box,
-  Paper,
-} from "@material-ui/core";
+import { Button, Typography, Container, Box, Paper } from "@material-ui/core";
 
 import { article, sectionHeadings } from "../../data/beginnerGuideMD";
 
