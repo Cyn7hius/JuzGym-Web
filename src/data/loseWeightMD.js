@@ -1,3 +1,4 @@
+// Table of contents; The headings of each section
 export const sectionHeadings = [
   "Calorie Management",
   "Watch what you eat",
@@ -8,6 +9,7 @@ export const sectionHeadings = [
   "Reference",
 ];
 
+// Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
 ## Sustainable weight loss

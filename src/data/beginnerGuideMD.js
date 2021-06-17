@@ -1,3 +1,4 @@
+// Table of contents; The headings of each section
 export const sectionHeadings = [
   "Introduction",
   "Why Exercise?",
@@ -12,6 +13,7 @@ export const sectionHeadings = [
   "References",
 ];
 
+// Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
 
