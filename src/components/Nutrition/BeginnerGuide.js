@@ -11,42 +11,27 @@ import {
   Paper,
 } from "@material-ui/core";
 
-import { article } from "../../data/beginnerGuideMD";
+import { article, sectionHeadings } from "../../data/beginnerGuideMD";
 
-export default function BeginnerTips() {
+export default function BeginnerGuide() {
   const sectionsRef = article.map(() => useRef());
-
-  // useEffect(() => {
-  //   console.log(titleRef.current);
-  // }, []);
-
-  // function goToSectionOne() {
-  //   sectionsRef[0].current.scrollIntoView({ behavior: "smooth" });
-  // }
 
   function goToSection(section) {
     sectionsRef[section].current.scrollIntoView({ behavior: "smooth" });
   }
 
-  const sectionHeadings = [
-    "Introduction",
-    "What is exercise",
-    "FAQ",
-    "Reference",
-    "Introduction",
-    "What is exercise",
-    "FAQ",
-    "Reference",
-    "Introduction",
-    "What is exercise",
-    "FAQ",
-  ];
-
   const tableOfContents = (
     <div style={{ float: "left" }}>
+      <br />
+      <br />
+      <br />
       {sectionHeadings.map((placeholder, index) => (
         <div>
-          <Button onClick={() => goToSection(index)}>
+          <Button
+            style={{ justifyContent: "flex-start" }}
+            fullWidth={true}
+            onClick={() => goToSection(index)}
+          >
             {sectionHeadings[index]}
           </Button>
         </div>
