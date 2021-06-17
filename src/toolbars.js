@@ -6,9 +6,11 @@ import NoPageFound from "./components/NoPageFound";
 import Fitness from "./components/Fitness/EquipmentFilter";
 import Home from "./components/Home";
 import FitnessGoals from "./components/Nutrition/FitnessGoals";
+import Workout from "./components/SavedWorkouts/UserWorkouts";
 
 const routes = {
   "/": () => <Home />,
+  "/savedworkouts": () => <Workout />,
   //wildcard routes
   "/equipment*": () => <Fitness />,
   "/nutrition*": () => <FitnessGoals />,

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { firebase } from "@firebase/app";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -13,6 +14,7 @@ import {
   Divider,
   Grid,
   Box,
+  Button,
 } from "@material-ui/core/";
 
 function ExerciseList({ database }) {
@@ -23,6 +25,58 @@ function ExerciseList({ database }) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
+
+  /*added from here */
+  const [users, setUsersState] = useState([]);
+  const uid = firebase.auth().currentUser?.uid;
+  const db = firebase.firestore();
+  const docRef = db.collection("/users").doc(uid);
+
+  function handleAddExercise(event, uid) {
+    event.preventDefault();
+    addExercise(uid, firebase);
+  }
+
+  function addExercise(uid) {
+    const newExercises = [
+      ...users,
+      {
+        Exercise: uid
+      }
+    ];
+    setUsersState(newExercises);
+  }
+
+  
+  function handleRemoveExercise(event, uid) {
+    event.preventDefault();
+    removeExercise(uid, firebase);
+    
+  }
+
+  function removeExercise(uid) {
+    const newExercises = users.filter(array => array.Exercise != uid);
+    setUsersState(newExercises);
+  }
+
+    /* Sets local array to User's FireStore array if any */
+    useEffect(() => {
+      docRef.get().then((doc) => {
+        if (doc.exists) {
+            setUsersState(doc.data().Workout);
+            console.log("FOUND COCK!");
+        } else {
+            console.log("No such document!");
+        }
+    });
+    }, []);
+
+  /*Updates the array in firestore whenever the local array changes */
+  useEffect(() => {
+    db.collection("/users").doc(uid).set({ Workout: users });
+  }, [users]);
+
+  /*added ended here */
 
   return (
     <Container>
@@ -76,12 +130,12 @@ function ExerciseList({ database }) {
                     <Divider />
                     <br />
 
-                    {/* Safety portion */}
+                    {/* Tips portion */}
                     <Typography
                       variant="h6"
                       style={{ fontWeight: 500, textDecoration: "underline" }}
                     >
-                      Safety:
+                      Tips:
                     </Typography>
                     <Typography
                       component={"span"}
@@ -89,8 +143,8 @@ function ExerciseList({ database }) {
                       align="left"
                     >
                       <ul>
-                        {NewLineParser(exercise.safety).map((safety) => {
-                          return <li key={safety.toString()}>{safety}</li>;
+                        {NewLineParser(exercise.tips).map((tips) => {
+                          return <li key={tips.toString()}>{tips}</li>;
                         })}
                       </ul>
                     </Typography>
@@ -117,6 +171,15 @@ function ExerciseList({ database }) {
                         })}
                       </ul>
                     </Typography>
+                    {/*Button*/}
+                    <Button
+                    onClick={(event) => handleAddExercise(event, exercise.uid)}>
+                      Add To Workout
+                    </Button>
+                    <Button
+                    onClick={(event) => handleRemoveExercise(event,  exercise.uid)}>
+                      Remove From Workout
+                    </Button>
                   </Grid>
                   <Divider orientation="vertical" flexItem />
 
@@ -177,6 +240,7 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
       (filterTwo == 8 || exercise.muscleType == filterTwo)
     );
   }
+
   const filteredData = data.filter(CheckExercise);
   return <ExerciseList database={filteredData} />;
 }
