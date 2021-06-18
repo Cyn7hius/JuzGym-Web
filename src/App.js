@@ -67,8 +67,8 @@ function AppShell() {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" style={{ background: "#04ae96" }}>
-      <Toolbar>
+    <AppBar position="sticky" style={{ background: "#04ae96" }}>
+      <Toolbar position="sticky">
         <IconButton
           edge="start"
           className={classes.homeButton}

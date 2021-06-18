@@ -3,7 +3,6 @@ import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
-
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
   Typography,
@@ -41,35 +40,33 @@ function ExerciseList({ database }) {
     const newExercises = [
       ...users,
       {
-        Exercise: uid
-      }
+        Exercise: uid,
+      },
     ];
     setUsersState(newExercises);
   }
 
-  
   function handleRemoveExercise(event, uid) {
     event.preventDefault();
     removeExercise(uid, firebase);
-    
   }
 
   function removeExercise(uid) {
-    const newExercises = users.filter(array => array.Exercise != uid);
+    const newExercises = users.filter((array) => array.Exercise != uid);
     setUsersState(newExercises);
   }
 
-    /* Sets local array to User's FireStore array if any */
-    useEffect(() => {
-      docRef.get().then((doc) => {
-        if (doc.exists) {
-            setUsersState(doc.data().Workout);
-            console.log("FOUND COCK!");
-        } else {
-            console.log("No such document!");
-        }
+  /* Sets local array to User's FireStore array if any */
+  useEffect(() => {
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        setUsersState(doc.data().Workout);
+        console.log("FOUND COCK!");
+      } else {
+        console.log("No such document!");
+      }
     });
-    }, []);
+  }, []);
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
@@ -85,10 +82,11 @@ function ExerciseList({ database }) {
           style={{ width: "auto", height: "80vh" }}
           //Uses the data from json file
           data={database}
-          overscan={200}
           //Total number of exercises to render
+          overscan={70}
+          totalCount={70}
           itemContent={(index, exercise) => (
-            <Accordion>
+            <Accordion key={exercise.toString()}>
               {/* This div is for the image */}
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -143,8 +141,8 @@ function ExerciseList({ database }) {
                       align="left"
                     >
                       <ul>
-                        {NewLineParser(exercise.tips).map((tips) => {
-                          return <li key={tips.toString()}>{tips}</li>;
+                        {NewLineParser(exercise.tips).map((tip) => {
+                          return <li key={tip.toString()}>{tip}</li>;
                         })}
                       </ul>
                     </Typography>
@@ -173,11 +171,17 @@ function ExerciseList({ database }) {
                     </Typography>
                     {/*Button*/}
                     <Button
-                    onClick={(event) => handleAddExercise(event, exercise.uid)}>
+                      onClick={(event) =>
+                        handleAddExercise(event, exercise.uid)
+                      }
+                    >
                       Add To Workout
                     </Button>
                     <Button
-                    onClick={(event) => handleRemoveExercise(event,  exercise.uid)}>
+                      onClick={(event) =>
+                        handleRemoveExercise(event, exercise.uid)
+                      }
+                    >
                       Remove From Workout
                     </Button>
                   </Grid>

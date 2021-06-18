@@ -1,7 +1,10 @@
 import React from "react";
 import { useRoutes, A, usePath } from "hookrouter";
 import { images } from "../../data/goalNames";
-import NutritionTips from "./NutritionTips";
+import BeginnerGuide from "./BeginnerGuide";
+import GetLean from "./GetLean";
+import GetStrong from "./GetStrong";
+import LoseWeight from "./LoseWeight";
 import {
   ButtonBase,
   Typography,
@@ -90,13 +93,14 @@ function GoalsSelector() {
   const path = usePath();
 
   return (
-    <div style={{ margin: "3%" }}> 
+    <div style={{ margin: "3%" }}>
       <div>
         <h1> FITNESS GOALS</h1>
         <br />
-        
-        <Container className={classes.root}>  {/*Container is used to keep horizontal spacing */}
-        
+
+        <Container className={classes.root}>
+          {" "}
+          {/*Container is used to keep horizontal spacing */}
           <Grid container spacing={1} justify="center">
             {images.map((image) => (
               <Grid item key={image.title} md={6}>
@@ -141,10 +145,10 @@ function GoalsSelector() {
 export default function FitnessGoals() {
   const routes = {
     "/": () => <GoalsSelector />,
-    "/getstrong": () => <NutritionTips id="GET STRONG" />,
-    "/getlean": () => <NutritionTips id="GET LEAN" />,
-    "/loseweight": () => <NutritionTips id="LOSE WEIGHT" />,
-    "/all": () => <NutritionTips id="GENERAL NUTRITION" />,
+    "/getstrong": () => <GetStrong id="GET STRONG" />,
+    "/getlean": () => <GetLean id="GET LEAN" />,
+    "/loseweight": () => <LoseWeight id="LOSE WEIGHT" />,
+    "/beginnerguide": () => <BeginnerGuide id="BEGINNER GUIDE" />,
   };
 
   const routeResult = useRoutes(routes);
