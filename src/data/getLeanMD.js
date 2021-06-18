@@ -165,5 +165,5 @@ Moreover, it is also imperative that you eat **properly and healthily**. Here ar
 *   [https://www.bodybuilding.com/content/get-ripped-your-guide-to-getting-shredded.html](https://www.bodybuilding.com/content/get-ripped-your-guide-to-getting-shredded.html)
 *   [https://www.bodybuilding.com/fun/the-most-nutritious-fruits-and-vegetables.html](https://www.bodybuilding.com/fun/the-most-nutritious-fruits-and-vegetables.html)
 *   [https://www.healthline.com/health/body-fat-percentage-for-abs](https://www.healthline.com/health/body-fat-percentage-for-abs) 
-*   [https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories](https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories`,
+*   [https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories](https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories)`,
 ];
