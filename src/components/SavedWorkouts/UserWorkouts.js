@@ -45,13 +45,10 @@ export default function UserWorkout() {
 
   var userExercises = [];
   function makeNewArray(uid) {
-      console.log(uid.Exercise);
     const newArray = [
-        //Note to self check whether is -1 or not
       ...userExercises, data[uid.Exercise - 1]
     ];
     userExercises = newArray;
-    console.log(data[uid.Exercise].targetGroup);
   }
 
   users.map(makeNewArray);

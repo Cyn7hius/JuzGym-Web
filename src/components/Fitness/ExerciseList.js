@@ -27,6 +27,8 @@ function ExerciseList({ database }) {
 
   /*added from here */
   const [users, setUsersState] = useState([]);
+  const [lock, setLockState] = useState(false);
+
   const uid = firebase.auth().currentUser?.uid;
   const db = firebase.firestore();
   const docRef = db.collection("/users").doc(uid);
@@ -60,17 +62,25 @@ function ExerciseList({ database }) {
   useEffect(() => {
     docRef.get().then((doc) => {
       if (doc.exists) {
+        // console.log(doc.data().Workout);
         setUsersState(doc.data().Workout);
-        console.log("FOUND COCK!");
+        console.log("FOUND!");
+        setLockState(true);
       } else {
         console.log("No such document!");
+        setUsersState([]);
+        setLockState(true);
       }
     });
   }, []);
 
+  console.log(users);
+
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
-    db.collection("/users").doc(uid).set({ Workout: users });
+    if (lock) {
+      db.collection("/users").doc(uid).set({ Workout: users });
+    }
   }, [users]);
 
   /*added ended here */
