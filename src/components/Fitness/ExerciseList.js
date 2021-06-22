@@ -25,7 +25,6 @@ function ExerciseList({ database }) {
     return outputArray;
   }
 
-  /*added from here */
   const [users, setUsersState] = useState([]);
   const [lock, setLockState] = useState(false);
 
@@ -62,19 +61,14 @@ function ExerciseList({ database }) {
   useEffect(() => {
     docRef.get().then((doc) => {
       if (doc.exists) {
-        // console.log(doc.data().Workout);
         setUsersState(doc.data().Workout);
-        console.log("FOUND!");
         setLockState(true);
       } else {
-        console.log("No such document!");
         setUsersState([]);
         setLockState(true);
       }
     });
   }, []);
-
-  console.log(users);
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
@@ -82,8 +76,6 @@ function ExerciseList({ database }) {
       db.collection("/users").doc(uid).set({ Workout: users });
     }
   }, [users]);
-
-  /*added ended here */
 
   return (
     <Container>
