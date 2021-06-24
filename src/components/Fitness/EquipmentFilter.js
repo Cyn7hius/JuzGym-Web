@@ -137,7 +137,7 @@ export default function Fitness() {
   const routes = {
     "/": () => <EquipmentSelector />,
     "/dumbbell*": () => <MuscleFilter equipmentFilter="DUMBBELL" />,
-    "/resbands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
+    "/bands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
     "/bodyweight*": () => <MuscleFilter equipmentFilter="BODYWEIGHT" />,
     "/all*": () => <MuscleFilter equipmentFilter="ALL EQUIPMENT" />,
   };

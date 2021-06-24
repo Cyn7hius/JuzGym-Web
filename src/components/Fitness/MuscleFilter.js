@@ -87,7 +87,7 @@ function MuscleSelector() {
   return (
     <div style={{ margin: "3%" }}>
       <div>
-        <h1> What muscle groups are you targetting?</h1>
+        <h1> Which muscle groups are you targetting?</h1>
         <br />
 
         <Container className={classes.root}>
