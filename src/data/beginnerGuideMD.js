@@ -316,5 +316,376 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 [https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936](https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936)
 
+
+# <span style="text-decoration:underline;">Dillon’s Complete Push Pull Workout</span>
+
+
+
+*   Each muscle group that we are focusing in this workout is targeted 2-3 times
+*   Try not to work the same muscle group in consecutive exercises
+*   Equipment used: Dumbbell, Bodyweight, Resistance Band
+*   7 day plan: Pull → Push → Legs → Rest → Rest → Pull → Push
+
+
+# Pull Workout
+
+
+
+*   Focuses on training all the upper body **pulling** muscles, i.e. the back and biceps primarily
+*   Start off the workout with a compound exercise to warm up all the muscle groups 
+
+
+|  Exercise    | Sets  | Reps  | Comments  |
+| --- | --- | --- | --- |
+| Pullups  | 3  | 10  | Targeted muscles: Abs, Shoulders, Biceps, Upper Back  |
+| Dumbbell Rows  | 3  | 10  | Targeted muscles: Upper Back  |
+| Hammer Curls  | 3  | 10  | Targeted muscles: Bicep  |
+| Rear Delt Flyes SS Band Pull Aparts  | 5  | 20  | Targeted muscles: Upper Back, Shoulders  |
+| Dumbbell Curls  | 3  | 10  | Targeted muscles: Bicep  |
+| Dead Hang  | 3  | 60 seconds  | Targeted muscles: Upper Back, Shoulders, Forearms  |
+
+
+
+
+
+
+# Push Workout
+
+
+
+*   Focuses on training all the upper body **pushing **muscles, i.e. the chest, shoulders and tricep primarily
+*   Your first exercise can have more sets that your other exercises as you would have the most energy for your workout at the start of the workout
+
+<table>
+  <tr>
+   <td>
+<strong>Exercise</strong>
+   </td>
+   <td><strong>Sets</strong>
+   </td>
+   <td><strong>Reps</strong>
+   </td>
+   <td><strong>Comments</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Floor Press 
+   </td>
+   <td>5
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: Chest, Triceps, Shoulders
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Overhead Press
+   </td>
+   <td>3
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: Shoulders
+   </td>
+  </tr>
+  <tr>
+   <td>Chest Dips
+   </td>
+   <td>3
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: Chest
+   </td>
+  </tr>
+  <tr>
+   <td>Seated Dumbbell Tricep Extensions SS Dumbbell Lateral Raise
+   </td>
+   <td>5
+   </td>
+   <td>20
+   </td>
+   <td>Targeted muscles: Triceps, Shoulders
+   </td>
+  </tr>
+  <tr>
+   <td>Push Ups
+   </td>
+   <td>3
+   </td>
+   <td>20
+   </td>
+   <td>Targeted muscles: Chest, Triceps, Shoulders
+   </td>
+  </tr>
+</table>
+
+
+
+# Legs Workout
+
+
+
+*   Focuses on training all the Lower Body muscles, i.e. the gluteus maximus, quadriceps, hamstrings, calves and back as well
+*   Make sure you rest properly between each exercise and try to push through the entire workout for best effect
+
+<table>
+  <tr>
+   <td>
+<strong>Exercise</strong>
+   </td>
+   <td><strong>Sets</strong>
+   </td>
+   <td><strong>Reps</strong>
+   </td>
+   <td><strong>Comments</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Squats
+   </td>
+   <td>5
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings, calves
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Lunges (to the front)
+   </td>
+   <td>3
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Calf Raises
+   </td>
+   <td>5
+   </td>
+   <td>20
+   </td>
+   <td>Targeted muscles: Calves
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Lunges (to the side)
+   </td>
+   <td>3
+   </td>
+   <td>10
+   </td>
+   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings
+   </td>
+  </tr>
+</table>
+
+
+
+# <span style="text-decoration:underline;">Calvin’s 3 Day Home Workout</span>
+
+
+
+*   Each muscle group that we are focusing in this workout is targeted 2-3 times
+*   For each of the exercises, I do a superset of 2 exercises from different muscle group to maximise heart pump. 
+*   Doing both exercises consecutively is one set
+*   Equipment used: Dumbbell, Bodyweight, Resistance Band
+*   However most of the dumbbell exercises can be replaced with Bodyweight or Resistance Band Variations
+*   7 day plan: Workout 1→ Rest→ Workout 2 → Rest → Workout 3 → Rest→ Rest
+
+
+# Workout Day 1
+
+
+<table>
+  <tr>
+   <td><strong>Exercise</strong>
+   </td>
+   <td><strong>Sets</strong>
+   </td>
+   <td><strong>Reps</strong>
+   </td>
+   <td><strong>Comments</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Stiff-Leg Single-Leg Deadlift
+<p>
++ \
+Dumbbell Shrugs
+   </td>
+   <td>5
+   </td>
+   <td>10 (Bicep curls) \
+Do to fatigue (Shrugs)
+   </td>
+   <td>Targeted muscles: Hamstring, Glutes, Traps
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Bicep Curls + Dumbbells Wrist Curls
+   </td>
+   <td>5
+   </td>
+   <td>10 (Bicep curls) \
+Do to fatigue (Wrist Curls)
+   </td>
+   <td>Targeted muscles: Biceps, Forearm
+   </td>
+  </tr>
+  <tr>
+   <td>Lateral Raise  + \
+Dumbbell Calf Raises
+   </td>
+   <td>5
+   </td>
+   <td>10 (Lateral Raise) \
+Do to Fatigue (Calf Raise)
+   </td>
+   <td>Targeted muscles: Shoulder, Traps, Calves
+   </td>
+  </tr>
+  <tr>
+   <td>Leg Raises + V-ups
+   </td>
+   <td>5
+   </td>
+   <td>10 (Leg Raises) \
+Do to Fatigue (V-ups)
+   </td>
+   <td>Targeted muscles: Core
+   </td>
+  </tr>
+</table>
+
+
+
+# Workout Day 2
+
+
+<table>
+  <tr>
+   <td><strong>Exercise</strong>
+   </td>
+   <td><strong>Sets</strong>
+   </td>
+   <td><strong>Reps</strong>
+   </td>
+   <td><strong>Comments</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Resistance Band Chest Fly + Planks
+   </td>
+   <td>5
+   </td>
+   <td>10 (Chest Fly) \
+1 minute (Planks)
+   </td>
+   <td>Targeted muscles: Chest, Core
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Bulgarian Split Squat + Dumbbell Shoulder Flys
+   </td>
+   <td>5
+   </td>
+   <td>10 (Both)
+   </td>
+   <td>Targeted muscles: Biceps, Forearm
+   </td>
+  </tr>
+  <tr>
+   <td>Seated Dumbbell Shoulder Press + Hammer Curls
+   </td>
+   <td>5
+   </td>
+   <td>10 (Both) \
+
+   </td>
+   <td>Targeted muscles: Shoulder, Biceps
+   </td>
+  </tr>
+  <tr>
+   <td>Pullups +
+<p>
+Hanging Leg Raises
+   </td>
+   <td>5
+   </td>
+   <td>7 (Pullups) \
+Do to Fatigue (Leg Raises)
+   </td>
+   <td>Targeted muscles: Back, Forearms, Lats, Core
+   </td>
+  </tr>
+</table>
+
+
+
+# Workout Day 3
+
+
+<table>
+  <tr>
+   <td><strong>Exercise</strong>
+   </td>
+   <td><strong>Sets</strong>
+   </td>
+   <td><strong>Reps</strong>
+   </td>
+   <td><strong>Comments</strong>
+   </td>
+  </tr>
+  <tr>
+   <td>Resistance Band Chest Press +
+<p>
+Seated Tricep Extension \
+
+   </td>
+   <td>5
+   </td>
+   <td>10 (Both)
+   </td>
+   <td>Targeted muscles: Chest, Triceps
+   </td>
+  </tr>
+  <tr>
+   <td>Dumbbell Rows + Dumbbells Lower Chest Fly
+   </td>
+   <td>5
+   </td>
+   <td>10 (Both)
+   </td>
+   <td>Targeted muscles: Lats, Lower Chest, Biceps, Forearm
+   </td>
+  </tr>
+  <tr>
+   <td>Standing Dumbbell Shoulder Press +
+<p>
+Overhand Dumbbell Curls
+   </td>
+   <td>5
+   </td>
+   <td>10 (Both)
+   </td>
+   <td>Targeted muscles: Shoulder, Forearm
+   </td>
+  </tr>
+  <tr>
+   <td>Standing Chest Press + Push Ups
+   </td>
+   <td>5
+   </td>
+   <td>10 (Chest Press) \
+Do to Fatigue (Push Ups)
+   </td>
+   <td>Targeted muscles: Triceps, Chest, Shoulders
+   </td>
+  </tr>
+</table>
 `,
 ];

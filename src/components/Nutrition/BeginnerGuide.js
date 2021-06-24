@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
 import { Button, Typography, Container, Box, Paper } from "@material-ui/core";
 
 import { article, sectionHeadings } from "../../data/beginnerGuideMD";
@@ -43,7 +43,7 @@ export default function BeginnerGuide() {
             {/* Map each section to a Markdown Component to be displayed, ties in together with the refs to allow scroll to certain sections */}
             {article.map((sections, index) => (
               <div ref={sectionsRef[index]}>
-                <Markdown children={sections} />
+                <ReactMarkdown escapeHtml={false} children={sections} />
               </div>
             ))}
           </Typography>
