@@ -335,14 +335,14 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 *   Start off the workout with a compound exercise to warm up all the muscle groups 
 
 
-|  Exercise    | Sets  | Reps  | Comments  |
-| --- | --- | --- | --- |
-| Pullups  | 3  | 10  | Targeted muscles: Abs, Shoulders, Biceps, Upper Back  |
-| Dumbbell Rows  | 3  | 10  | Targeted muscles: Upper Back  |
-| Hammer Curls  | 3  | 10  | Targeted muscles: Bicep  |
-| Rear Delt Flyes SS Band Pull Aparts  | 5  | 20  | Targeted muscles: Upper Back, Shoulders  |
-| Dumbbell Curls  | 3  | 10  | Targeted muscles: Bicep  |
-| Dead Hang  | 3  | 60 seconds  | Targeted muscles: Upper Back, Shoulders, Forearms  |
+|  Exercise                           | Set| Reps    | Comments                                              |
+| ----------------------------------- | -- | ------- | ----------------------------------------------------- |
+| Pullups                             | 3  | 10      | Targeted muscles: Abs, Shoulders, Biceps, Upper Back  |
+| Dumbbell Rows                       | 3  | 10      | Targeted muscles: Upper Back                          |
+| Hammer Curls                        | 3  | 10      | Targeted muscles: Bicep                               |
+| Rear Delt Flyes SS Band Pull Aparts | 5  | 20      | Targeted muscles: Upper Back, Shoulders               |
+| Dumbbell Curls                      | 3  | 10      | Targeted muscles: Bicep                               |
+| Dead Hang                           | 3  | 60 sec  | Targeted muscles: Upper Back, Shoulders, Forearms     |
 
 
 
