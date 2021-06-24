@@ -95,7 +95,7 @@ function GoalsSelector() {
   return (
     <div style={{ margin: "3%" }}>
       <div>
-        <h1> FITNESS GOALS</h1>
+        <h1>What is your desired fitness goal?</h1>
         <br />
 
         <Container className={classes.root}>

@@ -85,14 +85,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MuscleSelector({ equipmentFilter }) {
+function MuscleSelector() {
   const classes = useStyles();
   const path = usePath();
 
   return (
     <div style={{ margin: "3%" }}>
       <div>
-        <h1> {equipmentFilter} EXERCISES</h1>
+        <h1> What muscle groups are you targetting?</h1>
         <br />
 
         <Container className={classes.root}>
@@ -139,30 +139,31 @@ function MuscleSelector({ equipmentFilter }) {
   );
 }
 
-export default function MuscleFilter({ equipmentFilter }) {
+export default function MuscleFilter(props) {
+  const equipment = props.equipmentFilter;
   const routes = {
-    "/": () => <MuscleSelector equipmentFilter={equipmentFilter} />,
+    "/": () => <MuscleSelector />,
     "/core*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="CORE AND BACK"
       />
     ),
     "/upper*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="UPPER BODY"
       />
     ),
     "/lower*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="LOWER BODY"
       />
     ),
     "/all*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="ALL BODY PARTS"
       />
     ),
