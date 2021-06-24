@@ -353,72 +353,19 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 
 
-*   Focuses on training all the upper body **pushing **muscles, i.e. the chest, shoulders and tricep primarily
+*   Focuses on training all the upper body **pushing** muscles, i.e. the chest, shoulders and tricep primarily
 *   Your first exercise can have more sets that your other exercises as you would have the most energy for your workout at the start of the workout
 
-<table>
-  <tr>
-   <td>
-<strong>Exercise</strong>
-   </td>
-   <td><strong>Sets</strong>
-   </td>
-   <td><strong>Reps</strong>
-   </td>
-   <td><strong>Comments</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Floor Press 
-   </td>
-   <td>5
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: Chest, Triceps, Shoulders
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Overhead Press
-   </td>
-   <td>3
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: Shoulders
-   </td>
-  </tr>
-  <tr>
-   <td>Chest Dips
-   </td>
-   <td>3
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: Chest
-   </td>
-  </tr>
-  <tr>
-   <td>Seated Dumbbell Tricep Extensions SS Dumbbell Lateral Raise
-   </td>
-   <td>5
-   </td>
-   <td>20
-   </td>
-   <td>Targeted muscles: Triceps, Shoulders
-   </td>
-  </tr>
-  <tr>
-   <td>Push Ups
-   </td>
-   <td>3
-   </td>
-   <td>20
-   </td>
-   <td>Targeted muscles: Chest, Triceps, Shoulders
-   </td>
-  </tr>
-</table>
+
+
+|Exercise|Sets|Reps|Comments|
+|--- |--- |--- |--- |
+|Dumbbell Floor Press|5|10|Targeted muscles: Chest, Triceps, Shoulders|
+|Dumbbell Overhead Press|3|10|Targeted muscles: Shoulders|
+|Chest Dips|3|10|Targeted muscles: Chest|
+|Seated Dumbbell Tricep Extensions SS Dumbbell Lateral Raise|5|20|Targeted muscles: Triceps, Shoulders|
+|Push Ups|3|20|Targeted muscles: Chest, Triceps, Shoulders|
+
 
 
 
@@ -429,59 +376,14 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 *   Focuses on training all the Lower Body muscles, i.e. the gluteus maximus, quadriceps, hamstrings, calves and back as well
 *   Make sure you rest properly between each exercise and try to push through the entire workout for best effect
 
-<table>
-  <tr>
-   <td>
-<strong>Exercise</strong>
-   </td>
-   <td><strong>Sets</strong>
-   </td>
-   <td><strong>Reps</strong>
-   </td>
-   <td><strong>Comments</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Squats
-   </td>
-   <td>5
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings, calves
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Lunges (to the front)
-   </td>
-   <td>3
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Calf Raises
-   </td>
-   <td>5
-   </td>
-   <td>20
-   </td>
-   <td>Targeted muscles: Calves
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Lunges (to the side)
-   </td>
-   <td>3
-   </td>
-   <td>10
-   </td>
-   <td>Targeted muscles: gluteus maximus, quadriceps, hamstrings
-   </td>
-  </tr>
-</table>
+
+|Exercise|Sets|Reps|Comments|
+|--- |--- |--- |--- |
+|Dumbbell Squats|5|10|Targeted muscles: gluteus maximus, quadriceps, hamstrings, calves|
+|Dumbbell Lunges (to the front)|3|10|Targeted muscles: gluteus maximus, quadriceps, hamstrings|
+|Dumbbell Calf Raises|5|20|Targeted muscles: Calves|
+|Dumbbell Lunges (to the side)|3|10|Targeted muscles: gluteus maximus, quadriceps, hamstrings|
+
 
 
 
@@ -500,192 +402,36 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 # Workout Day 1
 
 
-<table>
-  <tr>
-   <td><strong>Exercise</strong>
-   </td>
-   <td><strong>Sets</strong>
-   </td>
-   <td><strong>Reps</strong>
-   </td>
-   <td><strong>Comments</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Stiff-Leg Single-Leg Deadlift
-<p>
-+ \
-Dumbbell Shrugs
-   </td>
-   <td>5
-   </td>
-   <td>10 (Bicep curls) \
-Do to fatigue (Shrugs)
-   </td>
-   <td>Targeted muscles: Hamstring, Glutes, Traps
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Bicep Curls + Dumbbells Wrist Curls
-   </td>
-   <td>5
-   </td>
-   <td>10 (Bicep curls) \
-Do to fatigue (Wrist Curls)
-   </td>
-   <td>Targeted muscles: Biceps, Forearm
-   </td>
-  </tr>
-  <tr>
-   <td>Lateral Raise  + \
-Dumbbell Calf Raises
-   </td>
-   <td>5
-   </td>
-   <td>10 (Lateral Raise) \
-Do to Fatigue (Calf Raise)
-   </td>
-   <td>Targeted muscles: Shoulder, Traps, Calves
-   </td>
-  </tr>
-  <tr>
-   <td>Leg Raises + V-ups
-   </td>
-   <td>5
-   </td>
-   <td>10 (Leg Raises) \
-Do to Fatigue (V-ups)
-   </td>
-   <td>Targeted muscles: Core
-   </td>
-  </tr>
-</table>
+|Exercise|Sets|Reps|Comments|
+|--- |--- |--- |--- |
+|Dumbbell Stiff-Leg Single-Leg Deadlift + Dumbbell Shrugs|5|10 (Bicep curls)  Do to fatigue (Shrugs)|Targeted muscles: Hamstring, Glutes, Traps|
+|Dumbbell Bicep Curls + Dumbbells Wrist Curls|5|10 (Bicep curls) Do to fatigue (Wrist Curls)|Targeted muscles: Biceps, Forearm|
+|Lateral Raise  + Dumbbell Calf Raises|5|10 (Lateral Raise) Do to Fatigue (Calf Raise)|Targeted muscles: Shoulder, Traps, Calves|
+|Leg Raises + V-ups|5|10 (Leg Raises) Do to Fatigue (V-ups)|Targeted muscles: Core|
 
 
 
 # Workout Day 2
 
 
-<table>
-  <tr>
-   <td><strong>Exercise</strong>
-   </td>
-   <td><strong>Sets</strong>
-   </td>
-   <td><strong>Reps</strong>
-   </td>
-   <td><strong>Comments</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Resistance Band Chest Fly + Planks
-   </td>
-   <td>5
-   </td>
-   <td>10 (Chest Fly) \
-1 minute (Planks)
-   </td>
-   <td>Targeted muscles: Chest, Core
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Bulgarian Split Squat + Dumbbell Shoulder Flys
-   </td>
-   <td>5
-   </td>
-   <td>10 (Both)
-   </td>
-   <td>Targeted muscles: Biceps, Forearm
-   </td>
-  </tr>
-  <tr>
-   <td>Seated Dumbbell Shoulder Press + Hammer Curls
-   </td>
-   <td>5
-   </td>
-   <td>10 (Both) \
 
-   </td>
-   <td>Targeted muscles: Shoulder, Biceps
-   </td>
-  </tr>
-  <tr>
-   <td>Pullups +
-<p>
-Hanging Leg Raises
-   </td>
-   <td>5
-   </td>
-   <td>7 (Pullups) \
-Do to Fatigue (Leg Raises)
-   </td>
-   <td>Targeted muscles: Back, Forearms, Lats, Core
-   </td>
-  </tr>
-</table>
+|Exercise|Sets|Reps|Comments|
+|--- |--- |--- |--- |
+|Resistance Band Chest Fly + Planks|5|10 (Chest Fly) 1 minute (Planks)|Targeted muscles: Chest, Core|
+|Dumbbell Bulgarian Split Squat + Dumbbell Shoulder Flys|5|10 (Both)|Targeted muscles: Biceps, Forearm|
+|Seated Dumbbell Shoulder Press + Hammer Curls|5|10 (Both)|Targeted muscles: Shoulder, Biceps|
+|Pullups + Hanging Leg Raises|5|7 (Pullups) Do to Fatigue (Leg Raises)|Targeted muscles: Back, Forearms, Lats, Core|
 
 
 
 # Workout Day 3
 
 
-<table>
-  <tr>
-   <td><strong>Exercise</strong>
-   </td>
-   <td><strong>Sets</strong>
-   </td>
-   <td><strong>Reps</strong>
-   </td>
-   <td><strong>Comments</strong>
-   </td>
-  </tr>
-  <tr>
-   <td>Resistance Band Chest Press +
-<p>
-Seated Tricep Extension \
-
-   </td>
-   <td>5
-   </td>
-   <td>10 (Both)
-   </td>
-   <td>Targeted muscles: Chest, Triceps
-   </td>
-  </tr>
-  <tr>
-   <td>Dumbbell Rows + Dumbbells Lower Chest Fly
-   </td>
-   <td>5
-   </td>
-   <td>10 (Both)
-   </td>
-   <td>Targeted muscles: Lats, Lower Chest, Biceps, Forearm
-   </td>
-  </tr>
-  <tr>
-   <td>Standing Dumbbell Shoulder Press +
-<p>
-Overhand Dumbbell Curls
-   </td>
-   <td>5
-   </td>
-   <td>10 (Both)
-   </td>
-   <td>Targeted muscles: Shoulder, Forearm
-   </td>
-  </tr>
-  <tr>
-   <td>Standing Chest Press + Push Ups
-   </td>
-   <td>5
-   </td>
-   <td>10 (Chest Press) \
-Do to Fatigue (Push Ups)
-   </td>
-   <td>Targeted muscles: Triceps, Chest, Shoulders
-   </td>
-  </tr>
-</table>
+|Exercise|Sets|Reps|Comments|
+|--- |--- |--- |--- |
+|Resistance Band Chest Press + Seated Tricep Extension|5|10 (Both)|Targeted muscles: Chest, Triceps|
+|Dumbbell Rows + Dumbbells Lower Chest Fly|5|10 (Both)|Targeted muscles: Lats, Lower Chest, Biceps, Forearm|
+|Standing Dumbbell Shoulder Press + Overhand Dumbbell Curls|5|10 (Both)|Targeted muscles: Shoulder, Forearm|
+|Standing Chest Press + Push Ups|5|10 (Chest Press)  Do to Fatigue (Push Ups)|Targeted muscles: Triceps, Chest, Shoulders|
 `,
 ];

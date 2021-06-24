@@ -45,11 +45,7 @@ export default function BeginnerGuide() {
             {/* Map each section to a Markdown Component to be displayed, ties in together with the refs to allow scroll to certain sections */}
             {article.map((sections, index) => (
               <div ref={sectionsRef[index]}>
-                <ReactMarkdown
-                  remarkPlugins={[gfm]}
-                  escapeHtml={false}
-                  children={sections}
-                />
+                <ReactMarkdown remarkPlugins={[gfm]} children={sections} />
               </div>
             ))}
           </Typography>
