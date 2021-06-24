@@ -11,17 +11,12 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    minWidth: 300,
-    width: "100%",
-  },
   image: {
     position: "relative",
     height: 200,
     [theme.breakpoints.down("xs")]: {
-      width: "100% !important", // Overrides inline-style
+      //width: "100% !important", // Overrides inline-style
+      width: "100%",
       height: 100,
     },
     "&:hover, &$focusVisible": {
@@ -56,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
+    backgroundPosition: "center 50%",
   },
   imageBackdrop: {
     position: "absolute",
@@ -90,11 +85,10 @@ function EquipmentSelector() {
   const path = usePath();
 
   return (
-    <div style={{ margin: "3%" }}>
+    <div style={{ margin: "3%", flexWrap: "wrap" }}>
       <div>
-        <h1>What equipment do you have?</h1>
+        <h1> CATEGORY</h1>
         <br />
-
         <Container className={classes.root}>
           {" "}
           {/*Container is used to keep horizontal spacing */}
@@ -105,8 +99,8 @@ function EquipmentSelector() {
                   key={images.title}
                   className={classes.image}
                   style={{
-                    width: "100%",
-                    height: "250px", //hardcoded
+                    width: "32vw",
+                    height: "30vh", //hardcoded
                   }}
                 >
                   <span
@@ -143,7 +137,7 @@ export default function Fitness() {
   const routes = {
     "/": () => <EquipmentSelector />,
     "/dumbbell*": () => <MuscleFilter equipmentFilter="DUMBBELL" />,
-    "/bands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
+    "/resbands*": () => <MuscleFilter equipmentFilter="RESISTANCE BANDS" />,
     "/bodyweight*": () => <MuscleFilter equipmentFilter="BODYWEIGHT" />,
     "/all*": () => <MuscleFilter equipmentFilter="ALL EQUIPMENT" />,
   };

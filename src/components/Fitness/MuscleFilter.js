@@ -11,17 +11,12 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    minWidth: 300,
-    width: "100%",
-  },
   image: {
     position: "relative",
     height: 200,
     [theme.breakpoints.down("xs")]: {
-      width: "100% !important", // Overrides inline-style
+      //width: "100% !important", // Overrides inline-style
+      width: "100%",
       height: 100,
     },
     "&:hover, &$focusVisible": {
@@ -56,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
+    backgroundPosition: "center 50%",
   },
   imageBackdrop: {
     position: "absolute",
@@ -105,8 +100,8 @@ function MuscleSelector() {
                   key={images.title}
                   className={classes.image}
                   style={{
-                    width: "100%",
-                    height: "250px", //hardcoded
+                    width: "32vw",
+                    height: "30vh", //hardcoded
                   }}
                 >
                   <span
