@@ -14,6 +14,7 @@ import {
   Grid,
   Box,
   Button,
+  FormControlLabel,
 } from "@material-ui/core/";
 
 function ExerciseList({ database }) {
@@ -70,6 +71,24 @@ function ExerciseList({ database }) {
     });
   }, []);
 
+  function exerciseButton(event, uid) {
+    event.stopPropagation();
+    event.preventDefault();
+    if (users.find((array) => array.Exercise == uid) != null) {
+      removeExercise(uid);
+    } else {
+      addExercise(uid);
+    }
+  }
+  
+  function test(uid) {
+    if (users.find((array) => array.Exercise == uid) != null) {
+      return "Remove from workout"
+    } else {
+      return "Add to workout"
+    }
+  }
+
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
     if (lock) {
@@ -98,6 +117,19 @@ function ExerciseList({ database }) {
                 <Typography variant="h5" style={{ fontWeight: 500 }}>
                   {exercise.name}
                 </Typography>
+                <Button
+                  style={{ marginLeft: "auto", marginRight: 0 }}
+                  onClick={(event) => exerciseButton(event, exercise.uid)}
+                >
+                  {test(exercise.uid)}
+                </Button>
+                {/* <FormControlLabel
+                  aria-label="Acknowledge"
+                  onClick={(event) => event.stopPropagation()}
+                  onFocus={(event) => event.stopPropagation()}
+                  control={<Button />}
+                  label="I acknowledge that I should stop the click event propagation"
+                /> */}
               </AccordionSummary>
 
               <AccordionDetails style={{ background: "#f2f2f2" }}>
