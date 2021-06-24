@@ -87,7 +87,7 @@ function EquipmentSelector() {
   return (
     <div style={{ margin: "3%", flexWrap: "wrap" }}>
       <div>
-        <h1> CATEGORY</h1>
+        <h1> What equipment do you have? </h1>
         <br />
         <Container className={classes.root}>
           {" "}
