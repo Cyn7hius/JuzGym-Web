@@ -13,7 +13,7 @@ const routes = {
   "/savedworkouts": () => <Workout />,
   //wildcard routes
   "/exercises*": () => <Fitness />,
-  "/guide*": () => <FitnessGoals />,
+  "/education*": () => <FitnessGoals />,
 };
 
 export default function SimpleTabs() {
@@ -26,9 +26,9 @@ export default function SimpleTabs() {
         <Tabs value={pathname} centered={true}>
           <Tab
             label="Fitness Guide"
-            value="/guide"
-            component={A}  //A is from hookrouter, uses the tabs as an anchor, doing this CAUSES an ERROR in the console log due to Tab being a ButtonBase
-            href="/guide"
+            value="/education"
+            component={A} //A is from hookrouter, uses the tabs as an anchor, doing this CAUSES an ERROR in the console log due to Tab being a ButtonBase
+            href="/education"
           />
           <Divider orientation="vertical" flexItem />
           <Tab
