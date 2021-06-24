@@ -36,8 +36,8 @@ export default function UserWorkout() {
     docRef.get().then((doc) => {
       if (doc.exists) {
         setUsersState(doc.data().Workout);
-        setEmptyWorkout(true);
       } else {
+        setEmptyWorkout(true);
         setUsersState([]);
       }
     });
