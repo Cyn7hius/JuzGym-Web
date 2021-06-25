@@ -19,6 +19,8 @@ If your goal is to build muscles or gain muscle strength, this guide is for you!
 
 &nbsp;
 
+![Strong Man](https://cdn2.coachmag.co.uk/sites/coachmag/files/2019/02/how-to-build-muscle.jpg#center)
+
 ## What is Muscle Building?
 
 Muscle growth is primarily about the rate of **protein synthesis** compared to **protein breakdown** within your body. 
@@ -65,19 +67,8 @@ This can be easily achieved by drinking a cup of milk a day for example, or havi
 
 ## Starting your Muscle Building Workout 
 
-**Firstly** you should find a fixed set of exercises that you are comfortable doing. 
-Ideally the exercises should comprise a mixture of compound and isolation exercises and should work all body parts to achieve a balanced physique. 
+![Flow chart](https://i.imgur.com/QUwa2zI.png#chart)
 
-**Next,** When doing resistance training, aim for doing each exercise with sufficiently heavy weights. 
-A simple gauge to identify a suitable weight is that you should not be able to perform more than 20 reps with that weight. 
-Note down this weight, it is called your working weight
-
-**Following that,** you should set aside time to have a consistent workout routine where each workout day per week you perform the same workout. 
-This not only trains your whole body, but also allows you to better track your progress over time.
-
-**Lastly,** know when to push yourself. After a few weeks or months of performing the same workout, your body will naturally get stronger, 
-allowing you to lift heavier weights or perform more reps. Thus it is ideal to increase the intensity of training by increasing your 
-working weight to continuously challenge your body, this is known as “progressive overloading”.
 
 `,
 
@@ -105,16 +96,8 @@ Like with everything else, it is vital to train for the **long term**, rather th
 
 ## Muscle Building VS Strength Training
 
-**Muscle building** (or hypertrophy) is the gaining of muscle mass whereas strength training focuses on increasing the functional strength of your muscles. 
-While training for either goal has many overlaps, the key difference lies in the type of exercise that you do.
 
-Muscle building has a higher training volume with more frequent workouts and shorter rest periods in between sets. 
-The workouts include more sets and reps with a lower weight. 
-
-**Strength training** has a lower training volume (fewer days, longer rest periods) but higher intensity. 
-The goal is to lift heavier weights with fewer reps and sets.
-
-
+![Comparision Image](https://i.imgur.com/4f1g7OG.png#chart)
 `,
 
   `
