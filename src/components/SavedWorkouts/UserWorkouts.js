@@ -24,7 +24,6 @@ export default function UserWorkout() {
     setFirestoreData(newData);
   }
 
-
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
@@ -33,22 +32,22 @@ export default function UserWorkout() {
     docRef.get().then((doc) => {
       if (doc.exists) {
         setFirestoreData(doc.data().Workout, setLoading(true));
-        console.log("Found");
+        console.log("found");
       } else {
-        setFirestoreData([]);
-        console.log("Not Found");
+        setFirestoreData([], setLoading(true));
+        console.log("Not found");
       }
     });
   }, []);
 
-  return (loading) ? <Display firestoreData={firestoreData} setData={setData} /> : <h1>loading!</h1>
-  
-
-
-
+  return loading ? (
+    <ExerciseDatabase firestoreData={firestoreData} setData={setData} />
+  ) : (
+    <h1>Loading workouts...</h1>
+  );
 }
 
-function Display(props) {
+function ExerciseDatabase(props) {
   //const [isScrolling, setIsScrolling] = useState(false);
   //Simple function to split the JSON string by \n and returns it as an array
   function NewLineParser(str) {
@@ -56,7 +55,7 @@ function Display(props) {
     return outputArray;
   }
   const { firestoreData, setData } = props;
-  console.log(firestoreData);
+  //The curated database
   const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
 
   function addExercise(uid) {
@@ -98,145 +97,140 @@ function Display(props) {
     const db = firebase.firestore();
     db.collection("/users").doc(uid).set({ Workout: firestoreData });
   }, [firestoreData]);
-
-  if (firestoreData.length == 0) {
-    return <h1>You do not have any saved exercises!</h1>;
-  } else {
-    return (
-      <Container>
-        <Box>
-          <Virtuoso
-            style={{ width: "auto", height: "80vh" }}
-            //Uses the data from json file
-            data={newDatabase}
-            //Total number of exercises to render
-            overscan={70}
-            totalCount={70}
-            itemContent={(index, exercise) => (
-              <Accordion key={exercise.toString()}>
-                {/* This div is for the image */}
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
+  return firestoreData.length ? (
+    <Container>
+      <Box>
+        <Virtuoso
+          style={{ width: "auto", height: "80vh" }}
+          //Uses the data from json file
+          data={newDatabase}
+          //Total number of exercises to render
+          overscan={70}
+          totalCount={70}
+          itemContent={(index, exercise) => (
+            <Accordion key={exercise.toString()}>
+              {/* This div is for the image */}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography variant="h5" style={{ fontWeight: 500 }}>
+                  {exercise.name}
+                </Typography>
+                <Button
+                  style={{ marginLeft: "auto", marginRight: 0 }}
+                  onClick={(event) => exerciseButton(event, exercise.uid)}
                 >
-                  <Typography variant="h5" style={{ fontWeight: 500 }}>
-                    {exercise.name}
-                  </Typography>
-                  <Button
-                    style={{ marginLeft: "auto", marginRight: 0 }}
-                    onClick={(event) => exerciseButton(event, exercise.uid)}
-                  >
-                    {exerciseButtonText(exercise.uid)}
-                  </Button>
-                </AccordionSummary>
+                  {exerciseButtonText(exercise.uid)}
+                </Button>
+              </AccordionSummary>
 
-                <AccordionDetails style={{ background: "#f2f2f2" }}>
-                  <Grid container spacing={2}>
-                    {/* Instructions portion */}
-                    <Grid item xs>
-                      <Typography
-                        variant="h6"
-                        style={{ fontWeight: 500, textDecoration: "underline" }}
-                      >
-                        Instructions:
-                      </Typography>
-                      <Typography
-                        component={"span"}
-                        style={{ whiteSpace: "pre-line" }}
-                        align="left"
-                      >
-                        <ol>
-                          {NewLineParser(exercise.instructions).map(
-                            (instruction) => {
-                              return (
-                                <li key={instruction.toString()}>
-                                  {instruction}
-                                </li>
-                              );
-                            }
-                          )}
-                        </ol>
-                      </Typography>
-                      <Divider />
-                      <br />
+              <AccordionDetails style={{ background: "#f2f2f2" }}>
+                <Grid container spacing={2}>
+                  {/* Instructions portion */}
+                  <Grid item xs>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      Instructions:
+                    </Typography>
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      <ol>
+                        {NewLineParser(exercise.instructions).map(
+                          (instruction) => {
+                            return (
+                              <li key={instruction.toString()}>
+                                {instruction}
+                              </li>
+                            );
+                          }
+                        )}
+                      </ol>
+                    </Typography>
+                    <Divider />
+                    <br />
 
-                      {/* Tips portion */}
-                      <Typography
-                        variant="h6"
-                        style={{ fontWeight: 500, textDecoration: "underline" }}
-                      >
-                        Tips:
-                      </Typography>
-                      <Typography
-                        component={"span"}
-                        style={{ whiteSpace: "pre-line" }}
-                        align="left"
-                      >
-                        <ul>
-                          {NewLineParser(exercise.tips).map((tip) => {
-                            return <li key={tip.toString()}>{tip}</li>;
-                          })}
-                        </ul>
-                      </Typography>
-                      <Divider />
-                      <br />
+                    {/* Tips portion */}
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      Tips:
+                    </Typography>
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      <ul>
+                        {NewLineParser(exercise.tips).map((tip) => {
+                          return <li key={tip.toString()}>{tip}</li>;
+                        })}
+                      </ul>
+                    </Typography>
+                    <Divider />
+                    <br />
 
-                      {/* Variations portion */}
-                      <Typography
-                        variant="h6"
-                        style={{ fontWeight: 500, textDecoration: "underline" }}
-                      >
-                        Variations:
-                      </Typography>
-                      <Typography
-                        component={"span"}
-                        style={{ whiteSpace: "pre-line" }}
-                        align="left"
-                      >
-                        <ul>
-                          {NewLineParser(exercise.variations).map(
-                            (variation) => {
-                              return (
-                                <li key={variation.toString()}>{variation}</li>
-                              );
-                            }
-                          )}
-                        </ul>
-                      </Typography>
-                    </Grid>
-                    <Divider orientation="vertical" flexItem />
-
-                    {/* Right Side of the Exercise info */}
-                    <Grid item xs="auto" style={{ width: "45%" }}>
-                      <Typography
-                        variant="h6"
-                        style={{ fontWeight: 500, textDecoration: "underline" }}
-                      >
-                        {"Main muscles worked: " + exercise.targetGroup}
-                      </Typography>
-
-                      <br />
-
-                      {/* Image for each exercise */}
-                      <img height="auto" width="90%" src={exercise.image} />
-                      <Typography
-                        variant="h6"
-                        style={{ fontWeight: 500, textDecoration: "underline" }}
-                      >
-                        {"Video guide: "}
-                      </Typography>
-
-                      {/* Embeded YouTube video */}
-                      <YoutubeEmbed embedId={exercise.video} />
-                    </Grid>
+                    {/* Variations portion */}
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      Variations:
+                    </Typography>
+                    <Typography
+                      component={"span"}
+                      style={{ whiteSpace: "pre-line" }}
+                      align="left"
+                    >
+                      <ul>
+                        {NewLineParser(exercise.variations).map((variation) => {
+                          return (
+                            <li key={variation.toString()}>{variation}</li>
+                          );
+                        })}
+                      </ul>
+                    </Typography>
                   </Grid>
-                </AccordionDetails>
-              </Accordion>
-            )}
-          />
-        </Box>
-      </Container>
-    );
-  }
+                  <Divider orientation="vertical" flexItem />
+
+                  {/* Right Side of the Exercise info */}
+                  <Grid item xs="auto" style={{ width: "45%" }}>
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      {"Main muscles worked: " + exercise.targetGroup}
+                    </Typography>
+
+                    <br />
+
+                    {/* Image for each exercise */}
+                    <img height="auto" width="90%" src={exercise.image} />
+                    <Typography
+                      variant="h6"
+                      style={{ fontWeight: 500, textDecoration: "underline" }}
+                    >
+                      {"Video guide: "}
+                    </Typography>
+
+                    {/* Embeded YouTube video */}
+                    <YoutubeEmbed embedId={exercise.video} />
+                  </Grid>
+                </Grid>
+              </AccordionDetails>
+            </Accordion>
+          )}
+        />
+      </Box>
+    </Container>
+  ) : (
+    <h1>You have no exercises saved, try adding some from our database?</h1>
+  );
 }

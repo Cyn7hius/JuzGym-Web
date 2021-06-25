@@ -23,7 +23,7 @@ function ExerciseList(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const {database, firestoreData, setData} = props;
+  const { database, firestoreData, setData } = props;
 
   function addExercise(uid) {
     const newExercises = [
@@ -227,6 +227,7 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
   }
 
   const [firestoreData, setFirestoreData] = useState([]);
+  const [loading, setLoading] = useState(false);
   function setData(newData) {
     setFirestoreData(newData);
   }
@@ -238,13 +239,21 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
 
     docRef.get().then((doc) => {
       if (doc.exists) {
-        setData(doc.data().Workout);
+        setFirestoreData(doc.data().Workout, setLoading(true));
       } else {
-        setData([]);
+        setFirestoreData([], setLoading(true));
       }
     });
   }, []);
 
   const filteredData = data.filter(CheckExercise);
-  return <ExerciseList database={filteredData} firestoreData={firestoreData} setData={setData} />;
+  return loading ? (
+    <ExerciseList
+      database={filteredData}
+      firestoreData={firestoreData}
+      setData={setData}
+    />
+  ) : (
+    <h1>Loading workouts...</h1>
+  );
 }
