@@ -124,13 +124,12 @@ export default function Home() {
             ))}
           </Grid>
           <div>
-            {/* <h1>Welcome to JuzGym!</h1> */}
+            <br />
             <br />
             <Container>
               <Typography variant={"h3"}>Welcome to JuzGym!</Typography>
               <br />
-              <br />
-              <br />
+
               <Typography variant={"h6"}>What is JuzGym?</Typography>
               <Typography>
                 JuzGym is made to be your one-stop home workout companion. With
@@ -142,18 +141,19 @@ export default function Home() {
               <br />
               <Typography variant={"h6"}>How to use JuzGym?</Typography>
               <Typography>
+                To start, simple click on one of the 2 tabs above. For
+                beginners, we included a{" "}
+                {<A href={"./education/beginnerguide"}>Beginner's Guide</A>}{" "}
+                that includes everything you need to start your fitness journey!
                 We scoured the web to compile and collate exercises into one
                 platform, where you can easily view instructions, tips and even
-                a video demo. Moreover, we included a educational component to
-                provide a step-by-step guide to achieve your fitness goals. To
-                start, simple click on one of the 2 tabs above. For beginners,
-                we included a
-                {<A href={"./education/beginnerguide"}> Beginner's Guide</A>}{" "}
-                that includes everything you need to start your fitness journey!
+                a video demo. If you are signed-in, you can bookmark your
+                favourite exercises, which you can access by clicking on the top
+                right button. Moreover, we included a educational component to
+                provide a step-by-step guide to achieve your fitness goals.
               </Typography>
             </Container>
           </div>
-          );
         </Container>
       </div>
     </div>

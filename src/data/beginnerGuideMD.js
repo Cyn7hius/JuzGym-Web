@@ -17,18 +17,27 @@ export const sectionHeadings = [
 // Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
+# Beginner's Guide
 
-## Introduction
-
-If you’re considering starting to exercise but don’t know where to begin, this article **is for you**. Here’s all you need to know about starting a routine and sticking to it.
-
-**Exercise** and a **healthy diet** go hand in hand when it comes to attaining your fitness goals.
+Whether you are just starting our, or just want to know more about fitness and nutritional information, 
+this guide provides everything you need to know to achieve your fitness goals. 
+Here’s all you need to know about starting a routine and sticking to it.
 
 &nbsp;
+
+## Getting started
+
+Have you ever found yourself thinking "I exercise, so I can eat anything I want" or "I eat healthy, so I don't need to exercise?" 
+That train of thought is what causes unexpected weight gain and unhealthy habits.
+\n
+**Exercise** and a **healthy diet** go hand in hand when it comes to attaining any fitness goals.
+
+
 
 `,
 
   `
+  &nbsp;
 
 ## Why Exercise?
 
@@ -45,9 +54,10 @@ Regular exercise has been shown to improve your health **significantly**. Singap
 
 5. Maintain a healthy weight to help you look and feel good  
 
-&nbsp;  `,
+`,
 
   `
+&nbsp;
 
 ## Types of Exercises
 
@@ -66,10 +76,11 @@ There are many different types of exercises that you can do. Listed below are so
 *   **Flexibility:** These types of exercises help muscle recovery, maintain **range of motion**, and prevent injuries. 
     Examples include yoga or individual muscle-stretch movements.
 
-&nbsp;
 `,
 
   `
+
+&nbsp; 
 
 ## Starting a Workout Plan
 
@@ -104,10 +115,10 @@ There are many different types of exercises that you can do. Listed below are so
    You can choose to increase the weight or the rep counts for each subsequent session. 
    On the other hand, if you feel an unusual ache or strain after a particular exercise, you might consider lowering the weight or rep count or switching out that exercise.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Some Common Terminology
 
@@ -138,10 +149,10 @@ There are many different types of exercises that you can do. Listed below are so
 
 *   **Metabolism:** the process by which your body converts what you eat and drink into energy.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Workout Tips and Tricks
 
@@ -162,10 +173,10 @@ There are many different types of exercises that you can do. Listed below are so
 
 *   Ensure that you have **sufficient rest** between each workout day. This allows your muscles to fully recover and allows you to achieve optimal performance during the workout.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Importance Of A Healthy Diet
 
@@ -178,10 +189,12 @@ Everyone has a different **basal metabolic rate (BMR)**, which is the estimation
 Eating food will increase your caloric intake, whereas exercising burns calories. To attain your fitness goals, 
 a simple method is to consume more calories if your goal is to gain muscle, and to lower your caloric intake if you plan to lose weight
 
-&nbsp;
+
 `,
 
   `
+  &nbsp;
+
 ## The Three Macronutrients
 
 However, not all calories are equal, it can come in the form of **3 macronutrients - carbohydrates, fats or proteins**. 
@@ -202,10 +215,10 @@ vegetable oils (such as olive, canola, sunflower, soy, and corn), nuts, seeds, a
 vitamin D and vitamin E. Bad fats include trans and saturated fats. Foods containing large amounts of saturated fat include red meat, 
 butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm oil are also rich in saturated fat.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Tips For Better Nutrition
 
@@ -232,11 +245,11 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 8. **Prep for the week:** One of the easiest ways to avoid the fast food trap is having **healthy meals** available.
 
-&nbsp;
+
 `,
 
   `
-
+  &nbsp;
 
 ## Frequently Asked Questions:
 
@@ -290,10 +303,15 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 **A:**
 
-&nbsp;
+
 `,
 
   `
+  &nbsp;
+
+## Sample Workout Plans
+
+These workout plans were created by us (the authors of the website) during the Covid-19 Circuit Breaker to be used at home.
 
 ## Dillon’s Complete Push Pull Workout
 
@@ -436,5 +454,18 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 [https://www.healthline.com/nutrition/is-stevia-safe#side-effects](https://www.healthline.com/nutrition/is-stevia-safe#side-effects)
 
 [https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936](https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936)
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
 `,
 ];

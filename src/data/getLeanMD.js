@@ -12,19 +12,24 @@ export const sectionHeadings = [
 // Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
+# Get Lean
+
+Getting the shredded look is a body physique that many strive to achieve. In this guide, we give you tips and tricks to help you achieve this goal.
+
+&nbsp;
 
 ## What is Muscle Tone?
 
 Muscle tone refers to how **lean** we are and how **defined** our muscles appear. Other common terms include getting lean and getting **shredded**. 
-Toning up is a common goal for many. It involves a **delicate balance** of muscle building while not gaining unnecessary fats. 
+It involves a **delicate balance** of muscle building while not gaining unnecessary fats. 
 This can be done by performing **resistance exercise** on top of having a healthy diet in place to achieve a **caloric deficit**.
 
-&nbsp;
 
 `,
 
   `
-
+  &nbsp;
+  
 ## Achieving Toned Muscles
 
 There are many different starting points to getting toned muscles. 
@@ -36,12 +41,11 @@ This allows you to build up the **necessary muscle** underneath your fat layer.
 You can follow our guides on building muscle and losing weight accordingly for more info. 
 In this guide, we will provide additional tips and info to achieve the balance of low fats and high muscle mass
 
-&nbsp;
-
 `,
 
   `
-
+  &nbsp;
+  
 ## A Possible Shortcut?
 
 However, there are ways to shortcut this process by building muscle and losing weight **concurrently**. 
@@ -55,12 +59,12 @@ and you are participating in regular strength training, you may not only be able
 Although this approach is likely not efficient long-term, it is **difficult to achieve**, 
 and the amount of muscle gained may not be as significant as what you would experience on a traditional bulking diet.
 
-&nbsp;
 
 `,
 
   `
-
+  &nbsp;
+  
 ## Supplementing Your Workouts
 
 These tips **complement** your existing workout plan and build upon it. Use these tips to **boost your training effectiveness** 
@@ -79,12 +83,12 @@ by helping you burn more fats and get your heart pumping harder.
 
 5. **Ensure sustainable weight loss:** Drastic weight loss has been shown to have **adverse** health effects. **Do not** restrict calories too much or dehydrate yourself.
 
-&nbsp;
 
 `,
 
   `
-
+  &nbsp;
+  
 ## Ensuring Proper Nutrition
 
 As muscle toning involves a caloric deficit, it is also important to ensure that you are **not eating more than necessary**. 
@@ -112,12 +116,12 @@ Moreover, it is also imperative that you eat **properly and healthily**. Here ar
 5. **Eat more fruits and vegetables:** These provide **invaluable micronutrients** that help improve optimally. 
    Moreover, fruits are a good snack to eat throughout the day as it is calorie light and healthy.
 
-&nbsp;
 
 `,
 
   `
-
+  &nbsp;
+  
 ## Frequently Asked Questions:
 
 **Q:** Is there a way to shrink tummy fat fast?
@@ -144,12 +148,12 @@ Moreover, it is also imperative that you eat **properly and healthily**. Here ar
 
 **A:**
 
-&nbsp;
 
 `,
 
   `
-
+  &nbsp;
+  
 ## Reference
 
 
@@ -165,5 +169,17 @@ Moreover, it is also imperative that you eat **properly and healthily**. Here ar
 *   [https://www.bodybuilding.com/content/get-ripped-your-guide-to-getting-shredded.html](https://www.bodybuilding.com/content/get-ripped-your-guide-to-getting-shredded.html)
 *   [https://www.bodybuilding.com/fun/the-most-nutritious-fruits-and-vegetables.html](https://www.bodybuilding.com/fun/the-most-nutritious-fruits-and-vegetables.html)
 *   [https://www.healthline.com/health/body-fat-percentage-for-abs](https://www.healthline.com/health/body-fat-percentage-for-abs) 
-*   [https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories](https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories)`,
+*   [https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories](https://www.healthline.com/nutrition/does-calorie-counting-work#difficulty-losing-weight-when-counting-calories)
+
+&nbsp;
+  
+&nbsp;
+  
+&nbsp;
+  
+&nbsp;
+  
+&nbsp;
+  
+`,
 ];
