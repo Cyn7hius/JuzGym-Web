@@ -25,9 +25,8 @@ Here’s all you need to know about starting a routine and sticking to it.
 
 &nbsp;
 
-![this is an image](https://i.imgur.com/OPU6Xhh.png)
-![this is an image](https://upload.wikimedia.org/wikipedia/commons/1/11/Test-Logo.svg)
-![this is an image](https://www.flexibleproduction.com/wp-content/uploads/2017/06/test-intelligenza-sociale.jpg)
+![Getting started](https://www.cdc.gov/healthyweight/images/losing-weight/getting_started-small.jpg#center)
+
 
 
 ## Getting started
@@ -68,18 +67,8 @@ Regular exercise has been shown to improve your health **significantly**. Singap
 
 There are many different types of exercises that you can do. Listed below are some of the most common types:
 
-*   **Aerobic:** The core of any fitness program should include some form of **continuous movement**. Examples include swimming, running, and dancing.
 
-*   **Strength:** These exercises help increase **muscle power and strength**. Examples include resistance training, plyometrics, weightlifting, and sprinting.
-
-*   **Calisthenics:** These moves are usually performed **without gym equipment** (body weight exercises) using large muscle groups. 
-    They’re done at a medium aerobic pace. Examples include lunges, situps, pushups, and pullups.
-
-*   **High-intensity interval training (HIIT):** This type of exercise includes **repetitions of short bursts** of high-intensity exercise 
-    followed by low-intensity exercises or rest periods.
-
-*   **Flexibility:** These types of exercises help muscle recovery, maintain **range of motion**, and prevent injuries. 
-    Examples include yoga or individual muscle-stretch movements.
+![Types Of Exercises](https://i.imgur.com/eZuTA1n.png#chart)
 
 `,
 
@@ -202,6 +191,8 @@ a simple method is to consume more calories if your goal is to gain muscle, and 
 
 ## The Three Macronutrients
 
+![The Three Macronutrients](https://i.imgur.com/Y0gDyu9.png#chart)
+
 However, not all calories are equal, it can come in the form of **3 macronutrients - carbohydrates, fats or proteins**. 
 In general, most of the food you consume has a combination of the 3 macronutrients. Ideally you should break down your caloric intake according to the following guidelines:
 
@@ -209,16 +200,8 @@ In general, most of the food you consume has a combination of the 3 macronutrien
 *   20–35% of their calories from fats
 *   10–35% of their calories from proteins 
 
-**Carbohydrate:** Is the main source of energy for the body. They are the sugars, starches, and dietary fiber that occur in plant foods and dairy products. 
-Carbohydrates are mainly found in plant foods like grains, rice, flour etc.
 
-**Protein:**  It’s an important building block of bones, skin, cartilage and blood. In fitness, protein allows you to build and repair muscle tissue. 
-They can also be used as an energy source. Sources of protein include meat, eggs, milk, yogurt and nuts.
 
-**Fat:** People tend to see fat as a bad thing. But there are good fats and bad fats. Good fats include unsaturated fats found in 
-vegetable oils (such as olive, canola, sunflower, soy, and corn), nuts, seeds, and fish. Such good fats help the body absorb vitamin A, 
-vitamin D and vitamin E. Bad fats include trans and saturated fats. Foods containing large amounts of saturated fat include red meat, 
-butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm oil are also rich in saturated fat.
 
 `,
 

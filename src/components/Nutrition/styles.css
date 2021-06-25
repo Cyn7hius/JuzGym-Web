@@ -13,9 +13,16 @@ table tr:nth-child(2n) {
   background: #f6f8fa;
 }
 
-img {
+img[src*="#center"] {
   display: block;
   margin: auto;
   width: 50%;
+  height: auto;
+}
+
+img[src*="#chart"] {
+  display: block;
+  margin: auto;
+  width: 100%;
   height: auto;
 }
