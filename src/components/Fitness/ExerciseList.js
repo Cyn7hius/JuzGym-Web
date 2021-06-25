@@ -16,74 +16,54 @@ import {
   Button,
 } from "@material-ui/core/";
 
-function ExerciseList({ database }) {
+function ExerciseList(props) {
   //const [isScrolling, setIsScrolling] = useState(false);
-
   //Simple function to split the JSON string by \n and returns it as an array
   function NewLineParser(str) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-
-  const [users, setUsersState] = useState([]);
-  const [lock, setLockState] = useState(false);
-
-  const uid = firebase.auth().currentUser?.uid;
-  const db = firebase.firestore();
-  const docRef = db.collection("/users").doc(uid);
+  const {database, firestoreData, setData} = props;
 
   function addExercise(uid) {
     const newExercises = [
-      ...users,
+      ...firestoreData,
       {
         Exercise: uid,
       },
     ];
-    setUsersState(newExercises);
+    setData(newExercises);
   }
 
   function removeExercise(uid) {
-    const newExercises = users.filter((array) => array.Exercise != uid);
-    setUsersState(newExercises);
+    const newExercises = firestoreData.filter((array) => array.Exercise != uid);
+    setData(newExercises);
   }
-
-  /* Sets local array to User's FireStore array if any */
-  useEffect(() => {
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        setUsersState(doc.data().Workout);
-        setLockState(true);
-      } else {
-        setUsersState([]);
-        setLockState(true);
-      }
-    });
-  }, []);
 
   function exerciseButton(event, uid) {
     event.stopPropagation();
     event.preventDefault();
-    if (users.find((array) => array.Exercise == uid) != null) {
+    if (firestoreData.find((array) => array.Exercise == uid) != null) {
       removeExercise(uid);
     } else {
       addExercise(uid);
     }
   }
-  
-  function test(uid) {
-    if (users.find((array) => array.Exercise == uid) != null) {
-      return "Remove from workout"
+
+  function exerciseButtonText(uid) {
+    if (firestoreData.find((array) => array.Exercise == uid) != null) {
+      return "Remove from workout";
     } else {
-      return "Add to workout"
+      return "Add to workout";
     }
   }
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
-    if (lock) {
-      db.collection("/users").doc(uid).set({ Workout: users });
-    }
-  }, [users]);
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users").doc(uid).set({ Workout: firestoreData });
+  }, [firestoreData]);
 
   return (
     <Container>
@@ -110,7 +90,7 @@ function ExerciseList({ database }) {
                   style={{ marginLeft: "auto", marginRight: 0 }}
                   onClick={(event) => exerciseButton(event, exercise.uid)}
                 >
-                  {test(exercise.uid)}
+                  {exerciseButtonText(exercise.uid)}
                 </Button>
               </AccordionSummary>
 
@@ -246,6 +226,25 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
     );
   }
 
+  const [firestoreData, setFirestoreData] = useState([]);
+  function setData(newData) {
+    setFirestoreData(newData);
+  }
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    const docRef = db.collection("/users").doc(uid);
+
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        setFirestoreData(doc.data().Workout);
+      } else {
+        setFirestoreData([]);
+      }
+    });
+  }, []);
+
   const filteredData = data.filter(CheckExercise);
-  return <ExerciseList database={filteredData} />;
+  return <ExerciseList database={filteredData} firestoreData={firestoreData} setData={setData} />;
 }
