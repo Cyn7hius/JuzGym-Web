@@ -25,25 +25,38 @@ export default function UserWorkout() {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-
+  const uid = firebase.auth().currentUser?.uid;
+  const db = firebase.firestore();
+  const docRef = db.collection("/users").doc(uid);
   const [users, setUsersState] = useState([]);
-  const [emptyWorkout, setEmptyWorkout] = useState(false);
+  const [lock, setLockState] = useState(false);
+  docRef.get().then((doc) => {
+    if (doc.exists) {
+      setUsersState(doc.data().Workout);
+      setLockState(true);
+    } else {
+      setUsersState([]);
+      setLockState(true);
+    }
+  });
+
+  // useEffect(() => {
+  //   docRef.get().then((doc) => {
+  //     if (doc.exists) {
+  //       setUsersState(doc.data().Workout);
+  //       setLockState(true);
+  //     } else {
+  //       setUsersState([]);
+  //       setLockState(true);
+  //     }
+  //   });
+  // }, []);
 
   useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    const docRef = db.collection("/users").doc(uid);
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        setUsersState(doc.data().Workout);
-        //Clean this line up please dillon
-        setEmptyWorkout(users.length > 0 ? false : true);
-      } else {
-        setEmptyWorkout(true);
-        setUsersState([]);
-      }
-    });
-  }, []);
+    if (lock) {
+      db.collection("/users").doc(uid).set({ Workout: users });
+    }
+  }, [users]);
 
   var userExercises = [];
   function makeNewArray(uid) {
@@ -53,9 +66,7 @@ export default function UserWorkout() {
 
   users.map(makeNewArray);
 
-  if (emptyWorkout) {
-    return (<h1>You currently have no saved exercises, try adding some of them from the exercise tab!</h1>)
-  } else {
+  if (users.length > 0) {
     return (
       <Container>
         <Box>
@@ -184,6 +195,13 @@ export default function UserWorkout() {
           />
         </Box>
       </Container>
+    );
+  } else {
+    return (
+      <h1>
+        You currently have no saved exercises, try adding some of them from the
+        exercise tab!
+      </h1>
     );
   }
 }

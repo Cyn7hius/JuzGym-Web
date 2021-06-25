@@ -14,7 +14,6 @@ import {
   Grid,
   Box,
   Button,
-  FormControlLabel,
 } from "@material-ui/core/";
 
 function ExerciseList({ database }) {
@@ -33,11 +32,6 @@ function ExerciseList({ database }) {
   const db = firebase.firestore();
   const docRef = db.collection("/users").doc(uid);
 
-  function handleAddExercise(event, uid) {
-    event.preventDefault();
-    addExercise(uid, firebase);
-  }
-
   function addExercise(uid) {
     const newExercises = [
       ...users,
@@ -46,11 +40,6 @@ function ExerciseList({ database }) {
       },
     ];
     setUsersState(newExercises);
-  }
-
-  function handleRemoveExercise(event, uid) {
-    event.preventDefault();
-    removeExercise(uid, firebase);
   }
 
   function removeExercise(uid) {
@@ -123,13 +112,6 @@ function ExerciseList({ database }) {
                 >
                   {test(exercise.uid)}
                 </Button>
-                {/* <FormControlLabel
-                  aria-label="Acknowledge"
-                  onClick={(event) => event.stopPropagation()}
-                  onFocus={(event) => event.stopPropagation()}
-                  control={<Button />}
-                  label="I acknowledge that I should stop the click event propagation"
-                /> */}
               </AccordionSummary>
 
               <AccordionDetails style={{ background: "#f2f2f2" }}>
@@ -203,21 +185,6 @@ function ExerciseList({ database }) {
                         })}
                       </ul>
                     </Typography>
-                    {/*Button*/}
-                    <Button
-                      onClick={(event) =>
-                        handleAddExercise(event, exercise.uid)
-                      }
-                    >
-                      Add To Workout
-                    </Button>
-                    <Button
-                      onClick={(event) =>
-                        handleRemoveExercise(event, exercise.uid)
-                      }
-                    >
-                      Remove From Workout
-                    </Button>
                   </Grid>
                   <Divider orientation="vertical" flexItem />
 
