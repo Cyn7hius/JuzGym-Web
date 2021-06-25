@@ -238,9 +238,9 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
 
     docRef.get().then((doc) => {
       if (doc.exists) {
-        setFirestoreData(doc.data().Workout);
+        setData(doc.data().Workout);
       } else {
-        setFirestoreData([]);
+        setData([]);
       }
     });
   }, []);
