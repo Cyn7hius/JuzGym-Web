@@ -25,6 +25,11 @@ Here’s all you need to know about starting a routine and sticking to it.
 
 &nbsp;
 
+![this is an image](https://i.imgur.com/OPU6Xhh.png)
+![this is an image](https://upload.wikimedia.org/wikipedia/commons/1/11/Test-Logo.svg)
+![this is an image](https://www.flexibleproduction.com/wp-content/uploads/2017/06/test-intelligenza-sociale.jpg)
+
+
 ## Getting started
 
 Have you ever found yourself thinking "I exercise, so I can eat anything I want" or "I eat healthy, so I don't need to exercise?" 
