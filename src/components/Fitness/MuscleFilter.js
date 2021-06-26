@@ -11,17 +11,12 @@ import {
 } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-    minWidth: 300,
-    width: "100%",
-  },
   image: {
     position: "relative",
     height: 200,
     [theme.breakpoints.down("xs")]: {
-      width: "100% !important", // Overrides inline-style
+      //width: "100% !important", // Overrides inline-style
+      width: "100%",
       height: 100,
     },
     "&:hover, &$focusVisible": {
@@ -56,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     bottom: 0,
     backgroundSize: "cover",
-    backgroundPosition: "center 40%",
+    backgroundPosition: "center 50%",
   },
   imageBackdrop: {
     position: "absolute",
@@ -85,14 +80,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function MuscleSelector({ equipmentFilter }) {
+function MuscleSelector() {
   const classes = useStyles();
   const path = usePath();
 
   return (
     <div style={{ margin: "3%" }}>
       <div>
-        <h1> {equipmentFilter} EXERCISES</h1>
+        <h1> Which muscle groups are you targetting?</h1>
         <br />
 
         <Container className={classes.root}>
@@ -105,8 +100,8 @@ function MuscleSelector({ equipmentFilter }) {
                   key={images.title}
                   className={classes.image}
                   style={{
-                    width: "100%",
-                    height: "250px", //hardcoded
+                    width: "32vw",
+                    height: "30vh", //hardcoded
                   }}
                 >
                   <span
@@ -139,30 +134,31 @@ function MuscleSelector({ equipmentFilter }) {
   );
 }
 
-export default function MuscleFilter({ equipmentFilter }) {
+export default function MuscleFilter(props) {
+  const equipment = props.equipmentFilter;
   const routes = {
-    "/": () => <MuscleSelector equipmentFilter={equipmentFilter} />,
+    "/": () => <MuscleSelector />,
     "/core*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="CORE AND BACK"
       />
     ),
     "/upper*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="UPPER BODY"
       />
     ),
     "/lower*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="LOWER BODY"
       />
     ),
     "/all*": () => (
       <ExerciseList
-        equipmentFilter={equipmentFilter}
+        equipmentFilter={equipment}
         muscleFilter="ALL BODY PARTS"
       />
     ),

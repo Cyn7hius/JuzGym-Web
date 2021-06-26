@@ -22,7 +22,7 @@ export const images = [
 
   {
     id: 3,
-    title: "General Nutrition",
+    title: "Beginner's Guide",
     url: "https://debbiesdream.org/wp-content/uploads/2018/08/Nutrition-300x210.jpg",
     handle: "/beginnerguide",
   },

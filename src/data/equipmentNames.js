@@ -10,7 +10,7 @@ export const images = [
     id: 1,
     title: "Resistance Bands",
     url: "https://i.imgur.com/sCDv3zt.jpg",
-    handle: "/resbands",
+    handle: "/bands",
   },
 
   {

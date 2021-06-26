@@ -13,6 +13,13 @@ export const sectionHeadings = [
 // Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
+# Muscle Building
+
+If your goal is to build muscles or gain muscle strength, this guide is for you!
+
+&nbsp;
+
+![Strong Man](https://cdn2.coachmag.co.uk/sites/coachmag/files/2019/02/how-to-build-muscle.jpg#center)
 
 ## What is Muscle Building?
 
@@ -25,10 +32,11 @@ getting sufficient amounts of protein and overall nutrients.
 When performing resistance training, you are actually causing tiny tears known as **micro-tears** in the muscle fibers, 
 which the body then repairs and adapts the muscles to better handle the stimulus that caused the damage. This is the process by which muscles grow.
 
-&nbsp;
+
 `,
 
   `
+&nbsp; 
 
 ## The Role of Proper Nutrition
 
@@ -52,33 +60,20 @@ Consuming a **right balance** of nutrients is vital to keep your body healthy an
 To gain muscle, you should aim for a caloric surplus of about 200 to 300kcal a day. 
 This can be easily achieved by drinking a cup of milk a day for example, or having nuts or fruits as a healthy snack throughout the day.
 
-&nbsp;
-
 `,
 
   `
+  &nbsp; 
 
 ## Starting your Muscle Building Workout 
 
-**Firstly** you should find a fixed set of exercises that you are comfortable doing. 
-Ideally the exercises should comprise a mixture of compound and isolation exercises and should work all body parts to achieve a balanced physique. 
+![Flow chart](https://i.imgur.com/QUwa2zI.png#chart)
 
-**Next,** When doing resistance training, aim for doing each exercise with sufficiently heavy weights. 
-A simple gauge to identify a suitable weight is that you should not be able to perform more than 20 reps with that weight. 
-Note down this weight, it is called your working weight
-
-**Following that,** you should set aside time to have a consistent workout routine where each workout day per week you perform the same workout. 
-This not only trains your whole body, but also allows you to better track your progress over time.
-
-**Lastly,** know when to push yourself. After a few weeks or months of performing the same workout, your body will naturally get stronger, 
-allowing you to lift heavier weights or perform more reps. Thus it is ideal to increase the intensity of training by increasing your 
-working weight to continuously challenge your body, this is known as “progressive overloading”.
-
-&nbsp;
 
 `,
 
   `
+  &nbsp; 
 
 ## Form and Dealing with Injuries
 
@@ -93,28 +88,20 @@ It is always good to **listen to your body** and understand when your body needs
 If you are unsure if you are doing the exercise correctly, the **safe bet** is always to decrease weights or completely stop doing that exercise. 
 Like with everything else, it is vital to train for the **long term**, rather than risk it for short term gains.
 
-&nbsp;
 
 `,
 
   `
+  &nbsp; 
 
 ## Muscle Building VS Strength Training
 
-**Muscle building** (or hypertrophy) is the gaining of muscle mass whereas strength training focuses on increasing the functional strength of your muscles. 
-While training for either goal has many overlaps, the key difference lies in the type of exercise that you do.
 
-Muscle building has a higher training volume with more frequent workouts and shorter rest periods in between sets. 
-The workouts include more sets and reps with a lower weight. 
-
-**Strength training** has a lower training volume (fewer days, longer rest periods) but higher intensity. 
-The goal is to lift heavier weights with fewer reps and sets.
-
-&nbsp;
-
+![Comparision Image](https://i.imgur.com/4f1g7OG.png#chart)
 `,
 
   `
+  &nbsp; 
 
 ## Muscle Building Cheat Sheet
 
@@ -133,11 +120,11 @@ The goal is to lift heavier weights with fewer reps and sets.
 
 *   Get plenty of **rest!** Aim to rest each muscle group for 48 hr after exercising that muscle group. Muscle building and recovery primarily happens during sleep.
 
-&nbsp;
 
 `,
 
   `
+  &nbsp; 
 
 ## Frequently Asked Questions:
 
@@ -170,7 +157,9 @@ The goal is to lift heavier weights with fewer reps and sets.
 **A:** It is recommended to consume your protein supplements 15-60 minutes after a workout. However, it is **more important** to consume sufficient 
        protein throughout the day, and it is fine to exceed that window.
 
-Meals (place holder)
+
+
+Meals **(placeholder)**
 
 
 
@@ -190,11 +179,11 @@ Meals (place holder)
 *   Tuna: 23g of protein per 100g
 *   Grilled pork chop: 31g per 100g
 
-&nbsp;
 
 `,
 
   `
+  &nbsp; 
 
 ## Reference:
 
@@ -209,6 +198,16 @@ Meals (place holder)
 *   [https://fitbod.me/blog/can-bodyweight-exercises-build-muscle/](https://fitbod.me/blog/can-bodyweight-exercises-build-muscle/)
 *   [https://my.clevelandclinic.org/health/articles/11208-fat-what-you-need-to-know](https://my.clevelandclinic.org/health/articles/11208-fat-what-you-need-to-know)
 *   [https://www.healthline.com/nutrition/best-time-to-take-protein](https://www.healthline.com/nutrition/best-time-to-take-protein) 
+
+&nbsp; 
+
+&nbsp; 
+
+&nbsp; 
+
+&nbsp; 
+
+&nbsp; 
 
 `,
 ];
