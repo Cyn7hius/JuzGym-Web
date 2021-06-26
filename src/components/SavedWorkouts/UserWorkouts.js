@@ -27,19 +27,24 @@ export default function UserWorkout() {
   }
 
   useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    const docRef = db.collection("/users").doc(uid);
-
-    docRef.get().then((doc) => {
-      if (doc.exists) {
-        setFirestoreData(doc.data().Workout, setLoading(true));
-        console.log("Found Firestore Data");
-        console.log(loading);
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        const db = firebase.firestore();
+        const docRef = db.collection("/users").doc(uid);
+    
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            setFirestoreData(doc.data().Workout, setLoading(true));
+          } else {
+            setFirestoreData([], setLoading(true));
+          }
+        });
       } else {
-        setFirestoreData([], setLoading(true));
-        console.log("Did not find Firestore Data");
-        console.log(loading);
+        // User is signed out
+        // ...
       }
     });
   }, []);
@@ -50,7 +55,6 @@ export default function UserWorkout() {
       <ExerciseDatabase
         firestoreData={firestoreData}
         setData={setData}
-        loading={loading}
       />
     </div>
   ) : (
@@ -225,8 +229,7 @@ function ExerciseDatabase(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const { firestoreData, setData, loading } = props;
-  //The curated database
+  const { firestoreData, setData} = props;
   // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
   const [newDatabase, setNewDatabase] = useState([]);
   useEffect(() => {
@@ -268,14 +271,11 @@ function ExerciseDatabase(props) {
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
-    if (firestoreData.length) {
-      console.log(firestoreData + " LOWER HALF DATABASE");
-      console.log(loading + " LOWER HALF BOOLEAN");
       const uid = firebase.auth().currentUser?.uid;
       const db = firebase.firestore();
       db.collection("/users").doc(uid).set({ Workout: firestoreData });
-    } 
   }, [firestoreData]);
+
   return firestoreData.length ? (
     <Container>
       <Box>
