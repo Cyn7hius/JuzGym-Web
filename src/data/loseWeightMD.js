@@ -1,5 +1,6 @@
 // Table of contents; The headings of each section
 export const sectionHeadings = [
+  "Introduction",
   "Calorie Management",
   "Watch what you eat",
   "Sticking to a diet plan",
@@ -12,17 +13,23 @@ export const sectionHeadings = [
 // Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
+# Losing Weight
+
+Going on a diet is a daunting task for many. In this guide, we shed some light on some common weight-loss misconceptions, and provide
+tips and tricks to help you on your journey!
+
+&nbsp;
+
 ## Sustainable weight loss
 
 Many people want to find the quickest possible way to lose weight. However, some of these methods are usually temporary and often **not sustainable** 
 in the long run. There is **no silver bullet** to weight loss. A healthy lifestyle, together with a caloric deficit, is the best **long-term** weight 
 management strategy to lose weight permanently and healthily. 
 
-&nbsp;
-
 `,
 
   `
+&nbsp;
 
 ## Calorie Management
 
@@ -37,11 +44,10 @@ If you want to lose weight, the number of calories you consume must be less than
 While calorie intake is the **main factor** to controlling your weight, other factors include your genetics, your **natural metabolism**, 
 as well as the contents of the food that you consume. These factors vary in their importance from person to person.
 
-&nbsp;
-
 `,
 
   `
+  &nbsp;
 
 ## Watch what you eat
 
@@ -65,11 +71,10 @@ as they might have side effects that benefit or harm your diet.
 *   **Consume at least one source of protein per meal:** This can include a tub of greek yogurt, a cup of milk, or a fillet of fish. 
     Protein has been shown to **increase your metabolic rate** and stave off hunger longer.
 
-&nbsp;
-
 `,
 
   `
+  &nbsp;
 
 ## Sticking to a diet plan
 
@@ -85,11 +90,11 @@ and only having healthy snacks lying around. When eating out, you can consider s
 and **plan your meal in advance** to prevent overeating.
 
 
-&nbsp;
-
 `,
 
   `
+  &nbsp;
+
 ## The importance of exercise
 
 Exercising helps to **increase the amount of calories burnt** each day. Moreover it also **strengthens** your heart and improves your circulation, 
@@ -103,13 +108,13 @@ Moreover, you can also perform **resistance training** to train your muscles. Th
 while also improving bone and muscle strength.
 
 
-&nbsp;
-
 `,
 
   `
-## Weight loss cheat sheet
 
+  &nbsp;
+
+## Weight loss cheat sheet
 
 
 1. **Smaller serving sizes:** When taking out, you can opt for a smaller portion of rice to prevent overeating.
@@ -133,11 +138,10 @@ while also improving bone and muscle strength.
 8. **Exercise is important:** It helps to improve overall health while also speeds up your metabolism.
 
 
-&nbsp;
-
 `,
 
   `
+&nbsp;
 
 ## Frequently Asked Questions
 
@@ -175,11 +179,12 @@ while also improving bone and muscle strength.
        drink, exercise, and even sleep. As such, it is good to measure your weight first thing in the morning as a good **fixed timing**.
 
 
-&nbsp;
-
 `,
 
   `
+
+  &nbsp;
+
 ## Reference
 
 
@@ -191,5 +196,17 @@ while also improving bone and muscle strength.
 *   [https://www.healthline.com/health/fitness-exercise/working-out-on-an-empty-stomach](https://www.healthline.com/health/fitness-exercise/working-out-on-an-empty-stomach)
 *   [https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss/art-20047752](https://www.mayoclinic.org/healthy-lifestyle/weight-loss/in-depth/weight-loss/art-20047752)
 *   [https://www.hsph.harvard.edu/nutritionsource/healthy-weight/diet-reviews/intermittent-fasting/](https://www.hsph.harvard.edu/nutritionsource/healthy-weight/diet-reviews/intermittent-fasting/)
-*   [https://www.activehealth.sg/read/nutrition/losing-weight-without-exercise-truths-and-misconceptions](https://www.activehealth.sg/read/nutrition/losing-weight-without-exercise-truths-and-misconceptions) `,
+*   [https://www.activehealth.sg/read/nutrition/losing-weight-without-exercise-truths-and-misconceptions](https://www.activehealth.sg/read/nutrition/losing-weight-without-exercise-truths-and-misconceptions) 
+
+&nbsp;
+
+&nbsp;
+
+&nbsp; 
+
+&nbsp; 
+
+&nbsp; 
+
+`,
 ];

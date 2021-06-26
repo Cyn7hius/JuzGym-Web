@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
-import Markdown from "react-markdown";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 import { Button, Typography, Container, Box, Paper } from "@material-ui/core";
-
 import { article, sectionHeadings } from "../../data/beginnerGuideMD";
+
+import "./styles.css";
 
 export default function BeginnerGuide() {
   // Used a useRef hook to get a reference for each section
@@ -43,7 +45,12 @@ export default function BeginnerGuide() {
             {/* Map each section to a Markdown Component to be displayed, ties in together with the refs to allow scroll to certain sections */}
             {article.map((sections, index) => (
               <div ref={sectionsRef[index]}>
-                <Markdown children={sections} />
+                <ReactMarkdown
+                  escepeHTML={true}
+                  skipHTML={false}
+                  remarkPlugins={[gfm]}
+                  children={sections}
+                />
               </div>
             ))}
           </Typography>

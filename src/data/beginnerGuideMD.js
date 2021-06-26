@@ -10,24 +10,38 @@ export const sectionHeadings = [
   "The Three Macronutrients",
   "Tips For Better Nutrition",
   "Frequently Asked Questions",
+  "Sample Workout Plans",
   "References",
 ];
 
 // Content of the article, stored in an array, split into sections ordered by headings
 export const article = [
   `
+# Beginner's Guide
 
-## Introduction
-
-If you’re considering starting to exercise but don’t know where to begin, this article **is for you**. Here’s all you need to know about starting a routine and sticking to it.
-
-**Exercise** and a **healthy diet** go hand in hand when it comes to attaining your fitness goals.
+Whether you are just starting our, or just want to know more about fitness and nutritional information, 
+this guide provides everything you need to know to achieve your fitness goals. 
+Here’s all you need to know about starting a routine and sticking to it.
 
 &nbsp;
+
+![Getting started](https://www.cdc.gov/healthyweight/images/losing-weight/getting_started-small.jpg#center)
+
+
+
+## Getting started
+
+Have you ever found yourself thinking "I exercise, so I can eat anything I want" or "I eat healthy, so I don't need to exercise?" 
+That train of thought is what causes unexpected weight gain and unhealthy habits.
+\n
+**Exercise** and a **healthy diet** go hand in hand when it comes to attaining any fitness goals.
+
+
 
 `,
 
   `
+  &nbsp;
 
 ## Why Exercise?
 
@@ -44,31 +58,23 @@ Regular exercise has been shown to improve your health **significantly**. Singap
 
 5. Maintain a healthy weight to help you look and feel good  
 
-&nbsp;  `,
+`,
 
   `
+&nbsp;
 
 ## Types of Exercises
 
 There are many different types of exercises that you can do. Listed below are some of the most common types:
 
-*   **Aerobic:** The core of any fitness program should include some form of **continuous movement**. Examples include swimming, running, and dancing.
 
-*   **Strength:** These exercises help increase **muscle power and strength**. Examples include resistance training, plyometrics, weightlifting, and sprinting.
+![Types Of Exercises](https://i.imgur.com/eZuTA1n.png#chart)
 
-*   **Calisthenics:** These moves are usually performed **without gym equipment** (body weight exercises) using large muscle groups. 
-    They’re done at a medium aerobic pace. Examples include lunges, situps, pushups, and pullups.
-
-*   **High-intensity interval training (HIIT):** This type of exercise includes **repetitions of short bursts** of high-intensity exercise 
-    followed by low-intensity exercises or rest periods.
-
-*   **Flexibility:** These types of exercises help muscle recovery, maintain **range of motion**, and prevent injuries. 
-    Examples include yoga or individual muscle-stretch movements.
-
-&nbsp;
 `,
 
   `
+
+&nbsp; 
 
 ## Starting a Workout Plan
 
@@ -103,10 +109,10 @@ There are many different types of exercises that you can do. Listed below are so
    You can choose to increase the weight or the rep counts for each subsequent session. 
    On the other hand, if you feel an unusual ache or strain after a particular exercise, you might consider lowering the weight or rep count or switching out that exercise.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Some Common Terminology
 
@@ -137,10 +143,10 @@ There are many different types of exercises that you can do. Listed below are so
 
 *   **Metabolism:** the process by which your body converts what you eat and drink into energy.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Workout Tips and Tricks
 
@@ -161,10 +167,10 @@ There are many different types of exercises that you can do. Listed below are so
 
 *   Ensure that you have **sufficient rest** between each workout day. This allows your muscles to fully recover and allows you to achieve optimal performance during the workout.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Importance Of A Healthy Diet
 
@@ -177,11 +183,15 @@ Everyone has a different **basal metabolic rate (BMR)**, which is the estimation
 Eating food will increase your caloric intake, whereas exercising burns calories. To attain your fitness goals, 
 a simple method is to consume more calories if your goal is to gain muscle, and to lower your caloric intake if you plan to lose weight
 
-&nbsp;
+
 `,
 
   `
+  &nbsp;
+
 ## The Three Macronutrients
+
+![The Three Macronutrients](https://i.imgur.com/Y0gDyu9.png#chart)
 
 However, not all calories are equal, it can come in the form of **3 macronutrients - carbohydrates, fats or proteins**. 
 In general, most of the food you consume has a combination of the 3 macronutrients. Ideally you should break down your caloric intake according to the following guidelines:
@@ -190,21 +200,13 @@ In general, most of the food you consume has a combination of the 3 macronutrien
 *   20–35% of their calories from fats
 *   10–35% of their calories from proteins 
 
-**Carbohydrate:** Is the main source of energy for the body. They are the sugars, starches, and dietary fiber that occur in plant foods and dairy products. 
-Carbohydrates are mainly found in plant foods like grains, rice, flour etc.
 
-**Protein:**  It’s an important building block of bones, skin, cartilage and blood. In fitness, protein allows you to build and repair muscle tissue. 
-They can also be used as an energy source. Sources of protein include meat, eggs, milk, yogurt and nuts.
 
-**Fat:** People tend to see fat as a bad thing. But there are good fats and bad fats. Good fats include unsaturated fats found in 
-vegetable oils (such as olive, canola, sunflower, soy, and corn), nuts, seeds, and fish. Such good fats help the body absorb vitamin A, 
-vitamin D and vitamin E. Bad fats include trans and saturated fats. Foods containing large amounts of saturated fat include red meat, 
-butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm oil are also rich in saturated fat.
 
-&nbsp;
 `,
 
   `
+  &nbsp;
 
 ## Tips For Better Nutrition
 
@@ -231,11 +233,11 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 8. **Prep for the week:** One of the easiest ways to avoid the fast food trap is having **healthy meals** available.
 
-&nbsp;
+
 `,
 
   `
-
+  &nbsp;
 
 ## Frequently Asked Questions:
 
@@ -289,11 +291,136 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 
 **A:**
 
-&nbsp;
+
 `,
 
   `
+  &nbsp;
 
+## Sample Workout Plans
+
+These workout plans were created by us (the authors of the website) during the Covid-19 Circuit Breaker to be used at home.
+
+## Dillon’s Complete Push Pull Workout
+
+
+
+*   Each muscle group that we are focusing in this workout is targeted 2-3 times
+*   Try not to work the same muscle group in consecutive exercises
+*   Equipment used: Dumbbell, Bodyweight, Resistance Band
+*   7 day plan: Pull → Push → Legs → Rest → Rest → Pull → Push
+
+
+### Pull Workout
+
+*   Focuses on training all the upper body **pulling** muscles, i.e. the back and biceps primarily
+*   Start off the workout with a compound exercise to warm up all the muscle groups 
+
+
+|  Exercise                                    | Set| Reps    | Targeted Muscles                     |
+| -------------------------------------------- | -- | ------- | -------------------------------------|
+| Pullups                                      | 3  | 10      | Abs, Shoulders, Biceps, Upper Back   |
+| Dumbbell Rows                                | 3  | 10      | Lats, Biceps                         |
+| Hammer Curls                                 | 3  | 10      | Bicep, Forearms                      |
+| Rear Delt Flyes + Band Pull Aparts Superset  | 5  | 20      | Upper Back, Shoulders                |
+| Dumbbell Curls                               | 3  | 10      | Bicep                                |
+| Dead Hang                                    | 3  | 60 sec  | Upper Back, Shoulders, Forearms      |
+
+
+### Push Workout
+
+
+
+*   Focuses on training all the upper body **pushing** muscles, i.e. the chest, shoulders and tricep primarily
+*   Your first exercise can have more sets that your other exercises as you would have the most energy for your workout at the start of the workout
+
+
+
+|Exercise                                                             |Sets |Reps |Targeted Muscles           |
+|-------------------------------------------------------------------- |---- |---- |---------------------------|
+|Dumbbell Floor Press                                                 |5    |10   |Chest, Triceps, Shoulders  |
+|Dumbbell Overhead Press                                              |3    |10   |Shoulders                  |
+|Chest Dips                                                           |3    |10   |Chest, Triceps             |
+|Seated Dumbbell Tricep Extensions + Dumbbell Lateral Raise Superset  |5    |20   |Triceps, Shoulders         |
+|Push Ups                                                             |3    |20   |Chest, Triceps, Shoulders  |
+
+
+
+
+### Legs Workout
+
+
+
+*   Focuses on training all the Lower Body muscles, i.e. the gluteus maximus, quadriceps, hamstrings, calves and back as well
+*   Make sure you rest properly between each exercise and try to push through the entire workout for best effect
+
+
+|Exercise                        |Sets|Reps|Targeted Muscles                                |
+|------------------------------- |--- |--- |----------------------------------------------- |
+|Dumbbell Squats                 |5   |10  |Gluteus maximus, Quadriceps, Hamstrings, Calves |
+|Dumbbell Lunges (to the front)  |3   |10  |Gluteus maximus, Quadriceps, Hamstrings         |
+|Dumbbell Calf Raises            |5   |20  |Calves                                          |
+|Dumbbell Lunges (to the side)   |3   |10  |Gluteus maximus, Quadriceps, Hamstrings         | 
+
+
+&nbsp;
+
+## Calvin’s 3 Day Home Workout
+
+
+
+*   I used the "Big-Three" exercises (Deadlifts, Bench Press, Squads) as the primary exercise of each workout day
+*   My goal is to increase muscle mass as well as to gain strength
+*   For each of the exercises, I do a superset of 2 exercises from different muscle group to maximise heart pump. 
+*   Doing both exercises consecutively is one set
+*   Equipment used: Dumbbell, Bodyweight, Resistance Band
+*   However most of the dumbbell exercises can be replaced with Bodyweight or Resistance Band Variations
+*   7 day plan: Workout 1→ Rest→ Workout 2 → Rest → Workout 3 → Rest→ Rest
+
+
+### Workout Day 1
+
+*   The main exercise for this workout is the Deadlift, which is a compound exercises and works your entire body
+*   The other exercises provide a balanced workout for the rest of the body
+
+
+|Exercise                                                 |Sets|Reps                                          |Targeted muscles:         |
+|-------------------------------------------------------- |--- |--------------------------------------------- |--------------------------|
+|Dumbbell Stiff-Leg Single-Leg Deadlift + Dumbbell Shrugs |5   |10 (Bicep curls)  Do to fatigue (Shrugs)      |Hamstring, Glutes, Traps  |
+|Dumbbell Bicep Curls + Dumbbells Wrist Curls             |5   |10 (Bicep curls) Do to fatigue (Wrist Curls)  |Biceps, Forearm           |
+|Lateral Raise  + Dumbbell Calf Raises                    |5   |10 (Lateral Raise) Do to Fatigue (Calf Raise) |Shoulder, Traps, Calves   |
+|Leg Raises + V-ups                                       |5   |10 (Leg Raises) Do to Fatigue (V-ups)         |Core                      |
+
+
+
+### Workout Day 2
+
+*   The main exercise for this workout is the Squats, which is a compound exercises and works your entire body
+*   The other exercises provide a balanced workout for the rest of the body
+
+|Exercise                                                 |Sets|Reps                                   |Targeted muscles                  |
+|-------------------------------------------------------- |--- |-------------------------------------- |--------------------------------- |
+|Dumbbell Bulgarian Split Squat + Dumbbell Shoulder Flys  |5   |10 (Both)                              |Hamstring, Quads, Back, Shoulders |
+|Resistance Band Chest Fly + Planks                       |5   |10 (Chest Fly) 1 minute (Planks)       |Chest, Core                       |
+|Seated Dumbbell Shoulder Press + Hammer Curls            |5   |10 (Both)                              |Shoulder, Biceps, Forearms        |
+|Pullups + Hanging Leg Raises                             |5   |7 (Pullups) Do to Fatigue (Leg Raises) |Back, Forearms, Lats, Core        |
+
+
+
+### Workout Day 3
+
+*   The main exercise for this workout is the Chest Press, which is a compound exercises and works your entire body
+*   The other exercises provide a balanced workout for the rest of the body
+
+|Exercise                                                    |Sets|Reps                                       |Targeted muscles                    |
+|----------------------------------------------------------- |--- |------------------------------------------ |----------------------------------- |
+|Resistance Band Chest Press + Seated Tricep Extension       |5   |10 (Both)                                  |Chest, Triceps                      |
+|Dumbbell Rows + Dumbbells Lower Chest Fly                   |5   |10 (Both)                                  |Lats, Lower Chest, Biceps, Forearm  |
+|Standing Dumbbell Shoulder Press + Overhand Dumbbell Curls  |5   |10 (Both)                                  |Shoulder, Forearm                   |
+|Standing Chest Press + Push Ups                             |5   |10 (Chest Press)  Do to Fatigue (Push Ups) |Triceps, Chest, Shoulders           |
+`,
+
+  `
 ## Reference
 
 [https://www.healthhub.sg/programmes/142/moveit](https://www.healthhub.sg/programmes/142/moveit)
@@ -315,6 +442,18 @@ butter, cheese, and ice cream. Some plant-based fats like coconut oil and palm o
 [https://www.healthline.com/nutrition/is-stevia-safe#side-effects](https://www.healthline.com/nutrition/is-stevia-safe#side-effects)
 
 [https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936](https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/in-depth/artificial-sweeteners/art-20046936)
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
 
 `,
 ];
