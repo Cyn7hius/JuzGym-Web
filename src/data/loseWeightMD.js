@@ -20,6 +20,8 @@ tips and tricks to help you on your journey!
 
 &nbsp;
 
+![Weight Loss](https://res.cloudinary.com/grohealth/image/upload/$wpsize_!post-thumbnail!,w_1000,h_600,c_fill,g_auto/v1588092399/Unexplained-Weight-Loss.png#center)
+
 ## Sustainable weight loss
 
 Many people want to find the quickest possible way to lose weight. However, some of these methods are usually temporary and often **not sustainable** 
@@ -54,22 +56,8 @@ as well as the contents of the food that you consume. These factors vary in thei
 While cutting calories is a **sure fire** way to lose weight, it is not the only factor. What you eat is also important, 
 as they might have side effects that benefit or harm your diet.
 
-*   **Eat low GI food:** GI relates to a food’s sugar content and how fast it releases glucose in the body. 
-    For instance, certain grains like brown rice, wholemeal and oats have a lower **Glycemic Index (GI)**. 
-    Thus **low GI** food will digest slower and cause you to feel full longer. 
+![What to eat](https://i.imgur.com/SXKMRVs.png#chart)
 
-*   **Avoid foods with high fat content:** fats are more **calorie dense** as compared to carbohydrates or protein. 
-    1g of fats has more than double the amount of calories as in 1g of protein or carbohydrates
-
-*   **Avoid sugars:** they are **“empty” calories**, or calories with no real nutritional benefit. 
-    Sugars will cause you to unknowingly increase your caloric intake. Sugars can be found in many disguised forms, 
-    including “healthy” breakfast cereals, flavoured yogurt and pasta sauces.
-
-*   **Add more fruits and vegetables to your diet:** Fruits and vegetables are naturally low in calories and have a high water content, 
-    allowing you to **feel full** without consuming much calories. Moreover, they help with digestion and overall health!
-
-*   **Consume at least one source of protein per meal:** This can include a tub of greek yogurt, a cup of milk, or a fillet of fish. 
-    Protein has been shown to **increase your metabolic rate** and stave off hunger longer.
 
 `,
 
@@ -96,6 +84,8 @@ and **plan your meal in advance** to prevent overeating.
   &nbsp;
 
 ## The importance of exercise
+
+![Running woman](https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/female-runner-running-at-summer-park-trail-healthy-royalty-free-image-1591373138.jpg#center)
 
 Exercising helps to **increase the amount of calories burnt** each day. Moreover it also **strengthens** your heart and improves your circulation, 
 and also helps to improve your mental health and mood.
