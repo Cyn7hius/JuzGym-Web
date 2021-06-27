@@ -19,7 +19,7 @@ import SimpleTabs from "./toolbars";
 import HomeIcon from "@material-ui/icons/Home";
 import { A } from "hookrouter";
 import "./styles.css";
-import Workout from "./components/SavedWorkouts/UserWorkouts"
+import Workout from "./components/SavedWorkouts/UserWorkouts";
 
 export default function App() {
   return (
@@ -118,10 +118,15 @@ function AppShell() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {/* <MenuItem onClick={() => handleLogout(firebase)}> */}
-                <MenuItem component={A} href="/savedworkouts" onClick={() => Workout}>
-                  {/* Logout */}
+                <MenuItem
+                  component={A}
+                  href="/savedworkouts"
+                  onClick={() => Workout}
+                >
                   Saved Workouts
+                </MenuItem>
+                <MenuItem onClick={() => handleLogout(firebase)}>
+                  Logout
                 </MenuItem>
               </Menu>
             </div>
