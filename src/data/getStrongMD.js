@@ -67,7 +67,7 @@ This can be easily achieved by drinking a cup of milk a day for example, or havi
 
 ## Starting your Muscle Building Workout 
 
-![Flow chart](https://i.imgur.com/QUwa2zI.png#chart)
+![Flow chart](https://i.imgur.com/A3ZWaip.png#chart)
 
 
 `,

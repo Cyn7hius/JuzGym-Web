@@ -18,6 +18,8 @@ Getting the shredded look is a body physique that many strive to achieve. In thi
 
 &nbsp;
 
+![Lean](https://i.imgur.com/ix8NTee.png#chart)
+
 ## What is Muscle Tone?
 
 Muscle tone refers to how **lean** we are and how **defined** our muscles appear. Other common terms include getting lean and getting **shredded**. 
@@ -70,19 +72,7 @@ and the amount of muscle gained may not be as significant as what you would expe
 These tips **complement** your existing workout plan and build upon it. Use these tips to **boost your training effectiveness** 
 by helping you burn more fats and get your heart pumping harder.
 
-1. **Focus on big motions:** By engaging a greater number of muscle groups than single-joint movements, 
-   multi joint exercises like **compound exercises** allow you to lift far heavier loads, which raises your metabolism both during and after your workout.
-
-2. **Use heavier weights:** While lighter weights allow you to burn more calories, 
-   heavier weights helps **boost your metabolism** which will have far greater effect on weight loss overall
-
-3. **Do denser workouts:** By **cutting down on rest times** after each set, you can achieve greater workout density while continuously pushing your body. 
-   Doing **supersets** can also further improve weight loss.
-   
-4. **Do HIIT exercises:** It is a quick way to burn calories effectively. Moreover, it provides a greater **variety** of exercises to make cardio more enjoyable.
-
-5. **Ensure sustainable weight loss:** Drastic weight loss has been shown to have **adverse** health effects. **Do not** restrict calories too much or dehydrate yourself.
-
+![Supplementing your workouts](https://i.imgur.com/Nb2XSLe.png#chart)
 
 `,
 
@@ -94,27 +84,7 @@ by helping you burn more fats and get your heart pumping harder.
 As muscle toning involves a caloric deficit, it is also important to ensure that you are **not eating more than necessary**. 
 Moreover, it is also imperative that you eat **properly and healthily**. Here are some tips to achieve optimal nutrition.
 
-
-
-1. **Hydration:** The only drinks you should consume within a cutting diet are **water, green tea and black coffee**. 
-   Other drinks either contain **extra calories** or have artificial sweeteners and other things that can **detract** from your progress. 
-   Water is calorie free, keeps you hydrated and is basically all you need to drink. 
-
-2. **Sugars:** One of the best ways to cut is to opt for **low GI** (Glycemic index) foods. Loosely, GI relates to a food’s sugar content and 
-   how fast it releases glucose in the body. If you haven’t worked out and eat high GI foods, they are stored as fat. 
-   With that in mind, you should cut out sugary, high GI food such as white rice, white bread and pasta and replace them 
-   with low GI carbs such as brown basmati rice, wholegrains and fruit such as apples and berries.
-
-3. **Fats:** There are good and bad fats, but in a cutting diet you want to try to reduce your intake of all kinds, 
-   since fats are an inefficient energy source compared to carbs and are responsible for the physical appearance of body fat. 
-   With that in mind, aim for **20% or less** of your calorie intake from good fats.
-
-4. **Count your calories:** Use a tracker like MyFitnessPal or other apps to keep track of each and every single calorie. 
-   In fact, many studies show that recording your food intake and physical activity gives you a more **accurate estimation** of your 
-   calorie intake and prevents **under or overestimation** of your caloric intake, thus vastly improving the weight loss process.
-
-5. **Eat more fruits and vegetables:** These provide **invaluable micronutrients** that help improve optimally. 
-   Moreover, fruits are a good snack to eat throughout the day as it is calorie light and healthy.
+![Proper nutrition infographic](https://i.imgur.com/doaz6pr.png#chart)
 
 
 `,
