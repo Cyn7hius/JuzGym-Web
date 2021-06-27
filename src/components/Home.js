@@ -141,9 +141,9 @@ export default function Home() {
               <br />
               <Typography variant={"h6"}>How to use JuzGym?</Typography>
               <Typography>
-                To start, simple click on one of the 2 tabs above. For
-                beginners, we included a{" "}
-                {<A href={"./education/beginnerguide"}>Beginner's Guide</A>}{" "}
+                To start, please log in to get the full features of JuzGym
+                including bookmarking your workouts. For newcommers, we included
+                a {<A href={"./education/beginnerguide"}>Beginner's Guide</A>}{" "}
                 that includes everything you need to start your fitness journey!
                 We scoured the web to compile and collate exercises into one
                 platform, where you can easily view instructions, tips and even
