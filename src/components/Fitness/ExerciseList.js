@@ -249,8 +249,17 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
           }
         });
       } else {
-        // User is signed out
-        // ...
+        const uid = firebase.auth().currentUser?.uid;
+        const db = firebase.firestore();
+        const docRef = db.collection("/users").doc(uid);
+    
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            setFirestoreData(doc.data().Workout, setLoading(true));
+          } else {
+            setFirestoreData([], setLoading(true));
+          }
+        });
       }
     });
   }, []);
