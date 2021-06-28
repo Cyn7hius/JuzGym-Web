@@ -20,57 +20,123 @@ import {
 } from "@material-ui/core/";
 
 export default function UserWorkout() {
+  const [fixedItems, setFixedItems] = useState([
+    {
+      title: "Dumbbell Curl",
+      sets: 0,
+      reps: 0,
+    },
+
+    {
+      title: "Flying Kick",
+      sets: 0,
+      reps: 0,
+    },
+
+    {
+      title: "T pose",
+      sets: 0,
+      reps: 0,
+    },
+  ]);
   const [firestoreData, setFirestoreData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   function setData(newData) {
     setFirestoreData(newData);
   }
 
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        var uid = user.uid;
-        const db = firebase.firestore();
-        const docRef = db.collection("/users").doc(uid);
-    
-        docRef.get().then((doc) => {
-          if (doc.exists) {
-            setFirestoreData(doc.data().Workout, setLoading(true));
-          } else {
-            setFirestoreData([], setLoading(true));
-          }
-        });
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       // User is signed in, see docs for a list of available properties
+  //       // https://firebase.google.com/docs/reference/js/firebase.User
+  //       var uid = user.uid;
+  //       const db = firebase.firestore();
+  //       const docRef = db.collection("/users").doc(uid);
 
-  return loading ? (
-    <div>
-      <ExerciseList firestoreData={firestoreData} setData={setData} />
-      <ExerciseDatabase
-        firestoreData={firestoreData}
-        setData={setData}
-      />
-    </div>
-  ) : (
-    <h1>Loading workouts...</h1>
-  );
+  //       docRef.get().then((doc) => {
+  //         if (doc.exists) {
+  //           setFirestoreData(doc.data().Workout, setLoading(true));
+  //         } else {
+  //           setFirestoreData([], setLoading(true));
+  //         }
+  //       });
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //     }
+  //   });
+  // }, []);
+
+  // return loading ? (
+  //   <div>
+  //     <ExerciseList firestoreData={firestoreData} setData={setData} />
+  //     <ExerciseDatabase firestoreData={firestoreData} setData={setData} />
+  //   </div>
+  // ) : (
+  //   <h1>Loading workouts...</h1>
+  // );
+  return <ExerciseList firestoreData={firestoreData} setData={setData} />;
 }
 
 //Top half
 function ExerciseList(props) {
   const { firestoreData, setData } = props;
   // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1].name);
-  const [items, setItems] = React.useState([]);
-  useEffect(() => {
-    setItems(firestoreData.map((uid) => data[uid.Exercise - 1].name));
-  }, [firestoreData]);
+  // const [items, setItems] = React.useState([]);
+  // useEffect(() => {
+  //   setItems(firestoreData.map((uid) => data[uid.Exercise - 1].name));
+  // }, [firestoreData]);
+  const [items, setItems] = React.useState([
+    {
+      title: "Dumbbell Curl",
+      sets: 0,
+      reps: 0,
+      position: 0,
+    },
 
+    {
+      title: "Flying Kick",
+      sets: 0,
+      reps: 0,
+      position: 1,
+    },
+
+    {
+      title: "T pose",
+      sets: 1,
+      reps: 8,
+      position: 2,
+    },
+  ]);
+
+  function updateReps(position, newReps) {
+    const newArray = [...items];
+    newArray[position] = {
+      ...newArray[position],
+      reps: newReps,
+    };
+    setItems(newArray);
+  }
+
+  function updateSets(position, newSets) {
+    const newArray = [...items];
+    newArray[position] = {
+      ...newArray[position],
+      sets: newSets,
+    };
+    setItems(newArray);
+    console.log(newSets);
+  }
+
+  function updatePosition(items) {
+    console.log(items);
+    const newArray = [...items];
+    for (var i in newArray) {
+      newArray[i].position = i;
+    }
+    setItems(newArray);
+  }
   const HandleIcon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -137,7 +203,7 @@ function ExerciseList(props) {
       <List
         values={items}
         onChange={({ oldIndex, newIndex }) =>
-          setItems(arrayMove(items, oldIndex, newIndex))
+          updatePosition(arrayMove(items, oldIndex, newIndex))
         }
         renderList={({ children, props, isDragged }) => (
           <ul
@@ -195,20 +261,28 @@ function ExerciseList(props) {
                   width: "100px",
                 }}
               >
-                {value}
+                {value.title}
               </div>
               <TextField
-                id="standard-number1"
+                id={value.position}
                 label="Reps"
                 type="number"
+                value={value.reps < 0 ? 0 : value.reps}
+                onChange={(event) =>
+                  updateReps(event.target.id, event.target.value)
+                }
                 InputLabelProps={{
                   shrink: true,
                 }}
               />
               <TextField
-                id="standard-number2"
+                id={value.position}
                 label="Sets"
                 type="number"
+                value={value.sets < 0 ? 0 : value.sets}
+                onChange={(event) =>
+                  updateSets(event.target.id, event.target.value)
+                }
                 InputLabelProps={{
                   shrink: true,
                 }}
@@ -219,6 +293,16 @@ function ExerciseList(props) {
       />
     </div>
   );
+  // return (
+  //   <List
+  //     values={items}
+  //     onChange={({ oldIndex, newIndex }) =>
+  //       setItems(arrayMove(items, oldIndex, newIndex))
+  //     }
+  //     renderList={({ children, props }) => <ul {...props}>{children}</ul>}
+  //     renderItem={({ value, props }) => <li {...props}>{value.title}</li>}
+  //   />
+  // );
 }
 
 //Bottom half
@@ -229,7 +313,7 @@ function ExerciseDatabase(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const { firestoreData, setData} = props;
+  const { firestoreData, setData } = props;
   // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
   const [newDatabase, setNewDatabase] = useState([]);
   useEffect(() => {
@@ -271,9 +355,9 @@ function ExerciseDatabase(props) {
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
-      const uid = firebase.auth().currentUser?.uid;
-      const db = firebase.firestore();
-      db.collection("/users").doc(uid).set({ Workout: firestoreData });
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users").doc(uid).set({ Workout: firestoreData });
   }, [firestoreData]);
 
   return firestoreData.length ? (
