@@ -20,63 +20,40 @@ import {
 } from "@material-ui/core/";
 
 export default function UserWorkout() {
-  const [fixedItems, setFixedItems] = useState([
-    {
-      title: "Dumbbell Curl",
-      sets: 0,
-      reps: 0,
-    },
-
-    {
-      title: "Flying Kick",
-      sets: 0,
-      reps: 0,
-    },
-
-    {
-      title: "T pose",
-      sets: 0,
-      reps: 0,
-    },
-  ]);
   const [firestoreData, setFirestoreData] = useState([]);
   const [loading, setLoading] = useState(true);
   function setData(newData) {
     setFirestoreData(newData);
   }
 
-  // useEffect(() => {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     if (user) {
-  //       // User is signed in, see docs for a list of available properties
-  //       // https://firebase.google.com/docs/reference/js/firebase.User
-  //       var uid = user.uid;
-  //       const db = firebase.firestore();
-  //       const docRef = db.collection("/users").doc(uid);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        var uid = user.uid;
+        const db = firebase.firestore();
+        const docRef = db.collection("/users").doc(uid);
 
-  //       docRef.get().then((doc) => {
-  //         if (doc.exists) {
-  //           setFirestoreData(doc.data().Workout, setLoading(true));
-  //         } else {
-  //           setFirestoreData([], setLoading(true));
-  //         }
-  //       });
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  // }, []);
+        docRef.get().then((doc) => {
+          if (doc.exists) {
+            setFirestoreData(doc.data().Workout, setLoading(true));
+          } else {
+            setFirestoreData([], setLoading(true));
+          }
+        });
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+  }, []);
 
-  // return loading ? (
-  //   <div>
-  //     <ExerciseList firestoreData={firestoreData} setData={setData} />
-  //     <ExerciseDatabase firestoreData={firestoreData} setData={setData} />
-  //   </div>
-  // ) : (
-  //   <h1>Loading workouts...</h1>
-  // );
-  return <ExerciseList firestoreData={firestoreData} setData={setData} />;
+  return loading ? (
+    <ExerciseList firestoreData={firestoreData} setData={setData} />
+  ) : (
+    <h1>Loading workouts...</h1>
+  );
 }
 
 //Top half
@@ -87,55 +64,65 @@ function ExerciseList(props) {
   // useEffect(() => {
   //   setItems(firestoreData.map((uid) => data[uid.Exercise - 1].name));
   // }, [firestoreData]);
-  const [items, setItems] = React.useState([
-    {
-      title: "Dumbbell Curl",
-      sets: 0,
-      reps: 0,
-      position: 0,
-    },
 
-    {
-      title: "Flying Kick",
-      sets: 0,
-      reps: 0,
-      position: 1,
-    },
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users").doc(uid).set({ Workout: firestoreData });
+  }, [firestoreData]);
 
-    {
-      title: "T pose",
-      sets: 1,
-      reps: 8,
-      position: 2,
-    },
-  ]);
-
-  function updateReps(position, newReps) {
-    const newArray = [...items];
+  function updateReps(title, newReps) {
+    if (newReps === "") {
+      newReps = 0;
+    }
+    if (newReps < 0) {
+      return;
+    }
+    if (newReps > 100) {
+      newReps = 100;
+    }
+    //No idea why code below doesnt work
+    // if (newReps.toString()[0] == 0 && newReps.toString().length > 1) {
+    //   const temp = newReps.toString().substring(1);
+    //   console.log(temp + "TEMP VALUE")
+    //   newReps = parseInt(temp);
+    // }
+    console.log(newReps);
+    const newArray = [...firestoreData];
+    const position = newArray.findIndex((index) => index.title === title);
     newArray[position] = {
       ...newArray[position],
-      reps: newReps,
+      reps: parseInt(newReps),
     };
-    setItems(newArray);
+    setData(newArray);
   }
 
-  function updateSets(position, newSets) {
-    const newArray = [...items];
+  function updateSets(title, newSets) {
+    if (newSets === "") {
+      newSets = 0;
+    }
+    if (newSets < 0) {
+      newSets;
+    }
+    if (newSets > 100) {
+      newSets = 100;
+    }
+    const newArray = [...firestoreData];
+    const position = newArray.findIndex((index) => index.title === title);
     newArray[position] = {
       ...newArray[position],
-      sets: newSets,
+      sets: parseInt(newSets),
     };
-    setItems(newArray);
-    console.log(newSets);
+    setData(newArray);
   }
 
   function updatePosition(items) {
     console.log(items);
     const newArray = [...items];
     for (var i in newArray) {
-      newArray[i].position = i;
+      newArray[i].position = parseInt(i);
     }
-    setItems(newArray);
+    setData(newArray);
   }
   const HandleIcon = () => (
     <svg
@@ -201,9 +188,9 @@ function ExerciseList(props) {
       }}
     >
       <List
-        values={items}
+        values={firestoreData}
         onChange={({ oldIndex, newIndex }) =>
-          updatePosition(arrayMove(items, oldIndex, newIndex))
+          updatePosition(arrayMove(firestoreData, oldIndex, newIndex))
         }
         renderList={({ children, props, isDragged }) => (
           <ul
@@ -264,24 +251,36 @@ function ExerciseList(props) {
                 {value.title}
               </div>
               <TextField
-                id={value.position}
+                id={value.title + " reps"}
                 label="Reps"
                 type="number"
-                value={value.reps < 0 ? 0 : value.reps}
+                value={value.reps}
+                InputProps={{
+                  inputProps: {
+                    max: 100,
+                    min: 0,
+                  },
+                }}
                 onChange={(event) =>
-                  updateReps(event.target.id, event.target.value)
+                  updateReps(value.title, event.target.value)
                 }
                 InputLabelProps={{
                   shrink: true,
                 }}
               />
               <TextField
-                id={value.position}
+                id={value.title + " sets"}
                 label="Sets"
                 type="number"
-                value={value.sets < 0 ? 0 : value.sets}
+                value={value.sets}
+                InputProps={{
+                  inputProps: {
+                    max: 100,
+                    min: 0,
+                  },
+                }}
                 onChange={(event) =>
-                  updateSets(event.target.id, event.target.value)
+                  updateSets(value.title, event.target.value)
                 }
                 InputLabelProps={{
                   shrink: true,

@@ -25,33 +25,37 @@ function ExerciseList(props) {
   }
   const { database, firestoreData, setData } = props;
 
-  function addExercise(uid) {
+  function addExercise(name) {
+    // const index = firestoreData.length;
     const newExercises = [
       ...firestoreData,
       {
-        Exercise: uid,
+        title: name,
+        sets: 0,
+        reps: 0,
+        // position: index
       },
     ];
     setData(newExercises);
   }
 
-  function removeExercise(uid) {
-    const newExercises = firestoreData.filter((array) => array.Exercise != uid);
+  function removeExercise(name) {
+    const newExercises = firestoreData.filter((array) => array.title != name);
     setData(newExercises);
   }
 
-  function exerciseButton(event, uid) {
+  function exerciseButton(event, name) {
     event.stopPropagation();
     event.preventDefault();
-    if (firestoreData.find((array) => array.Exercise == uid) != null) {
-      removeExercise(uid);
+    if (firestoreData.find((array) => array.title == name) != null) {
+      removeExercise(name);
     } else {
-      addExercise(uid);
+      addExercise(name);
     }
   }
 
-  function exerciseButtonText(uid) {
-    if (firestoreData.find((array) => array.Exercise == uid) != null) {
+  function exerciseButtonText(name) {
+    if (firestoreData.find((array) => array.title == name) != null) {
       return "Remove from workout";
     } else {
       return "Add to workout";
@@ -88,9 +92,9 @@ function ExerciseList(props) {
                 </Typography>
                 <Button
                   style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.uid)}
+                  onClick={(event) => exerciseButton(event, exercise.name)}
                 >
-                  {exerciseButtonText(exercise.uid)}
+                  {exerciseButtonText(exercise.name)}
                 </Button>
               </AccordionSummary>
 
