@@ -72,6 +72,7 @@ function ExerciseList(props) {
   }, [firestoreData]);
 
   function updateReps(title, newReps) {
+    //Prevent user from inputting letters
     if (newReps === "") {
       newReps = 0;
     }
@@ -81,13 +82,6 @@ function ExerciseList(props) {
     if (newReps > 100) {
       newReps = 100;
     }
-    //No idea why code below doesnt work
-    // if (newReps.toString()[0] == 0 && newReps.toString().length > 1) {
-    //   const temp = newReps.toString().substring(1);
-    //   console.log(temp + "TEMP VALUE")
-    //   newReps = parseInt(temp);
-    // }
-    console.log(newReps);
     const newArray = [...firestoreData];
     const position = newArray.findIndex((index) => index.title === title);
     newArray[position] = {
@@ -117,11 +111,7 @@ function ExerciseList(props) {
   }
 
   function updatePosition(items) {
-    console.log(items);
     const newArray = [...items];
-    for (var i in newArray) {
-      newArray[i].position = parseInt(i);
-    }
     setData(newArray);
   }
   const HandleIcon = () => (
@@ -254,7 +244,7 @@ function ExerciseList(props) {
                 id={value.title + " reps"}
                 label="Reps"
                 type="number"
-                value={value.reps}
+                value={Number(value.reps).toString()}
                 InputProps={{
                   inputProps: {
                     max: 100,
@@ -272,7 +262,8 @@ function ExerciseList(props) {
                 id={value.title + " sets"}
                 label="Sets"
                 type="number"
-                value={value.sets}
+                //To solve the problem of leading 0s
+                value={Number(value.sets).toString()}
                 InputProps={{
                   inputProps: {
                     max: 100,
