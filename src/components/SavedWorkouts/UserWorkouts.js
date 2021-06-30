@@ -110,6 +110,7 @@ function ExerciseList(props) {
     setData(newArray);
   }
 
+  //Might be redundant function
   function updatePosition(items) {
     const newArray = [...items];
     setData(newArray);
@@ -193,7 +194,7 @@ function ExerciseList(props) {
             {children}
           </ul>
         )}
-        renderItem={({ value, props, isDragged, isSelected }) => (
+        renderItem={({ value, props, index, isDragged, isSelected }) => (
           <li
             {...props}
             style={{
@@ -277,6 +278,18 @@ function ExerciseList(props) {
                   shrink: true,
                 }}
               />
+              <button
+                onClick={() => {
+                  updatePosition(
+                    typeof index !== "undefined"
+                      ? arrayRemove(firestoreData, index)
+                      : firestoreData
+                  );
+                }}
+                style={buttonStyles}
+              >
+                <RemovableIcon />
+              </button>
             </div>
           </li>
         )}
