@@ -1,7 +1,7 @@
 export const data = [
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5, 6",
     name: "Dumbbell Crunch",
     instructions:
       "Lay flat on the ground in a relaxed position with your knees bent.\nHold a dumbbell directly over your chest and fully extend your arms.\nRaise your knees to 90 degrees, at which point they will be perpendicular to the floor.\nExhale as you reach towards your toes with the dumbbell.\nOnce your abs are fully contracted and your upper back is off the floor, slowly lower yourself back to the starting position.\nComplete for the assigned number of repetitions.",
@@ -16,7 +16,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Bent Over Dumbbell Row",
     instructions:
       "Assume a standing position while holding a dumbbell in each hand with a neutral grip.\nHinge forward until your torso is roughly parallel with the floor (or slightly above) and then begin the movement by driving the elbows behind the body while retracting the shoulder blades.\nPull the dumbbells towards your body until the elbows are at (or just past) the midline and then slowly lower the dumbbells back to the starting position under control.\nRepeat for the desired number of repetitions",
@@ -31,7 +31,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Dumbbell Russian Twist",
     instructions:
       "Sit on floor and lean slightly back with knees bent and heels on the ground. \nHold a dumbbell in front of you, with each hand on a bell and your arms straight in front of you. \nRotating from your chest, and making sure not to compress or extend your back, move your arms to the left and briefly touch the dumbbell to the floor. \nReturn to the starting position and turn to the right, that is one repetition. \nRepeat for the desired number of repetitions.",
@@ -46,12 +46,12 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Dumbbell Swing",
     instructions:
       "Assume a hinged position with your knees slightly bent, both hands on a dumbbell, chin tucked, and weight centered over your foot.\nBegin the movement by swinging the dumbbell upwards until your arms are parallel to the ground and keeping your spine neutral.\nDrive the dumbell back to the starting position by extending the hips, pushing through the floor, and keeping the arms straight.\nRepeat the movement for the desired number of repetitions.",
     tips: "The swing should be a fairly explosive and snappy movement, the point is to generate hip extension as rapidly as possible followed by a subsequent contraction.\nYour weight will obviously shift to your heels during the bottom portion of the exercise but you shouldn’t allow the toes to rise.\nYour chin should follow your chest, don’t worry about looking up in the bottom of the movement.\nKeep a soft bend in your knee and don’t allow your arches to collapse as you complete the movement.\nMake sure you wrap your thumbs around the handle and don’t utilize a false grip.",
-    variations: "One Arm Dumbbell Swing\nDouble Dumbbell Swing",
+    variations: "One Arm Dumbbell Swing\nDouble Dumbbell Swing ",
     image:
       "https://cdn1.coachmag.co.uk/sites/coachmag/files/styles/insert_main_wide_image/public/barbell2.jpg?itok=oQU1iqDg",
     video: "v1LoYk4qdLc",
@@ -60,7 +60,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Dumbbell Side Bends",
     instructions:
       "Grasp a set of dumbbells. Stand straight up with one dumbbell in each hand, palms facing in.\nKeep your feet firmly on the floor with a shoulder width stance.\nKeeping your back straight and your eyes facing forwards, bend down to the right as far as you can, then back up again.\nWithout pausing at the top, bend down to the left.\nRepeat for desired reps.",
@@ -74,7 +74,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Bent Over Rear Delt Fly ",
     instructions:
       "Grasp a set of dumbbells. Hinge from the hips until your body is almost parallel to the floor and allow the arms to hang straight down from the shoulders with a neutral grip.\nTake a deep breath and pull the dumbbells towards the ceiling using the rear deltoids.\nSlowly lower the dumbbells back to the starting position under control.\nRepeat for the desired number of repetitions.",
@@ -89,7 +89,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Renegade Row ",
     instructions:
       "Assume a quadruped position on your hands and knees.\nPosition two dumbbells directly underneath your hands and grasp them with a neutral grip.\nPull the dumbbell towards your body until the elbow is at (or just past) the midline and then slowly lower the dumbbell back to the starting position under control.\nRepeat for the desired number of repetitions on both sides.",
@@ -103,7 +103,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 5,
+    muscleType: "5",
     name: "Kneeling Dumbbell Hold to Stand",
     instructions:
       "Set up in a tall kneeling position with both knees down.\nPress a set of dumbbells overhead.\nLift one leg into a half kneeling split squat and drive up through the whole foot.\nStand up tall and then reverse the movement back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -117,7 +117,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Standing One Leg Calf Raise",
     instructions:
       "Set up by grasping a dumbbell in your right hand and standing on the edge of a calf raise block or step with the balls of your feet on the edge.\nTake your right leg and hook it behind your left.\nLet your left heel drop as far as possible. This is the starting position.\nKeeping your body straight and eyes facing forwards, raise your left heel up as far as possible.\nPause and squeeze the calf muscle, and then slowly lower your heal back down as far as possible.\nRepeat for desired reps, and then repeat on the right leg.",
@@ -131,7 +131,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Stiff Leg Deadlift",
     instructions:
       "Grab a set of dumbbells and stand up straight with a slight bend in your knees and your feet around shoulder width apart.\nKeep your back as straight as possible and bend over at the waist lowering the dumbbells over the tops of you feet. Your knees should be kept stationary during the movement.\nFocus on the stretch in your hamstrings, and continue to lower the dumbbells down as far as your hamstrings will let you comfortably.\nNow engage the hamstrings and begin to raise the dumbbells straight back up. Your eyes should be facing up and your shoulders back. This will prevent your lower back from rounding.\nSqueeze up through the glutes and hamstrings until you're standing straight up.\nRepeat for desired reps.",
@@ -145,7 +145,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Goblet Squat",
     instructions:
       "Select a dumbbell and position it at chest height with one hand under each edge of the dumbbell.\nTake a deep breath and descend by simultaneously pushing the hips back and bending the knees.\nOnce your thighs reach parallel with the floor, begin to reverse the movement.\nKeep your abs braced and drive your feet through the floor.\nDrive back to the starting position and repeat for the desired number of repetitions.",
@@ -160,7 +160,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Lunge",
     instructions:
       "Hold the dumbbells down at your sides and stand up straight with a slight bend in your knees.\nStep forward with your left leg while maintaining your balance and squat down through your hips.\nKeep your torso straight and head up. Don't allow your knee to extend past your toes.\nPush yourself back to the starting position by using your heel to drive you.\nRepeat this movement with your right leg and then repeat for desired reps.",
@@ -168,14 +168,14 @@ export const data = [
     variations:
       "Dumbbell Rear Lunge\nDumbbell Walking Lunge\nRear Foot Elevated Lunge",
     image:
-      "https://cdn.muscleandstrength.com/sites/default/files/bodyweight-lunge.jpg",
+      "https://cdn.muscleandstrength.com/sites/default/files/dumbbell-rear-lunge.jpg",
     video: "Ix9QZ3Pnneo",
     targetGroup: "Quads",
     uid: 12,
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Glute Bridge",
     instructions:
       "Start in a supine position on the floor with your arms at a 45 degree angle relative to your torso.\nPlace a dumbbell on your hips and hold it with both hands.\nBridge your hips up by squeezing your glutes and driving your heels into the floor.\nLower your hips back to the starting position and repeat for the desired number of repetitions.",
@@ -189,7 +189,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 6,
+    muscleType: "6",
     name: "Dumbbell Good Morning",
     instructions:
       "Position a dumbell on your traps and hold it with both hands\nBegin the movement by unlocking your knees and hinging back into the hips while keeping your spine neutral.\nDrive through the whole foot as you extend the hip back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -202,7 +202,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Dumbbell Curl",
     instructions:
       "Assume the starting position for the standing dumbbell curl by grasping a pair of dumbbells and standing straight up, feet together and dumbbells by your side. The dumbbells should not be touching your body. \nYour palms should facing upwards. Take up the slack by bending the elbows slightly. Tension should be on the biceps. \nSlowly curl the dumbbells up as far as possible. \nSqueeze the biceps hard, and then slowly lower the dumbbells back down to the starting position. \nRepeat for desired reps.",
@@ -216,7 +216,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Dumbbell Floor Press ",
     instructions:
       "Begin sitting on the floor in an upright position with your legs straight and the dumbbells vertically balanced on the floor.\nPick up each dumbbell and set it high in your hip crease while maintaining a tight grip.\nSlowly lay back while keeping the dumbbells close to your chest and bend your knees to roughly 45 degrees and move your feet up slightly.\nPress the weights to full extension by contracting your triceps and chest.\nSlowly lower the weight until both elbows touch the floor then press both dumbbells back to the starting position.\nRepeat for the desired number of repetitions.\nTo complete the exercise, simply lower the weights to the ground in “controlled drop” fashion. It should be a smooth motion but not one requiring excessive effort or one that puts the shoulder under unnecessary risk.",
@@ -230,7 +230,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Dumbbell Lateral Raise",
     instructions:
       "Grab a set of dumbbells and stand straight up with the dumbbells at your sides.\nYour palms should be facing your body. You should be holding the dumbbells slightly off your body, as this keeps the tension on the side delts. This is your starting position for the exercise.\nTo execute, slowly raise the dumbbells up to around shoulder height. It's important that you do not let your wrists go above your elbows while raising the weight, as this will take the work off the side delts and put it on the front delts.\nPause at the top of the movement, and then slowly lower the weight back to the starting position.\nDo not let the dumbbells touch your body, and then raise them for the next rep.",
@@ -245,7 +245,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Standing Dumbbell Press",
     instructions:
       "Set up for the exercise by grabbing a pair of dumbbells and standing straight up with your feet around shoulder width apart.\nRaise the dumbbells to shoulder height on each side, and twist so that your palms are facing forward.\nKeep your head up and eyes facing forward. This is the starting position for the exercise.\nSlowly raise the dumbbells above your head until your arms are almost fully extended.\nDo not pause at the top of the movement, and immediately begin lowering the dumbbells back down to the starting position.  \nRepeat this movement for the desired amount of reps.",
@@ -260,7 +260,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Seated Dumbbell Tricep Extension",
     instructions:
       "To get into position, sit in an upright position and lift the dumbbell to the top of your shoulder. Take a deep breath, overlap your hands around the dumbbell, then press it into position overhead.\nMaintain an overlapping grip and slowly lower the dumbbell behind your head by unlocking your elbows.\nOnce your forearms reach parallel or just below, drive the dumbbell back to the starting point by extending the elbows and flexing the triceps.\nRepeat for the desired number of repetitions.",
@@ -274,7 +274,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Bent Over Dumbbell Tricep Kickback",
     instructions:
       "Grasp a single dumbbell with either your left or right hand.\nHinge forward, row the dumbbells into position, then extend the elbows while flexing the triceps.\nSlowly lower the dumbbells back to the starting position and repeat for the desired number of repetitions.",
@@ -289,7 +289,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "Dumbbell Shrug",
     instructions:
       "Assume a standing position with the dumbbells on both sides of your body.\nHinge forward, inhale, and grab the dumbbells with a neutral grip.\nStand up tall and ensure your spine remains neutral.\nContract the traps to elevate the shoulders. Squeeze hard at the top and slowly lower the dumbbells back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -303,7 +303,7 @@ export const data = [
   },
   {
     equipmentType: 1,
-    muscleType: 7,
+    muscleType: "7",
     name: "One Arm Seated Dumbbell Wrist Curl",
     instructions:
       "Grasp a dumbbell using a underhand grip (palms facing up) and sit down on a chair\nRest the back of your forearm on top of your inner thigh so that the wrist holding the dumbbell is just off the end of it.\nBending only at the wrist, let the dumbbell drop as far as possible. You can rest your non-working arm in your lap for stability. This is the starting position for the exercise.\nSlowly raise the dumbbell up as far as possible squeezing the forearm muscles at the top of the movement.\nPause, and then slowly lower the dumbbell back to the starting position.\nRepeat for desired reps.",
@@ -318,7 +318,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Bird Dog with Band RNT",
     instructions:
       "Assume a quadruped position with your knees under hips, hands under shoulders, and toes tucked.\nAttach a band to the opposite foot and hand.\nExtend the opposite arm and leg while keeping your hips and torso stable.\nSlowly lower the arm and leg back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -332,7 +332,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Band Resisted Chin Up",
     instructions:
       "Attach a band to a dumbbell on the floor and loop the end around your waist.\nUsing a supinated grip, grasp the bar with a shoulder width grip.\nTake a deep breath, squeeze your glutes and brace your abs. Depress the shoulder blades and then drive the elbows straight down to the floor while activating the lats.\nPull your chin towards the bar until the lats are fully contracted, then slowly lower yourself back to the start position and repeat for the assigned number of repetitions.",
@@ -347,7 +347,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Banded Alphabet",
     instructions:
       "Attach a band to a stable object at roughly chest height.\nGrasp the band with an overlapping grip and assume an athletic position with your feet slightly wider than shoulder width apart.\nPress the band horizontally to extension and begin by drawing each letter of the alphabet in a slow, controlled fashion by moving your whole torso instead of just your arms.\nOnce you have completed the desired number of letters, repeat on the opposite side.",
@@ -361,7 +361,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Resistance Band Rows",
     instructions:
       "Begin in a seated position on the floor with legs straight out in front of you.\nHolding a band handle in each hand, place the center of the band around feet, then wrap each end inside and around each foot one more time to make a loop on each foot.\nSit tall with abs tight and hold the handles in front of you with your elbows bent next to your side.\nPull the handles back until they are next to your side and elbows are behind you. \nSlowly release and return to the starting position.\nRepeat for the desired number of repetitions.",
@@ -375,7 +375,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Resistance Band Bicycle Crunches",
     instructions:
       "Lay supine in a relaxed position with your arms behind your head and legs straight.\nBend your knees and loop a resistance band around your feet.\nExhale as you raise one knee towards your face while driving the opposite elbow to the knee.\nOnce your abs are fully contracted, slowly lower yourself back to the starting position and repeat on the opposite side.\nComplete for the assigned number of repetitions.",
@@ -388,7 +388,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 5,
+    muscleType: "5",
     name: "Resistance Band Mountain Climber",
     instructions:
       "Start in a plank position with the band looped around your toes. \nKeep your body straight, firmly supported by your shoulders and hips. \nBring one knee up towards your chest, tighten your abs and then return to the starting position.\nComplete for the assigned number of repetitions.",
@@ -403,7 +403,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Banded Tibialis Raise",
     instructions:
       "Attach a band to a door using a door anchor.\nAttach the free end to top of your foot and move back slightly to increase tension within the band.\nPull your toes toward your face as you flex the anterior portion of your calf.\nSlowly lower the toes until you feel a stretch in the front of your shin and repeat for the desired number of repetitions.",
@@ -416,7 +416,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Banded Glute Bridge",
     instructions:
       "Wrap a band just above your knees and start in a supine position on the floor with your arms at a 45 degree angle relative to your torso.\nBridge your hips up by squeezing your glutes and driving your heels into the floor.\nPush out slightly on the band as you bridge up.\nLower your hips back to the starting position and repeat for the desired number of repetitions.",
@@ -430,7 +430,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "X-Band Walk",
     instructions:
       "Set up in a standing position holding one end of a band and looping the other end under your feet.\nCross the band to form an X and pull up on the ends to increase the tension across the band.\nKeep the hips low and execute small lateral steps.\nRepeat in the opposite direction for the desired number of repetitions.\n",
@@ -444,7 +444,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Prone Hamstring Curl ",
     instructions:
       "Anchor the ends of a resistance band to a sturdy object such as a door. \nLie down on your stomach with your feet hip-width apart. Place the band around one heel and flex your ankle.\nBend your knee to pull your heel toward your butt, keeping your thighs and hips on the mat.\nSlowly relax your hamstring and return to the starting position.\nRepeat for the desired number of repetitions.",
@@ -457,7 +457,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Banded Good Morning",
     instructions:
       "Stand on a band with your feet equidistant apart and wrap one end around your neck.\nGrab the band at roughly shoulder level and pull up slightly to reduce tension on your neck.\nBegin the movement by unlocking your knees and hinging back into the hips while keeping your spine neutral.\nDrive through the whole foot as you extend the hip back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -472,7 +472,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Banded Squats",
     instructions:
       "Stand on a band with feet shoulder width apart and hold the handles next to your shoulders so the band is behind the back of your arms.\nSlowly push your hips back into a sitting position while bending your knees, keeping your abdominals tight and your chest lifted.\nContinue to lower yourself until your thighs are parallel to the floor. Your knees should be at a 90-degree angle.\nReturn to the starting position by pressing back up through your heels and squeezing your glutes.\nRepeat for the desired number of repetitions.",
@@ -486,7 +486,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 6,
+    muscleType: "6",
     name: "Banded Deadlift",
     instructions:
       "Stand on both sides of the resistance band with the band running between your heel and your arch\nKeep your feet shoulder width apart and toes planted forward on the floor making sure you have some of the band sticking out on either end of your foot. This will make the handle for you to grab in a pronated grip\nLean forward and bend at the knees, moving hips backward while maintaining posture and balance, grabbing the loops on either side of your feet\nExtend at the knees, contract and push the glutes forward while breathing out to come up to an upright position\nPause at the upright position for a moment, while your core is working towards stabilising you.\nReturn to the starting position by squeezing up through the glutes and hamstrings until you're standing straight up.\nRepeat for the desired number of repetitions.",
@@ -500,7 +500,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Banded Bicep Curl",
     instructions:
       "Stand with feet shoulder-width apart with both feet on the resistance band.\nGrasp the band with both hands and hold it with your arms down at your side, palm facing forwards.\nBend at the elbow and lift your arms toward your shoulders until you get a good biceps contraction. \nLower your arms slowly back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -515,7 +515,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Overhead Banded Tricep Extension",
     instructions:
       "Attach a band to a stable implement above head height(such as attaching the band to a door anchor) and assume a standing position.\nUtilize a split stance, grasp the band overhead with a neutral grip (palms facing), and lean forward by hinging at the hips.\nInitiate the movement by extending the elbows and flexing the triceps.\nPull the band downward until the elbows are almost locked out and then slowly lower under control back to the starting position.\nRepeat for the desired number of repetitions.\n",
@@ -529,7 +529,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Resistance Band Chest Press",
     instructions:
       "Begin by placing your right foot on the center of the resistance band and bring handles to shoulders with palms facing forward. Hold elbows slightly behind body.\nInhale and and tighten your abs as you push your arms straight out in front of your chest and shoulders.\nExhale and slowly pull your arms back to the starting position.\nRepeat for desired reps.",
@@ -544,7 +544,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Banded Upright Row",
     instructions:
       "Stand on a band with both feet and grab one end with each hand.\nTake a deep breath then pull the band high by driving your elbows high.\nSlowly lower the handle back to the starting position under control.\nRepeat for the desired number of repetitions.",
@@ -558,7 +558,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Band Pull Apart",
     instructions:
       "Set up in an athletic position with a band in both hands and your palms facing down.\nLift the hands to shoulder height with the elbows extended.\nExhale and pull the band apart until it nearly touches your chest.\nSlowly lower back to the starting position and repeat for the desired number of repetitions.",
@@ -572,7 +572,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Band Push Up",
     instructions:
       "Wrap the band around your back and grab the ends in each hand.\nPerform pushups with the bands.\nRepeat for desired reps.",
@@ -587,7 +587,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Standing Banded Fly",
     instructions:
       "Attach a band to a door using a door anchor.\nGrasp both band handles with a neutral grip and take a step forward to split the stance.\nFlex your pectoral muscles while extending the elbows.\nKeep a slight bend in the elbows, move entirely at the shoulder joint, and slowly allow the arms to open while the pecs stretch.\nReturn to the starting position by flexing your pectoral muscles and bringing the band handles together at chest height.\nSlowly lower back to the starting position and repeat for the desired number of repetitions.",
@@ -602,7 +602,7 @@ export const data = [
   },
   {
     equipmentType: 2,
-    muscleType: 7,
+    muscleType: "7",
     name: "Banded Shrug",
     instructions:
       "Stand on the middle of the band with both feet.\nHold an end in each hand at your sides. \nLean forward slightly and contract the traps to elevate the shoulders. Squeeze hard at the top and slowly lower the bands back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -615,7 +615,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Ab Crunch",
     instructions:
       "Lay supine in a relaxed position with your knees up and hands across your chest.\nExhale and squeeze your abs as you curl your upper body off the floor.\nOnce your abs are fully contracted and your upper back is off the floor, slowly lower yourself back to the starting position.\nComplete for the assigned number of repetitions.",
@@ -629,7 +629,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Plank",
     instructions:
       "Set up for the plank by getting a mat and laying down on your stomach.\nTo start the exercise prop your torso up on your elbows and your feet up on your toes.\nKeeping yourself completely straight, hold this position for as long as possible.\nComplete for the assigned number of repetitions.",
@@ -643,7 +643,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Abdominal Air Bike",
     instructions:
       "Lay supine in a relaxed position with your arms behind your head and legs straight.\nExhale as you raise one knee towards your face while driving the opposite elbow to the knee.\nOnce your abs are fully contracted, slowly lower yourself back to the starting position and repeat on the opposite side.\nComplete for the assigned number of repetitions.",
@@ -657,7 +657,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Russian Twist",
     instructions:
       "Set up for the Russian Twist by getting a mat and laying down on your back.\nPull your knees up so that your calves are at a right angle to your thighs.\nPut one hand over the other, palms facing your feet and point towards the ceiling.\nTo begin the set, raise your shoulder blades off the mat.\nTwisting at your torso, roll your hands over to the left and back to the right.\nLower your shoulder blades back down to the mat.\nRepeat the whole movement for the required reps.",
@@ -671,7 +671,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Pull Up",
     instructions:
       "Using a pronated grip, grasp the pull bar with a slightly wider than shoulder width grip.\nTake a deep breath, squeeze your glutes and brace your abs. Depress the shoulder blades and then drive the elbows straight down to the floor while activating the lats.\nPull your chin towards the bar until the lats are fully contracted, then slowly lower yourself back to the start position and repeat for the assigned number of repetitions.",
@@ -686,7 +686,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Rotating Mountain Climber",
     instructions:
       "Assume a plank pushup position with your hands underneath your shoulders.\nDrive one knee towards the opposing elbow until the hip reaches 90 degrees of flexion.\nSlowly return to the starting position and repeat for the desired number of repetitions.",
@@ -700,7 +700,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Superman ",
     instructions:
       "Set up in a prone position with your hands by your side (or behind your back) and your feet together.\nExtend your lower back by contracting your spinal erectors.\nSlowly lower back to the starting position and repeat for the desired number of repetitions.",
@@ -713,7 +713,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 5,
+    muscleType: "5",
     name: "Lying Floor Leg Raise",
     instructions:
       "Lay supine in a relaxed position with your legs straight and your hands underneath your low back for support.\nKeep your legs straight and raise them towards your forehead while contracting your abdominals and exhaling.\nOnce your abs are fully contracted and your legs are slightly above parallel, slowly lower your legs back to the starting position.\nComplete for the assigned number of repetitions.",
@@ -727,7 +727,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Standing Calf Raise",
     instructions:
       "For this exercise, all you need is a block or a step and something to help keep your balance. Stand with the balls of your feet on the edge of the step/block and let your heels drop down as far as possible. This is the starting position for the movement.\nSlowly raise your heels up as high as possible.\nPause, and then slowly lower your heels back to the starting position.\nDo not rest at the bottom, and immediately start the next rep.\nRepeat for desired reps.",
@@ -741,7 +741,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Glute Bridge",
     instructions:
       "Start in a supine position on the floor with your arms at a 45 degree angle relative to your torso.\nBridge your hips up by squeezing your glutes and driving your heels into the floor.\nLower your hips back to the starting position and repeat for the desired number of repetitions.",
@@ -756,7 +756,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Lunge",
     instructions:
       "Set up with your feet shoulder width apart.\nStep forward with one leg and allow both knees to bend simultaneously.\nDescend until the back knee touches the floor.\nDrive through the front foot and extend the knee as you stand up fully and return to the starting position.\nRepeat for the desired number of repetitions.",
@@ -771,7 +771,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Hip Thrust",
     instructions:
       "Start in a supine position with your back on an elevated surface, knees bent, and feet flat at roughly shoulder width apart.\nDrive both feet into the floor and squeeze your glutes while bridging your hips up.\nLower your hips back to the starting position and repeat for the desired number of repetitions.",
@@ -785,7 +785,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Jump Rope",
     instructions:
       "Grasp a jump rope with the handles at your sides and the rope behind your heels.\nRotate the wrists to generate velocity and help the rope revolve around the body.\nAs the rope moves toward your feet, jump with both feet to allow it to pass underneath.\nRepeat for the desired number of repetitions or time.",
@@ -800,7 +800,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Squat",
     instructions:
       "Set up in a standing position with your feet roughly shoulder width apart and your toes slightly turned out.\nInterlace your fingers on the back of your head and focus on looking straight ahead.\nTake a deep breath and descend by simultaneously pushing the hips back and bending the knees.\nOnce your thighs reach parallel with the floor, reverse the movement by bracing your abs and driving your feet into the floor.\nDrive back to the starting position and repeat for the desired number of repetitions.",
@@ -814,7 +814,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Step Up",
     instructions:
       "Set up in front of a stable surface such as a chair or a riser which is 20 - 30cm off the ground.\nHold your arms at your sides and initiate the exercise by stepping on to the riser with one leg.\nDrive through the front foot and extend the knee as you stand up fully.\nSlowly lower back to the starting position.\nRepeat for the desired number of repetitions.",
@@ -827,7 +827,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 6,
+    muscleType: "6",
     name: "Bodyweight Single Leg Deadlift",
     instructions:
       "Set up in a standing position with your hands at your side and thumbs facing outward.\nKeep a slight bend in the plant leg and hinge forward from the hip while keeping the chest tall and thumbs pointing up.\nHinge to 90 degrees (if possible) and allow the hamstrings to stretch while keeping the head neutral.\nRepeat on the opposite side for the desired number of repetitions.",
@@ -840,7 +840,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 7,
+    muscleType: "7",
     name: "Push Up",
     instructions:
       "Assume a quadruped position on the floor with your hands under your shoulders, toes tucked, and knees under hips.\nExtend one leg at a time and assume a pushup position with the legs straight, elbows extended, and head in a neutral position looking at the floor.\nSlowly descend to the floor by retracting the shoulder blades and unlocking the elbows.\nDescend until the upper arms are parallel or your chest touches the floor.\nPush back to the starting point by extending the elbows and driving your palms into the floor.\nRepeat for the desired number of repetitions.",
@@ -854,7 +854,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 7,
+    muscleType: "7",
     name: "Tricep Dips",
     instructions:
       "Sit on the edge of the chair and grip the edge next to your hips. Your fingers should be pointed at your feet. Your legs are extended and your feet should be about hip-width apart with the heels touching the ground. Look straight ahead with your chin up.\nPress into your palms to lift your body and slide forward just far enough that your behind clears the edge of the chair.\nLower yourself until your elbows are bent between 45 and 90 degrees.\nSlowly push yourself back up to the start position and repeat for the desired number of repetitions.",
@@ -868,7 +868,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 7,
+    muscleType: "7",
     name: "Shoulder Taps",
     instructions:
       "Assume a pushup position with your feet slightly wider than shoulder width.\nSlowly raise one hand off the floor and touch your opposing shoulder.\nReplace the hand and repeat on the opposite side.\nRepeat for the desired number of repetitions.",
@@ -882,7 +882,7 @@ export const data = [
   },
   {
     equipmentType: 3,
-    muscleType: 7,
+    muscleType: "7",
     name: "Shoulder Press",
     instructions:
       'Assume a normal pushup position.\nWalk your feet towards your hands until your hips stick way up and your body makes an upside down "V" shape.\nMaintain this shape as you lower your shoulders towards the floor by bending the elbows.\nSlowly push yourself back up to the start position and repeat for the desired number of repetitions.',
