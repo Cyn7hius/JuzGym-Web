@@ -22,6 +22,13 @@ import {
 export default function UserWorkout() {
   const [firestoreData, setFirestoreData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function loadUser(isLoggedIn) {
+    setLoading(true);
+    setIsLoggedIn(isLoggedIn);
+  }
+
   function setData(newData) {
     setFirestoreData(newData);
   }
@@ -37,20 +44,24 @@ export default function UserWorkout() {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            setFirestoreData(doc.data().Workout, setLoading(true));
+            setFirestoreData(doc.data().Workout, loadUser(true));
           } else {
-            setFirestoreData([], setLoading(true));
+            setFirestoreData([], loadUser(true));
           }
         });
       } else {
         // User is signed out
-        // ...
+        loadUser(false);
       }
     });
   }, []);
 
   return loading ? (
-    <ExerciseList firestoreData={firestoreData} setData={setData} />
+    isLoggedIn ? (
+      <ExerciseList firestoreData={firestoreData} setData={setData} />
+    ) : (
+      <h1>You are not logged in, log in now to save your workouts!</h1>
+    )
   ) : (
     <h1>Loading workouts...</h1>
   );
@@ -59,11 +70,6 @@ export default function UserWorkout() {
 //Top half
 function ExerciseList(props) {
   const { firestoreData, setData } = props;
-  // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1].name);
-  // const [items, setItems] = React.useState([]);
-  // useEffect(() => {
-  //   setItems(firestoreData.map((uid) => data[uid.Exercise - 1].name));
-  // }, [firestoreData]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -167,7 +173,7 @@ function ExerciseList(props) {
     </svg>
   );
 
-  return (
+  return firestoreData.length ? (
     <div
       style={{
         //Hardcoded
@@ -294,8 +300,10 @@ function ExerciseList(props) {
           </li>
         )}
       />
-      <ExerciseDatabase firestoreData={firestoreData}/>
+      <ExerciseDatabase firestoreData={firestoreData} />
     </div>
+  ) : (
+    <h1>You have no exercises saved, try adding some from our database?</h1>
   );
 }
 
@@ -305,11 +313,15 @@ function ExerciseDatabase(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const { firestoreData} = props;
+  const { firestoreData } = props;
   // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
   const [newDatabase, setNewDatabase] = useState([]);
   useEffect(() => {
-    setNewDatabase(firestoreData.map((firestoreArray) => data.find((localData) => localData.name == firestoreArray.title)));
+    setNewDatabase(
+      firestoreData.map((firestoreArray) =>
+        data.find((localData) => localData.name == firestoreArray.title)
+      )
+    );
   }, [firestoreData]);
 
   return (
@@ -440,5 +452,4 @@ function ExerciseDatabase(props) {
       </Box>
     </Container>
   );
-  //    <h1>You have no exercises saved, try adding some from our database?</h1>
 }
