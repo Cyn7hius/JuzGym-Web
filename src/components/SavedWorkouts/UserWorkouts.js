@@ -5,6 +5,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
 import TextField from "@material-ui/core/TextField";
 import { List, arrayMove, arrayRemove } from "react-movable";
+import { CSVLink, CSVDownload } from "react-csv";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -173,6 +174,18 @@ function ExerciseList(props) {
     </svg>
   );
 
+  const headers = [
+    { label: 'Name', key: 'title' },
+    { label: 'Reps', key: 'reps' },
+    { label: 'Sets', key: 'sets' }
+  ];
+
+  const csvReport = {
+    filename: 'Workout.csv',
+    headers: headers,
+    data: firestoreData
+  }
+
   return firestoreData.length ? (
     <div
       style={{
@@ -300,6 +313,7 @@ function ExerciseList(props) {
           </li>
         )}
       />
+      <CSVLink {...csvReport}>Export to CSV</CSVLink>
       <ExerciseDatabase firestoreData={firestoreData} />
     </div>
   ) : (
