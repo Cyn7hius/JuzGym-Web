@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
+//Can add into the import statement below
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
 import TextField from "@material-ui/core/TextField";
 import { List, arrayMove, arrayRemove } from "react-movable";
 import { CSVLink, CSVDownload } from "react-csv";
+import ICalendarLink from "react-icalendar-link";
+import {Reorder, Delete} from '@material-ui/icons';
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -186,6 +189,15 @@ function ExerciseList(props) {
     data: firestoreData
   }
 
+  const event = {
+    title: "Workout",
+    description: "My Description",
+    startTime: "2021-07-03T10:30:00+10:00",
+    endTime: "2021-07-03T12:00:00+10:00"
+  }
+
+  const rawContent = `RRULE:FREQ=WEEKLY;BYDAY=MO;INTERVAL=1;COUNT=3`;
+
   return firestoreData.length ? (
     <div
       style={{
@@ -251,7 +263,7 @@ function ExerciseList(props) {
                 }}
                 tabIndex={-1}
               >
-                <HandleIcon />
+                <Reorder/>
               </button>
               <div
                 style={{
@@ -307,13 +319,16 @@ function ExerciseList(props) {
                 }}
                 style={buttonStyles}
               >
-                <RemovableIcon />
+                <Delete />
               </button>
             </div>
           </li>
         )}
       />
       <CSVLink {...csvReport}>Export to CSV</CSVLink>
+      <ICalendarLink event={event} rawContent={rawContent}>
+        Add to Calendar
+      </ICalendarLink>
       <ExerciseDatabase firestoreData={firestoreData} />
     </div>
   ) : (
