@@ -4,11 +4,14 @@ import { data } from "../../data/exerciseDatabase";
 //Can add into the import statement below
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
-import TextField from "@material-ui/core/TextField";
 import { List, arrayMove, arrayRemove } from "react-movable";
 import { CSVLink, CSVDownload } from "react-csv";
 import ICalendarLink from "react-icalendar-link";
-import {Reorder, Delete} from '@material-ui/icons';
+import { Reorder, Delete, Save, GetApp } from "@material-ui/icons";
+
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import NativeSelect from "@material-ui/core/NativeSelect";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -21,6 +24,14 @@ import {
   Grid,
   Box,
   Button,
+  ButtonGroup,
+  Menu,
+  MenuItem,
+  ClickAwayListener,
+  Grow,
+  Paper,
+  Popper,
+  MenuList,
 } from "@material-ui/core/";
 
 export default function UserWorkout() {
@@ -74,6 +85,51 @@ export default function UserWorkout() {
 //Top half
 function ExerciseList(props) {
   const { firestoreData, setData } = props;
+  //added here
+  const [state, setState] = React.useState({
+    age: "",
+    name: "hai",
+  });
+
+  const [open, setOpen] = React.useState(false);
+  const anchorRef = React.useRef(null);
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = React.useRef(open);
+  React.useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    setState({
+      ...state,
+      [name]: event.target.value,
+    });
+  };
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
@@ -82,16 +138,6 @@ function ExerciseList(props) {
   }, [firestoreData]);
 
   function updateReps(title, newReps) {
-    //Prevent user from inputting letters
-    if (newReps === "") {
-      newReps = 0;
-    }
-    if (newReps < 0) {
-      return;
-    }
-    if (newReps > 100) {
-      newReps = 100;
-    }
     const newArray = [...firestoreData];
     const position = newArray.findIndex((index) => index.title === title);
     newArray[position] = {
@@ -102,15 +148,6 @@ function ExerciseList(props) {
   }
 
   function updateSets(title, newSets) {
-    if (newSets === "") {
-      newSets = 0;
-    }
-    if (newSets < 0) {
-      newSets;
-    }
-    if (newSets > 100) {
-      newSets = 100;
-    }
     const newArray = [...firestoreData];
     const position = newArray.findIndex((index) => index.title === title);
     newArray[position] = {
@@ -178,23 +215,23 @@ function ExerciseList(props) {
   );
 
   const headers = [
-    { label: 'Name', key: 'title' },
-    { label: 'Reps', key: 'reps' },
-    { label: 'Sets', key: 'sets' }
+    { label: "Name", key: "title" },
+    { label: "Reps", key: "reps" },
+    { label: "Sets", key: "sets" },
   ];
 
   const csvReport = {
-    filename: 'Workout.csv',
+    filename: "Workout.csv",
     headers: headers,
-    data: firestoreData
-  }
+    data: firestoreData,
+  };
 
   const event = {
     title: "Workout",
     description: "My Description",
     startTime: "2021-07-03T10:30:00+10:00",
-    endTime: "2021-07-03T12:00:00+10:00"
-  }
+    endTime: "2021-07-03T12:00:00+10:00",
+  };
 
   const rawContent = `RRULE:FREQ=WEEKLY;BYDAY=MO;INTERVAL=1;COUNT=3`;
 
@@ -202,13 +239,67 @@ function ExerciseList(props) {
     <div
       style={{
         //Hardcoded
-        width: "1300px",
-        margin: "0px auto",
         backgroundColor: "#F7F7F7",
         padding: "3em",
-        textAlign: "center",
+        textAlign: "right",
       }}
     >
+      <ButtonGroup color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          startIcon={<Save />}
+        >
+          Save
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          size="small"
+          startIcon={<GetApp />}
+          ref={anchorRef}
+          aria-controls={open ? "menu-list-grow" : undefined}
+          aria-haspopup="true"
+          onClick={handleToggle}
+        >
+          Download
+        </Button>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          transition
+          disablePortal
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin:
+                  placement === "bottom" ? "center top" : "center bottom",
+              }}
+            >
+              <Paper>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="menu-list-grow"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    <MenuItem onClick={handleClose}>
+                      Spreadsheet (.csv)
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      iCalendar File(.ics)
+                    </MenuItem>
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
+      </ButtonGroup>
       <List
         values={firestoreData}
         onChange={({ oldIndex, newIndex }) =>
@@ -219,6 +310,9 @@ function ExerciseList(props) {
             {...props}
             style={{
               padding: "0em 0em 1em 0em",
+              width: "1300px",
+              marginLeft: "auto",
+              marginRight: "auto",
               cursor: isDragged ? "grabbing" : "inherit",
             }}
           >
@@ -263,7 +357,7 @@ function ExerciseList(props) {
                 }}
                 tabIndex={-1}
               >
-                <Reorder/>
+                <Reorder />
               </button>
               <div
                 style={{
@@ -272,43 +366,99 @@ function ExerciseList(props) {
               >
                 {value.title}
               </div>
-              <TextField
-                id={value.title + " reps"}
-                label="Reps"
-                type="number"
-                value={Number(value.reps).toString()}
-                InputProps={{
-                  inputProps: {
-                    max: 100,
-                    min: 0,
-                  },
-                }}
-                onChange={(event) =>
-                  updateReps(value.title, event.target.value)
-                }
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-              <TextField
-                id={value.title + " sets"}
-                label="Sets"
-                type="number"
-                //To solve the problem of leading 0s
-                value={Number(value.sets).toString()}
-                InputProps={{
-                  inputProps: {
-                    max: 100,
-                    min: 0,
-                  },
-                }}
-                onChange={(event) =>
-                  updateSets(value.title, event.target.value)
-                }
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+              <FormControl>
+                <InputLabel>Reps</InputLabel>
+                <NativeSelect
+                  id={value.title + " reps"}
+                  value={value.reps}
+                  onChange={(event) =>
+                    updateReps(value.title, event.target.value)
+                  }
+                >
+                  <option value={0}>0</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
+                  <option value={11}>11</option>
+                  <option value={12}>12</option>
+                  <option value={13}>13</option>
+                  <option value={14}>14</option>
+                  <option value={15}>15</option>
+                  <option value={16}>16</option>
+                  <option value={17}>17</option>
+                  <option value={18}>18</option>
+                  <option value={19}>19</option>
+                  <option value={20}>20</option>
+                  <option value={21}>21</option>
+                  <option value={22}>22</option>
+                  <option value={23}>23</option>
+                  <option value={24}>24</option>
+                  <option value={25}>25</option>
+                  <option value={26}>26</option>
+                  <option value={27}>27</option>
+                  <option value={28}>28</option>
+                  <option value={29}>29</option>
+                  <option value={30}>30</option>
+                  <option value={35}>35</option>
+                  <option value={40}>40</option>
+                  <option value={45}>45</option>
+                  <option value={50}>50</option>
+                </NativeSelect>
+              </FormControl>
+
+              <FormControl>
+                <InputLabel>Sets</InputLabel>
+                <NativeSelect
+                  id={value.title + " sets"}
+                  value={value.sets}
+                  onChange={(event) =>
+                    updateSets(value.title, event.target.value)
+                  }
+                >
+                  <option value={0}>0</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
+                  <option value={6}>6</option>
+                  <option value={7}>7</option>
+                  <option value={8}>8</option>
+                  <option value={9}>9</option>
+                  <option value={10}>10</option>
+                  <option value={11}>11</option>
+                  <option value={12}>12</option>
+                  <option value={13}>13</option>
+                  <option value={14}>14</option>
+                  <option value={15}>15</option>
+                  <option value={16}>16</option>
+                  <option value={17}>17</option>
+                  <option value={18}>18</option>
+                  <option value={19}>19</option>
+                  <option value={20}>20</option>
+                  <option value={21}>21</option>
+                  <option value={22}>22</option>
+                  <option value={23}>23</option>
+                  <option value={24}>24</option>
+                  <option value={25}>25</option>
+                  <option value={26}>26</option>
+                  <option value={27}>27</option>
+                  <option value={28}>28</option>
+                  <option value={29}>29</option>
+                  <option value={30}>30</option>
+                  <option value={35}>35</option>
+                  <option value={40}>40</option>
+                  <option value={45}>45</option>
+                  <option value={50}>50</option>
+                </NativeSelect>
+              </FormControl>
               <button
                 onClick={() => {
                   updatePosition(
@@ -325,10 +475,11 @@ function ExerciseList(props) {
           </li>
         )}
       />
-      <CSVLink {...csvReport}>Export to CSV</CSVLink>
-      <ICalendarLink event={event} rawContent={rawContent}>
-        Add to Calendar
-      </ICalendarLink>
+      {/* <CSVLink {...csvReport}>Export to CSV</CSVLink>
+        <ICalendarLink event={event} rawContent={rawContent}>
+          Add to Calendar
+        </ICalendarLink> */}
+
       <ExerciseDatabase firestoreData={firestoreData} />
     </div>
   ) : (
