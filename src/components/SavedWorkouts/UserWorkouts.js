@@ -5,10 +5,8 @@ import { data } from "../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
 import { List, arrayMove, arrayRemove } from "react-movable";
-import { CSVLink, CSVDownload } from "react-csv";
-import ICalendarLink from "react-icalendar-link";
 import { Reorder, Delete, Save, GetApp } from "@material-ui/icons";
-
+import ExportIcs from "./CalendarExport";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
@@ -33,6 +31,7 @@ import {
   Popper,
   MenuList,
 } from "@material-ui/core/";
+import ExportExcel from "./ExcelExport";
 
 export default function UserWorkout() {
   const [firestoreData, setFirestoreData] = useState([]);
@@ -86,11 +85,6 @@ export default function UserWorkout() {
 function ExerciseList(props) {
   const { firestoreData, setData } = props;
   //added here
-  const [state, setState] = React.useState({
-    age: "",
-    name: "hai",
-  });
-
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -123,14 +117,6 @@ function ExerciseList(props) {
     prevOpen.current = open;
   }, [open]);
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    setState({
-      ...state,
-      [name]: event.target.value,
-    });
-  };
-
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
@@ -162,27 +148,6 @@ function ExerciseList(props) {
     const newArray = [...items];
     setData(newArray);
   }
-  const HandleIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#555"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="feather feather-move"
-    >
-      <polyline points="5 9 2 12 5 15" />
-      <polyline points="9 5 12 2 15 5" />
-      <polyline points="15 19 12 22 9 19" />
-      <polyline points="19 9 22 12 19 15" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <line x1="12" y1="2" x2="12" y2="22" />
-    </svg>
-  );
 
   const buttonStyles = {
     border: "none",
@@ -193,47 +158,6 @@ function ExerciseList(props) {
     cursor: "pointer",
     background: "transparent",
   };
-
-  const RemovableIcon = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="#555"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="feather feather-x-circle"
-    >
-      <title>Remove</title>
-      <circle cx="12" cy="12" r="10" />
-      <line x1="15" y1="9" x2="9" y2="15" />
-      <line x1="9" y1="9" x2="15" y2="15" />
-    </svg>
-  );
-
-  const headers = [
-    { label: "Name", key: "title" },
-    { label: "Reps", key: "reps" },
-    { label: "Sets", key: "sets" },
-  ];
-
-  const csvReport = {
-    filename: "Workout.csv",
-    headers: headers,
-    data: firestoreData,
-  };
-
-  const event = {
-    title: "Workout",
-    description: "My Description",
-    startTime: "2021-07-03T10:30:00+10:00",
-    endTime: "2021-07-03T12:00:00+10:00",
-  };
-
-  const rawContent = `RRULE:FREQ=WEEKLY;BYDAY=MO;INTERVAL=1;COUNT=3`;
 
   return firestoreData.length ? (
     <div
@@ -287,12 +211,9 @@ function ExerciseList(props) {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>
-                      Spreadsheet (.csv)
-                    </MenuItem>
-                    <MenuItem onClick={handleClose}>
-                      iCalendar File(.ics)
-                    </MenuItem>
+                    {/* <MenuItem onClick={handleClose}> */}
+                    <ExportExcel firestoreData={firestoreData}/>
+                    <ExportIcs/>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
@@ -475,10 +396,6 @@ function ExerciseList(props) {
           </li>
         )}
       />
-      {/* <CSVLink {...csvReport}>Export to CSV</CSVLink>
-        <ICalendarLink event={event} rawContent={rawContent}>
-          Add to Calendar
-        </ICalendarLink> */}
 
       <ExerciseDatabase firestoreData={firestoreData} />
     </div>
