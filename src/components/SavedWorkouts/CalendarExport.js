@@ -12,8 +12,23 @@ import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import ICalendarLink from "react-icalendar-link";
 
+import ToggleButton from "@material-ui/lab/ToggleButton";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+
 export default function ExportIcs() {
   const [form, setForm] = useState(false);
+  const [iCalTitle, setICalTitle] = useState({
+    title: "Workout",
+    description: "My Description",
+    startTime: "2021-07-03T10:30:00+10:00",
+    endTime: "2021-07-03T12:00:00+10:00",
+  });
+  const [rawContent, setRawContent] = useState(``);
+  const [daysChosen, setDaysChosen] = useState([]);
+
+  const handledaysChosen = (event, newDaysChosen) => {
+    setDaysChosen(newDaysChosen);
+  };
 
   const handleClickOpen = () => {
     setForm(true);
@@ -22,14 +37,21 @@ export default function ExportIcs() {
   const handleClose = () => {
     setForm(false);
   };
-  const event = {
-    title: "Workout",
-    description: "My Description",
-    startTime: "2021-07-03T10:30:00+10:00",
-    endTime: "2021-07-03T12:00:00+10:00",
-  };
 
-  const rawContent = `RRULE:FREQ=WEEKLY;BYDAY=MO;INTERVAL=1;COUNT=3`;
+  useEffect(() => {
+    addDays(daysChosen);
+  }, [daysChosen]);
+
+  function addDays(event) {
+    const str = event.join();
+    setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
+  }
+
+  function dateTime() {
+    const x = new Date().toLocaleString() + '';
+    console.log(x);
+  }
+
 
   return (
     <div>
@@ -44,27 +66,49 @@ export default function ExportIcs() {
           <DialogContentText>
             Please give Calvin all your money
           </DialogContentText>
-          <FormControl>
-                <InputLabel>Repeat</InputLabel>
-                <NativeSelect
-                  id="Repeat"
-                  value={0}
-                //   onChange={
-                //   }
-                >
-                  <option value={0}>0</option>
-                  <option value={1}>1</option>
-                </NativeSelect>
-              </FormControl>
+          <ToggleButtonGroup value={daysChosen} onChange={handledaysChosen}>
+            <ToggleButton value="MO" >
+              Monday
+            </ToggleButton>
+            <ToggleButton value="TU" >
+              Tuesday
+            </ToggleButton>
+            <ToggleButton value="WE" >
+              Wednesday
+            </ToggleButton>
+            <ToggleButton value="TH" >
+              Thursday
+            </ToggleButton>
+            <ToggleButton value="FR" >
+              Friday
+            </ToggleButton>
+            <ToggleButton value="SA" >
+              Saturday
+            </ToggleButton>
+            <ToggleButton value="SU" >
+              Sunday
+            </ToggleButton>
+          </ToggleButtonGroup>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Subscribe
+          <Button
+            value={0}
+            onClick={(event) => setICalTitle({ ...iCalTitle, title: "TEST" })}
+            color="primary"
+          >
+            TEST
           </Button>
-          <ICalendarLink event={event} rawContent={rawContent}>
+          <Button
+            value={0}
+            onClick={dateTime}
+            color="primary"
+          >
+            DATE
+          </Button>
+          <ICalendarLink event={iCalTitle} rawContent={rawContent}>
             Add to Calendar
           </ICalendarLink>
         </DialogActions>
