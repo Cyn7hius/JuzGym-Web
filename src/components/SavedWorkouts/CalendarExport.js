@@ -11,6 +11,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import ICalendarLink from "react-icalendar-link";
+import DateFnsUtils from "@date-io/date-fns";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from "@material-ui/pickers";
 
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
@@ -25,6 +31,14 @@ export default function ExportIcs() {
   });
   const [rawContent, setRawContent] = useState(``);
   const [daysChosen, setDaysChosen] = useState([]);
+
+  const [selectedDate, setSelectedDate] = React.useState(
+    new Date("2014-08-18T21:11:54")
+  );
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
 
   const handledaysChosen = (event, newDaysChosen) => {
     setDaysChosen(newDaysChosen);
@@ -47,11 +61,12 @@ export default function ExportIcs() {
     setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
   }
 
+  function addTitle(event) {}
+
   function dateTime() {
-    const x = new Date().toLocaleString() + '';
+    const x = new Date().toLocaleString() + "";
     console.log(x);
   }
-
 
   return (
     <div>
@@ -67,28 +82,26 @@ export default function ExportIcs() {
             Please give Calvin all your money
           </DialogContentText>
           <ToggleButtonGroup value={daysChosen} onChange={handledaysChosen}>
-            <ToggleButton value="MO" >
-              Monday
-            </ToggleButton>
-            <ToggleButton value="TU" >
-              Tuesday
-            </ToggleButton>
-            <ToggleButton value="WE" >
-              Wednesday
-            </ToggleButton>
-            <ToggleButton value="TH" >
-              Thursday
-            </ToggleButton>
-            <ToggleButton value="FR" >
-              Friday
-            </ToggleButton>
-            <ToggleButton value="SA" >
-              Saturday
-            </ToggleButton>
-            <ToggleButton value="SU" >
-              Sunday
-            </ToggleButton>
+            <ToggleButton value="MO">Monday</ToggleButton>
+            <ToggleButton value="TU">Tuesday</ToggleButton>
+            <ToggleButton value="WE">Wednesday</ToggleButton>
+            <ToggleButton value="TH">Thursday</ToggleButton>
+            <ToggleButton value="FR">Friday</ToggleButton>
+            <ToggleButton value="SA">Saturday</ToggleButton>
+            <ToggleButton value="SU">Sunday</ToggleButton>
           </ToggleButtonGroup>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardTimePicker
+              margin="normal"
+              id="time-picker"
+              label="Time picker"
+              value={selectedDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                "aria-label": "change time",
+              }}
+            />
+          </MuiPickersUtilsProvider>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -101,16 +114,20 @@ export default function ExportIcs() {
           >
             TEST
           </Button>
-          <Button
-            value={0}
-            onClick={dateTime}
-            color="primary"
-          >
+          <Button value={0} onClick={dateTime} color="primary">
             DATE
           </Button>
-          <ICalendarLink event={iCalTitle} rawContent={rawContent}>
-            Add to Calendar
-          </ICalendarLink>
+          <Button>
+            <ICalendarLink
+              style={{
+                textDecoration: "inherit",
+              }}
+              event={iCalTitle}
+              rawContent={rawContent}
+            >
+              Add to Calendar
+            </ICalendarLink>
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
