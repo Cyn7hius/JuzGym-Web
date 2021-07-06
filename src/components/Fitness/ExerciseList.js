@@ -23,35 +23,39 @@ function ExerciseList(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const { database, firestoreData, setData } = props;
+  const { database, firestoreData, setData, isLoggedIn } = props;
 
-  function addExercise(uid) {
+  function addExercise(name) {
+    // const index = firestoreData.length;
     const newExercises = [
       ...firestoreData,
       {
-        Exercise: uid,
+        title: name,
+        sets: 0,
+        reps: 0,
+        // position: index
       },
     ];
     setData(newExercises);
   }
 
-  function removeExercise(uid) {
-    const newExercises = firestoreData.filter((array) => array.Exercise != uid);
+  function removeExercise(name) {
+    const newExercises = firestoreData.filter((array) => array.title != name);
     setData(newExercises);
   }
 
-  function exerciseButton(event, uid) {
+  function exerciseButton(event, name) {
     event.stopPropagation();
     event.preventDefault();
-    if (firestoreData.find((array) => array.Exercise == uid) != null) {
-      removeExercise(uid);
+    if (firestoreData.find((array) => array.title == name) != null) {
+      removeExercise(name);
     } else {
-      addExercise(uid);
+      addExercise(name);
     }
   }
 
-  function exerciseButtonText(uid) {
-    if (firestoreData.find((array) => array.Exercise == uid) != null) {
+  function exerciseButtonText(name) {
+    if (firestoreData.find((array) => array.title == name) != null) {
       return "Remove from workout";
     } else {
       return "Add to workout";
@@ -87,10 +91,11 @@ function ExerciseList(props) {
                   {exercise.name}
                 </Typography>
                 <Button
+                  disabled={!isLoggedIn}
                   style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.uid)}
+                  onClick={(event) => exerciseButton(event, exercise.name)}
                 >
-                  {exerciseButtonText(exercise.uid)}
+                  {exerciseButtonText(exercise.name)}
                 </Button>
               </AccordionSummary>
 
@@ -244,6 +249,13 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
 
   const [firestoreData, setFirestoreData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  function loadUser(isLoggedIn) {
+    setLoading(true);
+    setIsLoggedIn(isLoggedIn);
+  }
+
   function setData(newData) {
     setFirestoreData(newData);
   }
@@ -259,23 +271,14 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            setFirestoreData(doc.data().Workout, setLoading(true));
+            setFirestoreData(doc.data().Workout, loadUser(true));
           } else {
-            setFirestoreData([], setLoading(true));
+            setFirestoreData([], loadUser(true));
           }
         });
       } else {
-        const uid = firebase.auth().currentUser?.uid;
-        const db = firebase.firestore();
-        const docRef = db.collection("/users").doc(uid);
-
-        docRef.get().then((doc) => {
-          if (doc.exists) {
-            setFirestoreData(doc.data().Workout, setLoading(true));
-          } else {
-            setFirestoreData([], setLoading(true));
-          }
-        });
+        // User is signed out
+        loadUser(false);
       }
     });
   }, []);
@@ -286,6 +289,7 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
       database={filteredData}
       firestoreData={firestoreData}
       setData={setData}
+      isLoggedIn={isLoggedIn}
     />
   ) : (
     <h1>Loading workouts...</h1>
