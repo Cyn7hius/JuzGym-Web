@@ -208,6 +208,12 @@ function ExerciseList(props) {
 
 export default function FilterExercises({ equipmentFilter, muscleFilter }) {
   //converts the URL clicks into filters
+
+  const coreAndBack = new RegExp("[5]");
+  const lowerBody = new RegExp("[6]");
+  const upperBody = new RegExp("[7]");
+  const allMuscles = new RegExp("[5-7]");
+
   const filterOne =
     equipmentFilter == "DUMBBELL"
       ? 1
@@ -218,16 +224,26 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
       : 4;
   const filterTwo =
     muscleFilter == "CORE AND BACK"
-      ? 5
+      ? "5"
       : muscleFilter == "LOWER BODY"
-      ? 6
+      ? "6"
       : muscleFilter == "UPPER BODY"
-      ? 7
+      ? "7"
       : 8;
+
+  const regexToUse =
+    filterTwo == "5"
+      ? coreAndBack
+      : filterTwo == "6"
+      ? lowerBody
+      : filterTwo == "7"
+      ? upperBody
+      : allMuscles;
+
   function CheckExercise(exercise) {
     return (
       (filterOne == 4 || exercise.equipmentType == filterOne) &&
-      (filterTwo == 8 || exercise.muscleType == filterTwo)
+      regexToUse.test(exercise.muscleType)
     );
   }
 
@@ -252,7 +268,7 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
         var uid = user.uid;
         const db = firebase.firestore();
         const docRef = db.collection("/users").doc(uid);
-    
+
         docRef.get().then((doc) => {
           if (doc.exists) {
             setFirestoreData(doc.data().Workout, loadUser(true));

@@ -138,29 +138,20 @@ export default function MuscleFilter(props) {
   const equipment = props.equipmentFilter;
   const routes = {
     "/": () => <MuscleSelector />,
+
+    // take the props passed from the equipment page, and send it together with muscleFilter prop to ExerciseList
+
     "/core*": () => (
-      <ExerciseList
-        equipmentFilter={equipment}
-        muscleFilter="CORE AND BACK"
-      />
+      <ExerciseList equipmentFilter={equipment} muscleFilter="CORE AND BACK" />
     ),
     "/upper*": () => (
-      <ExerciseList
-        equipmentFilter={equipment}
-        muscleFilter="UPPER BODY"
-      />
+      <ExerciseList equipmentFilter={equipment} muscleFilter="UPPER BODY" />
     ),
     "/lower*": () => (
-      <ExerciseList
-        equipmentFilter={equipment}
-        muscleFilter="LOWER BODY"
-      />
+      <ExerciseList equipmentFilter={equipment} muscleFilter="LOWER BODY" />
     ),
     "/all*": () => (
-      <ExerciseList
-        equipmentFilter={equipment}
-        muscleFilter="ALL BODY PARTS"
-      />
+      <ExerciseList equipmentFilter={equipment} muscleFilter="ALL BODY PARTS" />
     ),
   };
 
