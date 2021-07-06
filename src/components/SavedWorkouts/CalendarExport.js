@@ -6,7 +6,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { MenuItem } from "@material-ui/core";
+import { FormHelperText, FormLabel, FormControlLabel, MenuItem } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
@@ -20,6 +20,7 @@ import {
 
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
+import Alert from '@material-ui/lab/Alert';
 
 export default function ExportIcs() {
   const [form, setForm] = useState(false);
@@ -30,14 +31,16 @@ export default function ExportIcs() {
     endTime: "2021-07-07T12:00:00+10:00",
   });
   const [rawContent, setRawContent] = useState(``);
-  const [daysChosen, setDaysChosen] = useState([]);
+  const [daysChosen, setDaysChosen] = useState(["MO"]);
 
   const [selectedDate, setSelectedDate] = React.useState(
     new Date("2014-08-18T21:11:54")
   );
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
+    setICalTitle({ ...iCalTitle, startTime: date });
+    // console.log(date.toTimeString());
+    console.log(date.getTimezoneOffset());
   };
 
   const handledaysChosen = (event, newDaysChosen) => {
@@ -57,15 +60,53 @@ export default function ExportIcs() {
   }, [daysChosen]);
 
   function addDays(event) {
-    if(event.length > 0) {
+    if (event.length > 0) {
       const str = event.join();
       setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
     } else {
-      setRawContent("")
+      setRawContent("");
     }
   }
 
-  function setStartDate(event) {}
+  function getStartDate(selectedDays) {
+    var today = new Date();
+    var day = today.getDay();
+    var offset = 0;
+    while (!selectedDays.filter(x => (dayStringtoNumber(x) == day)).length) {
+        if (day == 6 ) {
+          day = 0;
+          offset += 1;
+        } else {
+          day += 1;
+          offset += 1;
+        }
+    }
+    return offset;
+  }
+
+  function dayStringtoNumber(day) {
+    if (day == "MO") {
+      return 1;
+    }
+    if (day == "TU") {
+      return 2;
+    }
+    if (day == "WE") {
+      return 3;
+    }
+    if (day == "TH") {
+      return 4;
+    }
+    if (day == "FR") {
+      return 5;
+    }
+    if (day == "SA") {
+      return 6;
+    }
+    if (day == "SU") {
+      return 0;
+    }
+  }
 
   //sunday is 0, then mon to sat 1-6
   function dateTime() {
@@ -88,28 +129,35 @@ export default function ExportIcs() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Export Workout as ICS</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please give Calvin all your money
+            Please select the days to have your workout
           </DialogContentText>
           <ToggleButtonGroup value={daysChosen} onChange={handledaysChosen}>
-            <ToggleButton value="MO">Monday</ToggleButton>
-            <ToggleButton value="TU">Tuesday</ToggleButton>
-            <ToggleButton value="WE">Wednesday</ToggleButton>
-            <ToggleButton value="TH">Thursday</ToggleButton>
-            <ToggleButton value="FR">Friday</ToggleButton>
-            <ToggleButton value="SA">Saturday</ToggleButton>
-            <ToggleButton value="SU">Sunday</ToggleButton>
+              <ToggleButton value="MO">Monday</ToggleButton>
+              <ToggleButton value="TU">Tuesday</ToggleButton>
+              <ToggleButton value="WE">Wednesday</ToggleButton>
+              <ToggleButton value="TH">Thursday</ToggleButton>
+              <ToggleButton value="FR">Friday</ToggleButton>
+              <ToggleButton value="SA">Saturday</ToggleButton>
+              <ToggleButton value="SU">Sunday</ToggleButton>
           </ToggleButtonGroup>
+          {!daysChosen.length &&<Alert severity="error">Please choose at least one day!</Alert>}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
+              <br/>
+              <br/>
+            <DialogContentText>
+              Please select the start time of your workout
+            </DialogContentText>
             <KeyboardTimePicker
-              margin="normal"
+              // margin="normal"
               id="time-picker"
-              label="Time picker"
-              value={selectedDate}
-              // onChange={handleDateChange}
-              onChange={(event) => console.log(event.getTimezoneOffset())}
+              // label="Pick start time"
+              disabled={!daysChosen.length}
+              value={iCalTitle.startTime}
+              onChange={handleDateChange}
+              // onChange={(event) => console.log(event.getTimezoneOffset())}
               KeyboardButtonProps={{
                 "aria-label": "change time",
               }}
@@ -117,12 +165,13 @@ export default function ExportIcs() {
           </MuiPickersUtilsProvider>
         </DialogContent>
         <DialogActions>
+
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button
             value={0}
-            onClick={(event) => setICalTitle({ ...iCalTitle, title: "TEST" })}
+            onClick={(event) => console.log(iCalTitle.startTime)}
             color="primary"
           >
             TEST
