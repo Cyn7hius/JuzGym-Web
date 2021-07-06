@@ -26,8 +26,8 @@ export default function ExportIcs() {
   const [iCalTitle, setICalTitle] = useState({
     title: "Workout",
     description: "My Description",
-    startTime: "2021-07-03T10:30:00+10:00",
-    endTime: "2021-07-03T12:00:00+10:00",
+    startTime: "2021-07-07T10:30:00+10:00",
+    endTime: "2021-07-07T12:00:00+10:00",
   });
   const [rawContent, setRawContent] = useState(``);
   const [daysChosen, setDaysChosen] = useState([]);
@@ -57,15 +57,27 @@ export default function ExportIcs() {
   }, [daysChosen]);
 
   function addDays(event) {
-    const str = event.join();
-    setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
+    if(event.length > 0) {
+      const str = event.join();
+      setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
+    } else {
+      setRawContent("")
+    }
   }
 
-  function addTitle(event) {}
+  function setStartDate(event) {}
 
+  //sunday is 0, then mon to sat 1-6
   function dateTime() {
-    const x = new Date().toLocaleString() + "";
+    // const x = new Date().toLocaleString() + "";
+    var x = new Date();
     console.log(x);
+    console.log(x.getFullYear());
+    console.log(x.getDay());
+    console.log(x.getDate());
+    x.setDate(11);
+    console.log(x.getDay());
+    console.log(x.getDate());
   }
 
   return (
@@ -96,7 +108,8 @@ export default function ExportIcs() {
               id="time-picker"
               label="Time picker"
               value={selectedDate}
-              onChange={handleDateChange}
+              // onChange={handleDateChange}
+              onChange={(event) => console.log(event.getTimezoneOffset())}
               KeyboardButtonProps={{
                 "aria-label": "change time",
               }}
