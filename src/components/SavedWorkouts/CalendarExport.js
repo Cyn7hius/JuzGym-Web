@@ -33,22 +33,31 @@ export default function ExportIcs() {
     title: "Workout",
     description: "My Description",
     startTime: "2021-07-07T10:30:00+08:00",
-    endTime: "2021-07-07T12:00:00+08:00",
+    endTime: "2021-07-09T12:00:00+08:00",
   });
   const [rawContent, setRawContent] = useState(``);
   const [daysChosen, setDaysChosen] = useState(["MO"]);
+  // const [duration, setDuration] = useState([0, 0]);
 
   const handleDateChange = (date) => {
     var updatedTime = new Date(iCalTitle.startTime);
     updatedTime.setHours(date.getHours());
     updatedTime.setMinutes(date.getMinutes());
+    var today = new Date();
     const offset = getStartDate(daysChosen);
-    updatedTime.setDate(updatedTime.getDate() + offset);
-    console.log(updatedTime);
+    updatedTime.setDate(today.getDate() + offset);
     setICalTitle({ ...iCalTitle, startTime: updatedTime });
-    // console.log(date.toTimeString());
-    console.log(date.getTimezoneOffset());
+    // console.log(date.getTimezoneOffset());
+    console.log(date.toDateString());
   };
+
+  // const handleEndtime = (event) => {
+  //   setDuration(event.target.value);
+  //   var updatedTime = new Date(iCalTitle.startTime);
+  //   updatedTime.setHours(updatedTime.getHours() + event.target.value[0]);
+  //   updatedTime.setMinutes(updatedTime.getMinutes() + event.target.value[1]);
+  //   setICalTitle({ ...iCalTitle, endTime: updatedTime });
+  // };
 
   const handledaysChosen = (event, newDaysChosen) => {
     setDaysChosen(newDaysChosen);
@@ -70,10 +79,18 @@ export default function ExportIcs() {
   function updateDate(daysChosen) {
     if (daysChosen.length) {
       var updatedTime = new Date(iCalTitle.startTime);
+      var today = new Date();
       const offset = getStartDate(daysChosen);
-      updatedTime.setDate(updatedTime.getDate() + offset);
+      updatedTime.setDate(today.getDate() + offset);
+      setICalTitle({ ...iCalTitle, startTime: updatedTime });
+      // console.log("CHANGED")
+      // updatedTime.setHours(updatedTime.getHours() + duration[0]);
+      // updatedTime.setMinutes(updatedTime.getMinutes() + duration[1]);
+      // setICalTitle({ ...iCalTitle, endTime: updatedTime });
+      // console.log(iCalTitle);
     }
   }
+
   function addDays(event) {
     if (event.length) {
       const str = event.join();
@@ -167,6 +184,23 @@ export default function ExportIcs() {
               }}
             />
           </MuiPickersUtilsProvider>
+          {/* <FormControl>
+            <InputLabel>Reps</InputLabel>
+            <NativeSelect
+              id="Endtime"
+              value={duration}
+              onChange={handleEndtime}
+            >
+              <option value={[0, 15]}>15 minutes</option>
+              <option value={[0, 30]}>30 minutes</option>
+              <option value={[0, 45]}>45 minutes</option>
+              <option value={[1, 0]}>1 hour</option>
+              <option value={[1, 15]}>1 hour 15 minutes</option>
+              <option value={[1, 30]}>1 hour 30 minutes</option>
+              <option value={[1, 45]}>1 hour 45 minutes</option>
+              <option value={[2, 0]}>2 hours</option>
+            </NativeSelect>
+          </FormControl> */}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -179,11 +213,11 @@ export default function ExportIcs() {
           >
             TEST
           </Button>
-          <Button disabled={!daysChosen.length}>
+          <Button disabled={!daysChosen.length} color="primary">
             <ICalendarLink
               style={{
                 textDecoration: "inherit",
-                color: "inherit", 
+                color: "inherit",
               }}
               event={iCalTitle}
               rawContent={rawContent}
