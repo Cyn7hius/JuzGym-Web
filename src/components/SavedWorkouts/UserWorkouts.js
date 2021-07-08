@@ -10,6 +10,7 @@ import ExportIcs from "./CalendarExport";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import PermanentDrawerLeft from "./Test";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -398,6 +399,7 @@ function ExerciseList(props) {
       />
 
       <ExerciseDatabase firestoreData={firestoreData} />
+      <PermanentDrawerLeft/>
     </div>
   ) : (
     <h1>You have no exercises saved, try adding some from our database?</h1>
