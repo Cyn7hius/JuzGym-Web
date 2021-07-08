@@ -213,7 +213,7 @@ function ExerciseList(props) {
                   >
                     {/* <MenuItem onClick={handleClose}> */}
                     <ExportExcel firestoreData={firestoreData}/>
-                    <ExportIcs/>
+                    <ExportIcs firestoreData={firestoreData}/>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
