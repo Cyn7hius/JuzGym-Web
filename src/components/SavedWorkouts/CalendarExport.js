@@ -27,32 +27,61 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Alert from "@material-ui/lab/Alert";
 
-export default function ExportIcs() {
+export default function ExportIcs(props) {
+  const { firestoreData } = props;
   const [form, setForm] = useState(false);
   const [iCalTitle, setICalTitle] = useState({
     title: "Workout",
-    description: "My Description",
+    description: `${firestoreData.map((index) => `${index.sets} sets of ${index.reps} reps of ${index.title}`).join('\\n')}`,
     startTime: "2021-07-07T10:30:00+08:00",
     endTime: "2021-07-09T12:00:00+08:00",
   });
   const [rawContent, setRawContent] = useState(``);
   const [daysChosen, setDaysChosen] = useState(["MO"]);
   const [duration, setDuration] = useState(30);
+  const [repeat, setRepeat] = useState(1);
 
   //When startTime changes
+  const handleTimeChange = (date) => {
+    //only change time
+    if (repeat == 1 ) {
+      var updatedStartTime = new Date(iCalTitle.startTime);
+      updatedStartTime.setHours(date.getHours());
+      updatedStartTime.setMinutes(date.getMinutes());
+      var updatedEndTime = new Date(iCalTitle.endTime);
+      updatedEndTime.setHours(updatedStartTime.getHours() + Math.floor(duration / 60));
+      updatedEndTime.setMinutes(updatedStartTime.getMinutes() + (duration % 60));
+      setICalTitle({
+        ...iCalTitle,
+        startTime: updatedStartTime,
+        endTime: updatedEndTime,
+      });
+      //change time AND find appropriate date
+    } else {
+      var updatedTime = new Date();
+      updatedTime.setHours(date.getHours());
+      updatedTime.setMinutes(date.getMinutes());
+      const offset = getStartDate(daysChosen);
+      updatedTime.setDate(updatedTime.getDate() + offset);
+      var updatedEndTime2 = new Date(updatedTime);
+      updatedEndTime2.setHours(updatedTime.getHours() + Math.floor(duration / 60));
+      updatedEndTime2.setMinutes(updatedTime.getMinutes() + (duration % 60));
+      setICalTitle({
+        ...iCalTitle,
+        startTime: updatedTime,
+        endTime: updatedEndTime2,
+      });
+    }
+  };
+
   const handleDateChange = (date) => {
-    var updatedTime = new Date();
-    updatedTime.setHours(date.getHours());
-    updatedTime.setMinutes(date.getMinutes());
-    const offset = getStartDate(daysChosen);
-    updatedTime.setDate(updatedTime.getDate() + offset);
-    var updatedEndTime = new Date(updatedTime);
-    updatedEndTime.setHours(updatedTime.getHours() + Math.floor(duration / 60));
-    updatedEndTime.setMinutes(updatedTime.getMinutes() + (duration % 60));
-    console.log(updatedEndTime.toString());
+    var updatedStartTime = new Date(iCalTitle.startTime);
+    var updatedEndTime = new Date(iCalTitle.endTime);
+    updatedStartTime.setDate(date.getDate());
+    updatedEndTime.setDate(date.getDate());
     setICalTitle({
       ...iCalTitle,
-      startTime: updatedTime,
+      startTime: updatedStartTime,
       endTime: updatedEndTime,
     });
   };
@@ -70,6 +99,10 @@ export default function ExportIcs() {
     setICalTitle({ ...iCalTitle, endTime: updatedTime });
   };
 
+  const handleRepeat = (event) => {
+    setRepeat(event.target.value);
+  };
+
   const handledaysChosen = (event, newDaysChosen) => {
     setDaysChosen(newDaysChosen);
   };
@@ -85,7 +118,7 @@ export default function ExportIcs() {
   useEffect(() => {
     addDays(daysChosen);
     updateDate(daysChosen);
-  }, [daysChosen]);
+  }, [daysChosen, repeat]);
 
   //When startDate changes
   function updateDate(daysChosen) {
@@ -108,11 +141,15 @@ export default function ExportIcs() {
   }
 
   function addDays(event) {
-    if (event.length) {
-      const str = event.join();
-      setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
-    } else {
+    if (repeat == 1) {
       setRawContent("");
+    } else {
+      if (event.length) {
+        const str = event.join();
+        setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
+      } else {
+        setRawContent("");
+      }
     }
   }
 
@@ -166,24 +203,60 @@ export default function ExportIcs() {
       >
         <DialogTitle id="form-dialog-title">Export Workout as ICS</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Please select the days to have your workout
-          </DialogContentText>
-          <ToggleButtonGroup value={daysChosen} onChange={handledaysChosen}>
-            <ToggleButton value="MO">Monday</ToggleButton>
-            <ToggleButton value="TU">Tuesday</ToggleButton>
-            <ToggleButton value="WE">Wednesday</ToggleButton>
-            <ToggleButton value="TH">Thursday</ToggleButton>
-            <ToggleButton value="FR">Friday</ToggleButton>
-            <ToggleButton value="SA">Saturday</ToggleButton>
-            <ToggleButton value="SU">Sunday</ToggleButton>
-          </ToggleButtonGroup>
-          {!daysChosen.length && (
-            <Alert severity="error">Please choose at least one day!</Alert>
+          <DialogContentText>Frequency?</DialogContentText>
+          <FormControl>
+            <NativeSelect
+              id="Repeater best gun"
+              value={repeat}
+              onChange={handleRepeat}
+            >
+              <option value={1}>Once</option>
+              <option value={0}>Weekly</option>
+            </NativeSelect>
+          </FormControl>
+          {repeat == 0 && (
+            <div>
+              <br />
+              <DialogContentText>
+                Please select the days to have your workout
+              </DialogContentText>
+              <ToggleButtonGroup value={daysChosen} onChange={handledaysChosen}>
+                <ToggleButton value="MO">Monday</ToggleButton>
+                <ToggleButton value="TU">Tuesday</ToggleButton>
+                <ToggleButton value="WE">Wednesday</ToggleButton>
+                <ToggleButton value="TH">Thursday</ToggleButton>
+                <ToggleButton value="FR">Friday</ToggleButton>
+                <ToggleButton value="SA">Saturday</ToggleButton>
+                <ToggleButton value="SU">Sunday</ToggleButton>
+              </ToggleButtonGroup>
+              {!daysChosen.length && (
+                <Alert severity="error">Please choose at least one day!</Alert>
+              )}
+              <br />
+              <br />
+            </div>
           )}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            <br />
-            <br />
+            {repeat == 1 && (
+              <div>
+                <br />
+                <DialogContentText>
+                  Please select the date for your workout
+                </DialogContentText>
+                <KeyboardDatePicker
+                  // margin="normal"
+                  id="date-picker-dialog"
+                  format="MM/dd/yyyy"
+                  value={iCalTitle.startTime}
+                  onChange={handleDateChange}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date",
+                  }}
+                />
+                <br />
+                <br />
+              </div>
+            )}
             <DialogContentText>
               Please select the start time of your workout
             </DialogContentText>
@@ -193,7 +266,7 @@ export default function ExportIcs() {
               // label="Pick start time"
               disabled={!daysChosen.length}
               value={iCalTitle.startTime}
-              onChange={handleDateChange}
+              onChange={handleTimeChange}
               // onChange={(event) => console.log(event.getTimezoneOffset())}
               KeyboardButtonProps={{
                 "aria-label": "change time",
@@ -225,14 +298,14 @@ export default function ExportIcs() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button disabled={!daysChosen.length} color="primary">
+          <Button disabled={repeat == 0 && !daysChosen.length} color="primary">
             <ICalendarLink
               style={{
                 textDecoration: "inherit",
                 color: "inherit",
               }}
               event={iCalTitle}
-              rawContent={rawContent}
+              rawContent={repeat ? rawContent : ""}
             >
               Add to Calendar
             </ICalendarLink>
