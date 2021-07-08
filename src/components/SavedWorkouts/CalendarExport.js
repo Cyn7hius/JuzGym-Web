@@ -37,27 +37,38 @@ export default function ExportIcs() {
   });
   const [rawContent, setRawContent] = useState(``);
   const [daysChosen, setDaysChosen] = useState(["MO"]);
-  // const [duration, setDuration] = useState([0, 0]);
+  const [duration, setDuration] = useState(30);
 
+  //When startTime changes
   const handleDateChange = (date) => {
-    var updatedTime = new Date(iCalTitle.startTime);
+    var updatedTime = new Date();
     updatedTime.setHours(date.getHours());
     updatedTime.setMinutes(date.getMinutes());
-    var today = new Date();
     const offset = getStartDate(daysChosen);
-    updatedTime.setDate(today.getDate() + offset);
-    setICalTitle({ ...iCalTitle, startTime: updatedTime });
-    // console.log(date.getTimezoneOffset());
-    console.log(date.toDateString());
+    updatedTime.setDate(updatedTime.getDate() + offset);
+    var updatedEndTime = new Date(updatedTime);
+    updatedEndTime.setHours(updatedTime.getHours() + Math.floor(duration / 60));
+    updatedEndTime.setMinutes(updatedTime.getMinutes() + (duration % 60));
+    console.log(updatedEndTime.toString());
+    setICalTitle({
+      ...iCalTitle,
+      startTime: updatedTime,
+      endTime: updatedEndTime,
+    });
   };
 
-  // const handleEndtime = (event) => {
-  //   setDuration(event.target.value);
-  //   var updatedTime = new Date(iCalTitle.startTime);
-  //   updatedTime.setHours(updatedTime.getHours() + event.target.value[0]);
-  //   updatedTime.setMinutes(updatedTime.getMinutes() + event.target.value[1]);
-  //   setICalTitle({ ...iCalTitle, endTime: updatedTime });
-  // };
+  //When endTime changes
+  const handleEndtime = (event) => {
+    setDuration(event.target.value);
+    var updatedTime = new Date(iCalTitle.startTime);
+    updatedTime.setHours(
+      updatedTime.getHours() + Math.floor(event.target.value / 60)
+    );
+    updatedTime.setMinutes(
+      updatedTime.getMinutes() + (event.target.value % 60)
+    );
+    setICalTitle({ ...iCalTitle, endTime: updatedTime });
+  };
 
   const handledaysChosen = (event, newDaysChosen) => {
     setDaysChosen(newDaysChosen);
@@ -76,18 +87,23 @@ export default function ExportIcs() {
     updateDate(daysChosen);
   }, [daysChosen]);
 
+  //When startDate changes
   function updateDate(daysChosen) {
     if (daysChosen.length) {
       var updatedTime = new Date(iCalTitle.startTime);
       var today = new Date();
       const offset = getStartDate(daysChosen);
       updatedTime.setDate(today.getDate() + offset);
-      setICalTitle({ ...iCalTitle, startTime: updatedTime });
-      // console.log("CHANGED")
-      // updatedTime.setHours(updatedTime.getHours() + duration[0]);
-      // updatedTime.setMinutes(updatedTime.getMinutes() + duration[1]);
-      // setICalTitle({ ...iCalTitle, endTime: updatedTime });
-      // console.log(iCalTitle);
+      var updatedEndTime = new Date(updatedTime);
+      updatedEndTime.setHours(
+        updatedTime.getHours() + Math.floor(duration / 60)
+      );
+      updatedEndTime.setMinutes(updatedTime.getMinutes() + (duration % 60));
+      setICalTitle({
+        ...iCalTitle,
+        startTime: updatedTime,
+        endTime: updatedEndTime,
+      });
     }
   }
 
@@ -184,34 +200,30 @@ export default function ExportIcs() {
               }}
             />
           </MuiPickersUtilsProvider>
-          {/* <FormControl>
-            <InputLabel>Reps</InputLabel>
+          <br />
+          <br />
+          <DialogContentText>Select duration of workout</DialogContentText>
+          <FormControl>
             <NativeSelect
               id="Endtime"
               value={duration}
               onChange={handleEndtime}
+              // onChange={(event) => console.log(event.target.value.minutes)}
             >
-              <option value={[0, 15]}>15 minutes</option>
-              <option value={[0, 30]}>30 minutes</option>
-              <option value={[0, 45]}>45 minutes</option>
-              <option value={[1, 0]}>1 hour</option>
-              <option value={[1, 15]}>1 hour 15 minutes</option>
-              <option value={[1, 30]}>1 hour 30 minutes</option>
-              <option value={[1, 45]}>1 hour 45 minutes</option>
-              <option value={[2, 0]}>2 hours</option>
+              <option value={15}>15 minutes</option>
+              <option value={30}>30 minutes</option>
+              <option value={45}>45 minutes</option>
+              <option value={60}>1 hour</option>
+              <option value={75}>1 hour 15 minutes</option>
+              <option value={90}>1 hour 30 minutes</option>
+              <option value={105}>1 hour 45 minutes</option>
+              <option value={120}>2 hours</option>
             </NativeSelect>
-          </FormControl> */}
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
-          </Button>
-          <Button
-            value={0}
-            onClick={(event) => console.log(iCalTitle.startTime)}
-            color="primary"
-          >
-            TEST
           </Button>
           <Button disabled={!daysChosen.length} color="primary">
             <ICalendarLink
