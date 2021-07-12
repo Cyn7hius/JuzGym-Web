@@ -39,7 +39,7 @@ export default function SimpleTabs() {
           />
         </Tabs>
       </Fragment>
-      <br />
+      {/* <br /> */}
       {routeResult || <NoPageFound />}
     </div>
   );

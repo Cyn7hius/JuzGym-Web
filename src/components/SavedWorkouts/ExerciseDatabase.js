@@ -22,6 +22,7 @@ export default function ExerciseDatabase(props) {
     const { firestoreData } = props;
     // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
     const [newDatabase, setNewDatabase] = useState([]);
+    //update local 
     useEffect(() => {
       setNewDatabase(
         firestoreData.map((firestoreArray) =>

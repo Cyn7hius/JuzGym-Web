@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import React, { useState, useEffect } from "react";
 import { CSVLink, CSVDownload } from "react-csv";
 
+//firestoredata is the curated exercises + sets + reps
 export default function ExportExcel(props) {
   const { firestoreData } = props;
   const headers = [

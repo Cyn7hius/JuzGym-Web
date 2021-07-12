@@ -27,6 +27,7 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Alert from "@material-ui/lab/Alert";
 
+//firestoredata is the curated exercises + sets + reps
 export default function ExportIcs(props) {
   const { firestoreData } = props;
   const [form, setForm] = useState(false);
