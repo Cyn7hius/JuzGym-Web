@@ -38,9 +38,34 @@ import {
 import ExportExcel from "./components/ExcelExport";
 import WorkoutPage from "./WorkoutTemplate";
 import ExercisePlanner from "./ExercisePlanner";
+import Homepage from "./HomepageTemplate";
 
 export default function UserWorkout() {
   const [firestoreData, setFirestoreData] = useState([]);
+  // const [workoutOne, setWorkoutOne] = useState([
+  //   {
+  //     title: "Dumbbell Crunch",
+  //     sets: 0,
+  //     reps: 0,
+  //   },
+  // ]);
+  // const [workoutTwo, setWorkoutTwo] = useState([
+  //   {
+  //     title: "Dumbbell Crunch",
+  //     sets: 0,
+  //     reps: 0,
+  //   },
+  // ]);
+  // const [workoutThree, setWorkoutThree] = useState([
+  //   {
+  //     title: "Dumbbell Crunch",
+  //     sets: 0,
+  //     reps: 0,
+  //   },
+  // ]);
+  const [workoutOne, setWorkoutOne] = useState([]);
+  const [workoutTwo, setWorkoutTwo] = useState([]);
+  const [workoutThree, setWorkoutThree] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -51,6 +76,18 @@ export default function UserWorkout() {
 
   function setData(newData) {
     setFirestoreData(newData);
+  }
+
+  function setOne(newData) {
+    setWorkoutOne(newData);
+  }
+
+  function setTwo(newData) {
+    setWorkoutTwo(newData);
+  }
+
+  function setThree(newData) {
+    setWorkoutThree(newData);
   }
 
   useEffect(() => {
@@ -64,8 +101,32 @@ export default function UserWorkout() {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
+            // setWorkoutOne(doc.data().WorkoutOne);
+            // setWorkoutTwo(doc.data().WorkoutTwo);
+            // setWorkoutThree(doc.data().WorkoutThree);
             setFirestoreData(doc.data().Workout, loadUser(true));
           } else {
+            // setWorkoutOne([
+            //   {
+            //     title: "Dumbbell Crunch",
+            //     sets: 0,
+            //     reps: 0,
+            //   },
+            // ]);
+            // setWorkoutTwo([
+            //   {
+            //     title: "Dumbbell Crunch",
+            //     sets: 0,
+            //     reps: 0,
+            //   },
+            // ]);
+            // setWorkoutThree([
+            //   {
+            //     title: "Dumbbell Crunch",
+            //     sets: 0,
+            //     reps: 0,
+            //   },
+            // ]);
             setFirestoreData([], loadUser(true));
           }
         });
@@ -78,7 +139,16 @@ export default function UserWorkout() {
 
   return loading ? (
     isLoggedIn ? (
-      <ExerciseList firestoreData={firestoreData} setData={setData} />
+      <ExerciseList
+        firestoreData={firestoreData}
+        setData={setData}
+        workoutOne={workoutOne}
+        setOne={setOne}
+        workoutTwo={workoutTwo}
+        setTwo={setTwo}
+        workoutThree={workoutThree}
+        setThree={setThree}
+      />
     ) : (
       <h1>You are not logged in, log in now to save your workouts!</h1>
     )
@@ -88,17 +158,28 @@ export default function UserWorkout() {
 }
 
 function ExerciseList(props) {
-  const { firestoreData, setData } = props;
+  const {
+    firestoreData,
+    setData,
+    workoutOne,
+    setOne,
+    workoutTwo,
+    setTwo,
+    workoutThree,
+    setThree,
+  } = props;
   const [display, setDisplay] = useState(0);
 
   return firestoreData.length ? (
     <div
-      style={{
-        //Hardcoded
-        backgroundColor: "#F7F7F7",
-        // padding: "3em",
-        textAlign: "right",
-      }}
+      style={
+        {
+          //Hardcoded
+          // backgroundColor: "#F7F7F7",
+          // // padding: "3em",
+          // textAlign: "right",
+        }
+      }
     >
       <div
         style={{
@@ -144,9 +225,22 @@ function ExerciseList(props) {
       </div>
 
       {display == 0 ? (
-        <WorkoutPage firestoreData={firestoreData} setData={setData} display ={display} />
+        <Homepage
+          firestoreData={firestoreData}
+          setData={setData}
+          workoutOne={workoutOne}
+          setOne={setOne}
+          workoutTwo={workoutTwo}
+          setTwo={setTwo}
+          workoutThree={workoutThree}
+          setThree={setThree}
+        />
       ) : (
-        <WorkoutPage firestoreData={firestoreData} setData={setData} display ={display} />
+        <WorkoutPage
+          firestoreData={firestoreData}
+          setData={setData}
+          display={display}
+        />
       )}
     </div>
   ) : (

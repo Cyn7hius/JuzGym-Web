@@ -17,8 +17,6 @@ import {
 } from "@material-ui/core/";
 
 function ExerciseList(props) {
-  //const [isScrolling, setIsScrolling] = useState(false);
-  //Simple function to split the JSON string by \n and returns it as an array
   function NewLineParser(str) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
@@ -26,14 +24,13 @@ function ExerciseList(props) {
   const { database, firestoreData, setData, isLoggedIn } = props;
 
   function addExercise(name) {
-    // const index = firestoreData.length;
     const newExercises = [
       ...firestoreData,
       {
         title: name,
-        sets: 0,
-        reps: 0,
-        // position: index
+        inWorkoutOne: false,
+        inWorkoutTwo: false,
+        inWorkoutThree: false,
       },
     ];
     setData(newExercises);
