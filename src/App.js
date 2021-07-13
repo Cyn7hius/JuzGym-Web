@@ -1,27 +1,10 @@
 import React, { useState } from "react";
-import {
-  FirebaseAuthConsumer,
-  IfFirebaseAuthed,
-  IfFirebaseUnAuthed,
-} from "@react-firebase/auth";
-import {
-  AppBar,
-  makeStyles,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Typography,
-  Button,
-  Box,
-  IconButton,
-  Grid,
-} from "@material-ui/core";
+import { AppBar, makeStyles, Typography } from "@material-ui/core";
 import SimpleTabs from "./toolbars";
-import HomeIcon from "@material-ui/icons/Home";
 
-import { A } from "hookrouter";
 import "./styles.css";
-import Workout from "./components/SavedWorkouts/UserWorkouts";
+import AppbarDesktop from "./components/AppbarDesktop";
+import AppbarMobile from "./components/AppbarMobile";
 
 export default function App() {
   return (
@@ -84,103 +67,5 @@ function AppShell() {
     return check;
   };
 
-  console.log(window.mobileCheck());
-
-  return !window.mobileCheck() ? (
-    <AppBar position="sticky" style={{ background: "#04ae96" }}>
-      <Toolbar position="sticky">
-        <IconButton
-          edge="start"
-          className={classes.homeButton}
-          color="inherit"
-          aria-label="home"
-          label="Home"
-          value="/"
-          component={A}
-          href="/"
-        >
-          <HomeIcon fontSize="large" />
-        </IconButton>
-        <Grid container>
-          <Grid item>
-            <Typography
-              // variant="h1"
-              style={{
-                fontFamily: "Odibee Sans",
-                flexGrow: 1,
-                fontSize: "4.5rem",
-                textAlign: "Fixed",
-                color: "black",
-              }}
-            >
-              {" JuzGym"}
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              variant="h3"
-              style={{
-                fontFamily: "Odibee Sans",
-                flexGrow: 1,
-                // fontSize: "2.5rem",
-                textAlign: "Fixed",
-                color: "black",
-              }}
-            >
-              {"Your Home Gym Companion"}
-            </Typography>
-          </Grid>
-        </Grid>
-
-        <IfFirebaseAuthed>
-          {({ user, firebase }) => (
-            <div>
-              <Button
-                variant="contained"
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                {user.displayName + "'s Workout plans"}
-              </Button>
-
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem
-                  component={A}
-                  href="/savedworkouts"
-                  onClick={() => Workout}
-                >
-                  Saved Workouts
-                </MenuItem>
-                <MenuItem onClick={() => handleLogout(firebase)}>
-                  Logout
-                </MenuItem>
-              </Menu>
-            </div>
-          )}
-        </IfFirebaseAuthed>
-        <IfFirebaseUnAuthed>
-          <FirebaseAuthConsumer>
-            {({ firebase }) => (
-              <Button
-                variant="contained"
-                color="default"
-                onClick={() => handleGoogleSignIn(firebase)}
-              >
-                Login
-              </Button>
-            )}
-          </FirebaseAuthConsumer>
-        </IfFirebaseUnAuthed>
-      </Toolbar>
-    </AppBar>
-  ) : (
-    <Typography>test</Typography>
-  );
+  return !window.mobileCheck() ? <AppbarDesktop /> : <AppbarMobile />;
 }
