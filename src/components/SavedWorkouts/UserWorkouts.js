@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Virtuoso } from "react-virtuoso";
 import { data } from "../../data/exerciseDatabase";
 //Can add into the import statement below
@@ -6,10 +6,12 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { firebase } from "@firebase/app";
 import { List, arrayMove, arrayRemove } from "react-movable";
 import { Reorder, Delete, Save, GetApp } from "@material-ui/icons";
-import ExportIcs from "./CalendarExport";
+import ExportIcs from "./components/CalendarExport";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import ExerciseDatabase from "./ExerciseDatabase";
+import ExportButton from "./ExportButton";
 
 import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
@@ -28,13 +30,22 @@ import {
   ClickAwayListener,
   Grow,
   Paper,
+  Tabs,
+  Tab,
   Popper,
   MenuList,
 } from "@material-ui/core/";
-import ExportExcel from "./ExcelExport";
+import ExportExcel from "./components/ExcelExport";
+import WorkoutPage from "./WorkoutTemplate";
+import ExercisePlanner from "./ExercisePlanner";
+import Homepage from "./HomepageTemplate";
 
 export default function UserWorkout() {
   const [firestoreData, setFirestoreData] = useState([]);
+  const [workoutOne, setWorkoutOne] = useState([]);
+  const [workoutTwo, setWorkoutTwo] = useState([]);
+  const [workoutThree, setWorkoutThree] = useState([]);
+  const [workoutNames, setWorkoutNames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -45,6 +56,47 @@ export default function UserWorkout() {
 
   function setData(newData) {
     setFirestoreData(newData);
+  }
+
+  function setOne(newData) {
+    setWorkoutOne(newData);
+  }
+
+  function setTwo(newData) {
+    setWorkoutTwo(newData);
+  }
+
+  function setThree(newData) {
+    setWorkoutThree(newData);
+  }
+
+  function setNames(newData) {
+    setWorkoutNames(newData);
+  }
+
+  function firebaseSetup(doc) {
+    if (typeof doc.data().WorkoutOne !== "undefined") {
+      setWorkoutOne(doc.data().WorkoutOne);
+    }
+    if (typeof doc.data().WorkoutTwo !== "undefined") {
+      setWorkoutTwo(doc.data().WorkoutTwo);
+    }
+    if (typeof doc.data().WorkoutThree !== "undefined") {
+      setWorkoutThree(doc.data().WorkoutThree);
+    }
+    if (typeof doc.data().WorkoutNames !== "undefined") {
+      setWorkoutNames(doc.data().WorkoutNames);
+    }
+    if (typeof doc.data().WorkoutNames === "undefined") {
+      setWorkoutNames([
+        {
+          WorkoutOne:"Workout One",
+          WorkoutTwo:"Workout Two",
+          WorkoutThree:"Workout Three"
+        },
+      ]);
+    }
+    setFirestoreData(doc.data().Workout, loadUser(true));
   }
 
   useEffect(() => {
@@ -58,8 +110,12 @@ export default function UserWorkout() {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            setFirestoreData(doc.data().Workout, loadUser(true));
+            firebaseSetup(doc);
           } else {
+            setWorkoutOne([]);
+            setWorkoutTwo([]);
+            setWorkoutThree([]);
+            setWorkoutNames([]);
             setFirestoreData([], loadUser(true));
           }
         });
@@ -72,7 +128,18 @@ export default function UserWorkout() {
 
   return loading ? (
     isLoggedIn ? (
-      <ExerciseList firestoreData={firestoreData} setData={setData} />
+      <ExerciseList
+        firestoreData={firestoreData}
+        setData={setData}
+        workoutOne={workoutOne}
+        setOne={setOne}
+        workoutTwo={workoutTwo}
+        setTwo={setTwo}
+        workoutThree={workoutThree}
+        setThree={setThree}
+        workoutNames={workoutNames}
+        setNames={setNames}
+      />
     ) : (
       <h1>You are not logged in, log in now to save your workouts!</h1>
     )
@@ -81,472 +148,142 @@ export default function UserWorkout() {
   );
 }
 
-//Top half
 function ExerciseList(props) {
-  const { firestoreData, setData } = props;
-  //added here
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+  const {
+    firestoreData,
+    setData,
+    workoutOne,
+    setOne,
+    workoutTwo,
+    setTwo,
+    workoutThree,
+    setThree,
+    workoutNames,
+    setNames,
+  } = props;
+  const [display, setDisplay] = useState(0);
 
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  function handleListKeyDown(event) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setOpen(false);
-    }
-  }
-
-  // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-
-    prevOpen.current = open;
-  }, [open]);
+  /*Updates the array in firestore whenever the local array changes */
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ Workout: firestoreData }, { merge: true });
+  }, [firestoreData]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ Workout: firestoreData });
-  }, [firestoreData]);
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutOne: workoutOne }, { merge: true });
+  }, [workoutOne]);
 
-  function updateReps(title, newReps) {
-    const newArray = [...firestoreData];
-    const position = newArray.findIndex((index) => index.title === title);
-    newArray[position] = {
-      ...newArray[position],
-      reps: parseInt(newReps),
-    };
-    setData(newArray);
-  }
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutTwo: workoutTwo }, { merge: true });
+  }, [workoutTwo]);
 
-  function updateSets(title, newSets) {
-    const newArray = [...firestoreData];
-    const position = newArray.findIndex((index) => index.title === title);
-    newArray[position] = {
-      ...newArray[position],
-      sets: parseInt(newSets),
-    };
-    setData(newArray);
-  }
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutThree: workoutThree }, { merge: true });
+  }, [workoutThree]);
 
-  //Might be redundant function
-  function updatePosition(items) {
-    const newArray = [...items];
-    setData(newArray);
-  }
-
-  const buttonStyles = {
-    border: "none",
-    margin: 0,
-    padding: 0,
-    width: "auto",
-    overflow: "visible",
-    cursor: "pointer",
-    background: "transparent",
-  };
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutNames: workoutNames }, { merge: true });
+  }, [workoutNames]);
 
   return firestoreData.length ? (
     <div
-      style={{
-        //Hardcoded
-        backgroundColor: "#F7F7F7",
-        padding: "3em",
-        textAlign: "right",
-      }}
-    >
-      <ButtonGroup color="primary">
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<Save />}
-        >
-          Save
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<GetApp />}
-          ref={anchorRef}
-          aria-controls={open ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          Download
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    {/* <MenuItem onClick={handleClose}> */}
-                    <ExportExcel firestoreData={firestoreData}/>
-                    <ExportIcs firestoreData={firestoreData}/>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
-      </ButtonGroup>
-      <List
-        values={firestoreData}
-        onChange={({ oldIndex, newIndex }) =>
-          updatePosition(arrayMove(firestoreData, oldIndex, newIndex))
+      style={
+        {
+          //Hardcoded
+          // backgroundColor: "#F7F7F7",
+          // // padding: "3em",
+          // textAlign: "right",
         }
-        renderList={({ children, props, isDragged }) => (
-          <ul
-            {...props}
-            style={{
-              padding: "0em 0em 1em 0em",
-              width: "1300px",
-              marginLeft: "auto",
-              marginRight: "auto",
-              cursor: isDragged ? "grabbing" : "inherit",
-            }}
-          >
-            {children}
-          </ul>
-        )}
-        renderItem={({ value, props, index, isDragged, isSelected }) => (
-          <li
-            {...props}
-            style={{
-              ...props.style,
-              padding: "1.5em",
-              margin: "0.5em 0em",
-              listStyleType: "none",
-              border: "2px solid #CCC",
-              boxShadow: "3px 3px #AAA",
-              color: "#333",
-              borderRadius: "5px",
-              cursor: isDragged ? "grabbing" : "inherit",
-              fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-              backgroundColor: isDragged || isSelected ? "#EEE" : "#FFF",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
+      }
+    >
+      <div
+        style={{
+          // backgroundColor: "#48ff00",
+          textAlign: "center",
+        }}
+      >
+        <Fragment>
+          <Tabs centered={true}>
+            <Tab
+              label="Added Exercises"
+              value="Homepage"
+              onClick={() => {
+                setDisplay(0);
               }}
-            >
-              {/* 
-                  Mark any node with the data-movable-handle attribute if you wish
-                  to use is it as a DnD handle. The rest of renderItem will be then
-                  ignored and not start the drag and drop. 
-                */}
-              <button
-                data-movable-handle
-                style={{
-                  ...buttonStyles,
-                  cursor: isDragged ? "grabbing" : "grab",
-                  marginRight: "3em",
-                }}
-                tabIndex={-1}
-              >
-                <Reorder />
-              </button>
-              <div
-                style={{
-                  width: "100px",
-                }}
-              >
-                {value.title}
-              </div>
-              <FormControl>
-                <InputLabel>Reps</InputLabel>
-                <NativeSelect
-                  id={value.title + " reps"}
-                  value={value.reps}
-                  onChange={(event) =>
-                    updateReps(value.title, event.target.value)
-                  }
-                >
-                  <option value={0}>0</option>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option>
-                  <option value={12}>12</option>
-                  <option value={13}>13</option>
-                  <option value={14}>14</option>
-                  <option value={15}>15</option>
-                  <option value={16}>16</option>
-                  <option value={17}>17</option>
-                  <option value={18}>18</option>
-                  <option value={19}>19</option>
-                  <option value={20}>20</option>
-                  <option value={21}>21</option>
-                  <option value={22}>22</option>
-                  <option value={23}>23</option>
-                  <option value={24}>24</option>
-                  <option value={25}>25</option>
-                  <option value={26}>26</option>
-                  <option value={27}>27</option>
-                  <option value={28}>28</option>
-                  <option value={29}>29</option>
-                  <option value={30}>30</option>
-                  <option value={35}>35</option>
-                  <option value={40}>40</option>
-                  <option value={45}>45</option>
-                  <option value={50}>50</option>
-                </NativeSelect>
-              </FormControl>
+            />
+            <Divider orientation="vertical" flexItem />
+            <Tab
+              label="Workout One"
+              value="Workout One"
+              onClick={() => {
+                setDisplay(1);
+              }}
+            />
+            <Divider orientation="vertical" flexItem />
+            <Tab
+              label="Workout Two"
+              value="Workout Two"
+              onClick={() => {
+                setDisplay(2);
+              }}
+            />
+            <Divider orientation="vertical" flexItem />
+            <Tab
+              label="Workout Three"
+              value="Workout Three"
+              onClick={() => {
+                setDisplay(3);
+              }}
+            />
+          </Tabs>
+        </Fragment>
+      </div>
 
-              <FormControl>
-                <InputLabel>Sets</InputLabel>
-                <NativeSelect
-                  id={value.title + " sets"}
-                  value={value.sets}
-                  onChange={(event) =>
-                    updateSets(value.title, event.target.value)
-                  }
-                >
-                  <option value={0}>0</option>
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
-                  <option value={5}>5</option>
-                  <option value={6}>6</option>
-                  <option value={7}>7</option>
-                  <option value={8}>8</option>
-                  <option value={9}>9</option>
-                  <option value={10}>10</option>
-                  <option value={11}>11</option>
-                  <option value={12}>12</option>
-                  <option value={13}>13</option>
-                  <option value={14}>14</option>
-                  <option value={15}>15</option>
-                  <option value={16}>16</option>
-                  <option value={17}>17</option>
-                  <option value={18}>18</option>
-                  <option value={19}>19</option>
-                  <option value={20}>20</option>
-                  <option value={21}>21</option>
-                  <option value={22}>22</option>
-                  <option value={23}>23</option>
-                  <option value={24}>24</option>
-                  <option value={25}>25</option>
-                  <option value={26}>26</option>
-                  <option value={27}>27</option>
-                  <option value={28}>28</option>
-                  <option value={29}>29</option>
-                  <option value={30}>30</option>
-                  <option value={35}>35</option>
-                  <option value={40}>40</option>
-                  <option value={45}>45</option>
-                  <option value={50}>50</option>
-                </NativeSelect>
-              </FormControl>
-              <button
-                onClick={() => {
-                  updatePosition(
-                    typeof index !== "undefined"
-                      ? arrayRemove(firestoreData, index)
-                      : firestoreData
-                  );
-                }}
-                style={buttonStyles}
-              >
-                <Delete />
-              </button>
-            </div>
-          </li>
-        )}
-      />
-
-      <ExerciseDatabase firestoreData={firestoreData} />
+      {display == 0 ? (
+        <Homepage
+          firestoreData={firestoreData}
+          setData={setData}
+          workoutOne={workoutOne}
+          setOne={setOne}
+          workoutTwo={workoutTwo}
+          setTwo={setTwo}
+          workoutThree={workoutThree}
+          setThree={setThree}
+        />
+      ) : (
+        <WorkoutPage
+          workoutData={
+            display == 1 ? workoutOne : display == 2 ? workoutTwo : workoutThree
+          }
+          setWorkoutData={
+            display == 1 ? setOne : display == 2 ? setTwo : setThree
+          }
+          display={display}
+          workoutNames={workoutNames}
+          setNames={setNames}
+        />
+      )}
     </div>
   ) : (
     <h1>You have no exercises saved, try adding some from our database?</h1>
-  );
-}
-
-//Bottom half
-function ExerciseDatabase(props) {
-  function NewLineParser(str) {
-    var outputArray = str.split(/\r?\n/);
-    return outputArray;
-  }
-  const { firestoreData } = props;
-  // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
-  const [newDatabase, setNewDatabase] = useState([]);
-  useEffect(() => {
-    setNewDatabase(
-      firestoreData.map((firestoreArray) =>
-        data.find((localData) => localData.name == firestoreArray.title)
-      )
-    );
-  }, [firestoreData]);
-
-  return (
-    <Container>
-      <Box>
-        <Virtuoso
-          style={{ width: "auto", height: "80vh" }}
-          //Uses the data from json file
-          data={newDatabase}
-          //Total number of exercises to render
-          overscan={70}
-          totalCount={70}
-          itemContent={(index, exercise) => (
-            <Accordion key={exercise.toString()}>
-              {/* This div is for the image */}
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography variant="h5" style={{ fontWeight: 500 }}>
-                  {exercise.name}
-                </Typography>
-              </AccordionSummary>
-
-              <AccordionDetails style={{ background: "#f2f2f2" }}>
-                <Grid container spacing={2}>
-                  {/* Instructions portion */}
-                  <Grid item xs>
-                    <Typography
-                      variant="h6"
-                      style={{ fontWeight: 500, textDecoration: "underline" }}
-                    >
-                      Instructions:
-                    </Typography>
-                    <Typography
-                      component={"span"}
-                      style={{ whiteSpace: "pre-line" }}
-                      align="left"
-                    >
-                      <ol>
-                        {NewLineParser(exercise.instructions).map(
-                          (instruction) => {
-                            return (
-                              <li key={instruction.toString()}>
-                                {instruction}
-                              </li>
-                            );
-                          }
-                        )}
-                      </ol>
-                    </Typography>
-                    <Divider />
-                    <br />
-
-                    {/* Tips portion */}
-                    <Typography
-                      variant="h6"
-                      style={{ fontWeight: 500, textDecoration: "underline" }}
-                    >
-                      Tips:
-                    </Typography>
-                    <Typography
-                      component={"span"}
-                      style={{ whiteSpace: "pre-line" }}
-                      align="left"
-                    >
-                      <ul>
-                        {NewLineParser(exercise.tips).map((tip) => {
-                          return <li key={tip.toString()}>{tip}</li>;
-                        })}
-                      </ul>
-                    </Typography>
-                    <Divider />
-                    <br />
-
-                    {/* Variations portion */}
-                    <Typography
-                      variant="h6"
-                      style={{ fontWeight: 500, textDecoration: "underline" }}
-                    >
-                      Variations:
-                    </Typography>
-                    <Typography
-                      component={"span"}
-                      style={{ whiteSpace: "pre-line" }}
-                      align="left"
-                    >
-                      <ul>
-                        {NewLineParser(exercise.variations).map((variation) => {
-                          return (
-                            <li key={variation.toString()}>{variation}</li>
-                          );
-                        })}
-                      </ul>
-                    </Typography>
-                  </Grid>
-                  <Divider orientation="vertical" flexItem />
-
-                  {/* Right Side of the Exercise info */}
-                  <Grid item xs="auto" style={{ width: "45%" }}>
-                    <Typography
-                      variant="h6"
-                      style={{ fontWeight: 500, textDecoration: "underline" }}
-                    >
-                      {"Main muscles worked: " + exercise.targetGroup}
-                    </Typography>
-
-                    <br />
-
-                    {/* Image for each exercise */}
-                    <img height="auto" width="90%" src={exercise.image} />
-                    <Typography
-                      variant="h6"
-                      style={{ fontWeight: 500, textDecoration: "underline" }}
-                    >
-                      {"Video guide: "}
-                    </Typography>
-
-                    {/* Embeded YouTube video */}
-                    <YoutubeEmbed embedId={exercise.video} />
-                  </Grid>
-                </Grid>
-              </AccordionDetails>
-            </Accordion>
-          )}
-        />
-      </Box>
-    </Container>
   );
 }
