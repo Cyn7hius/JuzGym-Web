@@ -90,6 +90,19 @@ export default function UserWorkout() {
     setWorkoutThree(newData);
   }
 
+  function firebaseSetup(doc) {
+    if (typeof doc.data().WorkoutOne !== "undefined") {
+      setWorkoutOne(doc.data().WorkoutOne);
+    }
+    if (typeof doc.data().WorkoutTwo !== "undefined") {
+      setWorkoutTwo(doc.data().WorkoutTwo);
+    }
+    if (typeof doc.data().WorkoutThree !== "undefined") {
+      setWorkoutThree(doc.data().WorkoutThree);
+    }
+    setFirestoreData(doc.data().Workout, loadUser(true));
+  }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -104,7 +117,11 @@ export default function UserWorkout() {
             // setWorkoutOne(doc.data().WorkoutOne);
             // setWorkoutTwo(doc.data().WorkoutTwo);
             // setWorkoutThree(doc.data().WorkoutThree);
-            setFirestoreData(doc.data().Workout, loadUser(true));
+            // setWorkoutOne(null);
+            // setWorkoutTwo(null);
+            // setWorkoutThree(null);
+            // setFirestoreData(doc.data().Workout, loadUser(true));
+            firebaseSetup(doc);
           } else {
             // setWorkoutOne([
             //   {
@@ -127,6 +144,9 @@ export default function UserWorkout() {
             //     reps: 0,
             //   },
             // ]);
+            setWorkoutOne([]);
+            setWorkoutTwo([]);
+            setWorkoutThree([]);
             setFirestoreData([], loadUser(true));
           }
         });

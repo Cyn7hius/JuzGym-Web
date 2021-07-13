@@ -63,7 +63,7 @@ function ExerciseList(props) {
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ Workout: firestoreData });
+    db.collection("/users").doc(uid).set({ Workout: firestoreData }, { merge: true });
   }, [firestoreData]);
 
   return (

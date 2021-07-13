@@ -35,7 +35,8 @@ export default function Homepage(props) {
   } = props;
 
   function addExercise(name, number) {
-    const workoutData = number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
+    const workoutData =
+      number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     const newExercises = [
       ...workoutData,
       {
@@ -44,7 +45,11 @@ export default function Homepage(props) {
         reps: 0,
       },
     ];
-    number == 1 ? setOne(newExercises) : number == 2 ? setTwo(newExercises) : setThree(newExercises);
+    number == 1
+      ? setOne(newExercises)
+      : number == 2
+      ? setTwo(newExercises)
+      : setThree(newExercises);
     // setData(newExercises);
   }
 
@@ -54,15 +59,21 @@ export default function Homepage(props) {
   }
 
   function removeExerciseSub(name, number) {
-    const workoutData = number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
+    const workoutData =
+      number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     const newExercises = workoutData.filter((array) => array.title != name);
-    number == 1 ? setOne(newExercises) : number == 2 ? setTwo(newExercises) : setThree(newExercises);
+    number == 1
+      ? setOne(newExercises)
+      : number == 2
+      ? setTwo(newExercises)
+      : setThree(newExercises);
   }
 
   function exerciseButton(event, name, number) {
     event.stopPropagation();
     event.preventDefault();
-    const workoutData = number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
+    const workoutData =
+      number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     if (workoutData.find((array) => array.title == name) != null) {
       removeExerciseSub(name, number);
     } else {
@@ -72,7 +83,8 @@ export default function Homepage(props) {
 
   function exerciseButtonText(name, number) {
     //Add another condition to filter the exercises
-    const workoutData = number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
+    const workoutData =
+      number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     if (workoutData.find((array) => array.title == name) != null) {
       return `Remove from workout ${number}`;
     } else {
@@ -89,25 +101,33 @@ export default function Homepage(props) {
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ Workout: firestoreData });
+    db.collection("/users")
+      .doc(uid)
+      .set({ Workout: firestoreData }, { merge: true });
   }, [firestoreData]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ WorkoutOne: workoutOne });
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutOne: workoutOne }, { merge: true });
   }, [workoutOne]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ WorkoutTwo: workoutTwo });
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutTwo: workoutTwo }, { merge: true });
   }, [workoutTwo]);
 
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ WorkoutThree: workoutThree });
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutThree: workoutThree }, { merge: true });
   }, [workoutThree]);
 
   return (
@@ -129,23 +149,29 @@ export default function Homepage(props) {
                     {exercise.title}
                   </Typography>
                   <Button
-                  style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.title, 1)}
-                >
-                  {exerciseButtonText(exercise.title, 1)}
-                </Button>
-                <Button
-                  style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.title, 2)}
-                >
-                  {exerciseButtonText(exercise.title, 2)}
-                </Button>
-                <Button
-                  style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.title, 3)}
-                >
-                  {exerciseButtonText(exercise.title, 3)}
-                </Button>
+                    style={{ marginLeft: "auto", marginRight: 0 }}
+                    onClick={(event) =>
+                      exerciseButton(event, exercise.title, 1)
+                    }
+                  >
+                    {exerciseButtonText(exercise.title, 1)}
+                  </Button>
+                  <Button
+                    style={{ marginLeft: "auto", marginRight: 0 }}
+                    onClick={(event) =>
+                      exerciseButton(event, exercise.title, 2)
+                    }
+                  >
+                    {exerciseButtonText(exercise.title, 2)}
+                  </Button>
+                  <Button
+                    style={{ marginLeft: "auto", marginRight: 0 }}
+                    onClick={(event) =>
+                      exerciseButton(event, exercise.title, 3)
+                    }
+                  >
+                    {exerciseButtonText(exercise.title, 3)}
+                  </Button>
                 </ListItem>
                 <Divider />
               </div>
