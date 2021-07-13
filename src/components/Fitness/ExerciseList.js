@@ -217,7 +217,7 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
   const filterOne =
     equipmentFilter == "DUMBBELL"
       ? 1
-      : equipmentFilter == "RESISTANCE BAND"
+      : equipmentFilter == "RESISTANCE BANDS"
       ? 2
       : equipmentFilter == "BODYWEIGHT"
       ? 3
