@@ -78,7 +78,7 @@ export default function AppbarMobile() {
               style={{
                 fontFamily: "Odibee Sans",
                 flexGrow: 1,
-                fontSize: "4.5rem",
+                fontSize: "3rem",
                 textAlign: "Fixed",
                 color: "black",
               }}
