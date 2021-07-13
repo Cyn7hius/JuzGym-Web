@@ -6,14 +6,28 @@ import ExercisePlanner from "./ExercisePlanner";
 
 //firestoredata is the curated exercises + sets + reps
 export default function WorkoutPage(props) {
-  const { workoutData, setWorkoutData, display } = props;
+  const { workoutData, setWorkoutData, display, workoutNames, setNames } =
+    props;
+
+  const workoutNumber =
+    display == 1
+      ? workoutNames[0].WorkoutOne
+      : display == 2
+      ? workoutNames[0].WorkoutTwo
+      : workoutNames[0].WorkoutThree;
 
   return workoutData.length ? (
     <div>
-      <h1>This is exercise {display}</h1>
+      <h1>{workoutNumber}</h1>
       <ExportButton firestoreData={workoutData} />
-      <ExercisePlanner firestoreData={workoutData} setData={setWorkoutData} display={display} />
+      <ExercisePlanner
+        firestoreData={workoutData}
+        setData={setWorkoutData}
+        display={display}
+      />
       <ExerciseDatabase firestoreData={workoutData} />
     </div>
-  ) : (<h1>You have no exercises here! Sadge</h1>);
+  ) : (
+    <h1>You have no exercises added to this workout!</h1>
+  );
 }

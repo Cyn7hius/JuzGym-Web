@@ -45,6 +45,7 @@ export default function UserWorkout() {
   const [workoutOne, setWorkoutOne] = useState([]);
   const [workoutTwo, setWorkoutTwo] = useState([]);
   const [workoutThree, setWorkoutThree] = useState([]);
+  const [workoutNames, setWorkoutNames] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -69,6 +70,10 @@ export default function UserWorkout() {
     setWorkoutThree(newData);
   }
 
+  function setNames(newData) {
+    setWorkoutNames(newData);
+  }
+
   function firebaseSetup(doc) {
     if (typeof doc.data().WorkoutOne !== "undefined") {
       setWorkoutOne(doc.data().WorkoutOne);
@@ -78,6 +83,18 @@ export default function UserWorkout() {
     }
     if (typeof doc.data().WorkoutThree !== "undefined") {
       setWorkoutThree(doc.data().WorkoutThree);
+    }
+    if (typeof doc.data().WorkoutNames !== "undefined") {
+      setWorkoutNames(doc.data().WorkoutNames);
+    }
+    if (typeof doc.data().WorkoutNames === "undefined") {
+      setWorkoutNames([
+        {
+          WorkoutOne:"Workout One",
+          WorkoutTwo:"Workout Two",
+          WorkoutThree:"Workout Three"
+        },
+      ]);
     }
     setFirestoreData(doc.data().Workout, loadUser(true));
   }
@@ -93,39 +110,12 @@ export default function UserWorkout() {
 
         docRef.get().then((doc) => {
           if (doc.exists) {
-            // setWorkoutOne(doc.data().WorkoutOne);
-            // setWorkoutTwo(doc.data().WorkoutTwo);
-            // setWorkoutThree(doc.data().WorkoutThree);
-            // setWorkoutOne(null);
-            // setWorkoutTwo(null);
-            // setWorkoutThree(null);
-            // setFirestoreData(doc.data().Workout, loadUser(true));
             firebaseSetup(doc);
           } else {
-            // setWorkoutOne([
-            //   {
-            //     title: "Dumbbell Crunch",
-            //     sets: 0,
-            //     reps: 0,
-            //   },
-            // ]);
-            // setWorkoutTwo([
-            //   {
-            //     title: "Dumbbell Crunch",
-            //     sets: 0,
-            //     reps: 0,
-            //   },
-            // ]);
-            // setWorkoutThree([
-            //   {
-            //     title: "Dumbbell Crunch",
-            //     sets: 0,
-            //     reps: 0,
-            //   },
-            // ]);
             setWorkoutOne([]);
             setWorkoutTwo([]);
             setWorkoutThree([]);
+            setWorkoutNames([]);
             setFirestoreData([], loadUser(true));
           }
         });
@@ -147,6 +137,8 @@ export default function UserWorkout() {
         setTwo={setTwo}
         workoutThree={workoutThree}
         setThree={setThree}
+        workoutNames={workoutNames}
+        setNames={setNames}
       />
     ) : (
       <h1>You are not logged in, log in now to save your workouts!</h1>
@@ -166,6 +158,8 @@ function ExerciseList(props) {
     setTwo,
     workoutThree,
     setThree,
+    workoutNames,
+    setNames,
   } = props;
   const [display, setDisplay] = useState(0);
 
@@ -202,6 +196,14 @@ function ExerciseList(props) {
       .set({ WorkoutThree: workoutThree }, { merge: true });
   }, [workoutThree]);
 
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutNames: workoutNames }, { merge: true });
+  }, [workoutNames]);
+
   return firestoreData.length ? (
     <div
       style={
@@ -215,7 +217,7 @@ function ExerciseList(props) {
     >
       <div
         style={{
-          backgroundColor: "#48ff00",
+          // backgroundColor: "#48ff00",
           textAlign: "center",
         }}
       >
@@ -276,6 +278,8 @@ function ExerciseList(props) {
             display == 1 ? setOne : display == 2 ? setTwo : setThree
           }
           display={display}
+          workoutNames={workoutNames}
+          setNames={setNames}
         />
       )}
     </div>

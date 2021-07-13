@@ -66,7 +66,14 @@ export default function ExportButton(props) {
     prevOpen.current = open;
   }, [open]);
   return (
-    <div>
+    <div
+    style={
+      {
+        // backgroundColor: "#F7F7F7",
+        padding: "3em",
+        textAlign: "right",
+      }
+    }>
       <ButtonGroup color="primary">
         <Button
           variant="contained"

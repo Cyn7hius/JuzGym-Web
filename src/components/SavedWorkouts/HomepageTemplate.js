@@ -53,7 +53,6 @@ export default function Homepage(props) {
     // setData(newExercises);
   }
 
-  //NOT DONE
   function removeExerciseMain(name) {
     removeExerciseSub(name, 1);
     removeExerciseSub(name, 2);
