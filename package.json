@@ -14,6 +14,7 @@
     "@material-ui/icons": "4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@material-ui/pickers": "^3.3.10",
+    "@material-ui/styles": "^4.11.4",
     "@react-firebase/auth": "0.2.10",
     "date-fns": "^2.22.1",
     "faker": "^5.5.3",
