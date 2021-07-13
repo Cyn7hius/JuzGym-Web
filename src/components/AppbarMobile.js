@@ -97,7 +97,7 @@ export default function AppbarMobile() {
                 aria-haspopup="true"
                 onClick={handleClick}
               >
-                {"menu"}
+                {"Menu"}
               </Button>
 
               <Menu

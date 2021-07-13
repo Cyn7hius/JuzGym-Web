@@ -87,7 +87,7 @@ export default function AppbarDesktop() {
             </Typography>
           </Grid>
 
-          <Grid item xs={2} style={{ display: "flex", alignItems: "flex-end" }}>
+          <Grid item>
             <IfFirebaseAuthed>
               {({ user, firebase }) => (
                 <div>
