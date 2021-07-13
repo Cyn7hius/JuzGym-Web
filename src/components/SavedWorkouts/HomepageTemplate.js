@@ -53,7 +53,11 @@ export default function Homepage(props) {
     // setData(newExercises);
   }
 
+  //NOT DONE
   function removeExerciseMain(name) {
+    removeExerciseSub(name, 1);
+    removeExerciseSub(name, 2);
+    removeExerciseSub(name, 3);
     const newExercises = firestoreData.filter((array) => array.title != name);
     setData(newExercises);
   }
@@ -97,46 +101,13 @@ export default function Homepage(props) {
     // }
   }
 
-  /*Updates the array in firestore whenever the local array changes */
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users")
-      .doc(uid)
-      .set({ Workout: firestoreData }, { merge: true });
-  }, [firestoreData]);
-
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users")
-      .doc(uid)
-      .set({ WorkoutOne: workoutOne }, { merge: true });
-  }, [workoutOne]);
-
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users")
-      .doc(uid)
-      .set({ WorkoutTwo: workoutTwo }, { merge: true });
-  }, [workoutTwo]);
-
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users")
-      .doc(uid)
-      .set({ WorkoutThree: workoutThree }, { merge: true });
-  }, [workoutThree]);
-
   return (
     <div>
       <h1>These are the exercises you have added</h1>
       <Container>
         <Box>
           <Virtuoso
-            style={{ width: "auto", height: "80vh" }}
+            style={{ width: "auto", height: "40vh" }}
             //Uses the data from json file
             data={firestoreData}
             //Total number of exercises to render
@@ -171,6 +142,12 @@ export default function Homepage(props) {
                     }
                   >
                     {exerciseButtonText(exercise.title, 3)}
+                  </Button>
+                  <Button
+                    style={{ marginLeft: "auto", marginRight: 0 }}
+                    onClick={() => removeExerciseMain(exercise.title)}
+                  >
+                    Remove from saved exercises
                   </Button>
                 </ListItem>
                 <Divider />

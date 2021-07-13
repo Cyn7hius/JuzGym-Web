@@ -39,13 +39,21 @@ import ExportExcel from "./components/ExcelExport";
 import WorkoutPage from "./WorkoutTemplate";
 
 export default function ExercisePlanner(props) {
-  const { firestoreData, setData } = props;
+  const { firestoreData, setData, display } = props;
   
-  useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ Workout: firestoreData });
-  }, [firestoreData]);
+  // useEffect(() => {
+  //   const uid = firebase.auth().currentUser?.uid;
+  //   const db = firebase.firestore();
+  //   if (display == 1) {
+  //     db.collection("/users").doc(uid).set({ WorkoutOne: firestoreData } ,{ merge: true });
+  //   }
+  //   if (display == 2) {
+  //     db.collection("/users").doc(uid).set({ WorkoutTwo: firestoreData } ,{ merge: true });
+  //   }
+  //   if (display == 3) {
+  //     db.collection("/users").doc(uid).set({ WorkoutThree: firestoreData } ,{ merge: true });
+  //   }
+  // }, [firestoreData]);
 
   function updateReps(title, newReps) {
     const newArray = [...firestoreData];

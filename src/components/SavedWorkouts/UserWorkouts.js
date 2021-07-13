@@ -42,27 +42,6 @@ import Homepage from "./HomepageTemplate";
 
 export default function UserWorkout() {
   const [firestoreData, setFirestoreData] = useState([]);
-  // const [workoutOne, setWorkoutOne] = useState([
-  //   {
-  //     title: "Dumbbell Crunch",
-  //     sets: 0,
-  //     reps: 0,
-  //   },
-  // ]);
-  // const [workoutTwo, setWorkoutTwo] = useState([
-  //   {
-  //     title: "Dumbbell Crunch",
-  //     sets: 0,
-  //     reps: 0,
-  //   },
-  // ]);
-  // const [workoutThree, setWorkoutThree] = useState([
-  //   {
-  //     title: "Dumbbell Crunch",
-  //     sets: 0,
-  //     reps: 0,
-  //   },
-  // ]);
   const [workoutOne, setWorkoutOne] = useState([]);
   const [workoutTwo, setWorkoutTwo] = useState([]);
   const [workoutThree, setWorkoutThree] = useState([]);
@@ -190,6 +169,39 @@ function ExerciseList(props) {
   } = props;
   const [display, setDisplay] = useState(0);
 
+  /*Updates the array in firestore whenever the local array changes */
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ Workout: firestoreData }, { merge: true });
+  }, [firestoreData]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutOne: workoutOne }, { merge: true });
+  }, [workoutOne]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutTwo: workoutTwo }, { merge: true });
+  }, [workoutTwo]);
+
+  useEffect(() => {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutThree: workoutThree }, { merge: true });
+  }, [workoutThree]);
+
   return firestoreData.length ? (
     <div
       style={
@@ -213,7 +225,7 @@ function ExerciseList(props) {
               label="Added Exercises"
               value="Homepage"
               onClick={() => {
-                setDisplay(1);
+                setDisplay(0);
               }}
             />
             <Divider orientation="vertical" flexItem />
@@ -221,7 +233,7 @@ function ExerciseList(props) {
               label="Workout One"
               value="Workout One"
               onClick={() => {
-                setDisplay(2);
+                setDisplay(1);
               }}
             />
             <Divider orientation="vertical" flexItem />
@@ -229,7 +241,7 @@ function ExerciseList(props) {
               label="Workout Two"
               value="Workout Two"
               onClick={() => {
-                setDisplay(3);
+                setDisplay(2);
               }}
             />
             <Divider orientation="vertical" flexItem />
@@ -237,7 +249,7 @@ function ExerciseList(props) {
               label="Workout Three"
               value="Workout Three"
               onClick={() => {
-                setDisplay(4);
+                setDisplay(3);
               }}
             />
           </Tabs>
@@ -257,8 +269,12 @@ function ExerciseList(props) {
         />
       ) : (
         <WorkoutPage
-          firestoreData={firestoreData}
-          setData={setData}
+          workoutData={
+            display == 1 ? workoutOne : display == 2 ? workoutTwo : workoutThree
+          }
+          setWorkoutData={
+            display == 1 ? setOne : display == 2 ? setTwo : setThree
+          }
           display={display}
         />
       )}
