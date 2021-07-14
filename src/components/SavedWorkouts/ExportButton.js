@@ -32,7 +32,7 @@ import ExportExcel from "./components/ExcelExport";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportButton(props) {
-  const { firestoreData } = props;
+  const { firestoreData, workoutName } = props;
   //added here
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -56,6 +56,12 @@ export default function ExportButton(props) {
     }
   }
 
+  const handleExcel = () => {
+    <ExportExcel firestoreData={firestoreData} />
+    handleToggle();
+
+  };
+
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
   React.useEffect(() => {
@@ -74,15 +80,6 @@ export default function ExportButton(props) {
         textAlign: "right",
       }
     }>
-      <ButtonGroup color="primary">
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<Save />}
-        >
-          Save
-        </Button>
         <Button
           variant="contained"
           color="primary"
@@ -117,16 +114,14 @@ export default function ExportButton(props) {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    {/* <MenuItem onClick={handleClose}> */}
-                    <ExportExcel firestoreData={firestoreData} />
-                    <ExportIcs firestoreData={firestoreData} />
+                    <ExportExcel firestoreData={firestoreData} handleClose={handleClose} />
+                    <ExportIcs firestoreData={firestoreData} originalHandleClose={handleClose} workoutName={workoutName}/>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
             </Grow>
           )}
         </Popper>
-      </ButtonGroup>
     </div>
   );
 }

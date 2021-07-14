@@ -5,7 +5,7 @@ import { CSVLink, CSVDownload } from "react-csv";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportExcel(props) {
-  const { firestoreData } = props;
+  const { firestoreData, handleClose } = props;
   const headers = [
     { label: "Name", key: "title" },
     { label: "Reps", key: "reps" },
@@ -19,7 +19,7 @@ export default function ExportExcel(props) {
   };
 
   return (
-    <MenuItem>
+    <MenuItem onClick={handleClose}>
       <CSVLink
         style={{
             color: "inherit", 

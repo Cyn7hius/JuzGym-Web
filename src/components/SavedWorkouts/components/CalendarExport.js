@@ -29,11 +29,15 @@ import Alert from "@material-ui/lab/Alert";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportIcs(props) {
-  const { firestoreData } = props;
+  const { firestoreData, originalHandleClose, workoutName } = props;
   const [form, setForm] = useState(false);
   const [iCalTitle, setICalTitle] = useState({
-    title: "Workout",
-    description: `${firestoreData.map((index) => `${index.sets} sets of ${index.reps} reps of ${index.title}`).join('\\n')}`,
+    title: `${workoutName}`,
+    description: `${firestoreData
+      .map(
+        (index) => `${index.sets} sets of ${index.reps} reps of ${index.title}`
+      )
+      .join("\\n")}`,
     startTime: "2021-07-07T10:30:00+08:00",
     endTime: "2021-07-09T12:00:00+08:00",
   });
@@ -45,13 +49,17 @@ export default function ExportIcs(props) {
   //When startTime changes
   const handleTimeChange = (date) => {
     //only change time
-    if (repeat == 1 ) {
+    if (repeat == 1) {
       var updatedStartTime = new Date(iCalTitle.startTime);
       updatedStartTime.setHours(date.getHours());
       updatedStartTime.setMinutes(date.getMinutes());
       var updatedEndTime = new Date(iCalTitle.endTime);
-      updatedEndTime.setHours(updatedStartTime.getHours() + Math.floor(duration / 60));
-      updatedEndTime.setMinutes(updatedStartTime.getMinutes() + (duration % 60));
+      updatedEndTime.setHours(
+        updatedStartTime.getHours() + Math.floor(duration / 60)
+      );
+      updatedEndTime.setMinutes(
+        updatedStartTime.getMinutes() + (duration % 60)
+      );
       setICalTitle({
         ...iCalTitle,
         startTime: updatedStartTime,
@@ -65,7 +73,9 @@ export default function ExportIcs(props) {
       const offset = getStartDate(daysChosen);
       updatedTime.setDate(updatedTime.getDate() + offset);
       var updatedEndTime2 = new Date(updatedTime);
-      updatedEndTime2.setHours(updatedTime.getHours() + Math.floor(duration / 60));
+      updatedEndTime2.setHours(
+        updatedTime.getHours() + Math.floor(duration / 60)
+      );
       updatedEndTime2.setMinutes(updatedTime.getMinutes() + (duration % 60));
       setICalTitle({
         ...iCalTitle,
@@ -206,11 +216,7 @@ export default function ExportIcs(props) {
         <DialogContent>
           <DialogContentText>Frequency?</DialogContentText>
           <FormControl>
-            <NativeSelect
-              id="Repeater best gun"
-              value={repeat}
-              onChange={handleRepeat}
-            >
+            <NativeSelect id="Repeater" value={repeat} onChange={handleRepeat}>
               <option value={1}>Once</option>
               <option value={0}>Weekly</option>
             </NativeSelect>
@@ -299,7 +305,11 @@ export default function ExportIcs(props) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button disabled={repeat == 0 && !daysChosen.length} color="primary">
+          <Button
+            disabled={repeat == 0 && !daysChosen.length}
+            onClick={originalHandleClose}
+            color="primary"
+          >
             <ICalendarLink
               style={{
                 textDecoration: "inherit",
