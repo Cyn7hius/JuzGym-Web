@@ -105,7 +105,7 @@ export default function WorkoutPage(props) {
         firestoreData={workoutData}
         setData={setWorkoutData}
       />
-      <ExportButton firestoreData={workoutData} />
+      <ExportButton firestoreData={workoutData} workoutName={workoutName} />
       <ExerciseDatabase firestoreData={workoutData} />
     </div>
   ) : (

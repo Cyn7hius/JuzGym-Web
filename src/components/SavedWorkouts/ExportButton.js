@@ -32,7 +32,7 @@ import ExportExcel from "./components/ExcelExport";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportButton(props) {
-  const { firestoreData } = props;
+  const { firestoreData, workoutName } = props;
   //added here
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
@@ -115,7 +115,7 @@ export default function ExportButton(props) {
                     onKeyDown={handleListKeyDown}
                   >
                     <ExportExcel firestoreData={firestoreData} handleClose={handleClose} />
-                    <ExportIcs firestoreData={firestoreData} originalHandleClose={handleClose}/>
+                    <ExportIcs firestoreData={firestoreData} originalHandleClose={handleClose} workoutName={workoutName}/>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

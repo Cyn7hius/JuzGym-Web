@@ -29,10 +29,10 @@ import Alert from "@material-ui/lab/Alert";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportIcs(props) {
-  const { firestoreData, originalHandleClose } = props;
+  const { firestoreData, originalHandleClose, workoutName } = props;
   const [form, setForm] = useState(false);
   const [iCalTitle, setICalTitle] = useState({
-    title: "Workout",
+    title: `${workoutName}`,
     description: `${firestoreData
       .map(
         (index) => `${index.sets} sets of ${index.reps} reps of ${index.title}`
