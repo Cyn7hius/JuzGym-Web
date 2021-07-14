@@ -207,7 +207,7 @@ export default function ExportIcs(props) {
           <DialogContentText>Frequency?</DialogContentText>
           <FormControl>
             <NativeSelect
-              id="Repeater best gun"
+              id="Repeater"
               value={repeat}
               onChange={handleRepeat}
             >
