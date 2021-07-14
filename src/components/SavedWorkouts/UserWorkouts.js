@@ -204,6 +204,33 @@ function ExerciseList(props) {
       .set({ WorkoutNames: workoutNames }, { merge: true });
   }, [workoutNames]);
 
+  const handleSetName = (newName) => {
+    if (display == 1) {
+      const newArray = [...workoutNames];
+      newArray[0] = {
+        ...newArray[0],
+        WorkoutOne: newName
+      }
+      setNames(newArray);
+    }
+    if (display == 2) {
+      const newArray = [...workoutNames];
+      newArray[0] = {
+        ...newArray[0],
+        WorkoutTwo: newName
+      }
+      setNames(newArray);
+    }
+    if (display == 3) {
+      const newArray = [...workoutNames];
+      newArray[0] = {
+        ...newArray[0],
+        WorkoutThree: newName
+      }
+      setNames(newArray);
+    }
+  }
+
   return firestoreData.length ? (
     <div
       style={
@@ -223,43 +250,43 @@ function ExerciseList(props) {
       >
         <Fragment>
           <ButtonGroup>
-        <Button
-          label="Added Exercises"
-          value="Homepage"
-          onClick={() => {
-            setDisplay(0);
-          }}
-        >
-          Added Exercises
-        </Button>
-        <Button
-          label="Workout One"
-          value="Workout One"
-          onClick={() => {
-            setDisplay(1);
-          }}
-        >
-          Workout One
-        </Button>
-        <Button
-          label="Workout Two"
-          value="Workout Two"
-          onClick={() => {
-            setDisplay(2);
-          }}
-        >
-          Workout Two
-        </Button>
-        <Button
-          label="Workout Three"
-          value="Workout Three"
-          onClick={() => {
-            setDisplay(3);
-          }}
-        >
-          Workout Three
-        </Button>
-        </ButtonGroup>
+            <Button
+              label="Added Exercises"
+              value="Homepage"
+              onClick={() => {
+                setDisplay(0);
+              }}
+            >
+              Added Exercises
+            </Button>
+            <Button
+              label="Workout One"
+              value="Workout One"
+              onClick={() => {
+                setDisplay(1);
+              }}
+            >
+              Workout One
+            </Button>
+            <Button
+              label="Workout Two"
+              value="Workout Two"
+              onClick={() => {
+                setDisplay(2);
+              }}
+            >
+              Workout Two
+            </Button>
+            <Button
+              label="Workout Three"
+              value="Workout Three"
+              onClick={() => {
+                setDisplay(3);
+              }}
+            >
+              Workout Three
+            </Button>
+          </ButtonGroup>
         </Fragment>
       </div>
 
@@ -283,8 +310,14 @@ function ExerciseList(props) {
             display == 1 ? setOne : display == 2 ? setTwo : setThree
           }
           display={display}
-          workoutNames={workoutNames}
-          setNames={setNames}
+          workoutName={
+            display == 1
+              ? workoutNames[0].WorkoutOne
+              : display == 2
+              ? workoutNames[0].WorkoutTwo
+              : workoutNames[0].WorkoutThree
+          }
+          handleSetName={handleSetName}
         />
       )}
     </div>
