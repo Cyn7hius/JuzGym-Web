@@ -90,9 +90,9 @@ export default function UserWorkout() {
     if (typeof doc.data().WorkoutNames === "undefined") {
       setWorkoutNames([
         {
-          WorkoutOne:"Workout One",
-          WorkoutTwo:"Workout Two",
-          WorkoutThree:"Workout Three"
+          WorkoutOne: "Workout One",
+          WorkoutTwo: "Workout Two",
+          WorkoutThree: "Workout Three",
         },
       ]);
     }
@@ -222,39 +222,44 @@ function ExerciseList(props) {
         }}
       >
         <Fragment>
-          <Tabs centered={true}>
-            <Tab
-              label="Added Exercises"
-              value="Homepage"
-              onClick={() => {
-                setDisplay(0);
-              }}
-            />
-            <Divider orientation="vertical" flexItem />
-            <Tab
-              label="Workout One"
-              value="Workout One"
-              onClick={() => {
-                setDisplay(1);
-              }}
-            />
-            <Divider orientation="vertical" flexItem />
-            <Tab
-              label="Workout Two"
-              value="Workout Two"
-              onClick={() => {
-                setDisplay(2);
-              }}
-            />
-            <Divider orientation="vertical" flexItem />
-            <Tab
-              label="Workout Three"
-              value="Workout Three"
-              onClick={() => {
-                setDisplay(3);
-              }}
-            />
-          </Tabs>
+          <ButtonGroup>
+        <Button
+          label="Added Exercises"
+          value="Homepage"
+          onClick={() => {
+            setDisplay(0);
+          }}
+        >
+          Added Exercises
+        </Button>
+        <Button
+          label="Workout One"
+          value="Workout One"
+          onClick={() => {
+            setDisplay(1);
+          }}
+        >
+          Workout One
+        </Button>
+        <Button
+          label="Workout Two"
+          value="Workout Two"
+          onClick={() => {
+            setDisplay(2);
+          }}
+        >
+          Workout Two
+        </Button>
+        <Button
+          label="Workout Three"
+          value="Workout Three"
+          onClick={() => {
+            setDisplay(3);
+          }}
+        >
+          Workout Three
+        </Button>
+        </ButtonGroup>
         </Fragment>
       </div>
 

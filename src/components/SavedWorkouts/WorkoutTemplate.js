@@ -19,12 +19,12 @@ export default function WorkoutPage(props) {
   return workoutData.length ? (
     <div>
       <h1>{workoutNumber}</h1>
-      <ExportButton firestoreData={workoutData} />
       <ExercisePlanner
         firestoreData={workoutData}
         setData={setWorkoutData}
         display={display}
       />
+      <ExportButton firestoreData={workoutData} />
       <ExerciseDatabase firestoreData={workoutData} />
     </div>
   ) : (
