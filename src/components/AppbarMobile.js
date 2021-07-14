@@ -37,6 +37,11 @@ export default function AppbarMobile() {
     firebase.auth().signOut();
   };
 
+  const handleSavedWorkouts = () => {
+    handleClose();
+    Workout;
+  };
+
   const handleGoogleSignIn = (firebase) => {
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(googleAuthProvider);
@@ -110,7 +115,7 @@ export default function AppbarMobile() {
                 <MenuItem
                   component={A}
                   href="/savedworkouts"
-                  onClick={() => Workout}
+                  onClick={() => handleSavedWorkouts()}
                 >
                   Saved Workouts
                 </MenuItem>
