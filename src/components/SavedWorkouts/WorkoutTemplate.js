@@ -88,6 +88,8 @@ export default function WorkoutPage(props) {
               id="standard-basic"
               label="Name"
               value={workoutTitle}
+              inputProps={{ maxLength: 40 }}
+              helperText="Maximum of 40 characters"
               onChange={(event) => handleNameChange(event.target.value)}
             />
           </form>

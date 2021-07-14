@@ -266,7 +266,7 @@ function ExerciseList(props) {
                 setDisplay(1);
               }}
             >
-              Workout One
+              {workoutNames[0].WorkoutOne}
             </Button>
             <Button
               label="Workout Two"
@@ -275,7 +275,7 @@ function ExerciseList(props) {
                 setDisplay(2);
               }}
             >
-              Workout Two
+              {workoutNames[0].WorkoutTwo}
             </Button>
             <Button
               label="Workout Three"
@@ -284,7 +284,7 @@ function ExerciseList(props) {
                 setDisplay(3);
               }}
             >
-              Workout Three
+              {workoutNames[0].WorkoutThree}
             </Button>
           </ButtonGroup>
         </Fragment>
