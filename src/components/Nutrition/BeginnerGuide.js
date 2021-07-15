@@ -1,12 +1,32 @@
 import React, { useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
-import { Button, Typography, Container, Box, Paper } from "@material-ui/core";
+import TocIcon from "@material-ui/icons/Toc";
+import {
+  Button,
+  Typography,
+  Container,
+  Box,
+  Paper,
+  Fab,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 import { article, sectionHeadings } from "../../data/beginnerGuideMD";
 
 import "./styles.css";
 
 export default function BeginnerGuide() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   // Used a useRef hook to get a reference for each section
   const sectionsRef = article.map(() => useRef());
 
@@ -35,6 +55,25 @@ export default function BeginnerGuide() {
     </div>
   );
 
+  const tableOfContentsMobile = (
+    <div style={{ float: "left" }}>
+      <br />
+      <br />
+      <br />
+      {sectionHeadings.map((placeholder, index) => (
+        <div>
+          <MenuItem
+            style={{ justifyContent: "flex-start" }}
+            fullWidth={true}
+            onClick={() => goToSection(index)}
+          >
+            {sectionHeadings[index]}
+          </MenuItem>
+        </div>
+      ))}
+    </div>
+  );
+
   window.mobileCheck = function () {
     let check = false;
     (function (a) {
@@ -54,7 +93,34 @@ export default function BeginnerGuide() {
   // Main layout of the page
   return (
     <Container>
-      {!window.mobileCheck() ? tableOfContents : null}
+      {!window.mobileCheck() ? (
+        tableOfContents
+      ) : (
+        <div>
+          <Fab
+            aria-controls="toc"
+            aria-haspopup="true"
+            variant="primary"
+            style={{
+              position: "absolute",
+              bottom: 10,
+              right: 10,
+            }}
+            onClick={handleClick}
+          >
+            <TocIcon />
+          </Fab>
+          <Menu
+            id="toc"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            {tableOfContentsMobile}
+          </Menu>
+        </div>
+      )}
       <Paper style={{ maxHeight: "80vh", overflow: "auto" }}>
         <Box m={2}>
           <Typography align="left">

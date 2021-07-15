@@ -14,6 +14,7 @@ import {
   Grid,
   Box,
   Button,
+
 } from "@material-ui/core/";
 
 function ExerciseList(props) {
@@ -63,7 +64,9 @@ function ExerciseList(props) {
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
-    db.collection("/users").doc(uid).set({ Workout: firestoreData }, { merge: true });
+    db.collection("/users")
+      .doc(uid)
+      .set({ Workout: firestoreData }, { merge: true });
   }, [firestoreData]);
 
   window.mobileCheck = function () {

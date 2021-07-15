@@ -1,10 +1,32 @@
 import React, { useRef } from "react";
-import Markdown from "react-markdown";
-import { Button, Typography, Container, Box, Paper } from "@material-ui/core";
-
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+import TocIcon from "@material-ui/icons/Toc";
+import {
+  Button,
+  Typography,
+  Container,
+  Box,
+  Paper,
+  Fab,
+  Menu,
+  MenuItem,
+} from "@material-ui/core";
 import { article, sectionHeadings } from "../../data/getLeanMD";
 
+import "./styles.css";
+
 export default function GetLean() {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   // Used a useRef hook to get a reference for each section
   const sectionsRef = article.map(() => useRef());
 
@@ -33,6 +55,25 @@ export default function GetLean() {
     </div>
   );
 
+  const tableOfContentsMobile = (
+    <div style={{ float: "left" }}>
+      <br />
+      <br />
+      <br />
+      {sectionHeadings.map((placeholder, index) => (
+        <div>
+          <MenuItem
+            style={{ justifyContent: "flex-start" }}
+            fullWidth={true}
+            onClick={() => goToSection(index)}
+          >
+            {sectionHeadings[index]}
+          </MenuItem>
+        </div>
+      ))}
+    </div>
+  );
+
   window.mobileCheck = function () {
     let check = false;
     (function (a) {
@@ -48,17 +89,50 @@ export default function GetLean() {
     })(navigator.userAgent || navigator.vendor || window.opera);
     return check;
   };
+
   // Main layout of the page
   return (
     <Container>
-      {!window.mobileCheck() ? tableOfContents : null}
+      {!window.mobileCheck() ? (
+        tableOfContents
+      ) : (
+        <div>
+          <Fab
+            aria-controls="toc"
+            aria-haspopup="true"
+            variant="primary"
+            style={{
+              position: "absolute",
+              bottom: 10,
+              right: 10,
+            }}
+            onClick={handleClick}
+          >
+            <TocIcon />
+          </Fab>
+          <Menu
+            id="toc"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            {tableOfContentsMobile}
+          </Menu>
+        </div>
+      )}
       <Paper style={{ maxHeight: "80vh", overflow: "auto" }}>
         <Box m={2}>
           <Typography align="left">
             {/* Map each section to a Markdown Component to be displayed, ties in together with the refs to allow scroll to certain sections */}
             {article.map((sections, index) => (
               <div ref={sectionsRef[index]}>
-                <Markdown children={sections} />
+                <ReactMarkdown
+                  escepeHTML={true}
+                  skipHTML={false}
+                  remarkPlugins={[gfm]}
+                  children={sections}
+                />
               </div>
             ))}
           </Typography>
