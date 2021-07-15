@@ -94,10 +94,17 @@ export default function Home() {
                 <ButtonBase
                   key={images.title}
                   className={classes.image}
-                  style={{
-                    width: "32vw",
-                    height: "30vh", //hardcoded
-                  }}
+                  style={
+                    !window.mobileCheck()
+                      ? {
+                          width: "32vw",
+                          height: "30vh", //hardcoded
+                        }
+                      : {
+                          width: "40vw",
+                          height: "20vh", //hardcoded
+                        }
+                  }
                 >
                   <span
                     className={classes.imageSrc}
@@ -149,8 +156,10 @@ export default function Home() {
                 platform, where you can easily view instructions, tips and even
                 a video demo. If you are signed-in, you can bookmark your
                 favourite exercises, which you can access by clicking on the top
-                right button. Moreover, we included a educational component to
-                provide a step-by-step guide to achieve your fitness goals.
+                right button. There, you can also customize your own workout
+                plans and export them. Moreover, we included a educational
+                component to provide a step-by-step guide to achieve your
+                fitness goals.
               </Typography>
             </Container>
           </div>

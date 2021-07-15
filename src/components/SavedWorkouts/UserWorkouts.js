@@ -241,46 +241,54 @@ function ExerciseList(props) {
     >
       <div
         style={{
-          // backgroundColor: "#48ff00",
           textAlign: "center",
         }}
       >
         {!window.mobileCheck() ? (
           <Fragment>
+            <br />
             <ButtonGroup>
               <Button
+                variant="contained"
                 label="Added Exercises"
                 value="Homepage"
                 onClick={() => {
                   setDisplay(0);
                 }}
+                style={{ color: "white", backgroundColor: "grey" }}
               >
                 Added Exercises
               </Button>
               <Button
+                variant="contained"
                 label="Workout One"
                 value="Workout One"
                 onClick={() => {
                   setDisplay(1);
                 }}
+                style={{ color: "white", backgroundColor: "darkgreen" }}
               >
                 {workoutNames[0].WorkoutOne}
               </Button>
               <Button
+                variant="contained"
                 label="Workout Two"
                 value="Workout Two"
                 onClick={() => {
                   setDisplay(2);
                 }}
+                style={{ color: "white", backgroundColor: "darkred" }}
               >
                 {workoutNames[0].WorkoutTwo}
               </Button>
               <Button
+                variant="contained"
                 label="Workout Three"
                 value="Workout Three"
                 onClick={() => {
                   setDisplay(3);
                 }}
+                style={{ color: "white", backgroundColor: "darkblue" }}
               >
                 {workoutNames[0].WorkoutThree}
               </Button>

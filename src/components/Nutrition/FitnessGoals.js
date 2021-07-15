@@ -101,10 +101,17 @@ function GoalsSelector() {
                 <ButtonBase
                   key={images.title}
                   className={classes.image}
-                  style={{
-                    width: "32vw",
-                    height: "30vh", //hardcoded
-                  }}
+                  style={
+                    !window.mobileCheck()
+                      ? {
+                          width: "32vw",
+                          height: "30vh", //hardcoded
+                        }
+                      : {
+                          width: "40vw",
+                          height: "30vh", //hardcoded
+                        }
+                  }
                 >
                   <span
                     className={classes.imageSrc}
