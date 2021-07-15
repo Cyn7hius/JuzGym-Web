@@ -51,6 +51,7 @@ export default function ExerciseDatabase(props) {
     <Container>
       <Box>
         <Virtuoso
+          useWindowScroll="true"
           style={
             !window.mobileCheck()
               ? { width: "auto", height: "80vh" }
@@ -69,7 +70,11 @@ export default function ExerciseDatabase(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography variant="h6" style={{ fontWeight: 500 }}>
+                <Typography
+                  variant="h6"
+                  align="left"
+                  style={{ fontWeight: 500 }}
+                >
                   {exercise.name}
                 </Typography>
               </AccordionSummary>

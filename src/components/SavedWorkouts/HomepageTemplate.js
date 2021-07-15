@@ -111,18 +111,19 @@ export default function Homepage(props) {
   return (
     <div>
       {!window.mobileCheck() ? (
-        <h1>These are the exercises you have added</h1>
+        <h1>These are your saved exercises</h1>
       ) : (
-        <h3>These are the exercises you have added</h3>
+        <h2>These are your saved exercises</h2>
       )}
 
       <Container maxWidth="lg">
         <Box>
           <Virtuoso
+            useWindowScroll="true"
             style={
               !window.mobileCheck()
                 ? { width: "auto", height: "40vh" }
-                : { width: "auto", height: "80vh" }
+                : { width: "auto", height: "40vh" }
             }
             //Uses the data from json file
             data={firestoreData}
@@ -239,9 +240,12 @@ export default function Homepage(props) {
       {!window.mobileCheck() ? (
         <h1>Exercise details</h1>
       ) : (
-        <h3>Exercise details</h3>
+        <h2>Exercise details</h2>
       )}
       <ExerciseDatabase firestoreData={firestoreData} />
+      <br />
+      <br />
+      <br />
     </div>
   );
 }
