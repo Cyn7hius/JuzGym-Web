@@ -229,16 +229,7 @@ function ExerciseList(props) {
   };
 
   return firestoreData.length ? (
-    <div
-      style={
-        {
-          //Hardcoded
-          // backgroundColor: "#F7F7F7",
-          // // padding: "3em",
-          // textAlign: "right",
-        }
-      }
-    >
+    <div>
       <div
         style={{
           textAlign: "center",
@@ -308,6 +299,8 @@ function ExerciseList(props) {
                 left: "auto",
                 position: "fixed",
                 zIndex: 1000,
+                background: "#04ae96",
+                color: "black",
               }}
               onClick={handleClick}
             >

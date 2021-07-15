@@ -14,7 +14,6 @@ import {
   Grid,
   Box,
   Button,
-
 } from "@material-ui/core/";
 
 function ExerciseList(props) {
@@ -89,7 +88,11 @@ function ExerciseList(props) {
     <Container>
       <Box>
         <Virtuoso
-          style={{ width: "auto", height: "80vh" }}
+          style={
+            !window.mobileCheck()
+              ? { width: "auto", height: "80vh" }
+              : { width: "95vw", height: "80vh" }
+          }
           //Uses the data from json file
           data={database}
           //Total number of exercises to render
@@ -103,16 +106,26 @@ function ExerciseList(props) {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography variant="h5" style={{ fontWeight: 500 }}>
-                  {exercise.name}
-                </Typography>
-                <Button
-                  disabled={!isLoggedIn}
-                  style={{ marginLeft: "auto", marginRight: 0 }}
-                  onClick={(event) => exerciseButton(event, exercise.name)}
-                >
-                  {exerciseButtonText(exercise.name)}
-                </Button>
+                <Grid container>
+                  <Grid item xs>
+                    <Typography
+                      variant="h6"
+                      align="left"
+                      style={{ fontWeight: 500 }}
+                    >
+                      {exercise.name}
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Button
+                      disabled={!isLoggedIn}
+                      style={{ marginLeft: "auto", marginRight: 0 }}
+                      onClick={(event) => exerciseButton(event, exercise.name)}
+                    >
+                      {exerciseButtonText(exercise.name)}
+                    </Button>
+                  </Grid>
+                </Grid>
               </AccordionSummary>
 
               <AccordionDetails style={{ background: "#f2f2f2" }}>

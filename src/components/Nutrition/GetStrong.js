@@ -105,6 +105,8 @@ export default function GetStrong() {
               position: "absolute",
               bottom: 10,
               right: 10,
+              background: "#04ae96",
+              color: "black",
             }}
             onClick={handleClick}
           >

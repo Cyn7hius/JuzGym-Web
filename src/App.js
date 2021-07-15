@@ -29,28 +29,6 @@ function AppShell() {
     },
   }));
 
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleLogout = (firebase) => {
-    handleClose();
-    firebase.auth().signOut();
-  };
-
-  const handleGoogleSignIn = (firebase) => {
-    const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(googleAuthProvider);
-  };
-
-  const classes = useStyles();
-
   window.mobileCheck = function () {
     let check = false;
     (function (a) {
