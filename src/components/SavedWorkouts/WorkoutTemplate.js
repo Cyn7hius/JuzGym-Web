@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState } from "react";
 //Can add into the import statement below
 import ExerciseDatabase from "./ExerciseDatabase";
 import ExportButton from "./ExportButton";
@@ -11,26 +11,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import {
-  FormHelperText,
-  FormLabel,
-  FormControlLabel,
-  MenuItem,
-} from "@material-ui/core";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import ICalendarLink from "react-icalendar-link";
-import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
-
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import Alert from "@material-ui/lab/Alert";
 
 //firestoredata is the curated exercises + sets + reps
 export default function WorkoutPage(props) {

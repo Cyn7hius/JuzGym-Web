@@ -1,30 +1,11 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Virtuoso } from "react-virtuoso";
-import { data } from "../../data/exerciseDatabase";
-//Can add into the import statement below
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { firebase } from "@firebase/app";
-import { List, arrayMove, arrayRemove } from "react-movable";
-import { Reorder, Delete, Save, GetApp } from "@material-ui/icons";
+import React from "react";
+import {  GetApp } from "@material-ui/icons";
 import ExportIcs from "./components/CalendarExport";
 import {
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Container,
-  Divider,
-  Grid,
-  Box,
   Button,
-  ButtonGroup,
-  Menu,
-  MenuItem,
   ClickAwayListener,
   Grow,
   Paper,
-  Tabs,
-  Tab,
   Popper,
   MenuList,
 } from "@material-ui/core/";

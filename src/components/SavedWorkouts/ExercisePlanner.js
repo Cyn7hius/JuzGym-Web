@@ -1,42 +1,9 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { Virtuoso } from "react-virtuoso";
-import { data } from "../../data/exerciseDatabase";
-//Can add into the import statement below
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { firebase } from "@firebase/app";
+import React from "react";
 import { List, arrayMove, arrayRemove } from "react-movable";
-import { Reorder, Delete, Save, GetApp } from "@material-ui/icons";
-import ExportIcs from "./components/CalendarExport";
+import { Reorder, Delete} from "@material-ui/icons";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import ExerciseDatabase from "./ExerciseDatabase";
-import ExportButton from "./ExportButton";
-
-import YoutubeEmbed from "../../data/YoutubeEmbed";
-import {
-  Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Container,
-  Divider,
-  Grid,
-  Box,
-  Button,
-  ButtonGroup,
-  Menu,
-  MenuItem,
-  ClickAwayListener,
-  Grow,
-  Paper,
-  Tabs,
-  Tab,
-  Popper,
-  MenuList,
-} from "@material-ui/core/";
-import ExportExcel from "./components/ExcelExport";
-import WorkoutPage from "./WorkoutTemplate";
 
 export default function ExercisePlanner(props) {
   const { firestoreData, setData } = props;
