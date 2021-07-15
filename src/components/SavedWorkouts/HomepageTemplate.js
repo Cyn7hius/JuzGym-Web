@@ -1,25 +1,14 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React from "react";
 import { Virtuoso } from "react-virtuoso";
-import { data } from "../../data/exerciseDatabase";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { firebase } from "@firebase/app";
-import YoutubeEmbed from "../../data/YoutubeEmbed";
 import {
   Typography,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Container,
   Divider,
-  Grid,
-  List,
   ListItem,
-  ListItemText,
   Box,
   Button,
 } from "@material-ui/core/";
 import ExerciseDatabase from "./ExerciseDatabase";
-import ExercisePlanner from "./ExercisePlanner";
 
 //firestoredata is the curated exercises + sets + reps
 export default function Homepage(props) {
