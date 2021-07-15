@@ -19,7 +19,7 @@ import HomeIcon from "@material-ui/icons/Home";
 
 import { A } from "hookrouter";
 import "../styles.css";
-import Workout from "./SavedWorkouts/UserWorkouts";
+import UserVerification from "./SavedWorkouts/UserVerification";
 
 export default function AppbarDesktop() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -39,7 +39,7 @@ export default function AppbarDesktop() {
 
   const handleSavedWorkouts = () => {
     handleClose();
-    Workout;
+    UserVerification;
   };
 
   const handleGoogleSignIn = (firebase) => {

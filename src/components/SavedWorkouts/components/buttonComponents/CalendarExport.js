@@ -21,7 +21,7 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Alert from "@material-ui/lab/Alert";
 
-//firestoredata is the curated exercises + sets + reps
+//Exports an ics file for the user
 export default function ExportIcs(props) {
   const { firestoreData, originalHandleClose, workoutName } = props;
   const [form, setForm] = useState(false);
@@ -40,9 +40,7 @@ export default function ExportIcs(props) {
   const [duration, setDuration] = useState(30);
   const [repeat, setRepeat] = useState(1);
 
-  //When startTime changes
   const handleTimeChange = (date) => {
-    //only change time
     if (repeat == 1) {
       var updatedStartTime = new Date(iCalTitle.startTime);
       updatedStartTime.setHours(date.getHours());
@@ -59,7 +57,6 @@ export default function ExportIcs(props) {
         startTime: updatedStartTime,
         endTime: updatedEndTime,
       });
-      //change time AND find appropriate date
     } else {
       var updatedTime = new Date();
       updatedTime.setHours(date.getHours());
