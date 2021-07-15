@@ -8,7 +8,6 @@ import {
   Box,
   Button,
   Grid,
-  Paper,
 } from "@material-ui/core/";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExerciseDatabase from "./ExerciseDatabase";
