@@ -57,6 +57,9 @@ export default function BeginnerGuide() {
 
   const tableOfContentsMobile = (
     <div style={{ float: "left" }}>
+      <br />
+      <br />
+      <br />
       {sectionHeadings.map((placeholder, index) => (
         <div>
           <MenuItem

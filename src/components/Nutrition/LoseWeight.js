@@ -57,6 +57,9 @@ export default function LoseWeight() {
 
   const tableOfContentsMobile = (
     <div style={{ float: "left" }}>
+      <br />
+      <br />
+      <br />
       {sectionHeadings.map((placeholder, index) => (
         <div>
           <MenuItem
