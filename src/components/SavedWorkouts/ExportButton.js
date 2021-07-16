@@ -1,6 +1,6 @@
 import React from "react";
 import { GetApp } from "@material-ui/icons";
-import ExportIcs from "./components/CalendarExport";
+import ExportIcs from "./components/buttonComponents/CalendarExport";
 import {
   Button,
   ClickAwayListener,
@@ -9,7 +9,7 @@ import {
   Popper,
   MenuList,
 } from "@material-ui/core/";
-import ExportExcel from "./components/ExcelExport";
+import ExportExcel from "./components/buttonComponents/ExcelExport";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportButton(props) {
