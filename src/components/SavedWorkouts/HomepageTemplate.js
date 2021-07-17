@@ -10,7 +10,7 @@ import {
   Grid,
 } from "@material-ui/core/";
 import DeleteIcon from "@material-ui/icons/Delete";
-import ExerciseDatabase from "./ExerciseDatabase";
+import ExerciseDatabase from "./components/ExerciseDatabase";
 
 //firestoredata is the curated exercises + sets + reps
 export default function Homepage(props) {

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 //Can add into the import statement below
-import ExerciseDatabase from "./ExerciseDatabase";
-import ExportButton from "./ExportButton";
-import ExercisePlanner from "./ExercisePlanner";
+import ExerciseDatabase from "./components/ExerciseDatabase";
+import ExportButton from "./components/ExportButton";
+import ExercisePlanner from "./components/ExercisePlanner"
 import EditIcon from "@material-ui/icons/Edit";
 import {
   Button,

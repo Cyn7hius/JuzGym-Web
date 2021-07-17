@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Virtuoso } from "react-virtuoso";
-import { data } from "../../data/exerciseDatabase";
+import { data } from "../../../data/exerciseDatabase";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import YoutubeEmbed from "../../data/YoutubeEmbed";
+import YoutubeEmbed from "../../../data/YoutubeEmbed";
 import {
   Typography,
   Accordion,
