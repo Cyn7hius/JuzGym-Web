@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-//Can add into the import statement below
 import ExerciseDatabase from "./components/ExerciseDatabase";
 import ExportButton from "./components/ExportButton";
-import ExercisePlanner from "./components/ExercisePlanner"
+import ExercisePlanner from "./components/ExercisePlanner";
 import EditIcon from "@material-ui/icons/Edit";
+import Alert from "@material-ui/lab/Alert";
 import {
   Button,
   TextField,
@@ -14,10 +14,14 @@ import {
   Grid,
 } from "@material-ui/core";
 
-//firestoredata is the curated exercises + sets + reps
+//The component that displays the SavedWorkout page from Milestone 2
+//Consists of a rename title button, the ExportButton, ExercisePlanner and ExerciseDatabase components
 export default function WorkoutPage(props) {
+  //workoutData will either be Workout1/2/3's array, workoutName is the corresponding workout's title
   const { workoutData, setWorkoutData, workoutName, handleSetName } = props;
+  //State of the dialog, reused in renaming
   const [form, setForm] = useState(false);
+  //Used to store the temp information that the user types when renaming the workout title
   const [workoutTitle, setWorkoutTitle] = useState("");
 
   const handleClickOpen = () => {
@@ -59,6 +63,8 @@ export default function WorkoutPage(props) {
       <Grid container justify="center" alignItems="center">
         <h1>
           {workoutName}
+
+          {/* rename icon */}
           <button
             onClick={handleClickOpen}
             style={{
@@ -75,6 +81,7 @@ export default function WorkoutPage(props) {
           </button>
         </h1>
 
+        {/* renaming option */}
         <Dialog
           open={form}
           onClose={handleClose}
@@ -87,17 +94,26 @@ export default function WorkoutPage(props) {
                 id="standard-basic"
                 label="Name"
                 value={workoutTitle}
-                inputProps={{ maxLength: 40 }}
-                helperText="Maximum of 40 characters"
+                inputProps={{ maxLength: 30 }}
+                helperText="Maximum of 30 characters"
                 onChange={(event) => handleNameChange(event.target.value)}
               />
+              {!workoutTitle.length && (
+                <Alert severity="error">
+                  Please enter a minimum of 1 character
+                </Alert>
+              )}
             </form>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={saveNewName} color="primary">
+            <Button
+              disabled={!workoutTitle.length}
+              onClick={saveNewName}
+              color="primary"
+            >
               Save
             </Button>
           </DialogActions>

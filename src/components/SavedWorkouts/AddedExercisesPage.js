@@ -8,6 +8,7 @@ import {
   Box,
   Button,
   Grid,
+  Tooltip,
 } from "@material-ui/core/";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExerciseDatabase from "./components/ExerciseDatabase";
@@ -49,7 +50,6 @@ export default function Homepage(props) {
       : setThree(newExercises);
   }
 
-
   function removeExerciseFromAllWorkouts(name) {
     removeExerciseFromOneWorkout(name, 1);
     removeExerciseFromOneWorkout(name, 2);
@@ -82,7 +82,7 @@ export default function Homepage(props) {
     }
   }
 
-    //Used with exerciseButton to display the correct remove/add button for users
+  //Used with exerciseButton to display the correct remove/add button for users
   function exerciseButtonText(name, number) {
     const workoutData =
       number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
@@ -172,12 +172,16 @@ export default function Homepage(props) {
                         </Button>
                       </Grid>
                       <Grid item>
-                        <Button
-                          style={{ marginLeft: "auto", marginRight: 0 }}
-                          onClick={() => removeExerciseFromAllWorkouts(exercise.title)}
-                        >
-                          <DeleteIcon />
-                        </Button>
+                        <Tooltip title="Remove from all workouts">
+                          <Button
+                            style={{ marginLeft: "auto", marginRight: 0 }}
+                            onClick={() =>
+                              removeExerciseFromAllWorkouts(exercise.title)
+                            }
+                          >
+                            <DeleteIcon />
+                          </Button>
+                        </Tooltip>
                       </Grid>
                     </Grid>
                   </ListItem>
@@ -191,11 +195,15 @@ export default function Homepage(props) {
                         <Typography variant="h6" style={{ fontWeight: 500 }}>
                           {exercise.title}
                         </Typography>
-                        <Button
-                          onClick={() => removeExerciseFromAllWorkouts(exercise.title)}
-                        >
-                          <DeleteIcon />
-                        </Button>
+                        <Tooltip title="Remove from all workouts">
+                          <Button
+                            onClick={() =>
+                              removeExerciseFromAllWorkouts(exercise.title)
+                            }
+                          >
+                            <DeleteIcon />
+                          </Button>
+                        </Tooltip>
                       </Grid>
 
                       <Grid item xs={6}>

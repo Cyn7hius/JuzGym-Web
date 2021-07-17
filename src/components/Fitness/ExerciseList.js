@@ -58,11 +58,13 @@ function ExerciseList(props) {
 
   /*Updates the array in firestore whenever the local array changes */
   useEffect(() => {
-    const uid = firebase.auth().currentUser?.uid;
-    const db = firebase.firestore();
-    db.collection("/users")
-      .doc(uid)
-      .set({ Workout: firestoreData }, { merge: true });
+    if (isLoggedIn) {
+      const uid = firebase.auth().currentUser?.uid;
+      const db = firebase.firestore();
+      db.collection("/users")
+        .doc(uid)
+        .set({ Workout: firestoreData }, { merge: true });
+    }
   }, [firestoreData]);
 
   window.mobileCheck = function () {

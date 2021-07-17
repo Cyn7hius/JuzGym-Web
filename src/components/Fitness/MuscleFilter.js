@@ -9,6 +9,8 @@ import {
   Grid,
   Container,
 } from "@material-ui/core";
+import NoPageFound from "../NoPageFound";
+import CommonTips from "../NutritionTips";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -147,20 +149,23 @@ export default function MuscleFilter(props) {
 
     // take the props passed from the equipment page, and send it together with muscleFilter prop to ExerciseList
 
-    "/core*": () => (
+    "/core": () => (
       <ExerciseList equipmentFilter={equipment} muscleFilter="CORE AND BACK" />
     ),
-    "/upper*": () => (
+    "/upper": () => (
       <ExerciseList equipmentFilter={equipment} muscleFilter="UPPER BODY" />
     ),
-    "/lower*": () => (
+    "/lower": () => (
       <ExerciseList equipmentFilter={equipment} muscleFilter="LOWER BODY" />
     ),
-    "/all*": () => (
+    "/all": () => (
       <ExerciseList equipmentFilter={equipment} muscleFilter="ALL BODY PARTS" />
+    ),
+    "/dillonsimp": () => (
+      <CommonTips />
     ),
   };
 
   const routeResult = useRoutes(routes);
-  return routeResult;
+  return <div>{routeResult || <NoPageFound />}</div>;
 }
