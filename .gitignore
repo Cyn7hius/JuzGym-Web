@@ -21,6 +21,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-src/components/NutritionTips.js
-src/data/left.gif
-src/data/right.gif
