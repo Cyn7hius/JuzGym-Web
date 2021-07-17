@@ -88,7 +88,7 @@ export default function AppbarMobile() {
                 color: "black",
               }}
             >
-              {" JuzGym"}
+              {" JuzGymm"}
             </Typography>
           </Grid>
         </Grid>

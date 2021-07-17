@@ -1,9 +1,9 @@
 import React from "react";
-export default function Answer() {
+export default function NoPageFound() {
   return (
     <div>
       {" "}
-      <h1>404</h1> <p>Page doesnt exist hehe</p>
+      <h1>Error 404</h1> <p>Page doesnt exist</p>
     </div>
   );
 }

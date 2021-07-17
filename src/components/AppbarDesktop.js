@@ -76,7 +76,7 @@ export default function AppbarDesktop() {
                 flexGrow: 1,
               }}
             >
-              {" JuzGym"}
+              {" JuzGymm"}
             </Typography>
           </Grid>
           <Grid item lg>

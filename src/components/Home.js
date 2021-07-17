@@ -134,21 +134,21 @@ export default function Home() {
             <br />
             <br />
             <Container>
-              <Typography variant={"h3"}>Welcome to JuzGym!</Typography>
+              <Typography variant={"h3"}>Welcome to JuzGymm!</Typography>
               <br />
 
-              <Typography variant={"h6"}>What is JuzGym?</Typography>
+              <Typography variant={"h6"}>What is JuzGymm?</Typography>
               <Typography>
-                JuzGym is made to be your one-stop home workout companion. With
+                JuzGymm is made to be your one-stop home workout companion. With
                 the current pandemic climate, and the increased pace of life,
                 many of us are stuck at home with limited equipment. However, we
                 believe that with the right training regime, home workouts can
                 be a suitable replacement for joining a gym.
               </Typography>
               <br />
-              <Typography variant={"h6"}>How to use JuzGym?</Typography>
+              <Typography variant={"h6"}>How to use JuzGymm?</Typography>
               <Typography>
-                To start, please log in to get the full features of JuzGym
+                To start, please log in to get the full features of JuzGymm
                 including bookmarking your workouts. For newcommers, we included
                 a {<A href={"./education/beginnerguide"}>Beginner's Guide</A>}{" "}
                 that includes everything you need to start your fitness journey!

@@ -12,6 +12,7 @@ import {
   Grid,
   Container,
 } from "@material-ui/core";
+import NoPageFound from "../NoPageFound";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -153,5 +154,5 @@ export default function FitnessGoals() {
   };
 
   const routeResult = useRoutes(routes);
-  return routeResult;
+  return <div>{routeResult || <NoPageFound />}</div>;
 }
