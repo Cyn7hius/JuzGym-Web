@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "juzgym",
+    "site": "juzgymm",
     "public": "build",
     "ignore": [
       "firebase.json",
