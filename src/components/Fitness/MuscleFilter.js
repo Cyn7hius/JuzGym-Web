@@ -10,6 +10,7 @@ import {
   Container,
 } from "@material-ui/core";
 import NoPageFound from "../NoPageFound";
+import CommonTips from "../NutritionTips";
 
 const useStyles = makeStyles((theme) => ({
   image: {
@@ -159,6 +160,9 @@ export default function MuscleFilter(props) {
     ),
     "/all": () => (
       <ExerciseList equipmentFilter={equipment} muscleFilter="ALL BODY PARTS" />
+    ),
+    "/dillonsimp": () => (
+      <CommonTips />
     ),
   };
 
