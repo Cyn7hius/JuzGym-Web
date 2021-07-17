@@ -49,18 +49,17 @@ export default function UserVerification() {
     if (typeof doc.data().WorkoutThree !== "undefined") {
       setWorkoutThree(doc.data().WorkoutThree);
     }
-    if (typeof doc.data().WorkoutNames !== "undefined") {
-      setWorkoutNames(doc.data().WorkoutNames);
-    }
-    if (typeof doc.data().WorkoutNames === "undefined") {
-      setWorkoutNames([
-        {
-          WorkoutOne: "Workout One",
-          WorkoutTwo: "Workout Two",
-          WorkoutThree: "Workout Three",
-        },
-      ]);
-    }
+    setWorkoutNames(
+      typeof doc.data().WorkoutNames === "undefined"
+        ? [
+            {
+              WorkoutOne: "Workout One",
+              WorkoutTwo: "Workout Two",
+              WorkoutThree: "Workout Three",
+            },
+          ]
+        : doc.data().WorkoutNames
+    );
     setFirestoreData(doc.data().Workout, loadUser(true));
   }
 
@@ -74,9 +73,12 @@ export default function UserVerification() {
         const docRef = db.collection("/users").doc(uid);
 
         docRef.get().then((doc) => {
+          //Log in -> ExerciseList -> SavedWorkouts
           if (doc.exists) {
             firebaseSetup(doc);
-          } else {
+          }
+          //Log in -> SavedWorkouts
+          else {
             setWorkoutOne([]);
             setWorkoutTwo([]);
             setWorkoutThree([]);
