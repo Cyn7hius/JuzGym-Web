@@ -1,6 +1,6 @@
 import React from "react";
-import {  GetApp } from "@material-ui/icons";
-import ExportIcs from "./buttonComponents/CalendarExport";
+import { GetApp } from "@material-ui/icons";
+import ExportIcs from "./components/buttonComponents/CalendarExport";
 import {
   Button,
   ClickAwayListener,
@@ -9,7 +9,7 @@ import {
   Popper,
   MenuList,
 } from "@material-ui/core/";
-import ExportExcel from "./buttonComponents/ExcelExport";
+import ExportExcel from "./components/buttonComponents/ExcelExport";
 
 //firestoredata is the curated exercises + sets + reps
 export default function ExportButton(props) {
@@ -38,9 +38,8 @@ export default function ExportButton(props) {
   }
 
   const handleExcel = () => {
-    <ExportExcel firestoreData={firestoreData} />
+    <ExportExcel firestoreData={firestoreData} />;
     handleToggle();
-
   };
 
   // return focus to the button when we transitioned from !open -> open
@@ -54,55 +53,62 @@ export default function ExportButton(props) {
   }, [open]);
   return (
     <div
-    style={
-      {
+      style={{
         // backgroundColor: "#F7F7F7",
-        padding: "3em",
-        textAlign: "right",
-      }
-    }>
-        <Button
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<GetApp />}
-          ref={anchorRef}
-          aria-controls={open ? "menu-list-grow" : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          Download
-        </Button>
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          transition
-          disablePortal
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === "bottom" ? "center top" : "center bottom",
-              }}
-            >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
-                  <MenuList
-                    autoFocusItem={open}
-                    id="menu-list-grow"
-                    onKeyDown={handleListKeyDown}
-                  >
-                    <ExportExcel firestoreData={firestoreData} handleClose={handleClose} />
-                    <ExportIcs firestoreData={firestoreData} originalHandleClose={handleClose} workoutName={workoutName}/>
-                  </MenuList>
-                </ClickAwayListener>
-              </Paper>
-            </Grow>
-          )}
-        </Popper>
+        padding: "0em",
+        textAlign: "center",
+      }}
+    >
+      <Button
+        variant="contained"
+        color="primary"
+        size="small"
+        startIcon={<GetApp />}
+        ref={anchorRef}
+        aria-controls={open ? "menu-list-grow" : undefined}
+        aria-haspopup="true"
+        onClick={handleToggle}
+      >
+        Download
+      </Button>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+        style={{ zIndex: 1000 }}
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
+            }}
+          >
+            <Paper>
+              <ClickAwayListener onClickAway={handleClose}>
+                <MenuList
+                  autoFocusItem={open}
+                  id="menu-list-grow"
+                  onKeyDown={handleListKeyDown}
+                >
+                  <ExportExcel
+                    firestoreData={firestoreData}
+                    handleClose={handleClose}
+                  />
+                  <ExportIcs
+                    firestoreData={firestoreData}
+                    originalHandleClose={handleClose}
+                    workoutName={workoutName}
+                  />
+                </MenuList>
+              </ClickAwayListener>
+            </Paper>
+          </Grow>
+        )}
+      </Popper>
     </div>
   );
 }
