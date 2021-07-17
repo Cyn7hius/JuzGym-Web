@@ -8,7 +8,9 @@ import {
   Typography,
 } from "@material-ui/core";
 
+//The component that allows users to reorder their exercises, as well as set the Reps/Sets for each exercise
 export default function ExercisePlanner(props) {
+  //firestoreData will either be Workout1/2/3's array
   const { firestoreData, setData } = props;
 
   function updateReps(title, newReps) {
@@ -31,8 +33,7 @@ export default function ExercisePlanner(props) {
     setData(newArray);
   }
 
-  //Might be redundant function
-  function updatePosition(items) {
+  function updateExercisePosition(items) {
     const newArray = [...items];
     setData(newArray);
   }
@@ -68,7 +69,7 @@ export default function ExercisePlanner(props) {
     <List
       values={firestoreData}
       onChange={({ oldIndex, newIndex }) =>
-        updatePosition(arrayMove(firestoreData, oldIndex, newIndex))
+        updateExercisePosition(arrayMove(firestoreData, oldIndex, newIndex))
       }
       renderList={({ children, props, isDragged }) => (
         <ul
@@ -121,6 +122,7 @@ export default function ExercisePlanner(props) {
                   to use is it as a DnD handle. The rest of renderItem will be then
                   ignored and not start the drag and drop. 
                 */}
+            {/* button to reorder exercises */}
             <button
               data-movable-handle
               style={{
@@ -133,6 +135,8 @@ export default function ExercisePlanner(props) {
             >
               <Reorder />
             </button>
+
+            {/* exercise name */}
             <Typography
               variant="h6"
               style={{
@@ -141,6 +145,8 @@ export default function ExercisePlanner(props) {
             >
               {value.title}
             </Typography>
+
+            {/* rep counter */}
             <FormControl style={{ marginRight: "0.5em" }}>
               <InputLabel>Reps</InputLabel>
               <NativeSelect
@@ -188,6 +194,7 @@ export default function ExercisePlanner(props) {
               </NativeSelect>
             </FormControl>
 
+            {/* set counter */}
             <FormControl>
               <InputLabel>Sets</InputLabel>
               <NativeSelect
@@ -234,9 +241,11 @@ export default function ExercisePlanner(props) {
                 <option value={50}>50</option>
               </NativeSelect>
             </FormControl>
+
+            {/* remove exercise button */}
             <button
               onClick={() => {
-                updatePosition(
+                updateExercisePosition(
                   typeof index !== "undefined"
                     ? arrayRemove(firestoreData, index)
                     : firestoreData

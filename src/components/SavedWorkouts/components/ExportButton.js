@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { GetApp } from "@material-ui/icons";
 import ExportIcs from "./buttonComponents/CalendarExport";
 import {
@@ -11,12 +11,14 @@ import {
 } from "@material-ui/core/";
 import ExportExcel from "./buttonComponents/ExcelExport";
 
-//firestoredata is the curated exercises + sets + reps
+//Component is the download button that contains ics/csv export options
 export default function ExportButton(props) {
+  //firestoreData will either be Workout1/2/3's array, workoutName either default workout title or custom name
   const { firestoreData, workoutName } = props;
-  //added here
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
+
+  //State used for the dropdown menu
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -37,24 +39,19 @@ export default function ExportButton(props) {
     }
   }
 
-  const handleExcel = () => {
-    <ExportExcel firestoreData={firestoreData} />;
-    handleToggle();
-  };
-
   // return focus to the button when we transitioned from !open -> open
-  const prevOpen = React.useRef(open);
-  React.useEffect(() => {
+  const prevOpen = useRef(open);
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current.focus();
     }
 
     prevOpen.current = open;
   }, [open]);
+
   return (
     <div
       style={{
-        // backgroundColor: "#F7F7F7",
         padding: "0em",
         textAlign: "center",
       }}
@@ -71,6 +68,8 @@ export default function ExportButton(props) {
       >
         Download
       </Button>
+
+      {/* the two export options */}
       <Popper
         open={open}
         anchorEl={anchorRef.current}

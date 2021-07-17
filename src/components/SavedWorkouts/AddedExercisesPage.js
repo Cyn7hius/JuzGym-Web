@@ -12,8 +12,14 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExerciseDatabase from "./components/ExerciseDatabase";
 
-//firestoredata is the curated exercises + sets + reps
+//Default page when user has valid access to the Saved Workout page
+//Consists of a list of exercises the user has added, as well as the ExerciseDatabase component
 export default function Homepage(props) {
+  // firestoreData is the array from firebase that only consists of the exercise names that were added by the user
+  // workoutOne is the array from firebase that only consists of exercises, reps and sets that were added to "Workout One" by the user
+  // workoutTwo is the array from firebase that only consists of exercises, reps and sets that were added to "Workout Two" by the user
+  // workoutThree is the array from firebase that only consists of exercises, reps and sets that were added to "Workout Three" by the user
+  // workoutNames is the array from firebase that only consists of custom titles given to the three workouts by the user
   const {
     firestoreData,
     setData,
@@ -41,18 +47,18 @@ export default function Homepage(props) {
       : number == 2
       ? setTwo(newExercises)
       : setThree(newExercises);
-    // setData(newExercises);
   }
 
-  function removeExerciseMain(name) {
-    removeExerciseSub(name, 1);
-    removeExerciseSub(name, 2);
-    removeExerciseSub(name, 3);
+
+  function removeExerciseFromAllWorkouts(name) {
+    removeExerciseFromOneWorkout(name, 1);
+    removeExerciseFromOneWorkout(name, 2);
+    removeExerciseFromOneWorkout(name, 3);
     const newExercises = firestoreData.filter((array) => array.title != name);
     setData(newExercises);
   }
 
-  function removeExerciseSub(name, number) {
+  function removeExerciseFromOneWorkout(name, number) {
     const workoutData =
       number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     const newExercises = workoutData.filter((array) => array.title != name);
@@ -63,20 +69,21 @@ export default function Homepage(props) {
       : setThree(newExercises);
   }
 
+  //Used with exerciseButtonText to display the correct remove/add button for users
   function exerciseButton(event, name, number) {
     event.stopPropagation();
     event.preventDefault();
     const workoutData =
       number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     if (workoutData.find((array) => array.title == name) != null) {
-      removeExerciseSub(name, number);
+      removeExerciseFromOneWorkout(name, number);
     } else {
       addExercise(name, number);
     }
   }
 
+    //Used with exerciseButton to display the correct remove/add button for users
   function exerciseButtonText(name, number) {
-    //Add another condition to filter the exercises
     const workoutData =
       number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
     if (workoutData.find((array) => array.title == name) != null) {
@@ -84,11 +91,6 @@ export default function Homepage(props) {
     } else {
       return `Add to workout ${number}`;
     }
-    // if (typeof workoutData !== "undefined") {
-    //   return `Add to workout ${number}`;
-    // } else {
-    //   return `Remove from workout ${number}`;
-    // }
   }
 
   window.mobileCheck = function () {
@@ -172,7 +174,7 @@ export default function Homepage(props) {
                       <Grid item>
                         <Button
                           style={{ marginLeft: "auto", marginRight: 0 }}
-                          onClick={() => removeExerciseMain(exercise.title)}
+                          onClick={() => removeExerciseFromAllWorkouts(exercise.title)}
                         >
                           <DeleteIcon />
                         </Button>
@@ -190,7 +192,7 @@ export default function Homepage(props) {
                           {exercise.title}
                         </Typography>
                         <Button
-                          onClick={() => removeExerciseMain(exercise.title)}
+                          onClick={() => removeExerciseFromAllWorkouts(exercise.title)}
                         >
                           <DeleteIcon />
                         </Button>

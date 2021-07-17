@@ -14,15 +14,19 @@ import {
   Box,
 } from "@material-ui/core/";
 
+//Used in the bottom half of all SavedWorkout pages
 export default function ExerciseDatabase(props) {
   function NewLineParser(str) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
+  //firestoreData will either be Workout1/2/3's array
   const { firestoreData } = props;
-  // const newDatabase = firestoreData.map((uid) => data[uid.Exercise - 1]);
+
+  //newDatabase is the local array
   const [newDatabase, setNewDatabase] = useState([]);
-  //update local
+
+  //Updates local database whenever the array changes
   useEffect(() => {
     setNewDatabase(
       firestoreData.map((firestoreArray) =>
@@ -47,6 +51,7 @@ export default function ExerciseDatabase(props) {
     return check;
   };
 
+  //Same as ExerciseList.js
   return (
     <Container>
       <Box>

@@ -24,7 +24,19 @@ import Alert from "@material-ui/lab/Alert";
 //Exports an ics file for the user
 export default function ExportIcs(props) {
   const { firestoreData, originalHandleClose, workoutName } = props;
+
+  //Dialog state
   const [form, setForm] = useState(false);
+
+  //Default days chosen for weekly repeat to be monday
+  const [daysChosen, setDaysChosen] = useState(["MO"]);
+
+  //Default duration of workout 30min
+  const [duration, setDuration] = useState(30);
+
+  //State to store whether user wants to set weekly or a one time event. 0 = weekly 1 = once
+  const [frequency, setFrequency] = useState(1);
+
   const [iCalTitle, setICalTitle] = useState({
     title: `${workoutName}`,
     description: `${firestoreData
@@ -36,47 +48,58 @@ export default function ExportIcs(props) {
     endTime: "2021-07-09T12:00:00+08:00",
   });
   const [rawContent, setRawContent] = useState(``);
-  const [daysChosen, setDaysChosen] = useState(["MO"]);
-  const [duration, setDuration] = useState(30);
-  const [repeat, setRepeat] = useState(1);
 
-  const handleTimeChange = (date) => {
-    if (repeat == 1) {
-      var updatedStartTime = new Date(iCalTitle.startTime);
-      updatedStartTime.setHours(date.getHours());
-      updatedStartTime.setMinutes(date.getMinutes());
-      var updatedEndTime = new Date(iCalTitle.endTime);
-      updatedEndTime.setHours(
-        updatedStartTime.getHours() + Math.floor(duration / 60)
+  //Gets selected start time and updates iCalTitle's start and end time and date
+  const handleStartTimeChange = (date) => {
+    //One time event
+    if (frequency == 1) {
+      //Updates start time
+      var updatedSingleStartTime = new Date(iCalTitle.startTime);
+      updatedSingleStartTime.setHours(date.getHours());
+      updatedSingleStartTime.setMinutes(date.getMinutes());
+
+      //Updates end time based on currently selected duration
+      var updatedSingleEndTime = new Date(iCalTitle.endTime);
+      updatedSingleEndTime.setHours(
+        updatedSingleStartTime.getHours() + Math.floor(duration / 60)
       );
-      updatedEndTime.setMinutes(
-        updatedStartTime.getMinutes() + (duration % 60)
+      updatedSingleEndTime.setMinutes(
+        updatedSingleStartTime.getMinutes() + (duration % 60)
       );
+
       setICalTitle({
         ...iCalTitle,
-        startTime: updatedStartTime,
-        endTime: updatedEndTime,
+        startTime: updatedSingleStartTime,
+        endTime: updatedSingleEndTime,
       });
-    } else {
-      var updatedTime = new Date();
-      updatedTime.setHours(date.getHours());
-      updatedTime.setMinutes(date.getMinutes());
+    }
+    //Weekly event 
+    else {
+      //Updates start time
+      var updatedWeeklyStartTime = new Date();
+      updatedWeeklyStartTime.setHours(date.getHours());
+      updatedWeeklyStartTime.setMinutes(date.getMinutes());
+
+      //Calculates start date based on chosen days
       const offset = getStartDate(daysChosen);
-      updatedTime.setDate(updatedTime.getDate() + offset);
-      var updatedEndTime2 = new Date(updatedTime);
-      updatedEndTime2.setHours(
-        updatedTime.getHours() + Math.floor(duration / 60)
+      updatedWeeklyStartTime.setDate(updatedWeeklyStartTime.getDate() + offset);
+
+      //Updates end time
+      var updatedSingleEndTime = new Date(updatedWeeklyStartTime);
+      updatedSingleEndTime.setHours(
+        updatedWeeklyStartTime.getHours() + Math.floor(duration / 60)
       );
-      updatedEndTime2.setMinutes(updatedTime.getMinutes() + (duration % 60));
+      updatedSingleEndTime.setMinutes(updatedWeeklyStartTime.getMinutes() + (duration % 60));
       setICalTitle({
         ...iCalTitle,
-        startTime: updatedTime,
-        endTime: updatedEndTime2,
+        startTime: updatedWeeklyStartTime,
+        endTime: updatedSingleEndTime,
       });
     }
   };
 
-  const handleDateChange = (date) => {
+  //For one time event, gets chosen date and updates iCalTitle's start and end date
+  const handleSingleDateChange = (date) => {
     var updatedStartTime = new Date(iCalTitle.startTime);
     var updatedEndTime = new Date(iCalTitle.endTime);
     updatedStartTime.setDate(date.getDate());
@@ -88,8 +111,31 @@ export default function ExportIcs(props) {
     });
   };
 
-  //When endTime changes
-  const handleEndtime = (event) => {
+  //For weekly event, gets array of chosen days and updates iCalTitle's start and end date
+  const handleWeeklyDateChange = (daysChosen) => {
+    if (daysChosen.length) {
+      //Updates start date
+      var updatedStartTime = new Date(iCalTitle.startTime);
+      var today = new Date();
+      const offset = getStartDate(daysChosen);
+      updatedStartTime.setDate(today.getDate() + offset);
+
+      //Updates end time and date
+      var updatedEndTime = new Date(updatedStartTime);
+      updatedEndTime.setHours(
+        updatedStartTime.getHours() + Math.floor(duration / 60)
+      );
+      updatedEndTime.setMinutes(updatedStartTime.getMinutes() + (duration % 60));
+      setICalTitle({
+        ...iCalTitle,
+        startTime: updatedStartTime,
+        endTime: updatedEndTime,
+      });
+    }
+  }
+
+  //When user changes duration of workout, updates iCalTitle's end time
+  const handleEndTimeChange = (event) => {
     setDuration(event.target.value);
     var updatedTime = new Date(iCalTitle.startTime);
     updatedTime.setHours(
@@ -101,8 +147,21 @@ export default function ExportIcs(props) {
     setICalTitle({ ...iCalTitle, endTime: updatedTime });
   };
 
-  const handleRepeat = (event) => {
-    setRepeat(event.target.value);
+  const handleRawContent = (event) => {
+    if (frequency == 1) {
+      setRawContent("");
+    } else {
+      if (event.length) {
+        const str = event.join();
+        setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
+      } else {
+        setRawContent("");
+      }
+    }
+  }
+
+  const handleFrequency = (event) => {
+    setFrequency(event.target.value);
   };
 
   const handledaysChosen = (event, newDaysChosen) => {
@@ -117,44 +176,13 @@ export default function ExportIcs(props) {
     setForm(false);
   };
 
+  //Whenever frequency changes, handleRawContent updates RawContent while handleWeeklyDateChange updates iCalTitle
   useEffect(() => {
-    addDays(daysChosen);
-    updateDate(daysChosen);
-  }, [daysChosen, repeat]);
+    handleRawContent(daysChosen);
+    handleWeeklyDateChange(daysChosen);
+  }, [daysChosen, frequency]);
 
-  //When startDate changes
-  function updateDate(daysChosen) {
-    if (daysChosen.length) {
-      var updatedTime = new Date(iCalTitle.startTime);
-      var today = new Date();
-      const offset = getStartDate(daysChosen);
-      updatedTime.setDate(today.getDate() + offset);
-      var updatedEndTime = new Date(updatedTime);
-      updatedEndTime.setHours(
-        updatedTime.getHours() + Math.floor(duration / 60)
-      );
-      updatedEndTime.setMinutes(updatedTime.getMinutes() + (duration % 60));
-      setICalTitle({
-        ...iCalTitle,
-        startTime: updatedTime,
-        endTime: updatedEndTime,
-      });
-    }
-  }
-
-  function addDays(event) {
-    if (repeat == 1) {
-      setRawContent("");
-    } else {
-      if (event.length) {
-        const str = event.join();
-        setRawContent(`RRULE:FREQ=WEEKLY;BYDAY=${str};INTERVAL=1`);
-      } else {
-        setRawContent("");
-      }
-    }
-  }
-
+  //Calculates the offset in start date
   function getStartDate(selectedDays) {
     var today = new Date();
     var day = today.getDay();
@@ -171,6 +199,7 @@ export default function ExportIcs(props) {
     return offset;
   }
 
+  //getStartDate's helper function 
   function dayStringtoNumber(day) {
     if (day == "MO") {
       return 1;
@@ -207,12 +236,12 @@ export default function ExportIcs(props) {
         <DialogContent>
           <DialogContentText>Frequency?</DialogContentText>
           <FormControl>
-            <NativeSelect id="Repeater" value={repeat} onChange={handleRepeat}>
+            <NativeSelect id="workout-frequency" value={frequency} onChange={handleFrequency}>
               <option value={1}>Once</option>
               <option value={0}>Weekly</option>
             </NativeSelect>
           </FormControl>
-          {repeat == 0 && (
+          {frequency == 0 && (
             <div>
               <br />
               <DialogContentText>
@@ -235,18 +264,17 @@ export default function ExportIcs(props) {
             </div>
           )}
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
-            {repeat == 1 && (
+            {frequency == 1 && (
               <div>
                 <br />
                 <DialogContentText>
                   Please select the date for your workout
                 </DialogContentText>
                 <KeyboardDatePicker
-                  // margin="normal"
-                  id="date-picker-dialog"
+                  id="date-picker"
                   format="MM/dd/yyyy"
                   value={iCalTitle.startTime}
-                  onChange={handleDateChange}
+                  onChange={handleSingleDateChange}
                   KeyboardButtonProps={{
                     "aria-label": "change date",
                   }}
@@ -259,13 +287,10 @@ export default function ExportIcs(props) {
               Please select the start time of your workout
             </DialogContentText>
             <KeyboardTimePicker
-              // margin="normal"
-              id="time-picker"
-              // label="Pick start time"
+              id="start-time-picker"
               disabled={!daysChosen.length}
               value={iCalTitle.startTime}
-              onChange={handleTimeChange}
-              // onChange={(event) => console.log(event.getTimezoneOffset())}
+              onChange={handleStartTimeChange}
               KeyboardButtonProps={{
                 "aria-label": "change time",
               }}
@@ -278,8 +303,7 @@ export default function ExportIcs(props) {
             <NativeSelect
               id="Endtime"
               value={duration}
-              onChange={handleEndtime}
-              // onChange={(event) => console.log(event.target.value.minutes)}
+              onChange={handleEndTimeChange}
             >
               <option value={15}>15 minutes</option>
               <option value={30}>30 minutes</option>
@@ -297,7 +321,7 @@ export default function ExportIcs(props) {
             Cancel
           </Button>
           <Button
-            disabled={repeat == 0 && !daysChosen.length}
+            disabled={frequency == 0 && !daysChosen.length}
             onClick={originalHandleClose}
             color="primary"
           >
@@ -307,7 +331,7 @@ export default function ExportIcs(props) {
                 color: "inherit",
               }}
               event={iCalTitle}
-              rawContent={repeat ? rawContent : ""}
+              rawContent={frequency == 0? rawContent : ""}
             >
               Add to Calendar
             </ICalendarLink>

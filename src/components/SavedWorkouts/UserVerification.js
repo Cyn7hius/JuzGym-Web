@@ -1,17 +1,26 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { firebase } from "@firebase/app";
 import { Button, ButtonGroup, Fab, MenuItem, Menu } from "@material-ui/core/";
-import WorkoutPage from "./WorkoutTemplate";
-import Homepage from "./HomepageTemplate";
+import WorkoutPage from "./WorkoutPage";
+import Homepage from "./AddedExercisesPage";
 import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered";
 
+//The only component in SavedWorkouts that deals with fetching/updating data from/to firebase
+//Renders AddedExercisesPage once user has been verified
 export default function UserVerification() {
+  // firestoreData is the array from firebase that only consists of the exercise names that were added by the user
+  // workoutOne is the array from firebase that only consists of exercises, reps and sets that were added to "Workout One" by the user
+  // workoutTwo is the array from firebase that only consists of exercises, reps and sets that were added to "Workout Two" by the user
+  // workoutThree is the array from firebase that only consists of exercises, reps and sets that were added to "Workout Three" by the user
+  // workoutNames is the array from firebase that only consists of custom titles given to the three workouts by the user
   const [firestoreData, setFirestoreData] = useState([]);
   const [workoutOne, setWorkoutOne] = useState([]);
   const [workoutTwo, setWorkoutTwo] = useState([]);
   const [workoutThree, setWorkoutThree] = useState([]);
   const [workoutNames, setWorkoutNames] = useState([]);
+  //Used to display the AddedExercisesPage to the user once the data has been fetched from firebase
   const [loading, setLoading] = useState(false);
+  //Used to check if the user's UID has been recorded in firebase
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   function loadUser(isLoggedIn) {
@@ -39,6 +48,7 @@ export default function UserVerification() {
     setWorkoutNames(newData);
   }
 
+  //When user is logged in, fetches data from firebase and updates the local arrays accordingly
   function firebaseSetup(doc) {
     if (typeof doc.data().WorkoutOne !== "undefined") {
       setWorkoutOne(doc.data().WorkoutOne);
@@ -63,6 +73,20 @@ export default function UserVerification() {
     setFirestoreData(doc.data().Workout, loadUser(true));
   }
 
+  function firebaseFirstTimeSetup() {
+    setWorkoutOne([]);
+    setWorkoutTwo([]);
+    setWorkoutThree([]);
+    setWorkoutNames([
+      {
+        WorkoutOne: "Workout One",
+        WorkoutTwo: "Workout Two",
+        WorkoutThree: "Workout Three",
+      },
+    ]);
+    setFirestoreData([], loadUser(true));
+  }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -73,35 +97,26 @@ export default function UserVerification() {
         const docRef = db.collection("/users").doc(uid);
 
         docRef.get().then((doc) => {
-          //Log in -> ExerciseList -> SavedWorkouts
+          //Scenario when this happens: User is logged in and has previously accessed either Saved Workout Page OR Exercise List Page
           if (doc.exists) {
             firebaseSetup(doc);
           }
-          //Log in -> SavedWorkouts
+          //Scenario when this happens: User is logged in and has NEVER accessed either Saved Workout Page OR Exercise List Page
           else {
-            setWorkoutOne([]);
-            setWorkoutTwo([]);
-            setWorkoutThree([]);
-            setWorkoutNames([
-              {
-                WorkoutOne: "Workout One",
-                WorkoutTwo: "Workout Two",
-                WorkoutThree: "Workout Three",
-              },
-            ]);
-            setFirestoreData([], loadUser(true));
+            firebaseFirstTimeSetup();
           }
         });
       } else {
-        // User is signed out
+        // User is not logged in
         loadUser(false);
       }
     });
   }, []);
 
+  //Checks if user is logged in and calls VerifiedUser component if user is verified
   return loading ? (
     isLoggedIn ? (
-      <ExerciseList
+      <VerifiedUser
         firestoreData={firestoreData}
         setData={setData}
         workoutOne={workoutOne}
@@ -121,7 +136,7 @@ export default function UserVerification() {
   );
 }
 
-function ExerciseList(props) {
+function VerifiedUser(props) {
   const {
     firestoreData,
     setData,
@@ -134,9 +149,11 @@ function ExerciseList(props) {
     workoutNames,
     setNames,
   } = props;
+
+  //display is used to check which button the user pressed and loads the page accordingly
   const [display, setDisplay] = useState(0);
 
-  /*Updates the array in firestore whenever the local array changes */
+  /*The following 5 useEffects updates their respective arrays in firebase when their local array changes */
   useEffect(() => {
     const uid = firebase.auth().currentUser?.uid;
     const db = firebase.firestore();
@@ -356,7 +373,7 @@ function ExerciseList(props) {
           </div>
         )}
       </div>
-
+      {/* render AddedExercisesPage if display is 0 else render WorkoutPage */}
       {display == 0 ? (
         <Homepage
           firestoreData={firestoreData}

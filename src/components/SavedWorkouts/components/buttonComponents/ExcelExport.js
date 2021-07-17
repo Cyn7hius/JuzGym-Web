@@ -2,7 +2,6 @@ import { MenuItem } from "@material-ui/core";
 import React from "react";
 import { CSVLink } from "react-csv";
 
-//firestoredata is the curated exercises + sets + reps
 export default function ExportExcel(props) {
   const { firestoreData, handleClose } = props;
   const headers = [
