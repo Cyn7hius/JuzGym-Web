@@ -28,9 +28,6 @@ function ExerciseList(props) {
       ...firestoreData,
       {
         title: name,
-        // inWorkoutOne: false,
-        // inWorkoutTwo: false,
-        // inWorkoutThree: false,
       },
     ];
     setData(newExercises);
