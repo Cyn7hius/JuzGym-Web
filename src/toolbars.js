@@ -6,11 +6,11 @@ import NoPageFound from "./components/NoPageFound";
 import Fitness from "./components/Fitness/EquipmentFilter";
 import Home from "./components/Home";
 import FitnessGoals from "./components/Nutrition/FitnessGoals";
-import Workout from "./components/SavedWorkouts/UserWorkouts";
+import UserVerification from "./components/SavedWorkouts/UserVerification";
 
 const routes = {
   "/": () => <Home />,
-  "/savedworkouts": () => <Workout />,
+  "/savedworkouts": () => <UserVerification />,
   //wildcard routes
   "/exercises*": () => <Fitness />,
   "/education*": () => <FitnessGoals />,
