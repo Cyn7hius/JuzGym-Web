@@ -64,6 +64,7 @@ export default function WorkoutPage(props) {
         <h1>
           {workoutName}
 
+          {/* rename icon */}
           <button
             onClick={handleClickOpen}
             style={{

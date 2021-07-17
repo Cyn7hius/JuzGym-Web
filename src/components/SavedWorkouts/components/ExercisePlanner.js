@@ -6,6 +6,7 @@ import {
   FormControl,
   NativeSelect,
   Typography,
+  Tooltip,
 } from "@material-ui/core";
 
 //The component that allows users to reorder their exercises, as well as set the Reps/Sets for each exercise
@@ -243,18 +244,20 @@ export default function ExercisePlanner(props) {
             </FormControl>
 
             {/* remove exercise button */}
-            <button
-              onClick={() => {
-                updateExercisePosition(
-                  typeof index !== "undefined"
-                    ? arrayRemove(firestoreData, index)
-                    : firestoreData
-                );
-              }}
-              style={buttonStyles}
-            >
-              <Delete />
-            </button>
+            <Tooltip title="Remove from workout">
+              <button
+                onClick={() => {
+                  updateExercisePosition(
+                    typeof index !== "undefined"
+                      ? arrayRemove(firestoreData, index)
+                      : firestoreData
+                  );
+                }}
+                style={buttonStyles}
+              >
+                <Delete />
+              </button>
+            </Tooltip>
           </div>
         </li>
       )}

@@ -14,6 +14,7 @@ import {
   Button,
   IconButton,
   Grid,
+  Tooltip,
 } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 
@@ -64,18 +65,20 @@ export default function AppbarMobile() {
   return (
     <AppBar position="sticky" style={{ background: "#04ae96" }}>
       <Toolbar position="sticky">
-        <IconButton
-          edge="start"
-          className={classes.homeButton}
-          color="inherit"
-          aria-label="home"
-          label="Home"
-          value="/"
-          component={A}
-          href="/"
-        >
-          <HomeIcon fontSize="large" />
-        </IconButton>
+        <Tooltip title="Return to Homepage">
+          <IconButton
+            edge="start"
+            className={classes.homeButton}
+            color="inherit"
+            aria-label="home"
+            label="Home"
+            value="/"
+            component={A}
+            href="/"
+          >
+            <HomeIcon fontSize="large" />
+          </IconButton>
+        </Tooltip>
         <Grid container>
           <Grid item>
             <Typography
