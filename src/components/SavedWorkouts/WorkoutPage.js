@@ -77,25 +77,47 @@ export default function WorkoutPage(props) {
   return workoutData.length ? (
     <div>
       <Grid container justify="center" alignItems="center">
-        <h1>
-          {workoutName}
+        {!window.mobileCheck() ? (
+          <h1>
+            {workoutName}
 
-          {/* rename icon */}
-          <button
-            onClick={handleClickOpen}
-            style={{
-              border: "none",
-              margin: 0,
-              paddingLeft: 10,
-              width: "auto",
-              overflow: "visible",
-              cursor: "pointer",
-              background: "transparent",
-            }}
-          >
-            <EditIcon />
-          </button>
-        </h1>
+            {/* rename icon */}
+            <button
+              onClick={handleClickOpen}
+              style={{
+                border: "none",
+                margin: 0,
+                paddingLeft: 10,
+                width: "auto",
+                overflow: "visible",
+                cursor: "pointer",
+                background: "transparent",
+              }}
+            >
+              <EditIcon />
+            </button>
+          </h1>
+        ) : (
+          <h2>
+            {workoutName}
+
+            {/* rename icon */}
+            <button
+              onClick={handleClickOpen}
+              style={{
+                border: "none",
+                margin: 0,
+                paddingLeft: 10,
+                width: "auto",
+                overflow: "visible",
+                cursor: "pointer",
+                background: "transparent",
+              }}
+            >
+              <EditIcon />
+            </button>
+          </h2>
+        )}
 
         {/* renaming option */}
         <Dialog

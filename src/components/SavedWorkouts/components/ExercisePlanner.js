@@ -7,6 +7,7 @@ import {
   NativeSelect,
   Typography,
   Tooltip,
+  Grid,
 } from "@material-ui/core";
 
 //The component that allows users to reorder their exercises, as well as set the Reps/Sets for each exercise
@@ -137,127 +138,134 @@ export default function ExercisePlanner(props) {
               <Reorder />
             </button>
 
-            {/* exercise name */}
-            <Typography
-              variant="h6"
-              style={{
-                marginRight: "1em",
-              }}
-            >
-              {value.title}
-            </Typography>
-
-            {/* rep counter */}
-            <FormControl style={{ marginRight: "0.5em" }}>
-              <InputLabel>Reps</InputLabel>
-              <NativeSelect
-                id={value.title + " reps"}
-                value={value.reps}
-                onChange={(event) =>
-                  updateReps(value.title, event.target.value)
-                }
-              >
-                <option value={0}>0</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9</option>
-                <option value={10}>10</option>
-                <option value={11}>11</option>
-                <option value={12}>12</option>
-                <option value={13}>13</option>
-                <option value={14}>14</option>
-                <option value={15}>15</option>
-                <option value={16}>16</option>
-                <option value={17}>17</option>
-                <option value={18}>18</option>
-                <option value={19}>19</option>
-                <option value={20}>20</option>
-                <option value={21}>21</option>
-                <option value={22}>22</option>
-                <option value={23}>23</option>
-                <option value={24}>24</option>
-                <option value={25}>25</option>
-                <option value={26}>26</option>
-                <option value={27}>27</option>
-                <option value={28}>28</option>
-                <option value={29}>29</option>
-                <option value={30}>30</option>
-                <option value={35}>35</option>
-                <option value={40}>40</option>
-                <option value={45}>45</option>
-                <option value={50}>50</option>
-              </NativeSelect>
-            </FormControl>
-
-            {/* set counter */}
-            <FormControl>
-              <InputLabel>Sets</InputLabel>
-              <NativeSelect
-                id={value.title + " sets"}
-                value={value.sets}
-                onChange={(event) =>
-                  updateSets(value.title, event.target.value)
-                }
-              >
-                <option value={0}>0</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9</option>
-                <option value={10}>10</option>
-                <option value={11}>11</option>
-                <option value={12}>12</option>
-                <option value={13}>13</option>
-                <option value={14}>14</option>
-                <option value={15}>15</option>
-                <option value={16}>16</option>
-                <option value={17}>17</option>
-                <option value={18}>18</option>
-                <option value={19}>19</option>
-                <option value={20}>20</option>
-                <option value={21}>21</option>
-                <option value={22}>22</option>
-                <option value={23}>23</option>
-                <option value={24}>24</option>
-                <option value={25}>25</option>
-                <option value={26}>26</option>
-                <option value={27}>27</option>
-                <option value={28}>28</option>
-                <option value={29}>29</option>
-                <option value={30}>30</option>
-                <option value={35}>35</option>
-                <option value={40}>40</option>
-                <option value={45}>45</option>
-                <option value={50}>50</option>
-              </NativeSelect>
-            </FormControl>
-
-            {/* remove exercise button */}
-            <Tooltip title="Remove from workout">
-              <button
-                onClick={() => {
-                  updateExercisePosition(
-                    typeof index !== "undefined"
-                      ? arrayRemove(firestoreData, index)
-                      : firestoreData
-                  );
-                }}
-                style={buttonStyles}
-              >
-                <Delete />
-              </button>
-            </Tooltip>
+            <Grid container alignItems="center">
+              {/* exercise name */}
+              <Grid item xs={6}>
+                <Typography
+                  variant="h6"
+                  style={{
+                    marginRight: "1em",
+                  }}
+                >
+                  {value.title}
+                </Typography>
+              </Grid>
+              <Grid item xs={2}>
+                {/* rep counter */}
+                <FormControl style={{ marginRight: "0.5em" }}>
+                  <InputLabel>Reps</InputLabel>
+                  <NativeSelect
+                    id={value.title + " reps"}
+                    value={value.reps}
+                    onChange={(event) =>
+                      updateReps(value.title, event.target.value)
+                    }
+                  >
+                    <option value={0}>0</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                    <option value={7}>7</option>
+                    <option value={8}>8</option>
+                    <option value={9}>9</option>
+                    <option value={10}>10</option>
+                    <option value={11}>11</option>
+                    <option value={12}>12</option>
+                    <option value={13}>13</option>
+                    <option value={14}>14</option>
+                    <option value={15}>15</option>
+                    <option value={16}>16</option>
+                    <option value={17}>17</option>
+                    <option value={18}>18</option>
+                    <option value={19}>19</option>
+                    <option value={20}>20</option>
+                    <option value={21}>21</option>
+                    <option value={22}>22</option>
+                    <option value={23}>23</option>
+                    <option value={24}>24</option>
+                    <option value={25}>25</option>
+                    <option value={26}>26</option>
+                    <option value={27}>27</option>
+                    <option value={28}>28</option>
+                    <option value={29}>29</option>
+                    <option value={30}>30</option>
+                    <option value={35}>35</option>
+                    <option value={40}>40</option>
+                    <option value={45}>45</option>
+                    <option value={50}>50</option>
+                  </NativeSelect>
+                </FormControl>
+              </Grid>
+              <Grid item xs={2}>
+                {/* set counter */}
+                <FormControl>
+                  <InputLabel>Sets</InputLabel>
+                  <NativeSelect
+                    id={value.title + " sets"}
+                    value={value.sets}
+                    onChange={(event) =>
+                      updateSets(value.title, event.target.value)
+                    }
+                  >
+                    <option value={0}>0</option>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                    <option value={6}>6</option>
+                    <option value={7}>7</option>
+                    <option value={8}>8</option>
+                    <option value={9}>9</option>
+                    <option value={10}>10</option>
+                    <option value={11}>11</option>
+                    <option value={12}>12</option>
+                    <option value={13}>13</option>
+                    <option value={14}>14</option>
+                    <option value={15}>15</option>
+                    <option value={16}>16</option>
+                    <option value={17}>17</option>
+                    <option value={18}>18</option>
+                    <option value={19}>19</option>
+                    <option value={20}>20</option>
+                    <option value={21}>21</option>
+                    <option value={22}>22</option>
+                    <option value={23}>23</option>
+                    <option value={24}>24</option>
+                    <option value={25}>25</option>
+                    <option value={26}>26</option>
+                    <option value={27}>27</option>
+                    <option value={28}>28</option>
+                    <option value={29}>29</option>
+                    <option value={30}>30</option>
+                    <option value={35}>35</option>
+                    <option value={40}>40</option>
+                    <option value={45}>45</option>
+                    <option value={50}>50</option>
+                  </NativeSelect>
+                </FormControl>
+              </Grid>
+              <Grid item xs={2}>
+                {/* remove exercise button */}
+                <Tooltip title="Remove from workout">
+                  <button
+                    onClick={() => {
+                      updateExercisePosition(
+                        typeof index !== "undefined"
+                          ? arrayRemove(firestoreData, index)
+                          : firestoreData
+                      );
+                    }}
+                    style={buttonStyles}
+                  >
+                    <Delete />
+                  </button>
+                </Tooltip>
+              </Grid>
+            </Grid>
           </div>
         </li>
       )}
