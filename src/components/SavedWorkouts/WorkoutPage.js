@@ -13,6 +13,7 @@ import {
   DialogTitle,
   Grid,
 } from "@material-ui/core";
+import TEST from "./components/ScreenCapture";
 
 //The component that displays the SavedWorkout page from Milestone 2
 //Consists of a rename title button, the ExportButton, ExercisePlanner and ExerciseDatabase components
@@ -136,6 +137,7 @@ export default function WorkoutPage(props) {
         </Dialog>
 
         <ExportButton firestoreData={workoutData} workoutName={workoutName} />
+        <TEST firestoreData={workoutData} setData={setWorkoutData} />
       </Grid>
       <ExercisePlanner firestoreData={workoutData} setData={setWorkoutData} />
 
