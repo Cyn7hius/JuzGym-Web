@@ -32,6 +32,7 @@ export default function GetStrong() {
 
   // simple function to use the ref from above and scroll to it
   function goToSection(section) {
+    handleClose();
     sectionsRef[section].current.scrollIntoView({ behavior: "smooth" });
   }
 
@@ -57,9 +58,6 @@ export default function GetStrong() {
 
   const tableOfContentsMobile = (
     <div style={{ float: "left" }}>
-      <br />
-      <br />
-      <br />
       {sectionHeadings.map((placeholder, index) => (
         <div>
           <MenuItem

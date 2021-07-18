@@ -337,6 +337,7 @@ function VerifiedUser(props) {
                 label="Added Exercises"
                 value="Homepage"
                 onClick={() => {
+                  handleClose();
                   setDisplay(0);
                 }}
               >
@@ -346,6 +347,7 @@ function VerifiedUser(props) {
                 label="Workout One"
                 value="Workout One"
                 onClick={() => {
+                  handleClose();
                   setDisplay(1);
                 }}
               >
@@ -355,6 +357,7 @@ function VerifiedUser(props) {
                 label="Workout Two"
                 value="Workout Two"
                 onClick={() => {
+                  handleClose();
                   setDisplay(2);
                 }}
               >
@@ -364,6 +367,7 @@ function VerifiedUser(props) {
                 label="Workout Three"
                 value="Workout Three"
                 onClick={() => {
+                  handleClose();
                   setDisplay(3);
                 }}
               >
