@@ -278,7 +278,7 @@ function VerifiedUser(props) {
                 }}
                 style={{ color: "white", backgroundColor: "darkgreen" }}
               >
-                {workoutNames[0].WorkoutOne}
+                Workout One
               </Button>
               <Button
                 variant="contained"
@@ -289,7 +289,7 @@ function VerifiedUser(props) {
                 }}
                 style={{ color: "white", backgroundColor: "darkred" }}
               >
-                {workoutNames[0].WorkoutTwo}
+                Workout Two
               </Button>
               <Button
                 variant="contained"
@@ -300,7 +300,7 @@ function VerifiedUser(props) {
                 }}
                 style={{ color: "white", backgroundColor: "darkblue" }}
               >
-                {workoutNames[0].WorkoutThree}
+                Workout Three
               </Button>
             </ButtonGroup>
           </Fragment>
