@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ExerciseDatabase from "./components/ExerciseDatabase";
 import ExportButton from "./components/ExportButton";
 import ExercisePlanner from "./components/ExercisePlanner";
@@ -23,6 +23,7 @@ export default function WorkoutPage(props) {
   const [form, setForm] = useState(false);
   //Used to store the temp information that the user types when renaming the workout title
   const [workoutTitle, setWorkoutTitle] = useState("");
+  const [showError, setShowError] = useState(0);
 
   const handleClickOpen = () => {
     setForm(true);
@@ -57,6 +58,21 @@ export default function WorkoutPage(props) {
     })(navigator.userAgent || navigator.vendor || window.opera);
     return check;
   };
+
+  useEffect(() => {
+    if (!workoutTitle.length) {
+      if (showError == 0) {
+        setShowError(1);
+      } 
+      if (showError == 1) {
+        setShowError(2);
+      } 
+    } else {
+      if (showError == 2) {
+        setShowError(1);
+      } 
+    }
+  }, [workoutTitle]);
 
   return workoutData.length ? (
     <div>
@@ -98,9 +114,9 @@ export default function WorkoutPage(props) {
                 helperText="Maximum of 30 characters"
                 onChange={(event) => handleNameChange(event.target.value)}
               />
-              {!workoutTitle.length && (
+              {(showError == 2) && (
                 <Alert severity="error">
-                  Please enter a minimum of 1 character
+                  Please enter something
                 </Alert>
               )}
             </form>
