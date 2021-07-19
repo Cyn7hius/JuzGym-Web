@@ -27,7 +27,7 @@ export default function ExportButton(props) {
   const [counter, setCounter] = useState(0);
 
   //Generates the png file for downloading
-  const download = (image, { name = "img", extension = "png" } = {}) => {
+  const download = (image, { name = `${workoutName}`, extension = "png" } = {}) => {
     const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);
@@ -36,8 +36,7 @@ export default function ExportButton(props) {
 
   useEffect(() => {
     if (counter > 0) {
-      takeScreenshot(forwardedRef.current);
-      download(image, { name: `${workoutName}`, extension: "png" });
+      takeScreenshot(forwardedRef.current).then(download);
     }
   }, [counter]);
 
