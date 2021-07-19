@@ -13,7 +13,6 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExerciseDatabase from "./components/ExerciseDatabase";
 
-
 //Default page when user has valid access to the Saved Workout page
 //Consists of a list of exercises the user has added, as well as the ExerciseDatabase component
 export default function Homepage(props) {
@@ -137,12 +136,12 @@ export default function Homepage(props) {
                 <div>
                   <ListItem>
                     <Grid container>
-                      <Grid item xs>
+                      <Grid item xs={4}>
                         <Typography variant="h6" style={{ fontWeight: 500 }}>
                           {exercise.title}
                         </Typography>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs>
                         <Button
                           style={{ marginLeft: "auto", marginRight: 20 }}
                           onClick={(event) =>
@@ -152,7 +151,7 @@ export default function Homepage(props) {
                           {exerciseButtonText(exercise.title, 1)}
                         </Button>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs>
                         <Button
                           style={{ marginLeft: "auto", marginRight: 20 }}
                           onClick={(event) =>
@@ -162,7 +161,7 @@ export default function Homepage(props) {
                           {exerciseButtonText(exercise.title, 2)}
                         </Button>
                       </Grid>
-                      <Grid item>
+                      <Grid item xs>
                         <Button
                           style={{ marginLeft: "auto", marginRight: 20 }}
                           onClick={(event) =>
