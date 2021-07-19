@@ -128,7 +128,7 @@ export default function ExportButton(props) {
                     originalHandleClose={handleClose}
                     workoutName={workoutName}
                   />
-                  <MenuItem onClick={handleImageGeneration}>Export to png</MenuItem>
+                  <MenuItem onClick={handleImageGeneration}>Image (.png)</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>

@@ -246,7 +246,7 @@ export default function ExportIcs(props) {
 
   return (
     <div>
-      <MenuItem onClick={handleClickOpen}>iCalendar File(.ics)</MenuItem>
+      <MenuItem onClick={handleClickOpen}>iCalendar File (.ics)</MenuItem>
       <Dialog
         open={form}
         onClose={handleClose}
