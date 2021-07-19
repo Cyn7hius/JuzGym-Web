@@ -13,6 +13,7 @@ import {
 import DeleteIcon from "@material-ui/icons/Delete";
 import ExerciseDatabase from "./components/ExerciseDatabase";
 
+
 //Default page when user has valid access to the Saved Workout page
 //Consists of a list of exercises the user has added, as well as the ExerciseDatabase component
 export default function Homepage(props) {

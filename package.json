@@ -20,6 +20,7 @@
     "faker": "^5.5.3",
     "firebase": "^8.6.8",
     "hookrouter": "^1.2.5",
+    "html2canvas": "^1.1.4",
     "lodash": "4.17.21",
     "react": "^17.0.2",
     "react-csv": "^2.0.3",
@@ -29,7 +30,8 @@
     "react-movable": "^2.5.4",
     "react-scripts": "4.0.0",
     "react-virtuoso": "^1.9.0",
-    "remark-gfm": "^1.0.0"
+    "remark-gfm": "^1.0.0",
+    "use-react-screenshot": "^1.0.2"
   },
   "devDependencies": {
     "@babel/runtime": "7.13.8",

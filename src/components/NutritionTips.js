@@ -49,6 +49,7 @@ export default function CommonTips() {
       {!unlockVideo && (
         <div>
           <h1> Welcome to Dillon's Steam Profile!</h1>
+          <h4> Refresh the page if it looked buggy </h4>
           <div>
             <img src={left} alt="IMAGE LEFT" />
             <img src={right} alt="IMAGE RIGHT" />

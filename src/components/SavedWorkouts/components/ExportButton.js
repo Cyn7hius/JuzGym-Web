@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { GetApp } from "@material-ui/icons";
+import { useScreenshot, createFileName } from "use-react-screenshot";
 import ExportIcs from "./buttonComponents/CalendarExport";
 import {
   Button,
@@ -8,17 +9,36 @@ import {
   Paper,
   Popper,
   MenuList,
+  MenuItem,
 } from "@material-ui/core/";
 import ExportExcel from "./buttonComponents/ExcelExport";
 
 //Component is the download button that contains ics/csv export options
 export default function ExportButton(props) {
   //firestoreData will either be Workout1/2/3's array, workoutName either default workout title or custom name
-  const { firestoreData, workoutName } = props;
+  const { firestoreData, workoutName, forwardedRef } = props;
 
   //State used for the dropdown menu
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
+
+  //For image exporting
+  const [image, takeScreenshot] = useScreenshot();
+  const [counter, setCounter] = useState(0);
+
+  //Generates the png file for downloading
+  const download = (image, { name = `${workoutName}`, extension = "png" } = {}) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  };
+
+  useEffect(() => {
+    if (counter > 0) {
+      takeScreenshot(forwardedRef.current).then(download);
+    }
+  }, [counter]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -28,8 +48,14 @@ export default function ExportButton(props) {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-
     setOpen(false);
+  };
+
+  const handleImageGeneration = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false, setCounter(counter + 1));
   };
 
   function handleListKeyDown(event) {
@@ -102,6 +128,7 @@ export default function ExportButton(props) {
                     originalHandleClose={handleClose}
                     workoutName={workoutName}
                   />
+                  <MenuItem onClick={handleImageGeneration}>Export to png</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
