@@ -25,7 +25,7 @@ export default function ExportExcel(props) {
         }}
         {...csvReport}
       >
-        Export to CSV
+        Excel Spreadsheet (.csv)
       </CSVLink>
     </MenuItem>
   );
