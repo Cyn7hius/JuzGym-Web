@@ -260,14 +260,14 @@ function VerifiedUser(props) {
             <ButtonGroup>
               <Button
                 variant="contained"
-                label="Added Exercises"
+                label="Saved Exercises"
                 value="Homepage"
                 onClick={() => {
                   setDisplay(0);
                 }}
                 style={{ color: "white", backgroundColor: "grey" }}
               >
-                Added Exercises
+                Saved Exercises
               </Button>
               <Button
                 variant="contained"
@@ -351,7 +351,7 @@ function VerifiedUser(props) {
                   setDisplay(1);
                 }}
               >
-                {workoutNames[0].WorkoutOne}
+                {"Workout 1"}
               </MenuItem>
               <MenuItem
                 label="Workout Two"
@@ -361,7 +361,7 @@ function VerifiedUser(props) {
                   setDisplay(2);
                 }}
               >
-                {workoutNames[0].WorkoutTwo}
+                {"Workout 2"}
               </MenuItem>
               <MenuItem
                 label="Workout Three"
@@ -371,7 +371,7 @@ function VerifiedUser(props) {
                   setDisplay(3);
                 }}
               >
-                {workoutNames[0].WorkoutThree}
+                {"Workout 3"}
               </MenuItem>
             </Menu>
           </div>

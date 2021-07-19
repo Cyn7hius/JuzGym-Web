@@ -50,9 +50,9 @@ function ExerciseList(props) {
 
   function exerciseButtonText(name) {
     if (firestoreData.find((array) => array.title == name) != null) {
-      return "Remove from workout";
+      return "Remove from saved exercises";
     } else {
-      return "Add to workout";
+      return "Add to saved exercises";
     }
   }
 
@@ -90,7 +90,7 @@ function ExerciseList(props) {
           style={
             !window.mobileCheck()
               ? { width: "auto", height: "80vh" }
-              : { width: "95vw", height: "80vh" }
+              : { width: "96vw", height: "80vh" }
           }
           //Uses the data from json file
           data={database}
@@ -115,7 +115,7 @@ function ExerciseList(props) {
                       {exercise.name}
                     </Typography>
                   </Grid>
-                  <Grid item xs={4}>
+                  <Grid item xs={5}>
                     <Button
                       disabled={!isLoggedIn}
                       style={{ marginLeft: "auto", marginRight: 0 }}

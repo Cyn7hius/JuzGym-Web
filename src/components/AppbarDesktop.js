@@ -6,7 +6,7 @@ import {
 } from "@react-firebase/auth";
 import {
   AppBar,
-  makeStyles,
+  Box,
   Menu,
   MenuItem,
   Toolbar,
@@ -64,13 +64,8 @@ export default function AppbarDesktop() {
             <HomeIcon fontSize="large" />
           </IconButton>
         </Tooltip>
-        <Grid
-          container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Grid item xs={2}>
+        <Grid container alignItems="center">
+          <Grid item>
             <Typography
               style={{
                 fontFamily: "Odibee Sans",
@@ -82,7 +77,7 @@ export default function AppbarDesktop() {
               {" JuzGymm"}
             </Typography>
           </Grid>
-          <Grid item lg>
+          <Grid item xs>
             <Typography
               align="left"
               style={{
@@ -95,17 +90,17 @@ export default function AppbarDesktop() {
             </Typography>
           </Grid>
 
-          <Grid item>
+          <Grid item xs>
             <IfFirebaseAuthed>
               {({ user, firebase }) => (
-                <div>
+                <Box display="flex" justifyContent="flex-end">
                   <Button
                     variant="contained"
                     aria-controls="simple-menu"
                     aria-haspopup="true"
                     onClick={handleClick}
                   >
-                    {user.displayName + "'s Workout plans"}
+                    {user.displayName + "'s saved exercises"}
                   </Button>
 
                   <Menu
@@ -120,13 +115,13 @@ export default function AppbarDesktop() {
                       href="/savedworkouts"
                       onClick={() => handleSavedWorkouts()}
                     >
-                      Saved Workouts
+                      Saved Exercises
                     </MenuItem>
                     <MenuItem onClick={() => handleLogout(firebase)}>
                       Logout
                     </MenuItem>
                   </Menu>
-                </div>
+                </Box>
               )}
             </IfFirebaseAuthed>
             <IfFirebaseUnAuthed>
