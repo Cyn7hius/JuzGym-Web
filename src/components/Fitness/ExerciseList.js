@@ -90,7 +90,7 @@ function ExerciseList(props) {
           style={
             !window.mobileCheck()
               ? { width: "auto", height: "80vh" }
-              : { width: "96vw", height: "80vh" }
+              : { width: "95vw", height: "80vh" }
           }
           //Uses the data from json file
           data={database}
