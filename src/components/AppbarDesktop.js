@@ -105,7 +105,7 @@ export default function AppbarDesktop() {
                     aria-haspopup="true"
                     onClick={handleClick}
                   >
-                    {user.displayName + "'s Workout plans"}
+                    {user.displayName + "'s saved exercises"}
                   </Button>
 
                   <Menu
@@ -120,7 +120,7 @@ export default function AppbarDesktop() {
                       href="/savedworkouts"
                       onClick={() => handleSavedWorkouts()}
                     >
-                      Saved Workouts
+                      Saved Exercises
                     </MenuItem>
                     <MenuItem onClick={() => handleLogout(firebase)}>
                       Logout
