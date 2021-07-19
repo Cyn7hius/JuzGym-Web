@@ -21,9 +21,12 @@ export default function ExportButton(props) {
   //State used for the dropdown menu
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
-  const [image, takeScreenshot] = useScreenshot();
-  const [screenshot, setScreenshot] = useState(0);
 
+  //For image exporting
+  const [image, takeScreenshot] = useScreenshot();
+  const [counter, setCounter] = useState(0);
+
+  //Generates the png file for downloading
   const download = (image, { name = "img", extension = "png" } = {}) => {
     const a = document.createElement("a");
     a.href = image;
@@ -32,17 +35,11 @@ export default function ExportButton(props) {
   };
 
   useEffect(() => {
-    if (image) {
-      download(image, { name: "lorem-ipsum", extension: "png" });
-    }
-  }, [image]);
-
-  useEffect(() => {
-    if (screenshot > 0) {
+    if (counter > 0) {
       takeScreenshot(forwardedRef.current);
+      download(image, { name: `${workoutName}`, extension: "png" });
     }
-
-  }, [screenshot]);
+  }, [counter]);
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -55,12 +52,11 @@ export default function ExportButton(props) {
     setOpen(false);
   };
 
-  const handleImage = (event) => {
+  const handleImageGeneration = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
-    setOpen(false);
-    setScreenshot(screenshot + 1);
+    setOpen(false, setCounter(counter + 1));
   };
 
   function handleListKeyDown(event) {
@@ -133,7 +129,7 @@ export default function ExportButton(props) {
                     originalHandleClose={handleClose}
                     workoutName={workoutName}
                   />
-                  <MenuItem onClick={handleImage}>Export to png</MenuItem>
+                  <MenuItem onClick={handleImageGeneration}>Export to png</MenuItem>
                 </MenuList>
               </ClickAwayListener>
             </Paper>
