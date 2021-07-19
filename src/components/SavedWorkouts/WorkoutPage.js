@@ -37,7 +37,9 @@ export default function WorkoutPage(props) {
   };
 
   const handleNameChange = (event) => {
-    setWorkoutTitle(event);
+    event.stopPropagation();
+    event.preventDefault();
+    setWorkoutTitle(event.target.value);
   };
 
   const saveNewName = () => {
@@ -130,14 +132,14 @@ export default function WorkoutPage(props) {
           >
             <DialogTitle id="form-dialog-title">Rename Workout</DialogTitle>
             <DialogContent>
-              <form noValidate autoComplete="off">
+              <form noValidate autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                 <TextField
                   id="standard-basic"
                   label="Name"
                   value={workoutTitle}
                   inputProps={{ maxLength: 30 }}
                   helperText="Maximum of 30 characters"
-                  onChange={(event) => handleNameChange(event.target.value)}
+                  onChange={(event) => handleNameChange(event)}
                 />
                 {showError == 2 && (
                   <Alert severity="error">Please enter something</Alert>
