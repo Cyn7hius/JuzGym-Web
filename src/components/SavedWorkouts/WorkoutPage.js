@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import ExerciseDatabase from "./components/ExerciseDatabase";
 import ExportButton from "./components/ExportButton";
 import ExercisePlanner from "./components/ExercisePlanner";
@@ -24,6 +24,8 @@ export default function WorkoutPage(props) {
   //Used to store the temp information that the user types when renaming the workout title
   const [workoutTitle, setWorkoutTitle] = useState("");
   const [showError, setShowError] = useState(0);
+  //added here
+  const ref = useRef(null);
 
   const handleClickOpen = () => {
     setForm(true);
@@ -63,104 +65,107 @@ export default function WorkoutPage(props) {
     if (!workoutTitle.length) {
       if (showError == 0) {
         setShowError(1);
-      } 
+      }
       if (showError == 1) {
         setShowError(2);
-      } 
+      }
     } else {
       if (showError == 2) {
         setShowError(1);
-      } 
+      }
     }
   }, [workoutTitle]);
 
   return workoutData.length ? (
     <div>
-      <Grid container justify="center" alignItems="center">
-        {!window.mobileCheck() ? (
-          <h1>
-            {workoutName}
+      <div ref={ref}>
+        <Grid container justify="center" alignItems="center">
+          {!window.mobileCheck() ? (
+            <h1>
+              {workoutName}
 
-            {/* rename icon */}
-            <button
-              onClick={handleClickOpen}
-              style={{
-                border: "none",
-                margin: 0,
-                paddingLeft: 10,
-                width: "auto",
-                overflow: "visible",
-                cursor: "pointer",
-                background: "transparent",
-              }}
-            >
-              <EditIcon />
-            </button>
-          </h1>
-        ) : (
-          <h2>
-            {workoutName}
+              {/* rename icon */}
+              <button
+                onClick={handleClickOpen}
+                style={{
+                  border: "none",
+                  margin: 0,
+                  paddingLeft: 10,
+                  width: "auto",
+                  overflow: "visible",
+                  cursor: "pointer",
+                  background: "transparent",
+                }}
+              >
+                <EditIcon />
+              </button>
+            </h1>
+          ) : (
+            <h2>
+              {workoutName}
 
-            {/* rename icon */}
-            <button
-              onClick={handleClickOpen}
-              style={{
-                border: "none",
-                margin: 0,
-                paddingLeft: 10,
-                width: "auto",
-                overflow: "visible",
-                cursor: "pointer",
-                background: "transparent",
-              }}
-            >
-              <EditIcon />
-            </button>
-          </h2>
-        )}
+              {/* rename icon */}
+              <button
+                onClick={handleClickOpen}
+                style={{
+                  border: "none",
+                  margin: 0,
+                  paddingLeft: 10,
+                  width: "auto",
+                  overflow: "visible",
+                  cursor: "pointer",
+                  background: "transparent",
+                }}
+              >
+                <EditIcon />
+              </button>
+            </h2>
+          )}
 
-        {/* renaming option */}
-        <Dialog
-          open={form}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">Rename Workout</DialogTitle>
-          <DialogContent>
-            <form noValidate autoComplete="off">
-              <TextField
-                id="standard-basic"
-                label="Name"
-                value={workoutTitle}
-                inputProps={{ maxLength: 30 }}
-                helperText="Maximum of 30 characters"
-                onChange={(event) => handleNameChange(event.target.value)}
-              />
-              {(showError == 2) && (
-                <Alert severity="error">
-                  Please enter something
-                </Alert>
-              )}
-            </form>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancel
-            </Button>
-            <Button
-              disabled={!workoutTitle.length}
-              onClick={saveNewName}
-              color="primary"
-            >
-              Save
-            </Button>
-          </DialogActions>
-        </Dialog>
+          {/* renaming option */}
+          <Dialog
+            open={form}
+            onClose={handleClose}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Rename Workout</DialogTitle>
+            <DialogContent>
+              <form noValidate autoComplete="off">
+                <TextField
+                  id="standard-basic"
+                  label="Name"
+                  value={workoutTitle}
+                  inputProps={{ maxLength: 30 }}
+                  helperText="Maximum of 30 characters"
+                  onChange={(event) => handleNameChange(event.target.value)}
+                />
+                {showError == 2 && (
+                  <Alert severity="error">Please enter something</Alert>
+                )}
+              </form>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button
+                disabled={!workoutTitle.length}
+                onClick={saveNewName}
+                color="primary"
+              >
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+          <ExportButton
+            firestoreData={workoutData}
+            workoutName={workoutName}
+            forwardedRef={ref}
+          />
+        </Grid>
 
-        <ExportButton firestoreData={workoutData} workoutName={workoutName} />
-      </Grid>
       <ExercisePlanner firestoreData={workoutData} setData={setWorkoutData} />
-
+      </div>
       {!window.mobileCheck() ? (
         <h1>Exercise details</h1>
       ) : (
