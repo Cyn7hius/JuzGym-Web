@@ -21,7 +21,18 @@ function ExerciseList(props) {
     var outputArray = str.split(/\r?\n/);
     return outputArray;
   }
-  const { database, firestoreData, setData, isLoggedIn } = props;
+  const {
+    database,
+    firestoreData,
+    setData,
+    workoutOne,
+    setOne,
+    workoutTwo,
+    setTwo,
+    workoutThree,
+    setThree,
+    isLoggedIn,
+  } = props;
 
   function addExercise(name) {
     const newExercises = [
@@ -36,6 +47,26 @@ function ExerciseList(props) {
   function removeExercise(name) {
     const newExercises = firestoreData.filter((array) => array.title != name);
     setData(newExercises);
+    removeExerciseFromAllWorkouts(name);
+  }
+
+  function removeExerciseFromAllWorkouts(name) {
+    removeExerciseFromOneWorkout(name, 1);
+    removeExerciseFromOneWorkout(name, 2);
+    removeExerciseFromOneWorkout(name, 3);
+    const newExercises = firestoreData.filter((array) => array.title != name);
+    setData(newExercises);
+  }
+
+  function removeExerciseFromOneWorkout(name, number) {
+    const workoutData =
+      number == 1 ? workoutOne : number == 2 ? workoutTwo : workoutThree;
+    const newExercises = workoutData.filter((array) => array.title != name);
+    number == 1
+      ? setOne(newExercises)
+      : number == 2
+      ? setTwo(newExercises)
+      : setThree(newExercises);
   }
 
   function exerciseButton(event, name) {
@@ -284,6 +315,9 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
   }
 
   const [firestoreData, setFirestoreData] = useState([]);
+  const [workoutOne, setWorkoutOne] = useState([]);
+  const [workoutTwo, setWorkoutTwo] = useState([]);
+  const [workoutThree, setWorkoutThree] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -296,6 +330,43 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
     setFirestoreData(newData);
   }
 
+  function setOne(newData) {
+    setWorkoutOne(newData);
+  }
+
+  function setTwo(newData) {
+    setWorkoutTwo(newData);
+  }
+
+  function setThree(newData) {
+    setWorkoutThree(newData);
+  }
+
+  function setNames(newData) {
+    setWorkoutNames(newData);
+  }
+
+  //When user is logged in, fetches data from firebase and updates the local arrays accordingly
+  function firebaseSetup(doc) {
+    if (typeof doc.data().WorkoutOne !== "undefined") {
+      setWorkoutOne(doc.data().WorkoutOne);
+    }
+    if (typeof doc.data().WorkoutTwo !== "undefined") {
+      setWorkoutTwo(doc.data().WorkoutTwo);
+    }
+    if (typeof doc.data().WorkoutThree !== "undefined") {
+      setWorkoutThree(doc.data().WorkoutThree);
+    }
+    setFirestoreData(doc.data().Workout, loadUser(true));
+  }
+
+  function firebaseFirstTimeSetup() {
+    setWorkoutOne([]);
+    setWorkoutTwo([]);
+    setWorkoutThree([]);
+    setFirestoreData([], loadUser(true));
+  }
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -306,14 +377,17 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
         const docRef = db.collection("/users").doc(uid);
 
         docRef.get().then((doc) => {
+          //Scenario when this happens: User is logged in and has previously accessed either Saved Workout Page OR Exercise List Page
           if (doc.exists) {
-            setFirestoreData(doc.data().Workout, loadUser(true));
-          } else {
-            setFirestoreData([], loadUser(true));
+            firebaseSetup(doc);
+          }
+          //Scenario when this happens: User is logged in and has NEVER accessed either Saved Workout Page OR Exercise List Page
+          else {
+            firebaseFirstTimeSetup();
           }
         });
       } else {
-        // User is signed out
+        // User is not logged in
         loadUser(false);
       }
     });
@@ -325,6 +399,12 @@ export default function FilterExercises({ equipmentFilter, muscleFilter }) {
       database={filteredData}
       firestoreData={firestoreData}
       setData={setData}
+      workoutOne={workoutOne}
+      setOne={setOne}
+      workoutTwo={workoutTwo}
+      setTwo={setTwo}
+      workoutThree={workoutThree}
+      setThree={setThree}
       isLoggedIn={isLoggedIn}
     />
   ) : (
