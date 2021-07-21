@@ -45,12 +45,6 @@ function ExerciseList(props) {
   }
 
   function removeExercise(name) {
-    const newExercises = firestoreData.filter((array) => array.title != name);
-    setData(newExercises);
-    removeExerciseFromAllWorkouts(name);
-  }
-
-  function removeExerciseFromAllWorkouts(name) {
     removeExerciseFromOneWorkout(name, 1);
     removeExerciseFromOneWorkout(name, 2);
     removeExerciseFromOneWorkout(name, 3);
@@ -97,6 +91,36 @@ function ExerciseList(props) {
         .set({ Workout: firestoreData }, { merge: true });
     }
   }, [firestoreData]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutOne: workoutOne }, { merge: true });
+    }
+  }, [workoutOne]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutTwo: workoutTwo }, { merge: true });
+    }
+  }, [workoutTwo]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+    const uid = firebase.auth().currentUser?.uid;
+    const db = firebase.firestore();
+    db.collection("/users")
+      .doc(uid)
+      .set({ WorkoutThree: workoutThree }, { merge: true });
+    }
+  }, [workoutThree]);
 
   window.mobileCheck = function () {
     let check = false;
